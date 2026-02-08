@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Image - Website Design Concepts</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Solway:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* 
+         * Little Image Brand Guide - CSS Variables 
+         * Theme: "Cozy & Comfort"
+        */
+        :root {
+            --color-primary: #94A396;
+            /* Sage Green */
+            --color-primary-fg: #FDFCFB;
+            --color-secondary: #D4A39A;
+            /* Muted Rose */
+            --color-secondary-fg: #6B5E51;
+            --color-background: #F5F2ED;
+            /* Oatmeal */
+            --color-surface: #FDFCFB;
+            /* Cream (Cards) */
+            --color-text: #6B5E51;
+            /* Clay Brown */
+
+            --font-heading: 'Solway', serif;
+            --font-body: 'Nunito', sans-serif;
+
+            --radius-card: 1.25rem;
+            /* 20px */
+            --radius-btn: 50px;
+            /* Pill */
+
+            --spacing-unit: 8px;
+        }
+
+        /* Reset & Base */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Utilities */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 2rem;
+            border-radius: var(--radius-btn);
+            font-weight: 700;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-primary-fg);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            letter-spacing: 0.5px;
+            /* The Hover Expansion */
+        }
+
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        /* Section Styling */
+        .slide {
+            min-height: auto;
+            /* Removed forced height for tighter layout */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 1;
+            transform: none;
+            padding: 4rem 0;
+            /* reduced padding */
+            border-bottom: 1px solid rgba(139, 119, 101, 0.1);
+        }
+
+        /* Animation class for scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 1. Intro Slide */
+        #intro {
+            text-align: center;
+            background: linear-gradient(180deg, var(--color-background) 0%, #E8E4DD 100%);
+        }
+
+        .brand-pill {
+            display: inline-block;
+            background: var(--color-surface);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 2. Hero Demo */
+        .demo-window {
+            background: var(--color-surface);
+            border-radius: var(--radius-card);
+            box-shadow: 0 20px 40px rgba(107, 94, 81, 0.1);
+            overflow: hidden;
+            margin-top: 2rem;
+            border: 1px solid rgba(107, 94, 81, 0.1);
+        }
+
+        .demo-browser-bar {
+            background: #E8E4DD;
+            padding: 0.75rem 1rem;
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #C5BDB5;
+        }
+
+        .hero-layout {
+            position: relative;
+            height: 400px;
+            background-image: url('https://images.unsplash.com/photo-1628156637385-300438b4d36e?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.3);
+            position: absolute;
+            inset: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 600px;
+        }
+
+        /* 3. About Demo */
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 2rem;
+            padding: 3rem;
+        }
+
+        .split-img {
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            animation: float 6s ease-in-out infinite;
+            /* "The Float" */
+        }
+
+        .split-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* 4. Portfolio Demo */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        .grid-item {
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            height: 200px;
+            position: relative;
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .grid-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* 5. Testimonial Demo */
+        .testimonial-card {
+            background: var(--color-background);
+            /* Slight contrast from demo window white */
+            padding: 2rem;
+            border-radius: var(--radius-card);
+            text-align: center;
+            max-width: 500px;
+            margin: 2rem auto;
+            position: relative;
+        }
+
+        .quote-icon {
+            color: var(--color-secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* 6. FAQ Demo */
+        .faq-item {
+            border-bottom: 1px solid rgba(107, 94, 81, 0.1);
+            padding: 1rem 0;
+        }
+
+        .faq-question {
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            color: var(--color-text);
+        }
+
+        /* Navigation */
+        .nav-controls {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            background: var(--color-surface);
+            border: 1px solid var(--color-text);
+            color: var(--color-text);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--color-text);
+            color: var(--color-surface);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Intro Slide -->
+    <section id="slide-0" class="slide">
+        <div class="container">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <span class="brand-pill">Design Presentation</span>
+                <h1>Building Your Digital Home</h1>
+                <p style="font-size: 1.25rem;">
+                    A website is more than just pictures; it's a digital handshake.
+                    Let's explore the essential rooms (sections) of a photography website,
+                    styled with your unique "Little Image" warmth.
+                </p>
+                <div style="margin-top: 2rem; color: var(--color-secondary);">
+                    <i data-lucide="arrow-down" style="animation: bounce 2s infinite;"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section id="slide-1" class="slide">
+        <div class="container">
+            <div class="split-layout">
+                <div>
+                    <h2 style="color: var(--color-primary);">1. The Hero Section</h2>
+                    <h3>The Mechanics</h3>
+                    <p>This is the "SearchLight". It needs to answer three questions immediately:</p>
+                    <ul style="padding-left: 1.2rem; margin-bottom: 1.5rem;">
+                        <li>Who are you?</li>
+                        <li>What do you do?</li>
+                        <li>Where do you do it?</li>
+                    </ul>
+                    <h3>Why it matters</h3>
+                    <p>Users decide in 0.05 seconds if they like your site. A strong image + clear text hooks them
+                        instantly.</p>
+                </div>
+
+                <!-- Demo -->
+                <div class="demo-window">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="hero-layout">
+                        <div class="hero-overlay"></div>
+                        <div class="hero-content">
+                            <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">Little Image Photography</h2>
+                            <p style="font-size: 1.1rem; opacity: 0.9;">Capturing snuggly moments for modern mothers.
+                            </p>
+                            <button class="btn btn-primary" style="margin-top: 1rem;">View Gallery</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="slide-2" class="slide">
+        <div class="container">
+            <div class="split-layout">
+                <div>
+                    <h2 style="color: var(--color-primary);">2. The Connection (About Me)</h2>
+
+                    <h3>What is this section?</h3>
+                    <p>This is where "Business" meets "Person". It's not just a biography; it's an opportunity to build
+                        trust. For a photographer, clients are inviting you into their personal space (their weddings,
+                        their homes, their newborn's nursery). They need to know who you are before they book you.</p>
+
+                    <h3>Key Elements We Include:</h3>
+                    <ul>
+                        <li><strong>A Friendly Portrait:</strong> A photo of YOU looking approachable (not hiding behind
+                            a camera).</li>
+                        <li><strong>Your "Why":</strong> Why do you take photos? (e.g., "I love preserving memories").
+                        </li>
+                        <li><strong>Personal Tidbits:</strong> Small details (like coffee lover, dog dad) that make you
+                            relatable.</li>
+                    </ul>
+                </div>
+
+                <!-- Demo -->
+                <div class="demo-window">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="split-layout" style="padding: 2rem; gap: 1rem; align-items: start;">
+                        <div class="split-img">
+                            <!-- Male Portrait -->
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop"
+                                alt="Photographer Portrait">
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Hi, I'm James</h3>
+                            <p style="font-size: 0.9rem; margin-bottom: 1rem;">I'm a storyteller with a camera. I
+                                believe the best photos aren't posed; they are felt.</p>
+                            <p style="font-size: 0.9rem;"><strong>My Style:</strong> Relaxed, earthy, and patient.</p>
+                            <p
+                                style="font-size: 0.9rem; margin-top: 1rem; font-style: italic; color: var(--color-secondary);">
+                                "Let's capture the moments you want to keep forever."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="slide-3" class="slide">
+        <div class="container">
+            <div class="split-layout">
+                <div>
+                    <h2 style="color: var(--color-primary);">3. The Proof (Gallery Strategy)</h2>
+
+                    <h3>The Strategy: Order out of Chaos</h3>
+                    <p>Instead of dumping 500 images into one page, we guide the user. We create <strong>"Buckets of
+                            Interest"</strong>.</p>
+
+                    <h3>The User Flow:</h3>
+                    <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                        <li><strong>User arrives:</strong> "I need photos for my baby."</li>
+                        <li><strong>They see categories:</strong> Newborn, Milestones, Occasions.</li>
+                        <li><strong>They click "Newborn":</strong> <em>Now</em> they see the full gallery.</li>
+                    </ol>
+
+                    <p>This prevents overwhelm and helps them find exactly what they are looking for faster.</p>
+                </div>
+
+                <!-- Demo -->
+                <div class="demo-window">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="grid-layout" style="gap: 1.5rem;">
+                        <!-- Category 1 -->
+                        <div style="text-align: center;">
+                            <div class="grid-item"
+                                style="border-radius: 50%; width: 150px; height: 150px; margin: 0 auto 1rem auto; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                                <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop"
+                                    alt="Newborn">
+                            </div>
+                            <h4 style="margin: 0; font-size: 1.1rem;">Newborn</h4>
+                            <p style="font-size: 0.8rem; opacity: 0.7;">0-2 Weeks</p>
+                        </div>
+
+                        <!-- Category 2 -->
+                        <div style="text-align: center;">
+                            <div class="grid-item"
+                                style="border-radius: 50%; width: 150px; height: 150px; margin: 0 auto 1rem auto; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                                <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1972&auto=format&fit=crop"
+                                    alt="Milestones">
+                            </div>
+                            <h4 style="margin: 0; font-size: 1.1rem;">Milestone</h4>
+                            <p style="font-size: 0.8rem; opacity: 0.7;">3 Months - 1 Year</p>
+                        </div>
+
+                        <!-- Category 3 -->
+                        <div style="text-align: center;">
+                            <div class="grid-item"
+                                style="border-radius: 50%; width: 150px; height: 150px; margin: 0 auto 1rem auto; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=2070&auto=format&fit=crop"
+                                    alt="Occasions">
+                            </div>
+                            <h4 style="margin: 0; font-size: 1.1rem;">Occasions</h4>
+                            <p style="font-size: 0.8rem; opacity: 0.7;">Special Events</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="slide-4" class="slide">
+        <div class="container">
+            <div class="split-layout">
+                <div>
+                    <h2 style="color: var(--color-primary);">4. The Love Letters (Reviews)</h2>
+                    <h3>The Mechanics</h3>
+                    <p>Social proof. Don't call them "Reviews" - call them "Love Notes" or "Kind Words".</p>
+                    <h3>Why it matters</h3>
+                    <p>It builds trust. Seeing others rave about their "snuggly moments" validates the investment.</p>
+                </div>
+
+                <!-- Demo -->
+                <div class="demo-window">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 2rem; background: #FDFCFB; height: 100%; display: flex; align-items: center;">
+                        <div class="testimonial-card">
+                            <i data-lucide="heart" class="quote-icon" fill="#D4A39A"></i>
+                            <p style="font-size: 1.1rem;">"I usually hate being in photos, but this felt like hanging
+                                out with a friend. The results made me cry happy tears."</p>
+                            <p style="font-weight: bold; margin-top: 1rem;">- The Miller Family</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="slide-5" class="slide">
+        <div class="container">
+            <div class="split-layout">
+                <div>
+                    <h2 style="color: var(--color-primary);">5. The Answers (FAQ)</h2>
+                    <h3>The Mechanics</h3>
+                    <p>Address fears upfront. "What do I wear?" "What if my baby cries?" "How much is it?"</p>
+                    <h3>Why it matters</h3>
+                    <p>It reduces friction. Answering "What do I wear?" before they ask shows you are the expert guide.
+                    </p>
+                </div>
+
+                <!-- Demo -->
+                <div class="demo-window">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 3rem;">
+                        <h3 style="text-align: center; margin-bottom: 2rem;">Common Questions</h3>
+                        <div class="faq-item">
+                            <div class="faq-question">What should we wear? <i data-lucide="chevron-down"></i></div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">Can I bring my dog? <i data-lucide="chevron-down"></i></div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">What if it rains? <i data-lucide="chevron-down"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Lab Section -->
+    <section id="slide-lab" class="slide lab-section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="brand-pill" style="background: var(--color-text); color: var(--color-surface);">Advanced
+                    Features</span>
+                <h2 style="color: var(--color-primary); font-size: 2.5rem;">The Gallery Lab</h2>
+                <p>Exploring dynamic ways to showcase the "Little Image" portfolio.</p>
+            </div>
+
+            <!-- Demo 1: Masonry -->
+            <div class="split-layout" style="margin-bottom: 4rem;">
+                <div>
+                    <h3>1. The Organic Masonry</h3>
+                    <p>Strict grids feel corporate. Masonry layouts feel like a collage on a wall. Perfect for mixing
+                        vertical and horizontal shots.</p>
+                </div>
+                <div class="demo-window">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 1rem;">
+                        <div class="masonry-layout">
+                            <div class="masonry-item"><img
+                                    src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop"
+                                    alt="Img"></div>
+                            <div class="masonry-item"><img
+                                    src="https://images.unsplash.com/photo-1531123414780-f74242c2b052?q=80&w=1000&auto=format&fit=crop"
+                                    alt="Img"></div>
+                            <div class="masonry-item"><img
+                                    src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1000&auto=format&fit=crop"
+                                    alt="Img"></div>
+                            <div class="masonry-item"><img
+                                    src="https://images.unsplash.com/photo-1520854221256-17451cc330e7?q=80&w=1000&auto=format&fit=crop"
+                                    alt="Img"></div>
+                            <div class="masonry-item"><img
+                                    src="https://images.unsplash.com/photo-1495567720989-cebdbdd97913?q=80&w=1000&auto=format&fit=crop"
+                                    alt="Img"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 2: Film Strip -->
+            <div class="split-layout" style="margin-bottom: 4rem;">
+                <div>
+                    <h3>2. The Cinematic Film Strip</h3>
+                    <p>A horizontal scroll that mimics looking through negatives. Great for telling a linear story of a
+                        wedding day.</p>
+                </div>
+                <div class="demo-window">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 2rem;">
+                        <div class="film-strip-container">
+                            <div class="film-item"><img
+                                    src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1000&auto=format&fit=crop"
+                                    alt="Img"></div>
+                            <div class="film-item"><img
+                                    src="https://images.unsplash.com/photo-1522673607200-1645062cd958?q=80&w=1000&auto=format&fit=crop"
+                                    alt="Img"></div>
+                            <div class="film-item"><img
+                                    src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop"
+                                    alt="Img"></div>
+                        </div>
+                        <p style="text-align: center; margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.6;"><-- Scroll
+                                to explore --></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 3: Floating Parallax -->
+            <div class="split-layout">
+                <div>
+                    <h3>3. The Dreamscape (Parallax)</h3>
+                    <p>Images float at different speeds, creating depth. This feels magical and "dream-like", perfect
+                        for newborns.</p>
+                </div>
+                <div class="demo-window">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 2rem;">
+                        <div class="parallax-window" style="background: #FDFCFB;">
+                            <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=500&auto=format&fit=crop"
+                                class="floating-img f-1" alt="Float 1">
+                            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=500&auto=format&fit=crop"
+                                class="floating-img f-2" alt="Float 2">
+                            <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?q=80&w=500&auto=format&fit=crop"
+                                class="floating-img f-3" alt="Float 3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="slide-6" class="slide">
+        <div class="container">
+            <div class="split-layout">
+                <div>
+                    <h2 style="color: var(--color-primary);">6. The Invitation (Contact)</h2>
+                    <h3>The Mechanics</h3>
+                    <p>The finish line. Keep it simple. Name, date, and a warm "Let's Chat" button.</p>
+                    <h3>Why it matters</h3>
+                    <p>Don't make them hunt for it. This is the goal of the entire website.</p>
+                </div>
+
+                <!-- Demo -->
+                <div class="demo-window">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div
+                        style="padding: 3rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 300px;">
+                        <h3 style="margin-bottom: 1rem;">Ready to make magic?</h3>
+                        <p style="margin-bottom: 2rem;">Let's get your session on the calendar.</p>
+                        <button class="btn btn-primary" style="padding: 1rem 3rem; font-size: 1.2rem;">Book Your
+                            Session</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Ctrls Removed for natural scrolling -->
+
+    <script>
+        // Init Icons
+        lucide.createIcons();
+
+        // Scroll Animation Logic
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        // Target elements for animation
+        document.querySelectorAll('.slide').forEach(section => {
+            section.classList.add('reveal'); // Add base animation class
+            observer.observe(section);
+        });
+
+        // Also animate the larger demo windows
+        document.querySelectorAll('.demo-window').forEach(window => {
+            window.classList.add('reveal');
+            observer.observe(window);
+        });
+
+    </script>
+</body>
+
+</html>
