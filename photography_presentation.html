@@ -185,7 +185,8 @@
         .hero-layout {
             position: relative;
             height: 400px;
-            background-image: url('https://images.unsplash.com/photo-1628156637385-300438b4d36e?q=80&w=2070&auto=format&fit=crop');
+            /* Updated image to local asset */
+            background-image: url('assets/images/home/5cb53941bc09171d62065f5141224c54370f80c365279c.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -327,6 +328,80 @@
             background: var(--color-text);
             color: var(--color-surface);
         }
+
+        /* Gallery Lab Styles */
+        .masonry-layout {
+            column-count: 3;
+            column-gap: 10px;
+        }
+
+        .masonry-item {
+            margin-bottom: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            break-inside: avoid;
+        }
+
+        .masonry-item img {
+            width: 100%;
+            display: block;
+        }
+
+        .film-strip-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 1rem;
+            padding-bottom: 1rem;
+            /* Hide scrollbar for cleaner look */
+            scrollbar-width: thin;
+        }
+
+        .film-item {
+            min-width: 250px;
+            height: 180px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .film-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .parallax-window {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .floating-img {
+            position: absolute;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .f-1 {
+            top: 10%;
+            left: 10%;
+            width: 150px;
+            animation: float 5s infinite;
+        }
+
+        .f-2 {
+            top: 30%;
+            right: 15%;
+            width: 180px;
+            animation: float 7s infinite reverse;
+        }
+
+        .f-3 {
+            bottom: 10%;
+            left: 40%;
+            width: 140px;
+            animation: float 6s infinite 1s;
+        }
     </style>
 </head>
 
@@ -379,8 +454,8 @@
                         <div class="hero-overlay"></div>
                         <div class="hero-content">
                             <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">Little Image Photography</h2>
-                            <p style="font-size: 1.1rem; opacity: 0.9;">Capturing snuggly moments for modern mothers.
-                            </p>
+                            <p style="font-size: 1.1rem; opacity: 0.9;">Newborn, Outdoor, Studio Photographer Servicing
+                                Brooklyn</p>
                             <button class="btn btn-primary" style="margin-top: 1rem;">View Gallery</button>
                         </div>
                     </div>
@@ -398,8 +473,8 @@
 
                     <h3>What is this section?</h3>
                     <p>This is where "Business" meets "Person". It's not just a biography; it's an opportunity to build
-                        trust. For a photographer, clients are inviting you into their personal space (their weddings,
-                        their homes, their newborn's nursery). They need to know who you are before they book you.</p>
+                        trust. For a photographer, clients are inviting you into their personal space. They need to know
+                        who you are before they book you.</p>
 
                     <h3>Key Elements We Include:</h3>
                     <ul>
@@ -407,8 +482,7 @@
                             a camera).</li>
                         <li><strong>Your "Why":</strong> Why do you take photos? (e.g., "I love preserving memories").
                         </li>
-                        <li><strong>Personal Tidbits:</strong> Small details (like coffee lover, dog dad) that make you
-                            relatable.</li>
+                        <li><strong>Personal Tidbits:</strong> Small details that make you relatable.</li>
                     </ul>
                 </div>
 
@@ -421,18 +495,20 @@
                     </div>
                     <div class="split-layout" style="padding: 2rem; gap: 1rem; align-items: start;">
                         <div class="split-img">
-                            <!-- Male Portrait -->
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop"
-                                alt="Photographer Portrait">
+                            <!-- Local About Image -->
+                            <img src="assets/images/about/5cb53941bc09171d62065f5141224c54370f80c365279c.jpg"
+                                alt="Rachel - Owner and Photographer">
                         </div>
                         <div>
-                            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Hi, I'm James</h3>
-                            <p style="font-size: 0.9rem; margin-bottom: 1rem;">I'm a storyteller with a camera. I
-                                believe the best photos aren't posed; they are felt.</p>
-                            <p style="font-size: 0.9rem;"><strong>My Style:</strong> Relaxed, earthy, and patient.</p>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Hi, I'm Rachel</h3>
+                            <p style="font-size: 0.9rem; margin-bottom: 1rem;">I am the owner and Photographer at Little
+                                Image Photography. Photography has always been a passion of mine.</p>
+                            <p style="font-size: 0.9rem;">I love being able to capture a moment, whether little or
+                                extraordinary. I specialize in newborn and child portraiture; both in studio and
+                                outdoors.</p>
                             <p
                                 style="font-size: 0.9rem; margin-top: 1rem; font-style: italic; color: var(--color-secondary);">
-                                "Let's capture the moments you want to keep forever."</p>
+                                "Capture those moments, preserve them as art, and cherish them for a lifetime!"</p>
                         </div>
                     </div>
                 </div>
@@ -469,37 +545,34 @@
                         <div class="dot"></div>
                     </div>
                     <div class="grid-layout" style="gap: 1.5rem;">
-                        <!-- Category 1 -->
+                        <!-- Category 1: Newborn -->
                         <div style="text-align: center;">
                             <div class="grid-item"
                                 style="border-radius: 50%; width: 150px; height: 150px; margin: 0 auto 1rem auto; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                                <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop"
-                                    alt="Newborn">
+                                <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Newborn">
                             </div>
                             <h4 style="margin: 0; font-size: 1.1rem;">Newborn</h4>
                             <p style="font-size: 0.8rem; opacity: 0.7;">0-2 Weeks</p>
                         </div>
 
-                        <!-- Category 2 -->
+                        <!-- Category 2: Milestone -->
                         <div style="text-align: center;">
                             <div class="grid-item"
                                 style="border-radius: 50%; width: 150px; height: 150px; margin: 0 auto 1rem auto; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                                <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1972&auto=format&fit=crop"
-                                    alt="Milestones">
+                                <img src="assets/images/three_year_milestone/3.1-5342156c-1500.jpg" alt="Milestone">
                             </div>
                             <h4 style="margin: 0; font-size: 1.1rem;">Milestone</h4>
                             <p style="font-size: 0.8rem; opacity: 0.7;">3 Months - 1 Year</p>
                         </div>
 
-                        <!-- Category 3 -->
+                        <!-- Category 3: Special Occasions -->
                         <div style="text-align: center;">
                             <div class="grid-item"
                                 style="border-radius: 50%; width: 150px; height: 150px; margin: 0 auto 1rem auto; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=2070&auto=format&fit=crop"
-                                    alt="Occasions">
+                                <img src="assets/images/special_occasion/1-7b28e9b8-1000.jpg" alt="Occasions">
                             </div>
-                            <h4 style="margin: 0; font-size: 1.1rem;">Occasions</h4>
-                            <p style="font-size: 0.8rem; opacity: 0.7;">Special Events</p>
+                            <h4 style="margin: 0; font-size: 1.1rem;">Special Occasions</h4>
+                            <p style="font-size: 0.8rem; opacity: 0.7;">Events</p>
                         </div>
                     </div>
                 </div>
@@ -529,9 +602,10 @@
                     <div style="padding: 2rem; background: #FDFCFB; height: 100%; display: flex; align-items: center;">
                         <div class="testimonial-card">
                             <i data-lucide="heart" class="quote-icon" fill="#D4A39A"></i>
-                            <p style="font-size: 1.1rem;">"I usually hate being in photos, but this felt like hanging
-                                out with a friend. The results made me cry happy tears."</p>
-                            <p style="font-weight: bold; margin-top: 1rem;">- The Miller Family</p>
+                            <p style="font-size: 1.1rem;">"Children grow so fast, and family dynamics change rapidly.
+                                That’s why photography is so important! Because even on those imperfect days, there are
+                                always perfect moments."</p>
+                            <p style="font-weight: bold; margin-top: 1rem;">- Client Testimonial</p>
                         </div>
                     </div>
                 </div>
@@ -562,13 +636,15 @@
                     <div style="padding: 3rem;">
                         <h3 style="text-align: center; margin-bottom: 2rem;">Common Questions</h3>
                         <div class="faq-item">
-                            <div class="faq-question">What should we wear? <i data-lucide="chevron-down"></i></div>
+                            <div class="faq-question">What packages do you offer? <i data-lucide="chevron-down"></i>
+                            </div>
                         </div>
                         <div class="faq-item">
-                            <div class="faq-question">Can I bring my dog? <i data-lucide="chevron-down"></i></div>
+                            <div class="faq-question">How do I verify a booking? <i data-lucide="chevron-down"></i>
+                            </div>
                         </div>
                         <div class="faq-item">
-                            <div class="faq-question">What if it rains? <i data-lucide="chevron-down"></i></div>
+                            <div class="faq-question">Is the session timed? <i data-lucide="chevron-down"></i></div>
                         </div>
                     </div>
                 </div>
@@ -583,7 +659,7 @@
                 <span class="brand-pill" style="background: var(--color-text); color: var(--color-surface);">Advanced
                     Features</span>
                 <h2 style="color: var(--color-primary); font-size: 2.5rem;">The Gallery Lab</h2>
-                <p>Exploring dynamic ways to showcase the "Little Image" portfolio.</p>
+                <p>Exploring dynamic ways to showcase the "Little Image" portfolio using your actual images.</p>
             </div>
 
             <!-- Demo 1: Masonry -->
@@ -601,21 +677,18 @@
                     </div>
                     <div style="padding: 1rem;">
                         <div class="masonry-layout">
+                            <div class="masonry-item"><img src="assets/images/newborn/3.1-b76dcd28-1000.jpg"
+                                    alt="Newborn Art"></div>
+                            <div class="masonry-item"><img src="assets/images/three_year_milestone/11-a00f14f0-1500.jpg"
+                                    alt="Milestone"></div>
                             <div class="masonry-item"><img
-                                    src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop"
-                                    alt="Img"></div>
+                                    src="assets/images/special_occasion/Readykatz1-5c51b610-1000.jpg" alt="Occasion">
+                            </div>
+                            <div class="masonry-item"><img src="assets/images/newborn/64-7694e869-1000.jpg" alt="Baby">
+                            </div>
                             <div class="masonry-item"><img
-                                    src="https://images.unsplash.com/photo-1531123414780-f74242c2b052?q=80&w=1000&auto=format&fit=crop"
-                                    alt="Img"></div>
-                            <div class="masonry-item"><img
-                                    src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1000&auto=format&fit=crop"
-                                    alt="Img"></div>
-                            <div class="masonry-item"><img
-                                    src="https://images.unsplash.com/photo-1520854221256-17451cc330e7?q=80&w=1000&auto=format&fit=crop"
-                                    alt="Img"></div>
-                            <div class="masonry-item"><img
-                                    src="https://images.unsplash.com/photo-1495567720989-cebdbdd97913?q=80&w=1000&auto=format&fit=crop"
-                                    alt="Img"></div>
+                                    src="assets/images/three_year_milestone/littleimage_gluck-35e7124a-1500.jpg"
+                                    alt="Portrait"></div>
                         </div>
                     </div>
                 </div>
@@ -626,7 +699,7 @@
                 <div>
                     <h3>2. The Cinematic Film Strip</h3>
                     <p>A horizontal scroll that mimics looking through negatives. Great for telling a linear story of a
-                        wedding day.</p>
+                        session (e.g., an Upsherin).</p>
                 </div>
                 <div class="demo-window">
                     <div class="demo-browser-bar">
@@ -636,15 +709,19 @@
                     </div>
                     <div style="padding: 2rem;">
                         <div class="film-strip-container">
+                            <!-- Using sequenced images from special_occasion (Srul Upsherin) -->
                             <div class="film-item"><img
-                                    src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1000&auto=format&fit=crop"
-                                    alt="Img"></div>
+                                    src="assets/images/three_year_milestone/Srulupsherin1-50f93272-1500.jpg"
+                                    alt="Sequence 1"></div>
                             <div class="film-item"><img
-                                    src="https://images.unsplash.com/photo-1522673607200-1645062cd958?q=80&w=1000&auto=format&fit=crop"
-                                    alt="Img"></div>
+                                    src="assets/images/three_year_milestone/Srulupsherin2-3df0daaa-1500.jpg"
+                                    alt="Sequence 2"></div>
                             <div class="film-item"><img
-                                    src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop"
-                                    alt="Img"></div>
+                                    src="assets/images/three_year_milestone/Srulupsherin4-30ec71a7-1500.jpg"
+                                    alt="Sequence 3"></div>
+                            <div class="film-item"><img
+                                    src="assets/images/three_year_milestone/LittleImage_Landau_3-389ced6e-1500.jpg"
+                                    alt="Sequence 4"></div>
                         </div>
                         <p style="text-align: center; margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.6;"><-- Scroll
                                 to explore --></p>
@@ -667,11 +744,11 @@
                     </div>
                     <div style="padding: 2rem;">
                         <div class="parallax-window" style="background: #FDFCFB;">
-                            <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=500&auto=format&fit=crop"
-                                class="floating-img f-1" alt="Float 1">
-                            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=500&auto=format&fit=crop"
+                            <img src="assets/images/newborn/500-1ee40791-1000.jpg" class="floating-img f-1"
+                                alt="Float 1">
+                            <img src="assets/images/newborn/LittleImage_Greenfeld_2.0-45b9a5c6-1000.jpg"
                                 class="floating-img f-2" alt="Float 2">
-                            <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?q=80&w=500&auto=format&fit=crop"
+                            <img src="assets/images/newborn/LittleImage_Weissberg_6-882f0e28-1000.jpg"
                                 class="floating-img f-3" alt="Float 3">
                         </div>
                     </div>
