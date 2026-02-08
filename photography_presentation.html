@@ -1363,6 +1363,209 @@
         }
 
         /* ================================
+           SHOWCASE LAYOUT - BIG DEMOS
+           ================================ */
+        .section-showcase {
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 3rem;
+            align-items: start;
+            padding: 0;
+        }
+
+        .section-showcase.reverse {
+            grid-template-columns: 1fr 340px;
+        }
+
+        .section-showcase.reverse .showcase-text {
+            order: 2;
+        }
+
+        .section-showcase.reverse .showcase-demo {
+            order: 1;
+        }
+
+        .showcase-text {
+            padding-top: 1rem;
+        }
+
+        .showcase-text h2 {
+            font-size: 1.6rem;
+            line-height: 1.3;
+        }
+
+        .showcase-text h3 {
+            font-size: 1.05rem;
+        }
+
+        .showcase-text p, .showcase-text li {
+            font-size: 0.95rem;
+        }
+
+        .showcase-demo .demo-window {
+            margin-top: 0;
+        }
+
+        .showcase-demo .hero-layout {
+            height: 450px;
+        }
+
+        /* ================================
+           GALLERY COLLECTIONS (LANDING PAGE)
+           ================================ */
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .collection-card {
+            position: relative;
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            cursor: pointer;
+            height: 320px;
+            box-shadow: 0 8px 25px rgba(107, 94, 81, 0.12);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .collection-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(107, 94, 81, 0.2);
+        }
+
+        .collection-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .collection-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .collection-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2.5rem 1.5rem 1.5rem;
+            background: linear-gradient(transparent, rgba(42, 37, 32, 0.75));
+            color: white;
+        }
+
+        .collection-label h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .collection-label p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        .collection-label .collection-count {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            margin-top: 0.4rem;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Collection card style variants */
+        .collections-style-b .collection-card {
+            background: var(--color-surface);
+            height: auto;
+        }
+
+        .collections-style-b .collection-card img {
+            height: 260px;
+        }
+
+        .collections-style-b .collection-label {
+            position: relative;
+            background: var(--color-surface);
+            color: var(--color-text);
+            padding: 1rem 1.25rem;
+        }
+
+        .collections-style-b .collection-label h3 {
+            font-size: 1.1rem;
+        }
+
+        .collections-style-b .collection-label p {
+            color: var(--color-text);
+            opacity: 0.6;
+        }
+
+        .collections-style-b .collection-label .collection-count {
+            background: var(--color-background);
+            color: var(--color-text);
+        }
+
+        /* Style C: minimal text overlay at bottom */
+        .collections-style-c .collection-card {
+            height: 380px;
+        }
+
+        .collections-style-c .collection-label {
+            padding: 1rem 1.25rem;
+            background: rgba(42,37,32,0.55);
+            backdrop-filter: blur(4px);
+        }
+
+        .collections-style-c .collection-label h3 {
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* Collection style selector tabs */
+        .collection-style-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .collection-style-tab {
+            padding: 0.5rem 1.25rem;
+            border-radius: var(--radius-btn);
+            background: var(--color-surface);
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--color-text);
+            transition: all 0.3s ease;
+        }
+
+        .collection-style-tab:hover {
+            border-color: var(--color-secondary);
+        }
+
+        .collection-style-tab.active {
+            background: var(--color-secondary);
+            color: white;
+            border-color: var(--color-secondary);
+        }
+
+        .collection-panel {
+            display: none;
+            animation: galleryFadeIn 0.5s ease;
+        }
+
+        .collection-panel.active {
+            display: block;
+        }
+
+        /* ================================
            BOUNCE ANIMATION
            ================================ */
         @keyframes bounce {
@@ -1378,6 +1581,14 @@
             .split-layout {
                 grid-template-columns: 1fr;
                 padding: 2rem;
+            }
+            .section-showcase,
+            .section-showcase.reverse {
+                grid-template-columns: 1fr;
+            }
+            .section-showcase.reverse .showcase-text,
+            .section-showcase.reverse .showcase-demo {
+                order: unset;
             }
             .element-breakdown {
                 grid-template-columns: 1fr;
@@ -1399,6 +1610,9 @@
             }
             .category-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            .collections-grid {
+                grid-template-columns: 1fr;
             }
             .nav-sidebar {
                 display: none;
@@ -1457,6 +1671,9 @@
         <div class="nav-dot" data-target="slide-5">
             <span class="nav-tooltip">FAQ</span>
         </div>
+        <div class="nav-dot" data-target="slide-collections">
+            <span class="nav-tooltip">Collections</span>
+        </div>
         <div class="nav-dot" data-target="slide-lab">
             <span class="nav-tooltip">Gallery Lab</span>
         </div>
@@ -1490,12 +1707,12 @@
     </section>
 
     <!-- ==========================================
-         HERO SECTION - OVERVIEW
+         HERO SECTION - OVERVIEW (text LEFT, demo RIGHT)
          ========================================== -->
     <section id="slide-1" class="slide">
-        <div class="container">
-            <div class="split-layout">
-                <div>
+        <div class="container-wide">
+            <div class="section-showcase">
+                <div class="showcase-text">
                     <h2 style="color: var(--color-primary);">1. The Hero Section</h2>
                     <h3>The Mechanics</h3>
                     <p>This is the "SearchLight". It needs to answer three questions immediately:</p>
@@ -1505,23 +1722,23 @@
                         <li>Where do you do it?</li>
                     </ul>
                     <h3>Why it matters</h3>
-                    <p>Users decide in <strong>0.05 seconds</strong> if they like your site. A strong image + clear text hooks them
-                        instantly.</p>
+                    <p>Users decide in <strong>0.05 seconds</strong> if they like your site. A strong image + clear text hooks them instantly.</p>
                 </div>
 
-                <!-- Demo -->
-                <div class="demo-window">
-                    <div class="demo-browser-bar">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                    </div>
-                    <div class="hero-layout">
-                        <div class="hero-overlay"></div>
-                        <div class="hero-content">
-                            <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">Little Image Photography</h2>
-                            <p style="font-size: 1.1rem; opacity: 0.9;">Capturing snuggly moments for modern mothers.</p>
-                            <button class="btn btn-primary" style="margin-top: 1rem;">View Gallery</button>
+                <div class="showcase-demo">
+                    <div class="demo-window">
+                        <div class="demo-browser-bar">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <div class="hero-layout">
+                            <div class="hero-overlay"></div>
+                            <div class="hero-content">
+                                <h2 style="font-size: 2.2rem; margin-bottom: 0.5rem;">Little Image Photography</h2>
+                                <p style="font-size: 1.2rem; opacity: 0.9;">Capturing snuggly moments for modern mothers.</p>
+                                <button class="btn btn-primary" style="margin-top: 1rem; font-size: 1.1rem;">View Gallery</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1596,48 +1813,45 @@
     </section>
 
     <!-- ==========================================
-         ABOUT SECTION
+         ABOUT SECTION (text RIGHT, demo LEFT)
          ========================================== -->
     <section id="slide-2" class="slide">
-        <div class="container">
-            <div class="split-layout">
-                <div>
+        <div class="container-wide">
+            <div class="section-showcase reverse">
+                <div class="showcase-text">
                     <h2 style="color: var(--color-primary);">2. The Connection (About Me)</h2>
 
                     <h3>What is this section?</h3>
-                    <p>This is where "Business" meets "Person". It's not just a biography; it's an opportunity to build
-                        trust. For a photographer, clients are inviting you into their personal space (their homes,
-                        their newborn's nursery). They need to know who you are before they book you.</p>
+                    <p>This is where "Business" meets "Person". Clients are inviting you into their personal space - they need to know who you are before they book you.</p>
 
-                    <h3>Key Elements We Include:</h3>
+                    <h3>Key Elements:</h3>
                     <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
-                        <li><strong>A Friendly Portrait:</strong> A photo of YOU looking approachable (not hiding behind
-                            a camera).</li>
-                        <li><strong>Your "Why":</strong> Why do you take photos? (e.g., "I love preserving memories").</li>
-                        <li><strong>Personal Tidbits:</strong> Small details (like coffee lover, dog mom) that make you
-                            relatable.</li>
+                        <li><strong>A Friendly Portrait</strong> - approachable, not behind a camera.</li>
+                        <li><strong>Your "Why"</strong> - why you take photos.</li>
+                        <li><strong>Personal Tidbits</strong> - relatable details.</li>
                     </ul>
                 </div>
 
-                <!-- Demo -->
-                <div class="demo-window">
-                    <div class="demo-browser-bar">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                    </div>
-                    <div class="split-layout" style="padding: 2rem; gap: 1rem; align-items: start;">
-                        <div class="split-img">
-                            <img src="assets/images/about/5cb53941bc09171d62065f5141224c54370f80c365279c.jpg"
-                                alt="Photographer Portrait">
+                <div class="showcase-demo">
+                    <div class="demo-window">
+                        <div class="demo-browser-bar">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
                         </div>
-                        <div>
-                            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Hi, I'm Rachel</h3>
-                            <p style="font-size: 0.9rem; margin-bottom: 1rem;">I'm a storyteller with a camera. I
-                                believe the best photos aren't posed; they are felt.</p>
-                            <p style="font-size: 0.9rem;"><strong>My Style:</strong> Relaxed, earthy, and patient.</p>
-                            <p style="font-size: 0.9rem; margin-top: 1rem; font-style: italic; color: var(--color-secondary);">
-                                "Let's capture the moments you want to keep forever."</p>
+                        <div class="split-layout" style="padding: 2.5rem; gap: 1.5rem; align-items: start;">
+                            <div class="split-img">
+                                <img src="assets/images/about/5cb53941bc09171d62065f5141224c54370f80c365279c.jpg"
+                                    alt="Photographer Portrait">
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem;">Hi, I'm Rachel</h3>
+                                <p style="font-size: 1rem; margin-bottom: 1rem;">I'm a storyteller with a camera. I
+                                    believe the best photos aren't posed; they are felt.</p>
+                                <p style="font-size: 1rem;"><strong>My Style:</strong> Relaxed, earthy, and patient.</p>
+                                <p style="font-size: 1rem; margin-top: 1rem; font-style: italic; color: var(--color-secondary);">
+                                    "Let's capture the moments you want to keep forever."</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1708,59 +1922,62 @@
     </section>
 
     <!-- ==========================================
-         PORTFOLIO / GALLERY STRATEGY
+         PORTFOLIO / GALLERY STRATEGY (text LEFT, demo RIGHT)
          ========================================== -->
     <section id="slide-3" class="slide">
-        <div class="container">
-            <div class="split-layout">
-                <div>
+        <div class="container-wide">
+            <div class="section-showcase">
+                <div class="showcase-text">
                     <h2 style="color: var(--color-primary);">3. The Proof (Gallery Strategy)</h2>
 
-                    <h3>The Strategy: Order out of Chaos</h3>
-                    <p>Instead of dumping 500 images into one page, we guide the user. We create <strong>"Buckets of
-                            Interest"</strong>.</p>
+                    <h3>Order out of Chaos</h3>
+                    <p>Instead of dumping 500 images into one page, we create <strong>"Buckets of Interest"</strong>.</p>
 
                     <h3>The User Flow:</h3>
                     <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
-                        <li><strong>User arrives:</strong> "I need photos for my baby."</li>
-                        <li><strong>They see categories:</strong> Newborn, Milestones, Occasions.</li>
-                        <li><strong>They click a category:</strong> <em>Now</em> they see the full gallery.</li>
+                        <li><strong>Arrives:</strong> "I need baby photos."</li>
+                        <li><strong>Sees categories:</strong> Newborn, Milestones, Occasions.</li>
+                        <li><strong>Clicks one:</strong> Full gallery opens.</li>
                     </ol>
 
-                    <p>This prevents overwhelm and helps them find exactly what they are looking for faster.</p>
+                    <p>This prevents overwhelm and helps them find what they want faster.</p>
                 </div>
 
-                <!-- Demo -->
-                <div class="demo-window">
-                    <div class="demo-browser-bar">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                    </div>
-                    <div class="grid-layout" style="gap: 1.5rem;">
-                        <div style="text-align: center;">
-                            <div class="grid-item"
-                                style="border-radius: 50%; width: 150px; height: 150px; margin: 0 auto 1rem auto; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                                <img src="assets/images/newborn/74-08272da1-1000.jpg" alt="Newborn">
-                            </div>
-                            <h4 style="margin: 0; font-size: 1.1rem;">Newborn</h4>
-                            <p style="font-size: 0.8rem; opacity: 0.7;">0-2 Weeks</p>
+                <div class="showcase-demo">
+                    <div class="demo-window">
+                        <div class="demo-browser-bar">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
                         </div>
-                        <div style="text-align: center;">
-                            <div class="grid-item"
-                                style="border-radius: 50%; width: 150px; height: 150px; margin: 0 auto 1rem auto; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                                <img src="assets/images/three_year_milestone/10-52b89603-1500.jpg" alt="Milestones">
+                        <div style="padding: 2.5rem;">
+                            <h3 style="text-align: center; margin-bottom: 2rem; font-size: 1.4rem;">Our Portfolio</h3>
+                            <div class="grid-layout" style="gap: 2rem; padding: 0;">
+                                <div style="text-align: center;">
+                                    <div class="grid-item"
+                                        style="border-radius: 50%; width: 160px; height: 160px; margin: 0 auto 1rem auto; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                                        <img src="assets/images/newborn/74-08272da1-1000.jpg" alt="Newborn">
+                                    </div>
+                                    <h4 style="margin: 0; font-size: 1.15rem;">Newborn</h4>
+                                    <p style="font-size: 0.85rem; opacity: 0.7;">0-2 Weeks</p>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div class="grid-item"
+                                        style="border-radius: 50%; width: 160px; height: 160px; margin: 0 auto 1rem auto; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                                        <img src="assets/images/three_year_milestone/10-52b89603-1500.jpg" alt="Milestones">
+                                    </div>
+                                    <h4 style="margin: 0; font-size: 1.15rem;">Milestone</h4>
+                                    <p style="font-size: 0.85rem; opacity: 0.7;">3 Months - 3 Years</p>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div class="grid-item"
+                                        style="border-radius: 50%; width: 160px; height: 160px; margin: 0 auto 1rem auto; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                                        <img src="assets/images/special_occasion/1-7b28e9b8-1000.jpg" alt="Occasions">
+                                    </div>
+                                    <h4 style="margin: 0; font-size: 1.15rem;">Occasions</h4>
+                                    <p style="font-size: 0.85rem; opacity: 0.7;">Special Events</p>
+                                </div>
                             </div>
-                            <h4 style="margin: 0; font-size: 1.1rem;">Milestone</h4>
-                            <p style="font-size: 0.8rem; opacity: 0.7;">3 Months - 3 Years</p>
-                        </div>
-                        <div style="text-align: center;">
-                            <div class="grid-item"
-                                style="border-radius: 50%; width: 150px; height: 150px; margin: 0 auto 1rem auto; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                                <img src="assets/images/special_occasion/1-7b28e9b8-1000.jpg" alt="Occasions">
-                            </div>
-                            <h4 style="margin: 0; font-size: 1.1rem;">Occasions</h4>
-                            <p style="font-size: 0.8rem; opacity: 0.7;">Special Events</p>
                         </div>
                     </div>
                 </div>
@@ -1991,41 +2208,40 @@
     </section>
 
     <!-- ==========================================
-         TESTIMONIALS SECTION
+         TESTIMONIALS SECTION (text RIGHT, demo LEFT)
          ========================================== -->
     <section id="slide-4" class="slide">
-        <div class="container">
-            <div class="split-layout">
-                <div>
+        <div class="container-wide">
+            <div class="section-showcase reverse">
+                <div class="showcase-text">
                     <h2 style="color: var(--color-primary);">4. The Love Letters (Reviews)</h2>
                     <h3>The Mechanics</h3>
                     <p>Social proof. Don't call them "Reviews" - call them "Love Notes" or "Kind Words".</p>
 
                     <h3>Key Elements:</h3>
                     <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
-                        <li><strong>Heart Icon:</strong> Replaces the standard quotation mark - softer and more on-brand.</li>
-                        <li><strong>The Quote:</strong> Real words from real clients. Emotional language works best.</li>
-                        <li><strong>Attribution:</strong> Family name or first name only - feels personal, not corporate.</li>
-                        <li><strong>Card Design:</strong> Slightly different background from the page to make it "pop" as a standalone element.</li>
+                        <li><strong>Heart Icon</strong> - softer than quotation marks.</li>
+                        <li><strong>Real Quotes</strong> - emotional language works best.</li>
+                        <li><strong>Family Name</strong> - personal, not corporate.</li>
                     </ul>
 
-                    <h3>Why it matters</h3>
-                    <p>It builds trust. Seeing others rave about their "snuggly moments" validates the investment.</p>
+                    <p>Seeing others rave validates the investment.</p>
                 </div>
 
-                <!-- Demo -->
-                <div class="demo-window">
-                    <div class="demo-browser-bar">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                    </div>
-                    <div style="padding: 2rem; background: #FDFCFB; height: 100%; display: flex; align-items: center;">
-                        <div class="testimonial-card">
-                            <i data-lucide="heart" class="quote-icon" fill="#D4A39A"></i>
-                            <p style="font-size: 1.1rem;">"I usually hate being in photos, but this felt like hanging
-                                out with a friend. The results made me cry happy tears."</p>
-                            <p style="font-weight: bold; margin-top: 1rem;">- The Miller Family</p>
+                <div class="showcase-demo">
+                    <div class="demo-window">
+                        <div class="demo-browser-bar">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <div style="padding: 3rem; background: #FDFCFB; display: flex; align-items: center; min-height: 350px;">
+                            <div class="testimonial-card" style="max-width: 100%;">
+                                <i data-lucide="heart" class="quote-icon" fill="#D4A39A"></i>
+                                <p style="font-size: 1.2rem; line-height: 1.7;">"I usually hate being in photos, but this felt like hanging
+                                    out with a friend. The results made me cry happy tears."</p>
+                                <p style="font-weight: bold; margin-top: 1.5rem; font-size: 1.05rem;">- The Miller Family</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2034,53 +2250,289 @@
     </section>
 
     <!-- ==========================================
-         FAQ SECTION
+         FAQ SECTION (text LEFT, demo RIGHT)
          ========================================== -->
     <section id="slide-5" class="slide">
-        <div class="container">
-            <div class="split-layout">
-                <div>
+        <div class="container-wide">
+            <div class="section-showcase">
+                <div class="showcase-text">
                     <h2 style="color: var(--color-primary);">5. The Answers (FAQ)</h2>
                     <h3>The Mechanics</h3>
-                    <p>Address fears upfront. "What do I wear?" "What if my baby cries?" "How much is it?"</p>
+                    <p>Address fears upfront. "What do I wear?" "What if my baby cries?"</p>
 
                     <h3>Key Elements:</h3>
                     <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
-                        <li><strong>Accordion Pattern:</strong> Questions are visible, answers are hidden until clicked.</li>
-                        <li><strong>Chevron Icon:</strong> Rotates 180 degrees on open to show state change.</li>
-                        <li><strong>Subtle Dividers:</strong> Thin lines separate each FAQ without heavy borders.</li>
-                        <li><strong>Hover State:</strong> Question text turns sage green on hover to signal interactivity.</li>
+                        <li><strong>Accordion</strong> - click to reveal answers.</li>
+                        <li><strong>Chevron</strong> - rotates to show state.</li>
+                        <li><strong>Hover Color</strong> - signals interactivity.</li>
                     </ul>
 
-                    <h3>Why it matters</h3>
-                    <p>It reduces friction. Answering "What do I wear?" before they ask shows you are the expert guide.</p>
+                    <p>Answering before they ask shows you are the expert guide.</p>
                 </div>
 
-                <!-- Demo -->
-                <div class="demo-window">
+                <div class="showcase-demo">
+                    <div class="demo-window">
+                        <div class="demo-browser-bar">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <div style="padding: 2.5rem 3rem;">
+                            <h3 style="text-align: center; margin-bottom: 2rem; font-size: 1.4rem;">Common Questions</h3>
+                            <div class="faq-item" onclick="this.classList.toggle('open')">
+                                <div class="faq-question">What should we wear? <i data-lucide="chevron-down"></i></div>
+                                <div class="faq-answer">Soft, neutral tones work best - think creams, tans, and muted greens. Avoid bold logos or busy patterns. I'll send you a full style guide once you book!</div>
+                            </div>
+                            <div class="faq-item" onclick="this.classList.toggle('open')">
+                                <div class="faq-question">What if my baby won't stop crying? <i data-lucide="chevron-down"></i></div>
+                                <div class="faq-answer">Babies cry - it's totally normal! I build extra time into every session so we can pause for feedings, diaper changes, and cuddles. Patience is my superpower.</div>
+                            </div>
+                            <div class="faq-item" onclick="this.classList.toggle('open')">
+                                <div class="faq-question">Can I bring my dog? <i data-lucide="chevron-down"></i></div>
+                                <div class="faq-answer">Absolutely! Fur babies are family too. I love incorporating pets into family sessions - some of my favorite shots include the family dog.</div>
+                            </div>
+                            <div class="faq-item" onclick="this.classList.toggle('open')">
+                                <div class="faq-question">How long until I get my photos? <i data-lucide="chevron-down"></i></div>
+                                <div class="faq-answer">You'll receive a sneak peek within 48 hours and your full gallery within 2-3 weeks. Each image is carefully edited to match the Little Image style.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION DIVIDER
+         ========================================== -->
+    <div class="section-divider">
+        <span>Gallery on the Landing Page</span>
+    </div>
+
+    <!-- ==========================================
+         GALLERY COLLECTIONS - LANDING PAGE PREVIEW
+         ========================================== -->
+    <section id="slide-collections" class="slide" style="padding: 5rem 0;">
+        <div class="container-wide">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <span class="brand-pill" style="background: var(--color-secondary); color: white;">Landing Page Element</span>
+                <h2 style="color: var(--color-primary); font-size: 2.2rem;">Gallery Collections on the Homepage</h2>
+                <p style="max-width: 700px; margin: 0 auto 0.5rem;">Before visitors dive into a full gallery, they first see your collections on the landing page. Each collection shows one strong cover image with the collection name - like a doorway into that world. Here are three different ways to present them.</p>
+            </div>
+
+            <!-- Style Selector Tabs -->
+            <div class="collection-style-tabs">
+                <button class="collection-style-tab active" data-collection-panel="style-a">Style A: Overlay Cards</button>
+                <button class="collection-style-tab" data-collection-panel="style-b">Style B: Clean Cards</button>
+                <button class="collection-style-tab" data-collection-panel="style-c">Style C: Minimal Editorial</button>
+            </div>
+
+            <!-- Style A: Overlay Cards (default - image with text overlay) -->
+            <div class="collection-panel active" data-collection-panel-id="style-a">
+                <div style="text-align: center; margin-bottom: 1.5rem;">
+                    <p style="font-size: 0.9rem; opacity: 0.7; max-width: 500px; margin: 0 auto;">Full-bleed images with collection name floating over a gradient. Dramatic and visual-first.</p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
                     <div class="demo-browser-bar">
                         <div class="dot"></div>
                         <div class="dot"></div>
                         <div class="dot"></div>
                     </div>
-                    <div style="padding: 3rem;">
-                        <h3 style="text-align: center; margin-bottom: 2rem;">Common Questions</h3>
-                        <div class="faq-item" onclick="this.classList.toggle('open')">
-                            <div class="faq-question">What should we wear? <i data-lucide="chevron-down"></i></div>
-                            <div class="faq-answer">Soft, neutral tones work best - think creams, tans, and muted greens. Avoid bold logos or busy patterns. I'll send you a full style guide once you book!</div>
+                    <div style="padding: 2.5rem; background: var(--color-surface);">
+                        <h3 style="text-align: center; margin-bottom: 0.3rem; font-size: 1.5rem;">Our Portfolio</h3>
+                        <p style="text-align: center; opacity: 0.6; margin-bottom: 2rem; font-size: 0.9rem;">Browse our collections</p>
+                        <div class="collections-grid">
+                            <div class="collection-card">
+                                <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>Newborn</h3>
+                                    <p>Studio sessions for your newest arrival</p>
+                                    <span class="collection-count">30+ photos</span>
+                                </div>
+                            </div>
+                            <div class="collection-card">
+                                <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child">
+                                <div class="collection-label">
+                                    <h3>Child</h3>
+                                    <p>Capturing growing personalities</p>
+                                    <span class="collection-count">30+ photos</span>
+                                </div>
+                            </div>
+                            <div class="collection-card">
+                                <img src="assets/images/three_year_milestone/10-52b89603-1500.jpg" alt="Three Year Milestone">
+                                <div class="collection-label">
+                                    <h3>Three Year Milestone</h3>
+                                    <p>Celebrating a special tradition</p>
+                                    <span class="collection-count">30+ photos</span>
+                                </div>
+                            </div>
+                            <div class="collection-card">
+                                <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor">
+                                <div class="collection-label">
+                                    <h3>Outdoor</h3>
+                                    <p>On-location family sessions</p>
+                                    <span class="collection-count">25+ photos</span>
+                                </div>
+                            </div>
+                            <div class="collection-card">
+                                <img src="assets/images/special_occasion/1-7b28e9b8-1000.jpg" alt="Special Occasion">
+                                <div class="collection-label">
+                                    <h3>Special Occasion</h3>
+                                    <p>Birthdays, holidays &amp; celebrations</p>
+                                    <span class="collection-count">23+ photos</span>
+                                </div>
+                            </div>
+                            <div class="collection-card">
+                                <img src="assets/images/events/D34A2276copy-2c5bcfa7-1000.jpg" alt="Events">
+                                <div class="collection-label">
+                                    <h3>Events</h3>
+                                    <p>Small gatherings &amp; parties</p>
+                                    <span class="collection-count">17+ photos</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="faq-item" onclick="this.classList.toggle('open')">
-                            <div class="faq-question">What if my baby won't stop crying? <i data-lucide="chevron-down"></i></div>
-                            <div class="faq-answer">Babies cry - it's totally normal! I build extra time into every session so we can pause for feedings, diaper changes, and cuddles. Patience is my superpower.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style B: Clean Cards (image on top, text below on white card) -->
+            <div class="collection-panel" data-collection-panel-id="style-b">
+                <div style="text-align: center; margin-bottom: 1.5rem;">
+                    <p style="font-size: 0.9rem; opacity: 0.7; max-width: 500px; margin: 0 auto;">Clean white cards with the image on top and collection info below. Feels organized and polished.</p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 2.5rem; background: var(--color-background);">
+                        <h3 style="text-align: center; margin-bottom: 0.3rem; font-size: 1.5rem;">Our Portfolio</h3>
+                        <p style="text-align: center; opacity: 0.6; margin-bottom: 2rem; font-size: 0.9rem;">Browse our collections</p>
+                        <div class="collections-grid collections-style-b">
+                            <div class="collection-card">
+                                <img src="assets/images/newborn/73-5b55e942-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>Newborn</h3>
+                                    <p>Studio sessions for your newest arrival</p>
+                                    <span class="collection-count">30+ photos</span>
+                                </div>
+                            </div>
+                            <div class="collection-card">
+                                <img src="assets/images/child/LittleImagePhotography_Cohen_1-0400d0e8-1500.jpg" alt="Child">
+                                <div class="collection-label">
+                                    <h3>Child</h3>
+                                    <p>Capturing growing personalities</p>
+                                    <span class="collection-count">30+ photos</span>
+                                </div>
+                            </div>
+                            <div class="collection-card">
+                                <img src="assets/images/three_year_milestone/12-a8773ce8-1500.jpg" alt="Milestone">
+                                <div class="collection-label">
+                                    <h3>Three Year Milestone</h3>
+                                    <p>Celebrating a special tradition</p>
+                                    <span class="collection-count">30+ photos</span>
+                                </div>
+                            </div>
+                            <div class="collection-card">
+                                <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor">
+                                <div class="collection-label">
+                                    <h3>Outdoor</h3>
+                                    <p>On-location family sessions</p>
+                                    <span class="collection-count">25+ photos</span>
+                                </div>
+                            </div>
+                            <div class="collection-card">
+                                <img src="assets/images/special_occasion/2-899f6b4b-1000.jpg" alt="Special Occasion">
+                                <div class="collection-label">
+                                    <h3>Special Occasion</h3>
+                                    <p>Birthdays, holidays &amp; celebrations</p>
+                                    <span class="collection-count">23+ photos</span>
+                                </div>
+                            </div>
+                            <div class="collection-card">
+                                <img src="assets/images/events/D34A2279copy-7f290b44-1000.jpg" alt="Events">
+                                <div class="collection-label">
+                                    <h3>Events</h3>
+                                    <p>Small gatherings &amp; parties</p>
+                                    <span class="collection-count">17+ photos</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="faq-item" onclick="this.classList.toggle('open')">
-                            <div class="faq-question">Can I bring my dog? <i data-lucide="chevron-down"></i></div>
-                            <div class="faq-answer">Absolutely! Fur babies are family too. I love incorporating pets into family sessions - some of my favorite shots include the family dog.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style C: Minimal Editorial (taller images, minimal text overlay) -->
+            <div class="collection-panel" data-collection-panel-id="style-c">
+                <div style="text-align: center; margin-bottom: 1.5rem;">
+                    <p style="font-size: 0.9rem; opacity: 0.7; max-width: 500px; margin: 0 auto;">Tall, editorial images with understated text overlay. Feels like a high-end fashion portfolio.</p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 2.5rem; background: #f0ece6;">
+                        <h3 style="text-align: center; margin-bottom: 0.3rem; font-size: 1.5rem; letter-spacing: 1px;">PORTFOLIO</h3>
+                        <p style="text-align: center; opacity: 0.5; margin-bottom: 2rem; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase;">Select a collection</p>
+                        <div class="collections-grid collections-style-c">
+                            <div class="collection-card">
+                                <img src="assets/images/newborn/74-08272da1-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>Newborn</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card">
+                                <img src="assets/images/child/23-9d67bdc8-1500.jpg" alt="Child">
+                                <div class="collection-label">
+                                    <h3>Child</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card">
+                                <img src="assets/images/three_year_milestone/11-a00f14f0-1500.jpg" alt="Milestone">
+                                <div class="collection-label">
+                                    <h3>Milestone</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card">
+                                <img src="assets/images/outdoor/2-6ea104f9-2500.jpg" alt="Outdoor">
+                                <div class="collection-label">
+                                    <h3>Outdoor</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card">
+                                <img src="assets/images/special_occasion/3-048ca80d-1000.jpg" alt="Special Occasion">
+                                <div class="collection-label">
+                                    <h3>Special Occasion</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card">
+                                <img src="assets/images/events/D34A5234-488bd861-1000.JPG" alt="Events">
+                                <div class="collection-label">
+                                    <h3>Events</h3>
+                                </div>
+                            </div>
                         </div>
-                        <div class="faq-item" onclick="this.classList.toggle('open')">
-                            <div class="faq-question">How long until I get my photos? <i data-lucide="chevron-down"></i></div>
-                            <div class="faq-answer">You'll receive a sneak peek within 48 hours and your full gallery within 2-3 weeks. Each image is carefully edited to match the Little Image style.</div>
-                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Explanation below -->
+            <div style="margin-top: 2.5rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <div class="element-details stagger-reveal">
+                    <div class="detail-card sage">
+                        <h4><span class="card-number">1</span> One Cover Image Per Collection</h4>
+                        <p>Each collection shows a single hero image - your strongest shot from that category. This is the "doorway" that pulls them in. Pick the image that best represents the feeling of that session type.</p>
+                    </div>
+                    <div class="detail-card rose">
+                        <h4><span class="card-number">2</span> Collection Name + Description</h4>
+                        <p>Clear labeling tells visitors exactly what they'll find inside. "Newborn", "Child", "Three Year Milestone" - matching your actual session types so they self-select into the right gallery.</p>
+                    </div>
+                    <div class="detail-card sage">
+                        <h4><span class="card-number">3</span> Click to Enter the Full Gallery</h4>
+                        <p>Each card is clickable. When they click, it opens the full gallery for that collection (using one of the gallery layouts from the Gallery Lab below). This is the "Buckets of Interest" strategy in action.</p>
                     </div>
                 </div>
             </div>
@@ -2358,39 +2810,38 @@
     </section>
 
     <!-- ==========================================
-         CONTACT SECTION
+         CONTACT SECTION (text RIGHT, demo LEFT)
          ========================================== -->
     <section id="slide-6" class="slide">
-        <div class="container">
-            <div class="split-layout">
-                <div>
+        <div class="container-wide">
+            <div class="section-showcase reverse">
+                <div class="showcase-text">
                     <h2 style="color: var(--color-primary);">6. The Invitation (Contact)</h2>
                     <h3>The Mechanics</h3>
                     <p>The finish line. Keep it simple. Name, date, and a warm "Let's Chat" button.</p>
 
                     <h3>Key Elements:</h3>
                     <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
-                        <li><strong>Warm Headline:</strong> "Ready to make magic?" is inviting, not salesy.</li>
-                        <li><strong>Simple Subtext:</strong> One line that removes friction - "Let's get your session on the calendar."</li>
-                        <li><strong>Big CTA Button:</strong> Larger than any other button on the page. This is the goal of the entire website. Make it impossible to miss.</li>
-                        <li><strong>Centered Layout:</strong> No distractions. Eyes go straight to the button.</li>
+                        <li><strong>Warm Headline</strong> - inviting, not salesy.</li>
+                        <li><strong>Big CTA Button</strong> - impossible to miss.</li>
+                        <li><strong>Centered Layout</strong> - no distractions.</li>
                     </ul>
 
-                    <h3>Why it matters</h3>
-                    <p>Don't make them hunt for it. Every section above has been building trust and desire - this is where it converts.</p>
+                    <p>Every section above builds trust - this is where it converts.</p>
                 </div>
 
-                <!-- Demo -->
-                <div class="demo-window">
-                    <div class="demo-browser-bar">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                    </div>
-                    <div style="padding: 3rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 300px;">
-                        <h3 style="margin-bottom: 1rem;">Ready to make magic?</h3>
-                        <p style="margin-bottom: 2rem;">Let's get your session on the calendar.</p>
-                        <button class="btn btn-primary" style="padding: 1rem 3rem; font-size: 1.2rem;">Book Your Session</button>
+                <div class="showcase-demo">
+                    <div class="demo-window">
+                        <div class="demo-browser-bar">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <div style="padding: 4rem 3rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 350px;">
+                            <h3 style="margin-bottom: 1rem; font-size: 1.6rem;">Ready to make magic?</h3>
+                            <p style="margin-bottom: 2rem; font-size: 1.1rem;">Let's get your session on the calendar.</p>
+                            <button class="btn btn-primary" style="padding: 1.25rem 3.5rem; font-size: 1.3rem;">Book Your Session</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2506,6 +2957,27 @@
                 if (target) {
                     target.classList.add('active');
                     lucide.createIcons();
+                }
+            });
+        });
+
+        // =============================================
+        // COLLECTION STYLE TABS
+        // =============================================
+        const collectionTabs = document.querySelectorAll('.collection-style-tab');
+        const collectionPanels = document.querySelectorAll('.collection-panel');
+
+        collectionTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const panel = tab.dataset.collectionPanel;
+
+                collectionTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                collectionPanels.forEach(p => p.classList.remove('active'));
+                const target = document.querySelector(`.collection-panel[data-collection-panel-id="${panel}"]`);
+                if (target) {
+                    target.classList.add('active');
                 }
             });
         });
