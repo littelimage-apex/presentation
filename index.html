@@ -1850,48 +1850,183 @@
             display: none;
         }
 
-        /* Responsive adjustments for new styles */
+        /* Style G: Vertical Pillars (Expanding Accordion) */
+        .collections-style-g {
+            display: flex;
+            height: 600px;
+            gap: 15px;
+            overflow: hidden;
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 16px;
+        }
+
+        .collections-style-g .collection-card {
+            flex: 1;
+            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            filter: brightness(0.7) saturate(0.8);
+            border-radius: 8px;
+            height: 100%;
+        }
+
+        .collections-style-g .collection-card:hover {
+            flex: 4;
+            filter: brightness(1) saturate(1.1);
+        }
+
+        .collections-style-g .collection-label {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6));
+            padding: 2rem;
+            transform: rotate(-90deg);
+            white-space: nowrap;
+            transition: all 0.5s ease;
+        }
+
+        .collections-style-g .collection-card:hover .collection-label {
+            transform: rotate(0deg);
+            white-space: normal;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            justify-content: flex-end;
+            padding-bottom: 3rem;
+        }
+
+        /* Style H: Rhombus Mosaic (Diamond Grid) */
+        .collections-style-h {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-gap: 20px;
+            padding: 40px 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .collections-style-h .collection-card {
+            grid-column: span 2;
+            height: 280px;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            transform: scale(1.1);
+        }
+
+        .collections-style-h .collection-card:nth-child(4) {
+            grid-column: 2 / span 2;
+        }
+
+        .collections-style-h .collection-card:hover {
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+            transform: scale(1.15);
+            z-index: 20;
+            border-radius: 12px;
+        }
+
+        .collections-style-h .collection-label {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(116, 133, 118, 0.9);
+            height: 100%;
+            width: 100%;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .collections-style-h .collection-card:hover .collection-label {
+            opacity: 1;
+        }
+
+        /* Style I: Overlapping Editorial (Luxury Layered) */
+        .collections-style-i {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(10, 50px);
+            position: relative;
+            height: 600px;
+        }
+
+        .collections-style-i .collection-card {
+            transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            height: 100%;
+        }
+
+        .collections-style-i .collection-card:nth-child(1) {
+            grid-column: 1 / span 7;
+            grid-row: 1 / span 7;
+            z-index: 1;
+        }
+
+        .collections-style-i .collection-card:nth-child(2) {
+            grid-column: 6 / span 7;
+            grid-row: 4 / span 7;
+            z-index: 2;
+            border: 8px solid white;
+        }
+
+        .collections-style-i .collection-card:hover {
+            z-index: 10;
+            transform: scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .collections-style-i .collection-label {
+            background: white;
+            color: var(--color-text);
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            padding: 1.5rem 2rem;
+            border-left: 4px solid var(--color-primary);
+            width: auto;
+            min-width: 200px;
+            box-shadow: 10px 10px 0px var(--color-surface);
+        }
+
+        /* Responsive Fixes for New Styles */
         @media (max-width: 900px) {
-            .collections-style-d {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto;
-            }
-
-            .collections-style-d .collection-card:nth-child(1),
-            .collections-style-d .collection-card:nth-child(2) {
-                grid-column: span 1;
-                grid-row: span 1;
-                height: 350px;
-            }
-
-            .collections-style-e {
+            .collections-style-g {
                 flex-direction: column;
                 height: auto;
             }
 
-            .collections-style-e .collection-card {
+            .collections-style-g .collection-card {
                 height: 250px;
-                width: 100%;
             }
 
-            .collections-style-e .collection-card:hover {
-                flex: none;
-                height: 450px;
+            .collections-style-g .collection-label {
+                transform: none;
             }
 
-            .collections-style-f {
-                height: auto;
+            .collections-style-h {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .collections-style-h .collection-card {
+                grid-column: span 1 !important;
+                clip-path: none;
+                transform: none;
+            }
+
+            .collections-style-i {
                 display: flex;
                 flex-direction: column;
+                height: auto;
                 gap: 2rem;
-                align-items: center;
             }
 
-            .collections-style-f .collection-card {
-                position: static;
-                transform: none !important;
-                width: 100% !important;
-                max-width: 400px;
+            .collections-style-i .collection-card {
+                border: none !important;
+                height: 400px;
             }
         }
 
@@ -2825,6 +2960,9 @@
                 <button class="collection-style-tab" data-collection-panel="style-d">Style D: Bento</button>
                 <button class="collection-style-tab" data-collection-panel="style-e">Style E: Mirror</button>
                 <button class="collection-style-tab" data-collection-panel="style-f">Style F: Collage</button>
+                <button class="collection-style-tab" data-collection-panel="style-g">Style G: Pillars</button>
+                <button class="collection-style-tab" data-collection-panel="style-h">Style H: Diamond</button>
+                <button class="collection-style-tab" data-collection-panel="style-i">Style I: Luxury</button>
             </div>
 
             <!-- Style A: Overlay Cards (default - image with text overlay) -->
@@ -3184,6 +3322,137 @@
                                 <img src="assets/images/special_occasion/2-899f6b4b-1000.jpg" alt="Special Occasion">
                                 <div class="collection-label">
                                     <h3>Party Time</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style G: Vertical Pillars (Expanding Accordion) -->
+            <div class="collection-panel" data-collection-panel-id="style-g">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Vertical Pillars:</strong> An immersive, high-impact layout where slices of your work
+                        expand to full views. This is dramatic, architectural, and unforgettable.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 1.5rem; background: #000;" data-lightbox-group="style-g">
+                        <div class="collections-style-g">
+                            <div class="collection-card" data-lightbox-src="assets/images/newborn/64-7694e869-1000.jpg">
+                                <img src="assets/images/newborn/64-7694e869-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>Newborn</h3>
+                                    <p>The beginning of everything</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/child/22-f4468cd2-1500.jpg">
+                                <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Children">
+                                <div class="collection-label">
+                                    <h3>Personality</h3>
+                                    <p>Captured in a blink</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/outdoor/13-7343e297-2500.jpg">
+                                <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor">
+                                <div class="collection-label">
+                                    <h3>Adventure</h3>
+                                    <p>Out in the wild</p>
+                                </div>
+                            </div>
+                            <div class="collection-card"
+                                data-lightbox-src="assets/images/three_year_milestone/11-a00f14f0-1500.jpg">
+                                <img src="assets/images/three_year_milestone/11-a00f14f0-1500.jpg" alt="Milestone">
+                                <div class="collection-label">
+                                    <h3>Tradition</h3>
+                                    <p>Beautiful consistency</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style H: Rhombus Mosaic (Diamond Grid) -->
+            <div class="collection-panel" data-collection-panel-id="style-h">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Rhombus Mosaic:</strong> A geometric masterpiece where images interlock in a
+                        dynamic diamond pattern. It's artistic, modern, and visually rhythmic.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 3rem; background: var(--color-surface);" data-lightbox-group="style-h">
+                        <div class="collections-style-h">
+                            <div class="collection-card" data-lightbox-src="assets/images/newborn/1-45da4fdb-1000.jpg">
+                                <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>Newborn</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/child/22-f4468cd2-1500.jpg">
+                                <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child">
+                                <div class="collection-label">
+                                    <h3>Child</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/outdoor/13-7343e297-2500.jpg">
+                                <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor">
+                                <div class="collection-label">
+                                    <h3>Outdoor</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card"
+                                data-lightbox-src="assets/images/three_year_milestone/10-52b89603-1500.jpg">
+                                <img src="assets/images/three_year_milestone/10-52b89603-1500.jpg" alt="Milestone">
+                                <div class="collection-label">
+                                    <h3>Milestone</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style I: Overlapping Editorial (Luxury Layered) -->
+            <div class="collection-panel" data-collection-panel-id="style-i">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Luxury Editorial:</strong> Overlapping, layered frames that create a sense of depth
+                        and premium craftsmanship. Perfect for a clean, high-end studio aesthetic.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 4rem; background: #fff;" data-lightbox-group="style-i">
+                        <div class="collections-style-i">
+                            <div class="collection-card" data-lightbox-src="assets/images/newborn/71-d1d561d4-1000.jpg">
+                                <img src="assets/images/newborn/71-d1d561d4-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>The Studio</h3>
+                                    <p>Refined & Timeless</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/child/23-9d67bdc8-1500.jpg">
+                                <img src="assets/images/child/23-9d67bdc8-1500.jpg" alt="Child">
+                                <div class="collection-label">
+                                    <h3>Growth Stories</h3>
+                                    <p>Boutique Portfolio</p>
                                 </div>
                             </div>
                         </div>
