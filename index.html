@@ -2000,6 +2000,305 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
+        /* Style J: Polaroids (Scattered Memories) */
+        .collections-style-j {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 4rem 1rem;
+        }
+
+        .collections-style-j .collection-card {
+            width: 260px;
+            height: 320px;
+            background: white;
+            padding: 12px 12px 60px 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 4px;
+            /* Classic polaroid look */
+        }
+
+        .collections-style-j .collection-card:nth-child(even) {
+            transform: rotate(3deg);
+        }
+
+        .collections-style-j .collection-card:nth-child(odd) {
+            transform: rotate(-3deg);
+        }
+
+        .collections-style-j .collection-card:nth-child(3n) {
+            transform: rotate(5deg) translateY(10px);
+        }
+
+        .collections-style-j .collection-card:hover {
+            transform: rotate(0) scale(1.1) translateY(-10px);
+            z-index: 50;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .collections-style-j .collection-label {
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: white;
+            color: var(--color-text);
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .collections-style-j .collection-label h3 {
+            font-size: 1rem;
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            color: #4a4a4a;
+        }
+
+        .collections-style-j .collection-label p {
+            display: none;
+            /* Keep it clean like a written note */
+        }
+
+        /* Style K: Split-Screen Typography */
+        .collections-style-k {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .collections-style-k .collection-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 400px;
+            border-radius: 0;
+            box-shadow: none;
+            overflow: visible;
+        }
+
+        .collections-style-k .collection-card:nth-child(even) {
+            direction: rtl;
+        }
+
+        .collections-style-k .collection-card:nth-child(even) .collection-label {
+            direction: ltr;
+        }
+
+        .collections-style-k .collection-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .collections-style-k .collection-label {
+            background: var(--color-surface);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 3rem;
+            position: relative;
+        }
+
+        .collections-style-k .collection-label h3 {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .collections-style-k .collection-label::after {
+            content: '';
+            position: absolute;
+            bottom: 3rem;
+            left: 3rem;
+            width: 50px;
+            height: 2px;
+            background: var(--color-secondary);
+        }
+
+        /* Style L: Mosaic Circle (Orbits) */
+        .collections-style-l {
+            position: relative;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .collections-style-l .collection-card {
+            position: absolute;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .collections-style-l .collection-card:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            z-index: 5;
+        }
+
+        .collections-style-l .collection-card:nth-child(2) {
+            width: 180px;
+            height: 180px;
+            top: 50px;
+            left: 15%;
+            z-index: 2;
+        }
+
+        .collections-style-l .collection-card:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            bottom: 50px;
+            right: 15%;
+            z-index: 2;
+        }
+
+        .collections-style-l .collection-card:nth-child(4) {
+            width: 120px;
+            height: 120px;
+            top: 100px;
+            right: 20%;
+            z-index: 1;
+        }
+
+        .collections-style-l .collection-card:nth-child(5) {
+            width: 100px;
+            height: 100px;
+            bottom: 100px;
+            left: 20%;
+            z-index: 1;
+        }
+
+        .collections-style-l .collection-card:hover {
+            transform: scale(1.1);
+            z-index: 10;
+            border-color: var(--color-secondary);
+        }
+
+        .collections-style-l .collection-label {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--color-text);
+            padding: 0.5rem;
+            text-align: center;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50px;
+            width: 80%;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .collections-style-l .collection-card:hover .collection-label {
+            opacity: 1;
+        }
+
+        /* -------- NEW LAB STYLE: PARALLAX REEL -------- */
+        .parallax-reel-container {
+            display: flex;
+            gap: 40px;
+            padding: 4rem 2rem;
+            overflow-x: hidden;
+            /* Controlled by JS scroll */
+            position: relative;
+        }
+
+        .reel-item {
+            flex: 0 0 450px;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .reel-item img {
+            width: 120%;
+            /* wider for parallax */
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            left: -10%;
+            transition: transform 0.1s linear;
+        }
+
+        .reel-content {
+            position: absolute;
+            inset: 0;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
+            color: white;
+            z-index: 2;
+        }
+
+        /* -------- NEW LAB STYLE: ORGANIC PEBBLES -------- */
+        .pebble-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            padding: 3rem;
+        }
+
+        .pebble-item {
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .pebble-item:nth-child(1) {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+
+        .pebble-item:nth-child(2) {
+            border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+            width: 280px;
+            height: 350px;
+        }
+
+        .pebble-item:nth-child(3) {
+            border-radius: 40% 70% 50% 30% / 30% 50% 70% 50%;
+        }
+
+        .pebble-item:nth-child(4) {
+            border-radius: 70% 30% 60% 40% / 40% 70% 30% 60%;
+            width: 350px;
+            height: 280px;
+        }
+
+        .pebble-item:hover {
+            border-radius: 15% !important;
+            /* Smoothly transitions to box on hover */
+            transform: scale(1.05);
+            box-shadow: 0 15px 45px rgba(107, 94, 81, 0.2);
+        }
+
+        .pebble-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s ease;
+        }
+
+        .pebble-item:hover img {
+            transform: scale(1.1);
+        }
+
         .collections-style-f .collection-label h3 {
             font-size: 1.1rem;
             margin: 0;
@@ -3165,6 +3464,9 @@
                 <button class="collection-style-tab" data-collection-panel="style-g">Style G: Pillars</button>
                 <button class="collection-style-tab" data-collection-panel="style-h">Style H: Diamond</button>
                 <button class="collection-style-tab" data-collection-panel="style-i">Style I: Luxury</button>
+                <button class="collection-style-tab" data-collection-panel="style-j">Style J: Polaroid</button>
+                <button class="collection-style-tab" data-collection-panel="style-k">Style K: Split</button>
+                <button class="collection-style-tab" data-collection-panel="style-l">Style L: Orbit</button>
             </div>
 
             <!-- Style A: Overlay Cards (default - image with text overlay) -->
@@ -3662,6 +3964,126 @@
                 </div>
             </div>
 
+            <!-- Style J: Polaroid (Scattered Memories) -->
+            <div class="collection-panel" data-collection-panel-id="style-j">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Polaroid Memories:</strong> A nostalgic, tactile approach. Images feel like they've
+                        been hand-picked and scattered across a table. Every frame has a unique rotation.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 2rem; background: #fdfaf6;" data-lightbox-group="style-j">
+                        <div class="collections-style-j">
+                            <div class="collection-card" data-lightbox-src="assets/images/newborn/1-45da4fdb-1000.jpg">
+                                <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>Pure Newborn</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card"
+                                data-lightbox-src="assets/images/child/LittleImagePhotography_Cohen_1-0400d0e8-1500.jpg">
+                                <img src="assets/images/child/LittleImagePhotography_Cohen_1-0400d0e8-1500.jpg"
+                                    alt="Child">
+                                <div class="collection-label">
+                                    <h3>Growing Up</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/outdoor/10-ff46080f-300.jpg">
+                                <img src="assets/images/outdoor/10-ff46080f-300.jpg" alt="Outdoor">
+                                <div class="collection-label">
+                                    <h3>Golden Hour</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card"
+                                data-lightbox-src="assets/images/special_occasion/1-7b28e9b8-1000.jpg">
+                                <img src="assets/images/special_occasion/1-7b28e9b8-1000.jpg" alt="Events">
+                                <div class="collection-label">
+                                    <h3>Birthday Magic</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style K: Split-Screen Typography -->
+            <div class="collection-panel" data-collection-panel-id="style-k">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Split-Screen Editorial:</strong> Clean, bold, and modern. Large typography balances
+                        the visual weight of full-bleed imagery for an immersive experience.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 0; background: #fff;" data-lightbox-group="style-k">
+                        <div class="collections-style-k">
+                            <div class="collection-card" data-lightbox-src="assets/images/newborn/73-5b55e942-1000.jpg">
+                                <img src="assets/images/newborn/73-5b55e942-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>Studio Newborn</h3>
+                                    <p>The quiet beauty of those first few days.</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/child/22-f4468cd2-1500.jpg">
+                                <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Children">
+                                <div class="collection-label">
+                                    <h3>Personalities</h3>
+                                    <p>Authentic portraits of childhood magic.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style L: Circular Orbits -->
+            <div class="collection-panel" data-collection-panel-id="style-l">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Circular Orbits:</strong> A focus-first layout. Large circular hero image
+                        with smaller detailed shots orbiting it, creating a visual hierarchy.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 2rem; background: #faf9f6;" data-lightbox-group="style-l">
+                        <div class="collections-style-l">
+                            <div class="collection-card" data-lightbox-src="assets/images/newborn/1-45da4fdb-1000.jpg">
+                                <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>Our Legacy</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/child/23-9d67bdc8-1500.jpg">
+                                <img src="assets/images/child/23-9d67bdc8-1500.jpg" alt="Details">
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/outdoor/13-7343e297-2500.jpg">
+                                <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor">
+                            </div>
+                            <div class="collection-card"
+                                data-lightbox-src="assets/images/special_occasion/3-048ca80d-1000.jpg">
+                                <img src="assets/images/special_occasion/3-048ca80d-1000.jpg" alt="Mood">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Explanation below -->
             <div style="margin-top: 2.5rem; max-width: 800px; margin-left: auto; margin-right: auto;">
                 <div class="element-details stagger-reveal">
@@ -3730,6 +4152,8 @@
                 <button class="gallery-tab" data-panel="dreamscape">Dreamscape</button>
                 <button class="gallery-tab" data-panel="carousel">Carousel Slider</button>
                 <button class="gallery-tab" data-panel="hovergrid">Hover Grid</button>
+                <button class="gallery-tab" data-panel="parallaxreel">Parallax Reel</button>
+                <button class="gallery-tab" data-panel="pebbles">Organic Pebbles</button>
             </div>
 
             <!-- ======== PANEL 1: MASONRY ======== -->
@@ -4038,6 +4462,80 @@
                         </p>
                     </div>
                 </div>
+            </div>
+
+            <!-- ======== PANEL 6: PARALLAX REEL ======== -->
+            <div class="gallery-panel" data-panel-id="parallaxreel">
+                <div class="panel-header">
+                    <div>
+                        <h3>The Professional Parallax Reel</h3>
+                        <p>A high-end, smooth scrolling experience where images move at their own pace. This creates a
+                            sense of luxury and depth.</p>
+                    </div>
+                    <div class="panel-features">
+                        <span class="feature-tag">Internal Parallax</span>
+                        <span class="feature-tag">Side-Scroll</span>
+                        <span class="feature-tag">Luxury</span>
+                    </div>
+                </div>
+                <div class="parallax-reel-container" id="parallaxReel" data-lightbox-group="parallaxreel">
+                    <div class="reel-item" data-lightbox-src="assets/images/newborn/71-d1d561d4-1000.jpg">
+                        <img src="assets/images/newborn/71-d1d561d4-1000.jpg" alt="Newborn" class="p-img">
+                        <div class="reel-content">
+                            <h3>Studio Magic</h3>
+                            <p>Soft light, timeless souls</p>
+                        </div>
+                    </div>
+                    <div class="reel-item" data-lightbox-src="assets/images/outdoor/13-7343e297-2500.jpg">
+                        <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor" class="p-img">
+                        <div class="reel-content">
+                            <h3>Golden Hour</h3>
+                            <p>Captured in Brooklyn's wild</p>
+                        </div>
+                    </div>
+                    <div class="reel-item"
+                        data-lightbox-src="assets/images/child/LittleImagePhotography_Cohen_1-0400d0e8-1500.jpg">
+                        <img src="assets/images/child/LittleImagePhotography_Cohen_1-0400d0e8-1500.jpg" alt="Child"
+                            class="p-img">
+                        <div class="reel-content">
+                            <h3>True Childhood</h3>
+                            <p>The look of wonder</p>
+                        </div>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 1rem; font-size: 0.85rem; opacity: 0.5;">&larr; Scroll
+                    sideways or use your wheel &rarr;</p>
+            </div>
+
+            <!-- ======== PANEL 7: ORGANIC PEBBLES ======== -->
+            <div class="gallery-panel" data-panel-id="pebbles">
+                <div class="panel-header">
+                    <div>
+                        <h3>The Organic Pebble Grid</h3>
+                        <p>Moving away from harsh corners. These soft shapes reflect the gentle nature of newborn
+                            photography. They expand into full frames on hover.</p>
+                    </div>
+                    <div class="panel-features">
+                        <span class="feature-tag">Organic Shapes</span>
+                        <span class="feature-tag">Morph Animation</span>
+                        <span class="feature-tag">Dynamic</span>
+                    </div>
+                </div>
+                <div class="pebble-grid" data-lightbox-group="pebbles">
+                    <div class="pebble-item" data-lightbox-src="assets/images/newborn/64-7694e869-1000.jpg">
+                        <img src="assets/images/newborn/64-7694e869-1000.jpg" alt="Pebble 1">
+                    </div>
+                    <div class="pebble-item" data-lightbox-src="assets/images/child/23-9d67bdc8-1500.jpg">
+                        <img src="assets/images/child/23-9d67bdc8-1500.jpg" alt="Pebble 2">
+                    </div>
+                    <div class="pebble-item" data-lightbox-src="assets/images/outdoor/1-d81f4d28-300.jpg">
+                        <img src="assets/images/outdoor/1-d81f4d28-300.jpg" alt="Pebble 3">
+                    </div>
+                    <div class="pebble-item" data-lightbox-src="assets/images/special_occasion/3-048ca80d-1000.jpg">
+                        <img src="assets/images/special_occasion/3-048ca80d-1000.jpg" alt="Pebble 4">
+                    </div>
+                </div>
+            </div>
     </section>
 
     <!-- ==========================================
@@ -4489,6 +4987,33 @@
         }
 
         initLightboxGroups();
+
+        // =============================================
+        // PARALLAX REEL INTERACTION
+        // =============================================
+        const parallaxReel = document.getElementById('parallaxReel');
+        if (parallaxReel) {
+            parallaxReel.addEventListener('mousemove', (e) => {
+                const rect = parallaxReel.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const percent = x / rect.width;
+
+                // Move images slightly differently for parallax effect
+                const images = parallaxReel.querySelectorAll('.p-img');
+                images.forEach((img, index) => {
+                    const moveAmount = (percent - 0.5) * 40 * (index + 1);
+                    img.style.transform = `translateX(${moveAmount}px) scale(1.1)`;
+                });
+            });
+
+            // Smooth scroll on wheel (horizontal)
+            parallaxReel.addEventListener('wheel', (e) => {
+                if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) {
+                    e.preventDefault();
+                    parallaxReel.scrollLeft += e.deltaY;
+                }
+            });
+        }
 
     </script>
 </body>
