@@ -6,8 +6,8 @@ from urllib.parse import urlparse
 
 # Configuration
 input_file = r"C:/Users/josef/.gemini/antigravity/brain/7b939b6a-4715-45e6-a65e-a9ddbcb5e286/.system_generated/steps/9/output.txt"
-output_dir = r"c:/Users/josef/Documents/presntion/assets/images"
-content_file = r"c:/Users/josef/Documents/presntion/current_website_content_with_images.md"
+output_dir = r"c:/Users/josef/Documents/presntion/presentation/assets/images"
+content_file = r"c:/Users/josef/Documents/presntion/presentation/current_website_content_with_images.md"
 
 # Ensure output directory exists
 os.makedirs(output_dir, exist_ok=True)
