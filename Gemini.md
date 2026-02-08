@@ -3,7 +3,7 @@
 This document serves as a roadmap for the `index.html` file, which is a massive, dynamic presentation for a photography client ("Little Image"). It explains the architecture, naming conventions, and interactive systems.
 
 ## 1. Global Design System (CSS)
-Located in the `<style>` tag in the `<head>` (Lines 18-2246).
+Located in the `<style>` tag in the `<head>` (Lines 18-2278).
 
 ### Color Palette (CSS Variables)
 - `--color-primary`: #94A396 (Sage Green) - Primary brand color.
@@ -19,17 +19,15 @@ Located in the `<style>` tag in the `<head>` (Lines 18-2246).
 ---
 
 ## 2. Navigation System
-- **Sidebar Dots** (Lines 2272-2312): Fixed sidebar with `.nav-dot` elements.
+- **Sidebar Dots** (Lines 2304-2344): Fixed sidebar with `.nav-dot` elements.
 - **Mechanism**: `data-target` on each dot corresponds to the `id` of a `<section>`.
-- **JS Logic**: Smooth scrolling and active state updates via Intersection Observer (Lines 4214-4241).
+- **JS Logic**: Smooth scrolling and active state updates via Intersection Observer (Lines 4300+).
 
 ---
 
 ## 3. Main Content Sections (Slides)
 All main sections are either `.slide` or `.anatomy-section`.
 
-| Section ID | Description | Key Features |
-| :--- | :--- | :--- |
 | `slide-0` | **Intro** | Hero-style entry with "Design Strategy" title. |
 | `slide-map` | **Architect's Map** | 6-card grid (`.map-grid`) showing the website's flow. |
 | `slide-1` | **Hero Strategy** | Explains the "0.05 Second Rule" with a demo browser window. |
@@ -38,9 +36,11 @@ All main sections are either `.slide` or `.anatomy-section`.
 | `slide-about-anatomy`| **About Breakdown** | Breakdown of portrait, signature quote, and grid layout. |
 | `slide-3` | **Gallery Strategy** | Circular category preview. |
 | `slide-gallery-interactive`| **Interactive Gallery**| Live switcher using `.category-circle` and `.category-gallery`. |
-| `slide-collections` | **Gallery Styles** | Nine unique styles (A through I) switchable by tabs. |
-| `slide-lab` | **Layout Comparison**| Tabbed interface comparing Masonry, Carousel, and Hover Grid. |
-| `slide-6` | **Contact / CTA** | Centered minimalist booking invitation. |
+| `slide-collections` | **Step 3a: Collections** | Nine unique styles (A through I) switchable by tabs. |
+| `slide-lab` | **Step 3b: Gallery Lab** | Tabbed interface comparing Masonry, Carousel, and Hover Grid. |
+| `slide-4` | **Reviews** | Centered client stories with emotional impact. |
+| `slide-5` | **FAQ** | Interactive accordions for reducing friction. |
+| `slide-6` | **Contact / CTA** | Centered contact form mockup (no booking). |
 
 ---
 
@@ -53,7 +53,7 @@ All main sections are either `.slide` or `.anatomy-section`.
 ---
 
 ## 5. Interactive Systems (JavaScript)
-Located at the bottom (Lines 4178-4447).
+Located at the bottom (Lines 4180+).
 
 - **Lucide Icons**: Initialized via `lucide.createIcons()`.
 - **Scroll Reveal**: Uses `IntersectionObserver` to add the `.active` class to `.slide` and `.reveal` elements.

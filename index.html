@@ -141,6 +141,38 @@
             color: var(--color-primary-fg);
         }
 
+        /* Demo Form Styling */
+        .demo-form-group {
+            margin-bottom: 1.25rem;
+            text-align: left;
+        }
+
+        .demo-form-label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            color: var(--color-text);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .demo-form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: #fff;
+            border: 1px solid rgba(139, 119, 101, 0.2);
+            border-radius: 8px;
+            color: rgba(107, 94, 81, 0.5);
+            font-size: 0.9rem;
+            font-family: var(--font-body);
+        }
+
+        .demo-form-textarea {
+            min-height: 100px;
+            resize: none;
+        }
+
         .section-padding {
             padding: 5rem 0;
         }
@@ -2294,17 +2326,17 @@
         <div class="nav-dot" data-target="slide-gallery-interactive">
             <span class="nav-tooltip">Interactive Gallery</span>
         </div>
-        <div class="nav-dot" data-target="slide-4">
-            <span class="nav-tooltip">Reviews</span>
-        </div>
-        <div class="nav-dot" data-target="slide-5">
-            <span class="nav-tooltip">FAQ</span>
-        </div>
         <div class="nav-dot" data-target="slide-collections">
             <span class="nav-tooltip">Collections</span>
         </div>
         <div class="nav-dot" data-target="slide-lab">
             <span class="nav-tooltip">Gallery Lab</span>
+        </div>
+        <div class="nav-dot" data-target="slide-4">
+            <span class="nav-tooltip">Reviews</span>
+        </div>
+        <div class="nav-dot" data-target="slide-5">
+            <span class="nav-tooltip">FAQ</span>
         </div>
         <div class="nav-dot" data-target="slide-6">
             <span class="nav-tooltip">Contact</span>
@@ -2400,8 +2432,9 @@
                 <div class="map-card stagger-reveal">
                     <span class="map-step">Step 6</span>
                     <div class="map-icon"><i data-lucide="send"></i></div>
-                    <h3>The Final Invitation</h3>
-                    <p>The finish line. A clear, low-friction path to getting their session on your calendar.</p>
+                    <h3>The Connection (Contact)</h3>
+                    <p>The finish line. A clear, low-friction path for visitors to reach out and start a conversation.
+                    </p>
                 </div>
             </div>
 
@@ -3090,121 +3123,6 @@
         </div>
     </section>
 
-    <!-- ==========================================
-         TESTIMONIALS SECTION (text RIGHT, demo LEFT)
-         ========================================== -->
-    <section id="slide-4" class="slide">
-        <div class="container-wide">
-            <div class="section-showcase reverse">
-                <div class="showcase-text">
-                    <h2 style="color: var(--color-primary);">4. The Trust: Client Love Stories</h2>
-                    <p class="article-intro" style="font-size: 1.1rem; text-align: left; margin: 1rem 0;">
-                        In photography, social proof is everything. If someone else loved their experience, your new
-                        client feels safe to book.
-                    </p>
-                    <h3>The Psychology of the Review</h3>
-                    <p>We don't just show the text; we show the <strong>impact</strong>. Using a centered layout helps
-                        the text breathe and ensures the focus is purely on the client's words.</p>
-                    <ul style="padding-left: 1.2rem; margin-bottom: 2rem;">
-                        <li><strong>The Heart Icon:</strong> A visual cue that these are emotional, personal stories,
-                            not just "business transactions."</li>
-                        <li><strong>The Card Design:</strong> Giving each review its own "stage" makes them feel
-                            important and curated.</li>
-                    </ul>
-                    <div class="pro-tip">
-                        <h5><i data-lucide="award"></i> Pro Tip: Keywords</h5>
-                        <p>When selecting reviews for your landing page, pick the ones that use words like "Patient,"
-                            "Gentle," or "Comfortable." These directly reinforce your brand theme.</p>
-                    </div>
-                </div>
-
-                <div class="showcase-demo">
-                    <div class="demo-window">
-                        <div class="demo-browser-bar">
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                        </div>
-                        <div
-                            style="padding: 3rem; background: #FDFCFB; display: flex; align-items: center; min-height: 350px;">
-                            <div class="testimonial-card" style="max-width: 100%;">
-                                <i data-lucide="heart" class="quote-icon" fill="#D4A39A"></i>
-                                <p style="font-size: 1.2rem; line-height: 1.7;">"I usually hate being in photos, but
-                                    this felt like hanging
-                                    out with a friend. The results made me cry happy tears."</p>
-                                <p style="font-weight: bold; margin-top: 1.5rem; font-size: 1.05rem;">- The Miller
-                                    Family</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================
-         FAQ SECTION (text LEFT, demo RIGHT)
-         ========================================== -->
-    <section id="slide-5" class="slide">
-        <div class="container-wide">
-            <div class="section-showcase">
-                <div class="showcase-text">
-                    <h2 style="color: var(--color-primary);">5. The Clarity: Questions & Answers</h2>
-                    <p class="article-intro" style="font-size: 1.1rem; text-align: left; margin: 1rem 0;">
-                        Every client has a "Yes, but..." in their mind. This section is designed to answer those doubts
-                        before they become reasons not to book.
-                    </p>
-                    <h3>Reducing Friction</h3>
-                    <p>An interactive FAQ (Accordions) keeps the page clean while providing deep information. It shows
-                        you are an expert who knows exactly what parents are worried about.</p>
-                    <div class="pro-tip">
-                        <h5><i data-lucide="help-circle"></i> The "Safe" Strategy</h5>
-                        <p>Answer questions about pricing, turnaround time, and "what if my baby cries" here. By being
-                            transparent, you build a massive amount of "Pre-Booking Trust."</p>
-                    </div>
-                </div>
-
-                <div class="showcase-demo">
-                    <div class="demo-window">
-                        <div class="demo-browser-bar">
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                        </div>
-                        <div style="padding: 2.5rem 3rem;">
-                            <h3 style="text-align: center; margin-bottom: 2rem; font-size: 1.4rem;">Common Questions
-                            </h3>
-                            <div class="faq-item" onclick="this.classList.toggle('open')">
-                                <div class="faq-question">What should we wear? <i data-lucide="chevron-down"></i></div>
-                                <div class="faq-answer">Soft, neutral tones work best - think creams, tans, and muted
-                                    greens. Avoid bold logos or busy patterns. I'll send you a full style guide once you
-                                    book!</div>
-                            </div>
-                            <div class="faq-item" onclick="this.classList.toggle('open')">
-                                <div class="faq-question">What if my baby won't stop crying? <i
-                                        data-lucide="chevron-down"></i></div>
-                                <div class="faq-answer">Babies cry - it's totally normal! I build extra time into every
-                                    session so we can pause for feedings, diaper changes, and cuddles. Patience is my
-                                    superpower.</div>
-                            </div>
-                            <div class="faq-item" onclick="this.classList.toggle('open')">
-                                <div class="faq-question">Can I bring my dog? <i data-lucide="chevron-down"></i></div>
-                                <div class="faq-answer">Absolutely! Fur babies are family too. I love incorporating pets
-                                    into family sessions - some of my favorite shots include the family dog.</div>
-                            </div>
-                            <div class="faq-item" onclick="this.classList.toggle('open')">
-                                <div class="faq-question">How long until I get my photos? <i
-                                        data-lucide="chevron-down"></i></div>
-                                <div class="faq-answer">You'll receive a sneak peek within 48 hours and your full
-                                    gallery within 2-3 weeks. Each image is carefully edited to match the Little Image
-                                    style.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- ==========================================
          SECTION DIVIDER
@@ -3219,8 +3137,8 @@
     <section id="slide-collections" class="slide" style="padding: 5rem 0;">
         <div class="container-wide">
             <div style="text-align: center; margin-bottom: 3.5rem;">
-                <span class="brand-pill" style="background: var(--color-secondary); color: white;">Chapter 4: The
-                    Presentation</span>
+                <span class="brand-pill" style="background: var(--color-secondary); color: white;">Step 3a:
+                    Collections</span>
                 <h2 style="color: var(--color-primary); font-size: 2.5rem;">The Art of the Home Gallery</h2>
                 <p class="article-intro">
                     Before a visitor commits to a full gallery, they need a "teaser" - a single, powerful image that
@@ -3789,7 +3707,7 @@
     <section id="slide-lab" class="slide lab-section" style="padding: 5rem 0;">
         <div class="container-wide">
             <div style="text-align: center; margin-bottom: 4rem;">
-                <span class="brand-pill" style="background: var(--color-text); color: var(--color-surface);">Chapter 5:
+                <span class="brand-pill" style="background: var(--color-text); color: var(--color-surface);">Step 3b:
                     The Interaction Lab</span>
                 <h2 style="color: var(--color-primary); font-size: 2.5rem;">Immersion through Design</h2>
                 <p class="article-intro">Once a visitor enters a collection, the layout should reflect the mood of the
@@ -4123,31 +4041,30 @@
     </section>
 
     <!-- ==========================================
-         CONTACT SECTION (text RIGHT, demo LEFT)
+         TESTIMONIALS SECTION (text RIGHT, demo LEFT)
          ========================================== -->
-    <section id="slide-6" class="slide">
+    <section id="slide-4" class="slide">
         <div class="container-wide">
             <div class="section-showcase reverse">
                 <div class="showcase-text">
-                    <h2 style="color: var(--color-primary);">6. The Final Invitation: Contact</h2>
+                    <h2 style="color: var(--color-primary);">4. The Trust: Client Love Stories</h2>
                     <p class="article-intro" style="font-size: 1.1rem; text-align: left; margin: 1rem 0;">
-                        The Finish Line. After building trust, showing your personality, and answering questions, we
-                        arrive here: The Booking.
+                        In photography, social proof is everything. If someone else loved their experience, your new
+                        client feels safe to book.
                     </p>
-                    <h3>Making it Easy</h3>
-                    <p>At this point, the visitor is ready. We don't want to distract them with more photos or complex
-                        links. We want one thing: <strong>A clear path to you.</strong></p>
+                    <h3>The Psychology of the Review</h3>
+                    <p>We don't just show the text; we show the <strong>impact</strong>. Using a centered layout helps
+                        the text breathe and ensures the focus is purely on the client's words.</p>
                     <ul style="padding-left: 1.2rem; margin-bottom: 2rem;">
-                        <li><strong>Minimalism:</strong> Using a centered layout to remove all "noise."</li>
-                        <li><strong>Energy:</strong> Using action-oriented headlines like "Ready to make magic?"</li>
-                        <li><strong>Impact:</strong> The button is large, high-contrast, and says exactly what happens
-                            next.</li>
+                        <li><strong>The Heart Icon:</strong> A visual cue that these are emotional, personal stories,
+                            not just "business transactions."</li>
+                        <li><strong>The Card Design:</strong> Giving each review its own "stage" makes them feel
+                            important and curated.</li>
                     </ul>
                     <div class="pro-tip">
-                        <h5><i data-lucide="send"></i> Low Friction Booking</h5>
-                        <p>We use a single, direct call-to-action here. By the time they reach this section, you've
-                            already made the sale—don't slow them down with a 10-field form. Ask for the essentials and
-                            get them on the calendar.</p>
+                        <h5><i data-lucide="award"></i> Pro Tip: Keywords</h5>
+                        <p>When selecting reviews for your landing page, pick the ones that use words like "Patient,"
+                            "Gentle," or "Comfortable." These directly reinforce your brand theme.</p>
                     </div>
                 </div>
 
@@ -4159,12 +4076,141 @@
                             <div class="dot"></div>
                         </div>
                         <div
-                            style="padding: 4rem 3rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 350px;">
-                            <h3 style="margin-bottom: 1rem; font-size: 1.6rem;">Ready to make magic?</h3>
-                            <p style="margin-bottom: 2rem; font-size: 1.1rem;">Let's get your session on the calendar.
-                            </p>
-                            <button class="btn btn-primary" style="padding: 1.25rem 3.5rem; font-size: 1.3rem;">Book
-                                Your Session</button>
+                            style="padding: 3rem; background: #FDFCFB; display: flex; align-items: center; min-height: 350px;">
+                            <div class="testimonial-card" style="max-width: 100%;">
+                                <i data-lucide="heart" class="quote-icon" fill="#D4A39A"></i>
+                                <p style="font-size: 1.2rem; line-height: 1.7;">"I usually hate being in photos, but
+                                    this felt like hanging
+                                    out with a friend. The results made me cry happy tears."</p>
+                                <p style="font-weight: bold; margin-top: 1.5rem; font-size: 1.05rem;">- The Miller
+                                    Family</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FAQ SECTION (text LEFT, demo RIGHT)
+         ========================================== -->
+    <section id="slide-5" class="slide">
+        <div class="container-wide">
+            <div class="section-showcase">
+                <div class="showcase-text">
+                    <h2 style="color: var(--color-primary);">5. The Clarity: Questions & Answers</h2>
+                    <p class="article-intro" style="font-size: 1.1rem; text-align: left; margin: 1rem 0;">
+                        Every client has a "Yes, but..." in their mind. This section is designed to answer those doubts
+                        before they become reasons not to book.
+                    </p>
+                    <h3>Reducing Friction</h3>
+                    <p>An interactive FAQ (Accordions) keeps the page clean while providing deep information. It shows
+                        you are an expert who knows exactly what parents are worried about.</p>
+                    <div class="pro-tip">
+                        <h5><i data-lucide="help-circle"></i> The "Safe" Strategy</h5>
+                        <p>Answer questions about pricing, turnaround time, and "what if my baby cries" here. By being
+                            transparent, you build a massive amount of "Pre-Booking Trust."</p>
+                    </div>
+                </div>
+
+                <div class="showcase-demo">
+                    <div class="demo-window">
+                        <div class="demo-browser-bar">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <div style="padding: 2.5rem 3rem;">
+                            <h3 style="text-align: center; margin-bottom: 2rem; font-size: 1.4rem;">Common Questions
+                            </h3>
+                            <div class="faq-item" onclick="this.classList.toggle('open')">
+                                <div class="faq-question">What should we wear? <i data-lucide="chevron-down"></i></div>
+                                <div class="faq-answer">Soft, neutral tones work best - think creams, tans, and muted
+                                    greens. Avoid bold logos or busy patterns. I'll send you a full style guide once you
+                                    book!</div>
+                            </div>
+                            <div class="faq-item" onclick="this.classList.toggle('open')">
+                                <div class="faq-question">What if my baby won't stop crying? <i
+                                        data-lucide="chevron-down"></i></div>
+                                <div class="faq-answer">Babies cry - it's totally normal! I build extra time into every
+                                    session so we can pause for feedings, diaper changes, and cuddles. Patience is my
+                                    superpower.</div>
+                            </div>
+                            <div class="faq-item" onclick="this.classList.toggle('open')">
+                                <div class="faq-question">Can I bring my dog? <i data-lucide="chevron-down"></i></div>
+                                <div class="faq-answer">Absolutely! Fur babies are family too. I love incorporating pets
+                                    into family sessions - some of my favorite shots include the family dog.</div>
+                            </div>
+                            <div class="faq-item" onclick="this.classList.toggle('open')">
+                                <div class="faq-question">How long until I get my photos? <i
+                                        data-lucide="chevron-down"></i></div>
+                                <div class="faq-answer">You'll receive a sneak peek within 48 hours and your full
+                                    gallery within 2-3 weeks. Each image is carefully edited to match the Little Image
+                                    style.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CONTACT SECTION (text RIGHT, demo LEFT)
+         ========================================== -->
+    <section id="slide-6" class="slide">
+        <div class="container-wide">
+            <div class="section-showcase reverse">
+                <div class="showcase-text">
+                    <h2 style="color: var(--color-primary);">6. The Connection: Contact Us</h2>
+                    <p class="article-intro" style="font-size: 1.1rem; text-align: left; margin: 1rem 0;">
+                        The Finish Line. After building trust, showing your personality, and answering questions, we
+                        arrive here: The Connection.
+                    </p>
+                    <h3>Opening the Door</h3>
+                    <p>At this point, the visitor is ready to reach out. We focus on <strong>low-friction
+                            communication</strong>
+                        to ensure they feel comfortable taking the first step without the commitment of a booking.</p>
+                    <ul style="padding-left: 1.2rem; margin-bottom: 2rem;">
+                        <li><strong>Low Pressure:</strong> Asking for a name and story rather than a deposit.</li>
+                        <li><strong>Personalized:</strong> Allowing them to share what they are looking for.</li>
+                        <li><strong>Responsive:</strong> A clear design that looks just as good on mobile.</li>
+                    </ul>
+                    <div class="pro-tip">
+                        <h5><i data-lucide="send"></i> The "Safe" Contact</h5>
+                        <p>A contact form is less intimidating than a "Book Now" button. It invites inquiry and allows
+                            you to
+                            vet the client before anything is finalized, ensuring a perfect fit for both sides.</p>
+                    </div>
+                </div>
+
+                <div class="showcase-demo">
+                    <div class="demo-window">
+                        <div class="demo-browser-bar">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <div style="padding: 2.5rem; background: var(--color-surface); height: 100%;">
+                            <h3 style="margin-bottom: 1.5rem; font-size: 1.4rem; text-align: center;">Say Hello</h3>
+                            <div class="demo-form">
+                                <div class="demo-form-group">
+                                    <label class="demo-form-label">Your Name</label>
+                                    <div class="demo-form-input">e.g. Sarah Miller</div>
+                                </div>
+                                <div class="demo-form-group">
+                                    <label class="demo-form-label">Email Address</label>
+                                    <div class="demo-form-input">e.g. sarah@example.com</div>
+                                </div>
+                                <div class="demo-form-group">
+                                    <label class="demo-form-label">Tell me about your family</label>
+                                    <div class="demo-form-input demo-form-textarea">We're expecting our first in
+                                        April...</div>
+                                </div>
+                                <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Send
+                                    Message</button>
+                            </div>
                         </div>
                     </div>
                 </div>
