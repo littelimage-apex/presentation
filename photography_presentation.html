@@ -16,8 +16,8 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* 
-         * Little Image Brand Guide - CSS Variables 
+        /*
+         * Little Image Brand Guide - CSS Variables
          * Theme: "Cozy & Comfort"
         */
         :root {
@@ -33,6 +33,7 @@
             /* Cream (Cards) */
             --color-text: #6B5E51;
             /* Clay Brown */
+            --color-accent: #B8A898;
 
             --font-heading: 'Solway', serif;
             --font-body: 'Nunito', sans-serif;
@@ -86,6 +87,12 @@
             padding: 0 2rem;
         }
 
+        .container-wide {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
         .btn {
             display: inline-flex;
             align-items: center;
@@ -93,10 +100,12 @@
             padding: 0.75rem 2rem;
             border-radius: var(--radius-btn);
             font-weight: 700;
+            font-family: var(--font-body);
             transition: all 0.3s ease;
             cursor: pointer;
             border: none;
             gap: 0.5rem;
+            font-size: 1rem;
         }
 
         .btn-primary {
@@ -107,7 +116,28 @@
         .btn-primary:hover {
             transform: translateY(-2px);
             letter-spacing: 0.5px;
-            /* The Hover Expansion */
+            box-shadow: 0 8px 25px rgba(148, 163, 150, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--color-secondary);
+            color: var(--color-primary-fg);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 163, 154, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--color-primary);
+            color: var(--color-primary-fg);
         }
 
         .section-padding {
@@ -117,14 +147,12 @@
         /* Section Styling */
         .slide {
             min-height: auto;
-            /* Removed forced height for tighter layout */
             display: flex;
             flex-direction: column;
             justify-content: center;
             opacity: 1;
             transform: none;
             padding: 4rem 0;
-            /* reduced padding */
             border-bottom: 1px solid rgba(139, 119, 101, 0.1);
         }
 
@@ -139,6 +167,20 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Staggered reveal for child elements */
+        .stagger-reveal > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .stagger-reveal.active > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+        .stagger-reveal.active > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+        .stagger-reveal.active > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+        .stagger-reveal.active > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+        .stagger-reveal.active > *:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+        .stagger-reveal.active > *:nth-child(6) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
 
         /* 1. Intro Slide */
         #intro {
@@ -158,7 +200,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
-        /* 2. Hero Demo */
+        /* 2. Demo Windows */
         .demo-window {
             background: var(--color-surface);
             border-radius: var(--radius-card);
@@ -185,7 +227,7 @@
         .hero-layout {
             position: relative;
             height: 400px;
-            background-image: url('https://images.unsplash.com/photo-1628156637385-300438b4d36e?q=80&w=2070&auto=format&fit=crop');
+            background-image: url('assets/images/newborn/1-45da4fdb-1000.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -220,7 +262,6 @@
             border-radius: var(--radius-card);
             overflow: hidden;
             animation: float 6s ease-in-out infinite;
-            /* "The Float" */
         }
 
         .split-img img {
@@ -230,17 +271,9 @@
         }
 
         @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
 
         /* 4. Portfolio Demo */
@@ -272,7 +305,6 @@
         /* 5. Testimonial Demo */
         .testimonial-card {
             background: var(--color-background);
-            /* Slight contrast from demo window white */
             padding: 2rem;
             border-radius: var(--radius-card);
             text-align: center;
@@ -290,49 +322,1152 @@
         .faq-item {
             border-bottom: 1px solid rgba(107, 94, 81, 0.1);
             padding: 1rem 0;
+            cursor: pointer;
         }
 
         .faq-question {
             font-weight: 700;
             display: flex;
             justify-content: space-between;
+            align-items: center;
             color: var(--color-text);
+            transition: color 0.3s ease;
         }
 
-        /* Navigation */
-        .nav-controls {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
+        .faq-item:hover .faq-question {
+            color: var(--color-primary);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            font-size: 0.95rem;
+            color: var(--color-text);
+            opacity: 0.8;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 200px;
+            padding-top: 0.75rem;
+        }
+
+        .faq-item .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.open .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* ================================
+           ELEMENT BREAKDOWN ANNOTATIONS
+           ================================ */
+        .anatomy-section {
+            background: linear-gradient(135deg, #f8f6f2 0%, #efe9e1 100%);
+            padding: 4rem 0;
+            border-bottom: 1px solid rgba(139, 119, 101, 0.1);
+        }
+
+        .anatomy-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .anatomy-title h2 {
+            color: var(--color-primary);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .anatomy-title p {
+            opacity: 0.7;
+            font-size: 1.1rem;
+        }
+
+        .element-breakdown {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 3rem;
+        }
+
+        .element-visual {
+            position: relative;
+        }
+
+        .element-visual .demo-window {
+            margin-top: 0;
+        }
+
+        /* Annotation callout bubbles */
+        .annotation-layer {
+            position: relative;
+        }
+
+        .callout {
+            position: absolute;
+            background: var(--color-text);
+            color: var(--color-surface);
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            white-space: nowrap;
+            z-index: 20;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            animation: calloutPulse 3s ease-in-out infinite;
+        }
+
+        .callout::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+        }
+
+        .callout-left::after {
+            right: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 6px solid var(--color-text);
+        }
+
+        .callout-right::after {
+            left: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-right: 6px solid var(--color-text);
+        }
+
+        .callout-bottom::after {
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 6px solid var(--color-text);
+        }
+
+        .callout-top::after {
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid var(--color-text);
+        }
+
+        @keyframes calloutPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        /* Element detail cards */
+        .element-details {
             display: flex;
+            flex-direction: column;
             gap: 1rem;
-            z-index: 100;
         }
 
-        .nav-btn {
+        .detail-card {
             background: var(--color-surface);
-            border: 1px solid var(--color-text);
+            border-radius: var(--radius-card);
+            padding: 1.25rem 1.5rem;
+            border-left: 4px solid var(--color-primary);
+            box-shadow: 0 4px 15px rgba(107, 94, 81, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .detail-card:hover {
+            transform: translateX(4px);
+            box-shadow: 0 6px 20px rgba(107, 94, 81, 0.12);
+        }
+
+        .detail-card.rose {
+            border-left-color: var(--color-secondary);
+        }
+
+        .detail-card.sage {
+            border-left-color: var(--color-primary);
+        }
+
+        .detail-card h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .detail-card h4 .card-number {
+            background: var(--color-primary);
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-family: var(--font-body);
+        }
+
+        .detail-card.rose h4 .card-number {
+            background: var(--color-secondary);
+        }
+
+        .detail-card p {
+            font-size: 0.85rem;
+            margin-bottom: 0;
+            opacity: 0.8;
+        }
+
+        /* ================================
+           GALLERY LAB - FULLY STYLED
+           ================================ */
+        .lab-section {
+            background: linear-gradient(180deg, var(--color-background) 0%, #e8e3db 50%, var(--color-background) 100%);
+        }
+
+        /* Gallery Layout Selector Tabs */
+        .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .gallery-tab {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-btn);
+            background: var(--color-surface);
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 0.9rem;
             color: var(--color-text);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .gallery-tab:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+        .gallery-tab.active {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+            box-shadow: 0 4px 15px rgba(148, 163, 150, 0.3);
+        }
+
+        /* Gallery Demo Container */
+        .gallery-demo-area {
+            position: relative;
+            min-height: 600px;
+        }
+
+        .gallery-panel {
+            display: none;
+            animation: galleryFadeIn 0.5s ease;
+        }
+
+        .gallery-panel.active {
+            display: block;
+        }
+
+        @keyframes galleryFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Panel Header */
+        .panel-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            align-items: center;
+        }
+
+        .panel-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .panel-header p {
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        .panel-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .feature-tag {
+            background: var(--color-surface);
+            padding: 0.35rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            border: 1px solid rgba(148, 163, 150, 0.3);
+        }
+
+        /* -------- MASONRY GALLERY -------- */
+        .masonry-layout {
+            columns: 3;
+            column-gap: 12px;
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 12px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .masonry-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(107, 94, 81, 0.2);
+        }
+
+        .masonry-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .masonry-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .masonry-item .img-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(107, 94, 81, 0.6) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 1rem;
+        }
+
+        .masonry-item:hover .img-overlay {
+            opacity: 1;
+        }
+
+        .img-overlay span {
+            color: white;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        /* -------- FILM STRIP GALLERY -------- */
+        .film-strip-container {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding: 1rem 0.5rem 1.5rem 0.5rem;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: var(--color-secondary) transparent;
+        }
+
+        .film-strip-container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .film-strip-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .film-strip-container::-webkit-scrollbar-thumb {
+            background: var(--color-secondary);
+            border-radius: 3px;
+        }
+
+        .film-item {
+            flex: 0 0 280px;
+            height: 380px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .film-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .film-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .film-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .film-item .film-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 1rem 1rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.6));
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .film-item:hover .film-caption {
+            transform: translateY(0);
+        }
+
+        .film-caption h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .film-caption p {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        /* Film strip frame effect */
+        .film-frame {
+            background: #2a2520;
+            border-radius: 16px;
+            padding: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .film-frame::before,
+        .film-frame::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: repeating-linear-gradient(90deg, #2a2520 0px, #2a2520 10px, #1a1510 10px, #1a1510 14px, #2a2520 14px, #2a2520 24px);
+            z-index: 2;
+        }
+
+        .film-frame::before { top: 0; }
+        .film-frame::after { bottom: 0; }
+
+        /* -------- PARALLAX / DREAMSCAPE GALLERY -------- */
+        .parallax-window {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #f5f0eb 0%, #e8ddd4 100%);
+        }
+
+        .floating-img {
+            position: absolute;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            cursor: pointer;
+            transition: box-shadow 0.4s ease;
+        }
+
+        .floating-img:hover {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .floating-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .f-1 {
+            width: 200px;
+            height: 280px;
+            top: 20px;
+            left: 5%;
+            animation: dreamFloat1 8s ease-in-out infinite;
+        }
+
+        .f-2 {
+            width: 240px;
+            height: 180px;
+            top: 60px;
+            right: 5%;
+            animation: dreamFloat2 10s ease-in-out infinite;
+        }
+
+        .f-3 {
+            width: 180px;
+            height: 240px;
+            bottom: 30px;
+            left: 30%;
+            animation: dreamFloat3 7s ease-in-out infinite;
+        }
+
+        .f-4 {
+            width: 160px;
+            height: 160px;
+            bottom: 20px;
+            right: 15%;
+            border-radius: 50%;
+            animation: dreamFloat1 9s ease-in-out infinite reverse;
+        }
+
+        .f-5 {
+            width: 120px;
+            height: 170px;
+            top: 50%;
+            left: 55%;
+            transform: translateY(-50%);
+            animation: dreamFloat2 11s ease-in-out infinite reverse;
+        }
+
+        @keyframes dreamFloat1 {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(1deg); }
+            66% { transform: translateY(8px) rotate(-0.5deg); }
+        }
+
+        @keyframes dreamFloat2 {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(-1deg); }
+        }
+
+        @keyframes dreamFloat3 {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(10px) rotate(0.5deg); }
+            75% { transform: translateY(-12px) rotate(-0.5deg); }
+        }
+
+        /* -------- CAROUSEL / SLIDER GALLERY -------- */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            height: 500px;
+        }
+
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-slide .slide-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 3rem 2rem 2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+        }
+
+        .slide-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .slide-info p {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            margin: 0;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .carousel-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: all;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            color: var(--color-text);
+        }
+
+        .carousel-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 1rem;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .carousel-dot.active {
+            background: var(--color-primary);
+            transform: scale(1.3);
+        }
+
+        /* -------- HOVER REVEAL GRID -------- */
+        .hover-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 250px);
+            gap: 12px;
+        }
+
+        .hover-grid-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .hover-grid-item:first-child {
+            grid-row: span 2;
+        }
+
+        .hover-grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .hover-grid-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .hover-grid-item .hover-content {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 30%, rgba(107, 94, 81, 0.8) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .hover-grid-item:hover .hover-content {
+            opacity: 1;
+        }
+
+        .hover-content h4 {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .hover-content p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.8rem;
+            margin: 0;
+        }
+
+        .hover-content .view-btn {
+            margin-top: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ================================
+           LIGHTBOX / MODAL
+           ================================ */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(42, 37, 32, 0.95);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .lightbox-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 85vh;
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .lightbox-overlay.open .lightbox-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            display: block;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
             width: 50px;
             height: 50px;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .lightbox-prev { left: -70px; }
+        .lightbox-next { right: -70px; }
+
+        .lightbox-caption {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            top: -45px;
+            left: 0;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        /* ================================
+           SECTION DIVIDERS
+           ================================ */
+        .section-divider {
+            text-align: center;
+            padding: 3rem 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
+        }
+
+        .section-divider span {
+            background: var(--color-background);
+            padding: 0 1.5rem;
+            position: relative;
+            font-family: var(--font-heading);
+            font-weight: 500;
+            color: var(--color-secondary);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ================================
+           NAVIGATION
+           ================================ */
+        .nav-sidebar {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-dot:hover,
+        .nav-dot.active {
+            background: var(--color-primary);
+            transform: scale(1.3);
+        }
+
+        .nav-dot .nav-tooltip {
+            position: absolute;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--color-text);
+            color: white;
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-dot:hover .nav-tooltip {
+            opacity: 1;
+        }
+
+        /* ================================
+           INTERACTIVE CATEGORY GALLERY
+           ================================ */
+        .category-selector {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .category-circle {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .category-circle:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-circle.active .circle-img {
+            border-color: var(--color-primary);
+            box-shadow: 0 8px 25px rgba(148, 163, 150, 0.3);
+        }
+
+        .circle-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin: 0 auto 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .circle-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .category-circle h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            transition: color 0.3s ease;
+        }
+
+        .category-circle.active h4 {
+            color: var(--color-primary);
+        }
+
+        .category-circle p {
+            font-size: 0.75rem;
+            opacity: 0.6;
+            margin: 0;
+        }
+
+        .category-gallery {
+            display: none;
+            animation: galleryFadeIn 0.5s ease;
+        }
+
+        .category-gallery.active {
+            display: block;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .category-grid-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 200px;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .category-grid-item:hover {
+            transform: scale(1.02);
+        }
+
+        .category-grid-item:first-child {
+            grid-column: span 2;
+            grid-row: span 2;
+            height: auto;
+        }
+
+        .category-grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .category-grid-item .img-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(107, 94, 81, 0.4);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .category-grid-item:hover .img-overlay {
+            opacity: 1;
+        }
+
+        .img-overlay .expand-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s;
+            color: var(--color-text);
+            transform: scale(0.5);
+            transition: transform 0.3s ease;
         }
 
-        .nav-btn:hover {
-            background: var(--color-text);
-            color: var(--color-surface);
+        .category-grid-item:hover .expand-icon {
+            transform: scale(1);
+        }
+
+        /* ================================
+           BOUNCE ANIMATION
+           ================================ */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* ================================
+           RESPONSIVE
+           ================================ */
+        @media (max-width: 900px) {
+            .split-layout {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+            }
+            .element-breakdown {
+                grid-template-columns: 1fr;
+            }
+            .panel-header {
+                grid-template-columns: 1fr;
+            }
+            .masonry-layout {
+                columns: 2;
+            }
+            .hover-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: auto;
+            }
+            .hover-grid-item:first-child {
+                grid-row: span 1;
+                grid-column: span 2;
+                height: 300px;
+            }
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .nav-sidebar {
+                display: none;
+            }
+            .lightbox-prev { left: -10px; }
+            .lightbox-next { right: -10px; }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Intro Slide -->
+    <!-- ==========================================
+         LIGHTBOX MODAL
+         ========================================== -->
+    <div class="lightbox-overlay" id="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-counter" id="lightboxCounter"></span>
+            <button class="lightbox-close" id="lightboxClose">&times;</button>
+            <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
+                <i data-lucide="chevron-left"></i>
+            </button>
+            <button class="lightbox-nav lightbox-next" id="lightboxNext">
+                <i data-lucide="chevron-right"></i>
+            </button>
+            <img id="lightboxImg" src="" alt="Gallery image">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         NAVIGATION DOTS
+         ========================================== -->
+    <nav class="nav-sidebar" id="navSidebar">
+        <div class="nav-dot active" data-target="slide-0">
+            <span class="nav-tooltip">Intro</span>
+        </div>
+        <div class="nav-dot" data-target="slide-1">
+            <span class="nav-tooltip">Hero</span>
+        </div>
+        <div class="nav-dot" data-target="slide-hero-anatomy">
+            <span class="nav-tooltip">Hero Breakdown</span>
+        </div>
+        <div class="nav-dot" data-target="slide-2">
+            <span class="nav-tooltip">About</span>
+        </div>
+        <div class="nav-dot" data-target="slide-3">
+            <span class="nav-tooltip">Gallery Strategy</span>
+        </div>
+        <div class="nav-dot" data-target="slide-gallery-interactive">
+            <span class="nav-tooltip">Interactive Gallery</span>
+        </div>
+        <div class="nav-dot" data-target="slide-4">
+            <span class="nav-tooltip">Reviews</span>
+        </div>
+        <div class="nav-dot" data-target="slide-5">
+            <span class="nav-tooltip">FAQ</span>
+        </div>
+        <div class="nav-dot" data-target="slide-lab">
+            <span class="nav-tooltip">Gallery Lab</span>
+        </div>
+        <div class="nav-dot" data-target="slide-6">
+            <span class="nav-tooltip">Contact</span>
+        </div>
+    </nav>
+
+    <!-- ==========================================
+         INTRO SLIDE
+         ========================================== -->
     <section id="slide-0" class="slide">
         <div class="container">
             <div style="text-align: center; max-width: 800px; margin: 0 auto;">
@@ -343,6 +1478,10 @@
                     Let's explore the essential rooms (sections) of a photography website,
                     styled with your unique "Little Image" warmth.
                 </p>
+                <p style="font-size: 1rem; color: var(--color-secondary); margin-top: 1rem;">
+                    Click through each section to see exactly how every element works,
+                    then explore interactive gallery layouts you can open, click, and experience.
+                </p>
                 <div style="margin-top: 2rem; color: var(--color-secondary);">
                     <i data-lucide="arrow-down" style="animation: bounce 2s infinite;"></i>
                 </div>
@@ -350,7 +1489,9 @@
         </div>
     </section>
 
-    <!-- Hero Section -->
+    <!-- ==========================================
+         HERO SECTION - OVERVIEW
+         ========================================== -->
     <section id="slide-1" class="slide">
         <div class="container">
             <div class="split-layout">
@@ -364,7 +1505,7 @@
                         <li>Where do you do it?</li>
                     </ul>
                     <h3>Why it matters</h3>
-                    <p>Users decide in 0.05 seconds if they like your site. A strong image + clear text hooks them
+                    <p>Users decide in <strong>0.05 seconds</strong> if they like your site. A strong image + clear text hooks them
                         instantly.</p>
                 </div>
 
@@ -379,8 +1520,7 @@
                         <div class="hero-overlay"></div>
                         <div class="hero-content">
                             <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">Little Image Photography</h2>
-                            <p style="font-size: 1.1rem; opacity: 0.9;">Capturing snuggly moments for modern mothers.
-                            </p>
+                            <p style="font-size: 1.1rem; opacity: 0.9;">Capturing snuggly moments for modern mothers.</p>
                             <button class="btn btn-primary" style="margin-top: 1rem;">View Gallery</button>
                         </div>
                     </div>
@@ -389,7 +1529,75 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- ==========================================
+         HERO SECTION - DEEP DIVE ANATOMY
+         ========================================== -->
+    <section id="slide-hero-anatomy" class="anatomy-section">
+        <div class="container">
+            <div class="anatomy-title">
+                <span class="brand-pill" style="background: var(--color-primary); color: white;">Deep Dive</span>
+                <h2>Hero Section - Every Element Explained</h2>
+                <p>Each piece of the hero works together to create an instant emotional connection.</p>
+            </div>
+
+            <div class="element-breakdown">
+                <!-- Visual with annotations -->
+                <div class="element-visual">
+                    <div class="annotation-layer">
+                        <div class="demo-window" style="margin-top: 0;">
+                            <div class="demo-browser-bar">
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                            </div>
+                            <div class="hero-layout" style="height: 350px;">
+                                <div class="hero-overlay"></div>
+                                <div class="hero-content">
+                                    <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Little Image Photography</h2>
+                                    <p style="font-size: 1rem; opacity: 0.9;">Capturing snuggly moments for modern mothers.</p>
+                                    <button class="btn btn-primary" style="margin-top: 0.75rem; font-size: 0.9rem;">View Gallery</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Annotation Callouts -->
+                        <div class="callout callout-left" style="top: 60px; left: -10px;">Background Image</div>
+                        <div class="callout callout-left" style="top: 140px; left: -10px;">Dark Overlay (30%)</div>
+                        <div class="callout callout-right" style="top: 170px; right: -10px;">Business Name</div>
+                        <div class="callout callout-right" style="top: 220px; right: -10px;">Tagline</div>
+                        <div class="callout callout-bottom" style="bottom: 20px; left: 50%; transform: translateX(-50%);">Call-to-Action Button</div>
+                    </div>
+                </div>
+
+                <!-- Detail cards -->
+                <div class="element-details stagger-reveal">
+                    <div class="detail-card sage">
+                        <h4><span class="card-number">1</span> Full-Width Background Image</h4>
+                        <p>Your strongest portfolio photo fills the entire hero. Uses <code>background-size: cover</code> so it always fills the space beautifully, regardless of screen size. Pick an image that tells the story of your brand instantly.</p>
+                    </div>
+                    <div class="detail-card rose">
+                        <h4><span class="card-number">2</span> Dark Overlay Layer</h4>
+                        <p>A semi-transparent black overlay (<code>rgba(0,0,0,0.3)</code>) sits on top of the image. This ensures white text is always readable, even over bright photos. It's invisible to the user but critical for accessibility.</p>
+                    </div>
+                    <div class="detail-card sage">
+                        <h4><span class="card-number">3</span> Business Name / Heading</h4>
+                        <p>Large, serif font (Solway) centered over the image. This is the first thing visitors see. It should be your studio name - clean, confident, and positioned with plenty of breathing room.</p>
+                    </div>
+                    <div class="detail-card rose">
+                        <h4><span class="card-number">4</span> Tagline / Subheading</h4>
+                        <p>One line that says exactly what you do and who you serve. "Capturing snuggly moments for modern mothers" tells location-less value. Keep it under 10 words.</p>
+                    </div>
+                    <div class="detail-card sage">
+                        <h4><span class="card-number">5</span> Call-to-Action Button</h4>
+                        <p>The single most important clickable element. Pill-shaped, sage green, with a hover animation that lifts the button. Guides visitors directly to the gallery or booking page. Never have more than one CTA in the hero.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         ABOUT SECTION
+         ========================================== -->
     <section id="slide-2" class="slide">
         <div class="container">
             <div class="split-layout">
@@ -398,16 +1606,15 @@
 
                     <h3>What is this section?</h3>
                     <p>This is where "Business" meets "Person". It's not just a biography; it's an opportunity to build
-                        trust. For a photographer, clients are inviting you into their personal space (their weddings,
-                        their homes, their newborn's nursery). They need to know who you are before they book you.</p>
+                        trust. For a photographer, clients are inviting you into their personal space (their homes,
+                        their newborn's nursery). They need to know who you are before they book you.</p>
 
                     <h3>Key Elements We Include:</h3>
-                    <ul>
+                    <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
                         <li><strong>A Friendly Portrait:</strong> A photo of YOU looking approachable (not hiding behind
                             a camera).</li>
-                        <li><strong>Your "Why":</strong> Why do you take photos? (e.g., "I love preserving memories").
-                        </li>
-                        <li><strong>Personal Tidbits:</strong> Small details (like coffee lover, dog dad) that make you
+                        <li><strong>Your "Why":</strong> Why do you take photos? (e.g., "I love preserving memories").</li>
+                        <li><strong>Personal Tidbits:</strong> Small details (like coffee lover, dog mom) that make you
                             relatable.</li>
                     </ul>
                 </div>
@@ -421,17 +1628,15 @@
                     </div>
                     <div class="split-layout" style="padding: 2rem; gap: 1rem; align-items: start;">
                         <div class="split-img">
-                            <!-- Male Portrait -->
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop"
+                            <img src="assets/images/about/5cb53941bc09171d62065f5141224c54370f80c365279c.jpg"
                                 alt="Photographer Portrait">
                         </div>
                         <div>
-                            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Hi, I'm James</h3>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Hi, I'm Rachel</h3>
                             <p style="font-size: 0.9rem; margin-bottom: 1rem;">I'm a storyteller with a camera. I
                                 believe the best photos aren't posed; they are felt.</p>
                             <p style="font-size: 0.9rem;"><strong>My Style:</strong> Relaxed, earthy, and patient.</p>
-                            <p
-                                style="font-size: 0.9rem; margin-top: 1rem; font-style: italic; color: var(--color-secondary);">
+                            <p style="font-size: 0.9rem; margin-top: 1rem; font-style: italic; color: var(--color-secondary);">
                                 "Let's capture the moments you want to keep forever."</p>
                         </div>
                     </div>
@@ -440,7 +1645,71 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
+    <!-- ==========================================
+         ABOUT SECTION - DEEP DIVE
+         ========================================== -->
+    <section id="slide-about-anatomy" class="anatomy-section">
+        <div class="container">
+            <div class="anatomy-title">
+                <span class="brand-pill" style="background: var(--color-secondary); color: white;">Deep Dive</span>
+                <h2>About Section - Building Trust Through Design</h2>
+                <p>Every element here is designed to make the visitor feel like they already know you.</p>
+            </div>
+
+            <div class="element-breakdown">
+                <div class="element-visual">
+                    <div class="annotation-layer">
+                        <div class="demo-window" style="margin-top: 0;">
+                            <div class="demo-browser-bar">
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                            </div>
+                            <div class="split-layout" style="padding: 1.5rem; gap: 1rem; align-items: start;">
+                                <div class="split-img" style="animation: none;">
+                                    <img src="assets/images/about/5cb53941bc09171d62065f5141224c54370f80c365279c.jpg"
+                                        alt="Portrait" style="max-height: 250px; object-fit: cover;">
+                                </div>
+                                <div>
+                                    <h3 style="font-size: 1.2rem; margin-bottom: 0.3rem;">Hi, I'm Rachel</h3>
+                                    <p style="font-size: 0.8rem; margin-bottom: 0.5rem;">I'm a storyteller with a camera.</p>
+                                    <p style="font-size: 0.8rem;"><strong>My Style:</strong> Relaxed and patient.</p>
+                                    <p style="font-size: 0.8rem; font-style: italic; color: var(--color-secondary);">"Let's capture moments..."</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="callout callout-right" style="top: 100px; right: -10px;">Friendly Portrait</div>
+                        <div class="callout callout-left" style="top: 80px; left: -10px;">Floating Animation</div>
+                        <div class="callout callout-right" style="top: 180px; right: -10px;">Your Name + Greeting</div>
+                        <div class="callout callout-right" style="top: 240px; right: -10px;">Signature Quote</div>
+                    </div>
+                </div>
+
+                <div class="element-details stagger-reveal">
+                    <div class="detail-card sage">
+                        <h4><span class="card-number">1</span> The Friendly Portrait</h4>
+                        <p>Not a headshot behind the camera - a warm, approachable photo of YOU. Uses rounded corners and a subtle floating animation (<code>translateY</code> over 6 seconds) that gives the image a dreamy, gentle feel.</p>
+                    </div>
+                    <div class="detail-card rose">
+                        <h4><span class="card-number">2</span> Split Layout (50/50 Grid)</h4>
+                        <p>CSS Grid with <code>grid-template-columns: 1fr 1fr</code>. Image on the left, text on the right. This mirrors how people naturally read - image catches the eye, text fills in the story. On mobile it stacks vertically.</p>
+                    </div>
+                    <div class="detail-card sage">
+                        <h4><span class="card-number">3</span> First-Name Greeting</h4>
+                        <p>"Hi, I'm Rachel" - not "About the Photographer." First name creates instant familiarity. Paired with your "why" statement and style description to show personality before skill.</p>
+                    </div>
+                    <div class="detail-card rose">
+                        <h4><span class="card-number">4</span> Signature Quote</h4>
+                        <p>An italic quote in the accent color (Muted Rose) that sums up your philosophy. It's styled differently from body text to stand out as the emotional anchor of the section.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PORTFOLIO / GALLERY STRATEGY
+         ========================================== -->
     <section id="slide-3" class="slide">
         <div class="container">
             <div class="split-layout">
@@ -455,7 +1724,7 @@
                     <ol style="padding-left: 1.2rem; margin-bottom: 1rem;">
                         <li><strong>User arrives:</strong> "I need photos for my baby."</li>
                         <li><strong>They see categories:</strong> Newborn, Milestones, Occasions.</li>
-                        <li><strong>They click "Newborn":</strong> <em>Now</em> they see the full gallery.</li>
+                        <li><strong>They click a category:</strong> <em>Now</em> they see the full gallery.</li>
                     </ol>
 
                     <p>This prevents overwhelm and helps them find exactly what they are looking for faster.</p>
@@ -469,34 +1738,26 @@
                         <div class="dot"></div>
                     </div>
                     <div class="grid-layout" style="gap: 1.5rem;">
-                        <!-- Category 1 -->
                         <div style="text-align: center;">
                             <div class="grid-item"
                                 style="border-radius: 50%; width: 150px; height: 150px; margin: 0 auto 1rem auto; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                                <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop"
-                                    alt="Newborn">
+                                <img src="assets/images/newborn/74-08272da1-1000.jpg" alt="Newborn">
                             </div>
                             <h4 style="margin: 0; font-size: 1.1rem;">Newborn</h4>
                             <p style="font-size: 0.8rem; opacity: 0.7;">0-2 Weeks</p>
                         </div>
-
-                        <!-- Category 2 -->
                         <div style="text-align: center;">
                             <div class="grid-item"
                                 style="border-radius: 50%; width: 150px; height: 150px; margin: 0 auto 1rem auto; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                                <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1972&auto=format&fit=crop"
-                                    alt="Milestones">
+                                <img src="assets/images/three_year_milestone/10-52b89603-1500.jpg" alt="Milestones">
                             </div>
                             <h4 style="margin: 0; font-size: 1.1rem;">Milestone</h4>
-                            <p style="font-size: 0.8rem; opacity: 0.7;">3 Months - 1 Year</p>
+                            <p style="font-size: 0.8rem; opacity: 0.7;">3 Months - 3 Years</p>
                         </div>
-
-                        <!-- Category 3 -->
                         <div style="text-align: center;">
                             <div class="grid-item"
                                 style="border-radius: 50%; width: 150px; height: 150px; margin: 0 auto 1rem auto; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=2070&auto=format&fit=crop"
-                                    alt="Occasions">
+                                <img src="assets/images/special_occasion/1-7b28e9b8-1000.jpg" alt="Occasions">
                             </div>
                             <h4 style="margin: 0; font-size: 1.1rem;">Occasions</h4>
                             <p style="font-size: 0.8rem; opacity: 0.7;">Special Events</p>
@@ -507,7 +1768,231 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- ==========================================
+         INTERACTIVE CATEGORY GALLERY - CLICK TO EXPLORE
+         ========================================== -->
+    <section id="slide-gallery-interactive" class="slide" style="padding: 5rem 0;">
+        <div class="container-wide">
+            <div style="text-align: center; margin-bottom: 2.5rem;">
+                <span class="brand-pill" style="background: var(--color-primary); color: white;">Try It Out</span>
+                <h2 style="color: var(--color-primary); font-size: 2rem;">Click a Category to Explore</h2>
+                <p>This is exactly how it works on the real website. Click a category below to see the gallery open up.</p>
+            </div>
+
+            <!-- Category Circles -->
+            <div class="category-selector">
+                <div class="category-circle active" data-category="newborn">
+                    <div class="circle-img">
+                        <img src="assets/images/newborn/73-5b55e942-1000.jpg" alt="Newborn">
+                    </div>
+                    <h4>Newborn</h4>
+                    <p>0-2 Weeks</p>
+                </div>
+                <div class="category-circle" data-category="child">
+                    <div class="circle-img">
+                        <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child">
+                    </div>
+                    <h4>Child</h4>
+                    <p>Portraits</p>
+                </div>
+                <div class="category-circle" data-category="milestone">
+                    <div class="circle-img">
+                        <img src="assets/images/three_year_milestone/12-a8773ce8-1500.jpg" alt="Milestone">
+                    </div>
+                    <h4>Milestone</h4>
+                    <p>3 Months - 3 Years</p>
+                </div>
+                <div class="category-circle" data-category="outdoor">
+                    <div class="circle-img">
+                        <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor">
+                    </div>
+                    <h4>Outdoor</h4>
+                    <p>Family Sessions</p>
+                </div>
+                <div class="category-circle" data-category="occasion">
+                    <div class="circle-img">
+                        <img src="assets/images/special_occasion/2-899f6b4b-1000.jpg" alt="Occasions">
+                    </div>
+                    <h4>Occasions</h4>
+                    <p>Special Events</p>
+                </div>
+            </div>
+
+            <!-- Newborn Gallery -->
+            <div class="category-gallery active" data-gallery="newborn">
+                <div class="category-grid" data-lightbox-group="newborn">
+                    <div class="category-grid-item" data-lightbox-src="assets/images/newborn/1-45da4fdb-1000.jpg">
+                        <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Newborn session">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/newborn/74-08272da1-1000.jpg">
+                        <img src="assets/images/newborn/74-08272da1-1000.jpg" alt="Newborn session">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/newborn/73-5b55e942-1000.jpg">
+                        <img src="assets/images/newborn/73-5b55e942-1000.jpg" alt="Newborn session">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/newborn/71-d1d561d4-1000.jpg">
+                        <img src="assets/images/newborn/71-d1d561d4-1000.jpg" alt="Newborn session">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/newborn/69-ad18d5c0-1000.jpg">
+                        <img src="assets/images/newborn/69-ad18d5c0-1000.jpg" alt="Newborn session">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/newborn/64-7694e869-1000.jpg">
+                        <img src="assets/images/newborn/64-7694e869-1000.jpg" alt="Newborn session">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/newborn/4-48ce8281-1000.jpg">
+                        <img src="assets/images/newborn/4-48ce8281-1000.jpg" alt="Newborn session">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Child Gallery -->
+            <div class="category-gallery" data-gallery="child">
+                <div class="category-grid" data-lightbox-group="child">
+                    <div class="category-grid-item" data-lightbox-src="assets/images/child/22-f4468cd2-1500.jpg">
+                        <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child portrait">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/child/23-9d67bdc8-1500.jpg">
+                        <img src="assets/images/child/23-9d67bdc8-1500.jpg" alt="Child portrait">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/child/LittleImagePhotography_Cohen_1-0400d0e8-1500.jpg">
+                        <img src="assets/images/child/LittleImagePhotography_Cohen_1-0400d0e8-1500.jpg" alt="Child portrait">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/child/LittleImagePhotography_Deutsch_5-7eb0ffb7-1500.jpg">
+                        <img src="assets/images/child/LittleImagePhotography_Deutsch_5-7eb0ffb7-1500.jpg" alt="Child portrait">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/child/LittleImagePhotography_Kaufman_2-1cdb7143-1500.jpg">
+                        <img src="assets/images/child/LittleImagePhotography_Kaufman_2-1cdb7143-1500.jpg" alt="Child portrait">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/child/LittleImage_Amsel_1-8a38438b-1500.jpg">
+                        <img src="assets/images/child/LittleImage_Amsel_1-8a38438b-1500.jpg" alt="Child portrait">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/child/LittleImagePhotography_bayer_10-480280ea-1500.jpg">
+                        <img src="assets/images/child/LittleImagePhotography_bayer_10-480280ea-1500.jpg" alt="Child portrait">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Milestone Gallery -->
+            <div class="category-gallery" data-gallery="milestone">
+                <div class="category-grid" data-lightbox-group="milestone">
+                    <div class="category-grid-item" data-lightbox-src="assets/images/three_year_milestone/10-52b89603-1500.jpg">
+                        <img src="assets/images/three_year_milestone/10-52b89603-1500.jpg" alt="Milestone session">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/three_year_milestone/11-a00f14f0-1500.jpg">
+                        <img src="assets/images/three_year_milestone/11-a00f14f0-1500.jpg" alt="Milestone session">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/three_year_milestone/12-a8773ce8-1500.jpg">
+                        <img src="assets/images/three_year_milestone/12-a8773ce8-1500.jpg" alt="Milestone session">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/three_year_milestone/13-5ac0be1b-1500.jpg">
+                        <img src="assets/images/three_year_milestone/13-5ac0be1b-1500.jpg" alt="Milestone session">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/three_year_milestone/15-bc8af62f-1500.jpg">
+                        <img src="assets/images/three_year_milestone/15-bc8af62f-1500.jpg" alt="Milestone session">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/three_year_milestone/16-4e3d74dc-1500.jpg">
+                        <img src="assets/images/three_year_milestone/16-4e3d74dc-1500.jpg" alt="Milestone session">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/three_year_milestone/4-aa2dadf3-1500.jpg">
+                        <img src="assets/images/three_year_milestone/4-aa2dadf3-1500.jpg" alt="Milestone session">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Outdoor Gallery -->
+            <div class="category-gallery" data-gallery="outdoor">
+                <div class="category-grid" data-lightbox-group="outdoor">
+                    <div class="category-grid-item" data-lightbox-src="assets/images/outdoor/13-7343e297-2500.jpg">
+                        <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor session">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/outdoor/1-d81f4d28-300.jpg">
+                        <img src="assets/images/outdoor/1-d81f4d28-300.jpg" alt="Outdoor session">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/outdoor/10-ff46080f-300.jpg">
+                        <img src="assets/images/outdoor/10-ff46080f-300.jpg" alt="Outdoor session">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/outdoor/11-f8765589-300.jpg">
+                        <img src="assets/images/outdoor/11-f8765589-300.jpg" alt="Outdoor session">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/outdoor/14-0ac1d77a-300.jpg">
+                        <img src="assets/images/outdoor/14-0ac1d77a-300.jpg" alt="Outdoor session">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/outdoor/15-ab04916a-300.jpg">
+                        <img src="assets/images/outdoor/15-ab04916a-300.jpg" alt="Outdoor session">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/outdoor/16-59b31399-300.jpg">
+                        <img src="assets/images/outdoor/16-59b31399-300.jpg" alt="Outdoor session">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Occasion Gallery -->
+            <div class="category-gallery" data-gallery="occasion">
+                <div class="category-grid" data-lightbox-group="occasion">
+                    <div class="category-grid-item" data-lightbox-src="assets/images/special_occasion/1-7b28e9b8-1000.jpg">
+                        <img src="assets/images/special_occasion/1-7b28e9b8-1000.jpg" alt="Special occasion">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/special_occasion/2-899f6b4b-1000.jpg">
+                        <img src="assets/images/special_occasion/2-899f6b4b-1000.jpg" alt="Special occasion">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/special_occasion/3-048ca80d-1000.jpg">
+                        <img src="assets/images/special_occasion/3-048ca80d-1000.jpg" alt="Special occasion">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/special_occasion/0325-bf236c42-1000.jpg">
+                        <img src="assets/images/special_occasion/0325-bf236c42-1000.jpg" alt="Special occasion">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/special_occasion/11-215ff55c-1000.jpg">
+                        <img src="assets/images/special_occasion/11-215ff55c-1000.jpg" alt="Special occasion">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/special_occasion/1.8-98a5a3da-1000.jpg">
+                        <img src="assets/images/special_occasion/1.8-98a5a3da-1000.jpg" alt="Special occasion">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="category-grid-item" data-lightbox-src="assets/images/special_occasion/3.-68e150c7-1000.jpg">
+                        <img src="assets/images/special_occasion/3.-68e150c7-1000.jpg" alt="Special occasion">
+                        <div class="img-overlay"><div class="expand-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         TESTIMONIALS SECTION
+         ========================================== -->
     <section id="slide-4" class="slide">
         <div class="container">
             <div class="split-layout">
@@ -515,6 +2000,15 @@
                     <h2 style="color: var(--color-primary);">4. The Love Letters (Reviews)</h2>
                     <h3>The Mechanics</h3>
                     <p>Social proof. Don't call them "Reviews" - call them "Love Notes" or "Kind Words".</p>
+
+                    <h3>Key Elements:</h3>
+                    <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                        <li><strong>Heart Icon:</strong> Replaces the standard quotation mark - softer and more on-brand.</li>
+                        <li><strong>The Quote:</strong> Real words from real clients. Emotional language works best.</li>
+                        <li><strong>Attribution:</strong> Family name or first name only - feels personal, not corporate.</li>
+                        <li><strong>Card Design:</strong> Slightly different background from the page to make it "pop" as a standalone element.</li>
+                    </ul>
+
                     <h3>Why it matters</h3>
                     <p>It builds trust. Seeing others rave about their "snuggly moments" validates the investment.</p>
                 </div>
@@ -539,7 +2033,9 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
+    <!-- ==========================================
+         FAQ SECTION
+         ========================================== -->
     <section id="slide-5" class="slide">
         <div class="container">
             <div class="split-layout">
@@ -547,9 +2043,17 @@
                     <h2 style="color: var(--color-primary);">5. The Answers (FAQ)</h2>
                     <h3>The Mechanics</h3>
                     <p>Address fears upfront. "What do I wear?" "What if my baby cries?" "How much is it?"</p>
+
+                    <h3>Key Elements:</h3>
+                    <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                        <li><strong>Accordion Pattern:</strong> Questions are visible, answers are hidden until clicked.</li>
+                        <li><strong>Chevron Icon:</strong> Rotates 180 degrees on open to show state change.</li>
+                        <li><strong>Subtle Dividers:</strong> Thin lines separate each FAQ without heavy borders.</li>
+                        <li><strong>Hover State:</strong> Question text turns sage green on hover to signal interactivity.</li>
+                    </ul>
+
                     <h3>Why it matters</h3>
-                    <p>It reduces friction. Answering "What do I wear?" before they ask shows you are the expert guide.
-                    </p>
+                    <p>It reduces friction. Answering "What do I wear?" before they ask shows you are the expert guide.</p>
                 </div>
 
                 <!-- Demo -->
@@ -561,14 +2065,21 @@
                     </div>
                     <div style="padding: 3rem;">
                         <h3 style="text-align: center; margin-bottom: 2rem;">Common Questions</h3>
-                        <div class="faq-item">
+                        <div class="faq-item" onclick="this.classList.toggle('open')">
                             <div class="faq-question">What should we wear? <i data-lucide="chevron-down"></i></div>
+                            <div class="faq-answer">Soft, neutral tones work best - think creams, tans, and muted greens. Avoid bold logos or busy patterns. I'll send you a full style guide once you book!</div>
                         </div>
-                        <div class="faq-item">
+                        <div class="faq-item" onclick="this.classList.toggle('open')">
+                            <div class="faq-question">What if my baby won't stop crying? <i data-lucide="chevron-down"></i></div>
+                            <div class="faq-answer">Babies cry - it's totally normal! I build extra time into every session so we can pause for feedings, diaper changes, and cuddles. Patience is my superpower.</div>
+                        </div>
+                        <div class="faq-item" onclick="this.classList.toggle('open')">
                             <div class="faq-question">Can I bring my dog? <i data-lucide="chevron-down"></i></div>
+                            <div class="faq-answer">Absolutely! Fur babies are family too. I love incorporating pets into family sessions - some of my favorite shots include the family dog.</div>
                         </div>
-                        <div class="faq-item">
-                            <div class="faq-question">What if it rains? <i data-lucide="chevron-down"></i></div>
+                        <div class="faq-item" onclick="this.classList.toggle('open')">
+                            <div class="faq-question">How long until I get my photos? <i data-lucide="chevron-down"></i></div>
+                            <div class="faq-answer">You'll receive a sneak peek within 48 hours and your full gallery within 2-3 weeks. Each image is carefully edited to match the Little Image style.</div>
                         </div>
                     </div>
                 </div>
@@ -576,103 +2087,268 @@
         </div>
     </section>
 
-    <!-- Gallery Lab Section -->
-    <section id="slide-lab" class="slide lab-section">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 3rem;">
-                <span class="brand-pill" style="background: var(--color-text); color: var(--color-surface);">Advanced
-                    Features</span>
+    <!-- ==========================================
+         SECTION DIVIDER
+         ========================================== -->
+    <div class="section-divider">
+        <span>Gallery Layouts</span>
+    </div>
+
+    <!-- ==========================================
+         GALLERY LAB - FULLY INTERACTIVE
+         ========================================== -->
+    <section id="slide-lab" class="slide lab-section" style="padding: 5rem 0;">
+        <div class="container-wide">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <span class="brand-pill" style="background: var(--color-text); color: var(--color-surface);">Advanced Features</span>
                 <h2 style="color: var(--color-primary); font-size: 2.5rem;">The Gallery Lab</h2>
-                <p>Exploring dynamic ways to showcase the "Little Image" portfolio.</p>
+                <p style="max-width: 600px; margin: 0 auto;">Five different ways to showcase the Little Image portfolio. Click the tabs below to switch between layouts, and click any photo to open it.</p>
             </div>
 
-            <!-- Demo 1: Masonry -->
-            <div class="split-layout" style="margin-bottom: 4rem;">
-                <div>
-                    <h3>1. The Organic Masonry</h3>
-                    <p>Strict grids feel corporate. Masonry layouts feel like a collage on a wall. Perfect for mixing
-                        vertical and horizontal shots.</p>
-                </div>
-                <div class="demo-window">
-                    <div class="demo-browser-bar">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
+            <!-- Gallery Layout Tabs -->
+            <div class="gallery-tabs">
+                <button class="gallery-tab active" data-panel="masonry">Masonry Wall</button>
+                <button class="gallery-tab" data-panel="filmstrip">Film Strip</button>
+                <button class="gallery-tab" data-panel="dreamscape">Dreamscape</button>
+                <button class="gallery-tab" data-panel="carousel">Carousel Slider</button>
+                <button class="gallery-tab" data-panel="hovergrid">Hover Grid</button>
+            </div>
+
+            <!-- ======== PANEL 1: MASONRY ======== -->
+            <div class="gallery-panel active" data-panel-id="masonry">
+                <div class="panel-header">
+                    <div>
+                        <h3>The Organic Masonry Wall</h3>
+                        <p>Images flow like a collage on a wall. No forced sizes - each photo keeps its natural proportions. Perfect for mixing vertical and horizontal shots from different sessions.</p>
                     </div>
-                    <div style="padding: 1rem;">
-                        <div class="masonry-layout">
-                            <div class="masonry-item"><img
-                                    src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop"
-                                    alt="Img"></div>
-                            <div class="masonry-item"><img
-                                    src="https://images.unsplash.com/photo-1531123414780-f74242c2b052?q=80&w=1000&auto=format&fit=crop"
-                                    alt="Img"></div>
-                            <div class="masonry-item"><img
-                                    src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1000&auto=format&fit=crop"
-                                    alt="Img"></div>
-                            <div class="masonry-item"><img
-                                    src="https://images.unsplash.com/photo-1520854221256-17451cc330e7?q=80&w=1000&auto=format&fit=crop"
-                                    alt="Img"></div>
-                            <div class="masonry-item"><img
-                                    src="https://images.unsplash.com/photo-1495567720989-cebdbdd97913?q=80&w=1000&auto=format&fit=crop"
-                                    alt="Img"></div>
+                    <div class="panel-features">
+                        <span class="feature-tag">CSS Columns</span>
+                        <span class="feature-tag">Auto-Height</span>
+                        <span class="feature-tag">Hover Zoom</span>
+                        <span class="feature-tag">Click to Open</span>
+                        <span class="feature-tag">Caption Reveal</span>
+                    </div>
+                </div>
+                <div class="masonry-layout" data-lightbox-group="masonry">
+                    <div class="masonry-item" data-lightbox-src="assets/images/newborn/1-45da4fdb-1000.jpg">
+                        <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Newborn session">
+                        <div class="img-overlay"><span><i data-lucide="maximize-2" style="width:14px;height:14px;"></i> View</span></div>
+                    </div>
+                    <div class="masonry-item" data-lightbox-src="assets/images/child/22-f4468cd2-1500.jpg">
+                        <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child portrait">
+                        <div class="img-overlay"><span><i data-lucide="maximize-2" style="width:14px;height:14px;"></i> View</span></div>
+                    </div>
+                    <div class="masonry-item" data-lightbox-src="assets/images/three_year_milestone/10-52b89603-1500.jpg">
+                        <img src="assets/images/three_year_milestone/10-52b89603-1500.jpg" alt="Milestone session">
+                        <div class="img-overlay"><span><i data-lucide="maximize-2" style="width:14px;height:14px;"></i> View</span></div>
+                    </div>
+                    <div class="masonry-item" data-lightbox-src="assets/images/outdoor/13-7343e297-2500.jpg">
+                        <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor session">
+                        <div class="img-overlay"><span><i data-lucide="maximize-2" style="width:14px;height:14px;"></i> View</span></div>
+                    </div>
+                    <div class="masonry-item" data-lightbox-src="assets/images/newborn/74-08272da1-1000.jpg">
+                        <img src="assets/images/newborn/74-08272da1-1000.jpg" alt="Newborn session">
+                        <div class="img-overlay"><span><i data-lucide="maximize-2" style="width:14px;height:14px;"></i> View</span></div>
+                    </div>
+                    <div class="masonry-item" data-lightbox-src="assets/images/special_occasion/1-7b28e9b8-1000.jpg">
+                        <img src="assets/images/special_occasion/1-7b28e9b8-1000.jpg" alt="Special occasion">
+                        <div class="img-overlay"><span><i data-lucide="maximize-2" style="width:14px;height:14px;"></i> View</span></div>
+                    </div>
+                    <div class="masonry-item" data-lightbox-src="assets/images/child/23-9d67bdc8-1500.jpg">
+                        <img src="assets/images/child/23-9d67bdc8-1500.jpg" alt="Child portrait">
+                        <div class="img-overlay"><span><i data-lucide="maximize-2" style="width:14px;height:14px;"></i> View</span></div>
+                    </div>
+                    <div class="masonry-item" data-lightbox-src="assets/images/three_year_milestone/12-a8773ce8-1500.jpg">
+                        <img src="assets/images/three_year_milestone/12-a8773ce8-1500.jpg" alt="Milestone session">
+                        <div class="img-overlay"><span><i data-lucide="maximize-2" style="width:14px;height:14px;"></i> View</span></div>
+                    </div>
+                    <div class="masonry-item" data-lightbox-src="assets/images/newborn/69-ad18d5c0-1000.jpg">
+                        <img src="assets/images/newborn/69-ad18d5c0-1000.jpg" alt="Newborn session">
+                        <div class="img-overlay"><span><i data-lucide="maximize-2" style="width:14px;height:14px;"></i> View</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======== PANEL 2: FILM STRIP ======== -->
+            <div class="gallery-panel" data-panel-id="filmstrip">
+                <div class="panel-header">
+                    <div>
+                        <h3>The Cinematic Film Strip</h3>
+                        <p>A horizontal scroll that mimics looking through negatives. Great for telling a linear story - the progression of a session from first shots to the final cozy moments.</p>
+                    </div>
+                    <div class="panel-features">
+                        <span class="feature-tag">Horizontal Scroll</span>
+                        <span class="feature-tag">Film Frame Border</span>
+                        <span class="feature-tag">Caption Slide-Up</span>
+                        <span class="feature-tag">Click to Open</span>
+                    </div>
+                </div>
+                <div class="film-frame">
+                    <div class="film-strip-container" data-lightbox-group="filmstrip">
+                        <div class="film-item" data-lightbox-src="assets/images/newborn/1-45da4fdb-1000.jpg">
+                            <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Session start">
+                            <div class="film-caption"><h4>The Arrival</h4><p>First moments in the studio</p></div>
+                        </div>
+                        <div class="film-item" data-lightbox-src="assets/images/newborn/73-5b55e942-1000.jpg">
+                            <img src="assets/images/newborn/73-5b55e942-1000.jpg" alt="Getting comfortable">
+                            <div class="film-caption"><h4>Getting Settled</h4><p>Finding the perfect position</p></div>
+                        </div>
+                        <div class="film-item" data-lightbox-src="assets/images/newborn/74-08272da1-1000.jpg">
+                            <img src="assets/images/newborn/74-08272da1-1000.jpg" alt="The close-up">
+                            <div class="film-caption"><h4>Tiny Details</h4><p>Those little fingers and toes</p></div>
+                        </div>
+                        <div class="film-item" data-lightbox-src="assets/images/newborn/71-d1d561d4-1000.jpg">
+                            <img src="assets/images/newborn/71-d1d561d4-1000.jpg" alt="The wrap">
+                            <div class="film-caption"><h4>All Wrapped Up</h4><p>Snug as a bug</p></div>
+                        </div>
+                        <div class="film-item" data-lightbox-src="assets/images/newborn/69-ad18d5c0-1000.jpg">
+                            <img src="assets/images/newborn/69-ad18d5c0-1000.jpg" alt="Peaceful sleep">
+                            <div class="film-caption"><h4>Sweet Dreams</h4><p>The perfect peaceful moment</p></div>
+                        </div>
+                        <div class="film-item" data-lightbox-src="assets/images/newborn/64-7694e869-1000.jpg">
+                            <img src="assets/images/newborn/64-7694e869-1000.jpg" alt="Family moment">
+                            <div class="film-caption"><h4>Family Love</h4><p>Together at last</p></div>
+                        </div>
+                        <div class="film-item" data-lightbox-src="assets/images/newborn/4-48ce8281-1000.jpg">
+                            <img src="assets/images/newborn/4-48ce8281-1000.jpg" alt="The finale">
+                            <div class="film-caption"><h4>The Finale</h4><p>One last snuggle</p></div>
                         </div>
                     </div>
                 </div>
+                <p style="text-align: center; margin-top: 1rem; font-size: 0.85rem; opacity: 0.5;">&larr; Scroll sideways to explore the story &rarr;</p>
             </div>
 
-            <!-- Demo 2: Film Strip -->
-            <div class="split-layout" style="margin-bottom: 4rem;">
-                <div>
-                    <h3>2. The Cinematic Film Strip</h3>
-                    <p>A horizontal scroll that mimics looking through negatives. Great for telling a linear story of a
-                        wedding day.</p>
-                </div>
-                <div class="demo-window">
-                    <div class="demo-browser-bar">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
+            <!-- ======== PANEL 3: DREAMSCAPE ======== -->
+            <div class="gallery-panel" data-panel-id="dreamscape">
+                <div class="panel-header">
+                    <div>
+                        <h3>The Dreamscape (Parallax Float)</h3>
+                        <p>Images float at different speeds and sizes, creating depth and a dream-like atmosphere. This feels magical - perfect for the softness of newborn photography.</p>
                     </div>
-                    <div style="padding: 2rem;">
-                        <div class="film-strip-container">
-                            <div class="film-item"><img
-                                    src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1000&auto=format&fit=crop"
-                                    alt="Img"></div>
-                            <div class="film-item"><img
-                                    src="https://images.unsplash.com/photo-1522673607200-1645062cd958?q=80&w=1000&auto=format&fit=crop"
-                                    alt="Img"></div>
-                            <div class="film-item"><img
-                                    src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop"
-                                    alt="Img"></div>
+                    <div class="panel-features">
+                        <span class="feature-tag">Floating Animation</span>
+                        <span class="feature-tag">Depth Layering</span>
+                        <span class="feature-tag">Organic Layout</span>
+                        <span class="feature-tag">Click to Open</span>
+                    </div>
+                </div>
+                <div class="parallax-window" data-lightbox-group="dreamscape">
+                    <div class="floating-img f-1" data-lightbox-src="assets/images/newborn/1-45da4fdb-1000.jpg">
+                        <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Float 1">
+                    </div>
+                    <div class="floating-img f-2" data-lightbox-src="assets/images/child/22-f4468cd2-1500.jpg">
+                        <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Float 2">
+                    </div>
+                    <div class="floating-img f-3" data-lightbox-src="assets/images/three_year_milestone/10-52b89603-1500.jpg">
+                        <img src="assets/images/three_year_milestone/10-52b89603-1500.jpg" alt="Float 3">
+                    </div>
+                    <div class="floating-img f-4" data-lightbox-src="assets/images/newborn/74-08272da1-1000.jpg">
+                        <img src="assets/images/newborn/74-08272da1-1000.jpg" alt="Float 4">
+                    </div>
+                    <div class="floating-img f-5" data-lightbox-src="assets/images/outdoor/13-7343e297-2500.jpg">
+                        <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Float 5">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======== PANEL 4: CAROUSEL ======== -->
+            <div class="gallery-panel" data-panel-id="carousel">
+                <div class="panel-header">
+                    <div>
+                        <h3>The Carousel Slider</h3>
+                        <p>One image at a time, filling the frame. Arrow buttons and dot navigation let visitors browse at their own pace. Great for featuring hero-worthy shots from each session.</p>
+                    </div>
+                    <div class="panel-features">
+                        <span class="feature-tag">Arrow Navigation</span>
+                        <span class="feature-tag">Dot Indicators</span>
+                        <span class="feature-tag">Smooth Slide</span>
+                        <span class="feature-tag">Image Captions</span>
+                    </div>
+                </div>
+                <div class="carousel-container" id="mainCarousel">
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="carousel-slide">
+                            <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Newborn session">
+                            <div class="slide-info"><h3>Newborn Bliss</h3><p>Studio session - 10 days old</p></div>
                         </div>
-                        <p style="text-align: center; margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.6;"><-- Scroll
-                                to explore --></p>
+                        <div class="carousel-slide">
+                            <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child portrait">
+                            <div class="slide-info"><h3>Growing Up</h3><p>Child portrait - natural light</p></div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor session">
+                            <div class="slide-info"><h3>Golden Hour</h3><p>Family outdoor session - Brooklyn Bridge Park</p></div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="assets/images/three_year_milestone/10-52b89603-1500.jpg" alt="Milestone session">
+                            <div class="slide-info"><h3>Three Year Milestone</h3><p>Look how much they've grown!</p></div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="assets/images/special_occasion/1-7b28e9b8-1000.jpg" alt="Special occasion">
+                            <div class="slide-info"><h3>Celebrations</h3><p>Special moments deserve special photos</p></div>
+                        </div>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" id="carouselPrev"><i data-lucide="chevron-left"></i></button>
+                        <button class="carousel-btn" id="carouselNext"><i data-lucide="chevron-right"></i></button>
                     </div>
                 </div>
+                <div class="carousel-dots" id="carouselDots"></div>
             </div>
 
-            <!-- Demo 3: Floating Parallax -->
-            <div class="split-layout">
-                <div>
-                    <h3>3. The Dreamscape (Parallax)</h3>
-                    <p>Images float at different speeds, creating depth. This feels magical and "dream-like", perfect
-                        for newborns.</p>
-                </div>
-                <div class="demo-window">
-                    <div class="demo-browser-bar">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
+            <!-- ======== PANEL 5: HOVER GRID ======== -->
+            <div class="gallery-panel" data-panel-id="hovergrid">
+                <div class="panel-header">
+                    <div>
+                        <h3>The Hover Reveal Grid</h3>
+                        <p>A structured grid where each image reveals its story on hover. The first image spans two rows for visual hierarchy. Clean, modern, and editorial.</p>
                     </div>
-                    <div style="padding: 2rem;">
-                        <div class="parallax-window" style="background: #FDFCFB;">
-                            <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=500&auto=format&fit=crop"
-                                class="floating-img f-1" alt="Float 1">
-                            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=500&auto=format&fit=crop"
-                                class="floating-img f-2" alt="Float 2">
-                            <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?q=80&w=500&auto=format&fit=crop"
-                                class="floating-img f-3" alt="Float 3">
+                    <div class="panel-features">
+                        <span class="feature-tag">CSS Grid</span>
+                        <span class="feature-tag">Hover Reveal</span>
+                        <span class="feature-tag">Featured Image</span>
+                        <span class="feature-tag">Click to Open</span>
+                    </div>
+                </div>
+                <div class="hover-grid" data-lightbox-group="hovergrid">
+                    <div class="hover-grid-item" data-lightbox-src="assets/images/newborn/1-45da4fdb-1000.jpg">
+                        <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Featured">
+                        <div class="hover-content">
+                            <h4>Featured: Newborn Session</h4>
+                            <p>Studio session with natural window light</p>
+                            <span class="view-btn"><i data-lucide="maximize-2" style="width:12px;height:12px;"></i> Open</span>
+                        </div>
+                    </div>
+                    <div class="hover-grid-item" data-lightbox-src="assets/images/child/22-f4468cd2-1500.jpg">
+                        <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child portrait">
+                        <div class="hover-content">
+                            <h4>Child Portraits</h4>
+                            <p>Capturing personality</p>
+                            <span class="view-btn"><i data-lucide="maximize-2" style="width:12px;height:12px;"></i> Open</span>
+                        </div>
+                    </div>
+                    <div class="hover-grid-item" data-lightbox-src="assets/images/outdoor/13-7343e297-2500.jpg">
+                        <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor">
+                        <div class="hover-content">
+                            <h4>Outdoor Magic</h4>
+                            <p>Brooklyn's best locations</p>
+                            <span class="view-btn"><i data-lucide="maximize-2" style="width:12px;height:12px;"></i> Open</span>
+                        </div>
+                    </div>
+                    <div class="hover-grid-item" data-lightbox-src="assets/images/three_year_milestone/12-a8773ce8-1500.jpg">
+                        <img src="assets/images/three_year_milestone/12-a8773ce8-1500.jpg" alt="Milestone">
+                        <div class="hover-content">
+                            <h4>Milestone Moments</h4>
+                            <p>Watching them grow</p>
+                            <span class="view-btn"><i data-lucide="maximize-2" style="width:12px;height:12px;"></i> Open</span>
+                        </div>
+                    </div>
+                    <div class="hover-grid-item" data-lightbox-src="assets/images/special_occasion/2-899f6b4b-1000.jpg">
+                        <img src="assets/images/special_occasion/2-899f6b4b-1000.jpg" alt="Occasion">
+                        <div class="hover-content">
+                            <h4>Special Occasions</h4>
+                            <p>Events worth remembering</p>
+                            <span class="view-btn"><i data-lucide="maximize-2" style="width:12px;height:12px;"></i> Open</span>
                         </div>
                     </div>
                 </div>
@@ -681,7 +2357,9 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- ==========================================
+         CONTACT SECTION
+         ========================================== -->
     <section id="slide-6" class="slide">
         <div class="container">
             <div class="split-layout">
@@ -689,8 +2367,17 @@
                     <h2 style="color: var(--color-primary);">6. The Invitation (Contact)</h2>
                     <h3>The Mechanics</h3>
                     <p>The finish line. Keep it simple. Name, date, and a warm "Let's Chat" button.</p>
+
+                    <h3>Key Elements:</h3>
+                    <ul style="padding-left: 1.2rem; margin-bottom: 1rem;">
+                        <li><strong>Warm Headline:</strong> "Ready to make magic?" is inviting, not salesy.</li>
+                        <li><strong>Simple Subtext:</strong> One line that removes friction - "Let's get your session on the calendar."</li>
+                        <li><strong>Big CTA Button:</strong> Larger than any other button on the page. This is the goal of the entire website. Make it impossible to miss.</li>
+                        <li><strong>Centered Layout:</strong> No distractions. Eyes go straight to the button.</li>
+                    </ul>
+
                     <h3>Why it matters</h3>
-                    <p>Don't make them hunt for it. This is the goal of the entire website.</p>
+                    <p>Don't make them hunt for it. Every section above has been building trust and desire - this is where it converts.</p>
                 </div>
 
                 <!-- Demo -->
@@ -700,32 +2387,33 @@
                         <div class="dot"></div>
                         <div class="dot"></div>
                     </div>
-                    <div
-                        style="padding: 3rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 300px;">
+                    <div style="padding: 3rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 300px;">
                         <h3 style="margin-bottom: 1rem;">Ready to make magic?</h3>
                         <p style="margin-bottom: 2rem;">Let's get your session on the calendar.</p>
-                        <button class="btn btn-primary" style="padding: 1rem 3rem; font-size: 1.2rem;">Book Your
-                            Session</button>
+                        <button class="btn btn-primary" style="padding: 1rem 3rem; font-size: 1.2rem;">Book Your Session</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Navigation Ctrls Removed for natural scrolling -->
-
+    <!-- ==========================================
+         JAVASCRIPT
+         ========================================== -->
     <script>
         // Init Icons
         lucide.createIcons();
 
-        // Scroll Animation Logic
+        // =============================================
+        // SCROLL REVEAL ANIMATION
+        // =============================================
         const observerOptions = {
             root: null,
             rootMargin: '0px',
             threshold: 0.1
         };
 
-        const observer = new IntersectionObserver((entries, observer) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
@@ -733,17 +2421,232 @@
             });
         }, observerOptions);
 
-        // Target elements for animation
-        document.querySelectorAll('.slide').forEach(section => {
-            section.classList.add('reveal'); // Add base animation class
+        document.querySelectorAll('.slide, .anatomy-section').forEach(section => {
+            section.classList.add('reveal');
             observer.observe(section);
         });
 
-        // Also animate the larger demo windows
-        document.querySelectorAll('.demo-window').forEach(window => {
-            window.classList.add('reveal');
-            observer.observe(window);
+        document.querySelectorAll('.demo-window').forEach(el => {
+            el.classList.add('reveal');
+            observer.observe(el);
         });
+
+        document.querySelectorAll('.stagger-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // =============================================
+        // NAVIGATION DOTS
+        // =============================================
+        const navDots = document.querySelectorAll('.nav-dot');
+        const allSections = document.querySelectorAll('.slide, .anatomy-section');
+
+        navDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const target = document.getElementById(dot.dataset.target);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Update active dot on scroll
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navDots.forEach(d => d.classList.remove('active'));
+                    const dot = document.querySelector(`.nav-dot[data-target="${entry.target.id}"]`);
+                    if (dot) dot.classList.add('active');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        allSections.forEach(section => {
+            if (section.id) navObserver.observe(section);
+        });
+
+        // =============================================
+        // CATEGORY GALLERY SWITCHER
+        // =============================================
+        const categoryCircles = document.querySelectorAll('.category-circle');
+        const categoryGalleries = document.querySelectorAll('.category-gallery');
+
+        categoryCircles.forEach(circle => {
+            circle.addEventListener('click', () => {
+                const category = circle.dataset.category;
+
+                categoryCircles.forEach(c => c.classList.remove('active'));
+                circle.classList.add('active');
+
+                categoryGalleries.forEach(g => g.classList.remove('active'));
+                const target = document.querySelector(`.category-gallery[data-gallery="${category}"]`);
+                if (target) {
+                    target.classList.add('active');
+                    // Re-init lucide icons for the newly shown content
+                    lucide.createIcons();
+                }
+            });
+        });
+
+        // =============================================
+        // GALLERY LAB TAB SWITCHER
+        // =============================================
+        const galleryTabs = document.querySelectorAll('.gallery-tab');
+        const galleryPanels = document.querySelectorAll('.gallery-panel');
+
+        galleryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const panel = tab.dataset.panel;
+
+                galleryTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                galleryPanels.forEach(p => p.classList.remove('active'));
+                const target = document.querySelector(`.gallery-panel[data-panel-id="${panel}"]`);
+                if (target) {
+                    target.classList.add('active');
+                    lucide.createIcons();
+                }
+            });
+        });
+
+        // =============================================
+        // CAROUSEL
+        // =============================================
+        const carouselTrack = document.getElementById('carouselTrack');
+        const carouselPrev = document.getElementById('carouselPrev');
+        const carouselNext = document.getElementById('carouselNext');
+        const dotsContainer = document.getElementById('carouselDots');
+        let currentSlide = 0;
+
+        if (carouselTrack) {
+            const slides = carouselTrack.querySelectorAll('.carousel-slide');
+            const totalSlides = slides.length;
+
+            // Create dots
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.classList.add('carousel-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+
+            function goToSlide(index) {
+                currentSlide = index;
+                carouselTrack.style.transform = `translateX(-${index * 100}%)`;
+                document.querySelectorAll('.carousel-dot').forEach((d, i) => {
+                    d.classList.toggle('active', i === index);
+                });
+            }
+
+            carouselPrev.addEventListener('click', () => {
+                goToSlide(currentSlide === 0 ? totalSlides - 1 : currentSlide - 1);
+            });
+
+            carouselNext.addEventListener('click', () => {
+                goToSlide(currentSlide === totalSlides - 1 ? 0 : currentSlide + 1);
+            });
+        }
+
+        // =============================================
+        // LIGHTBOX
+        // =============================================
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const lightboxCounter = document.getElementById('lightboxCounter');
+
+        let lightboxImages = [];
+        let lightboxIndex = 0;
+
+        function openLightbox(images, index) {
+            lightboxImages = images;
+            lightboxIndex = index;
+            updateLightbox();
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function updateLightbox() {
+            const item = lightboxImages[lightboxIndex];
+            lightboxImg.src = item.src;
+            lightboxCaption.textContent = item.alt || '';
+            lightboxCounter.textContent = `${lightboxIndex + 1} / ${lightboxImages.length}`;
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        lightboxPrev.addEventListener('click', (e) => {
+            e.stopPropagation();
+            lightboxIndex = lightboxIndex === 0 ? lightboxImages.length - 1 : lightboxIndex - 1;
+            updateLightbox();
+        });
+
+        lightboxNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            lightboxIndex = lightboxIndex === lightboxImages.length - 1 ? 0 : lightboxIndex + 1;
+            updateLightbox();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') {
+                lightboxIndex = lightboxIndex === 0 ? lightboxImages.length - 1 : lightboxIndex - 1;
+                updateLightbox();
+            }
+            if (e.key === 'ArrowRight') {
+                lightboxIndex = lightboxIndex === lightboxImages.length - 1 ? 0 : lightboxIndex + 1;
+                updateLightbox();
+            }
+        });
+
+        // Attach lightbox to all clickable gallery items
+        function initLightboxGroups() {
+            const groups = document.querySelectorAll('[data-lightbox-group]');
+            groups.forEach(group => {
+                const items = group.querySelectorAll('[data-lightbox-src]');
+                items.forEach((item, idx) => {
+                    item.addEventListener('click', () => {
+                        const images = Array.from(items).map(i => ({
+                            src: i.dataset.lightboxSrc,
+                            alt: i.querySelector('img') ? i.querySelector('img').alt : ''
+                        }));
+                        openLightbox(images, idx);
+                    });
+                });
+            });
+
+            // Also handle floating-img in dreamscape
+            const floatingItems = document.querySelectorAll('.floating-img[data-lightbox-src]');
+            if (floatingItems.length > 0) {
+                floatingItems.forEach((item, idx) => {
+                    item.style.cursor = 'pointer';
+                    item.addEventListener('click', () => {
+                        const images = Array.from(floatingItems).map(i => ({
+                            src: i.dataset.lightboxSrc,
+                            alt: i.querySelector('img') ? i.querySelector('img').alt : ''
+                        }));
+                        openLightbox(images, idx);
+                    });
+                });
+            }
+        }
+
+        initLightboxGroups();
 
     </script>
 </body>
