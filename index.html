@@ -2202,6 +2202,1396 @@
             opacity: 1;
         }
 
+        /* ========== STYLE S: SPOTLIGHT THEATER ========== */
+        .collections-style-s {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .collections-style-s .collection-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 20px 60px rgba(255, 255, 255, 0.1);
+        }
+
+        .collections-style-s .collection-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 30%, transparent 60%);
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 1;
+            transition: opacity 0.4s ease;
+        }
+
+        .collections-style-s .collection-card:hover::before {
+            opacity: 1;
+            animation: spotlight-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes spotlight-pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        .collections-style-s .collection-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.7);
+            transition: all 0.4s ease;
+        }
+
+        .collections-style-s .collection-card:hover img {
+            filter: brightness(1);
+            transform: scale(1.05);
+        }
+
+        .collections-style-s .collection-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.5) 70%, transparent);
+            color: white;
+            padding: 2rem 1.5rem 1.5rem;
+            text-align: center;
+            z-index: 2;
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .collections-style-s .collection-card:hover .collection-label {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .collections-style-s .collection-label h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 0 0.3rem 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .collections-style-s .collection-label p {
+            font-size: 0.9rem;
+            margin: 0;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        /* ========== STYLE T: SCRAPBOOK PAGES ========== */
+        .collections-style-t {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .collections-style-t .collection-card {
+            position: relative;
+            background: white;
+            border-radius: 4px;
+            overflow: visible;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .collections-style-t .collection-card:nth-child(1) {
+            transform: rotate(-2deg);
+        }
+
+        .collections-style-t .collection-card:nth-child(2) {
+            transform: rotate(1.5deg);
+        }
+
+        .collections-style-t .collection-card:nth-child(3) {
+            transform: rotate(-1deg);
+        }
+
+        .collections-style-t .collection-card:nth-child(4) {
+            transform: rotate(2deg);
+        }
+
+        .collections-style-t .collection-card:nth-child(5) {
+            transform: rotate(-1.5deg);
+        }
+
+        .collections-style-t .collection-card:nth-child(6) {
+            transform: rotate(1deg);
+        }
+
+        .collections-style-t .collection-card::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 25px;
+            background: linear-gradient(180deg, rgba(220,200,180,0.4) 0%, rgba(220,200,180,0.7) 50%, rgba(220,200,180,0.4) 100%);
+            border-radius: 2px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        .collections-style-t .collection-card::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, rgba(255,200,100,0.3) 0%, rgba(255,200,100,0.5) 50%, transparent 70%);
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .collections-style-t .collection-card:hover {
+            transform: rotate(0deg) translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+            z-index: 10;
+        }
+
+        .collections-style-t .collection-card img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+            border: 12px solid white;
+            border-bottom: 16px solid white;
+            box-sizing: border-box;
+        }
+
+        .collections-style-t .collection-label {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.8rem 1.2rem;
+            text-align: center;
+            width: 85%;
+            border-radius: 3px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            font-family: 'Brush Script MT', cursive, sans-serif;
+        }
+
+        .collections-style-t .collection-label h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0 0 0.2rem 0;
+            color: #3a3a3a;
+        }
+
+        .collections-style-t .collection-label p {
+            font-size: 0.85rem;
+            margin: 0;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* ========== STYLE U: METRO TILES ========== */
+        .collections-style-u {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 150px);
+            gap: 10px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .collections-style-u .collection-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .collections-style-u .collection-card.metro-wide {
+            grid-column: span 2;
+        }
+
+        .collections-style-u .collection-card.metro-tall {
+            grid-row: span 2;
+        }
+
+        .collections-style-u .collection-card.metro-square {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .collections-style-u .collection-card:nth-child(1) {
+            grid-column: 1 / 3;
+            grid-row: 1;
+        }
+
+        .collections-style-u .collection-card:nth-child(2) {
+            grid-column: 3;
+            grid-row: 1 / 3;
+        }
+
+        .collections-style-u .collection-card:nth-child(3) {
+            grid-column: 4;
+            grid-row: 1;
+        }
+
+        .collections-style-u .collection-card:nth-child(4) {
+            grid-column: 4;
+            grid-row: 2;
+        }
+
+        .collections-style-u .collection-card:nth-child(5) {
+            grid-column: 1 / 3;
+            grid-row: 2;
+        }
+
+        .collections-style-u .collection-card:nth-child(6) {
+            grid-column: 3;
+            grid-row: 3;
+        }
+
+        .collections-style-u .collection-card:nth-child(7) {
+            grid-column: 4;
+            grid-row: 3;
+        }
+
+        .collections-style-u .collection-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .collections-style-u .collection-card:hover {
+            transform: scale(1.05);
+            z-index: 10;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .collections-style-u .collection-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .collections-style-u .collection-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            transform: translateY(100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .collections-style-u .collection-card:hover .collection-label {
+            transform: translateY(0);
+        }
+
+        .collections-style-u .collection-label h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ========== STYLE P: HEXAGONAL HONEYCOMB ========== */
+        .collections-style-p {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .collections-style-p .collection-card {
+            position: relative;
+            width: 100%;
+            padding-bottom: 115%;
+            /* Hexagon aspect ratio */
+            overflow: hidden;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            transition: all 0.4s ease;
+        }
+
+        .collections-style-p .collection-card:nth-child(1) {
+            grid-column: 1 / 2;
+            grid-row: 1;
+        }
+
+        .collections-style-p .collection-card:nth-child(2) {
+            grid-column: 2 / 3;
+            grid-row: 1;
+            margin-top: 3rem;
+        }
+
+        .collections-style-p .collection-card:nth-child(3) {
+            grid-column: 3 / 4;
+            grid-row: 1;
+        }
+
+        .collections-style-p .collection-card:nth-child(4) {
+            grid-column: 4 / 5;
+            grid-row: 1;
+            margin-top: 3rem;
+        }
+
+        .collections-style-p .collection-card:nth-child(5) {
+            grid-column: 1 / 2;
+            grid-row: 2;
+            margin-top: -2rem;
+        }
+
+        .collections-style-p .collection-card:nth-child(6) {
+            grid-column: 2 / 3;
+            grid-row: 2;
+            margin-top: 1rem;
+        }
+
+        .collections-style-p .collection-card:nth-child(7) {
+            grid-column: 3 / 4;
+            grid-row: 2;
+            margin-top: -2rem;
+        }
+
+        .collections-style-p .collection-card img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .collections-style-p .collection-card:hover {
+            transform: scale(1.08);
+            z-index: 10;
+            filter: drop-shadow(0 10px 30px rgba(139, 119, 101, 0.3));
+        }
+
+        .collections-style-p .collection-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .collections-style-p .collection-label {
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+            width: 70%;
+        }
+
+        .collections-style-p .collection-card:hover .collection-label {
+            opacity: 1;
+        }
+
+        .collections-style-p .collection-label h3 {
+            font-size: 0.9rem;
+            margin: 0 0 0.2rem 0;
+            color: var(--color-text);
+        }
+
+        .collections-style-p .collection-label p {
+            font-size: 0.75rem;
+            margin: 0;
+            color: var(--color-text);
+            opacity: 0.7;
+        }
+
+        /* ========== STYLE Q: FILM STRIP ========== */
+        .collections-style-q {
+            display: flex;
+            gap: 1.5rem;
+            padding: 3rem 2rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            position: relative;
+            border-top: 25px solid #2a2a2a;
+            border-bottom: 25px solid #2a2a2a;
+        }
+
+        /* Film perforations */
+        .collections-style-q::before,
+        .collections-style-q::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 25px;
+            background-image: repeating-linear-gradient(
+                to right,
+                transparent 0px,
+                transparent 10px,
+                #1a1a1a 10px,
+                #1a1a1a 20px,
+                transparent 20px,
+                transparent 30px
+            );
+            z-index: 1;
+        }
+
+        .collections-style-q::before {
+            top: -25px;
+        }
+
+        .collections-style-q::after {
+            bottom: -25px;
+        }
+
+        .collections-style-q .collection-card {
+            flex: 0 0 350px;
+            height: 450px;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #333;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .collections-style-q .collection-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+            border-color: #666;
+        }
+
+        .collections-style-q .collection-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%) contrast(1.1);
+            transition: filter 0.3s ease;
+        }
+
+        .collections-style-q .collection-card:hover img {
+            filter: grayscale(0%) contrast(1);
+        }
+
+        .collections-style-q .collection-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.85);
+            color: #fff;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .collections-style-q .collection-card:hover .collection-label {
+            transform: translateY(0);
+        }
+
+        .collections-style-q .collection-label h3 {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin: 0 0 0.3rem 0;
+            letter-spacing: 0.1em;
+            color: #f0f0f0;
+        }
+
+        .collections-style-q .collection-label p {
+            font-size: 0.8rem;
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        /* Scrollbar styling for film strip */
+        .collections-style-q::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .collections-style-q::-webkit-scrollbar-track {
+            background: #2a2a2a;
+        }
+
+        .collections-style-q::-webkit-scrollbar-thumb {
+            background: #666;
+            border-radius: 4px;
+        }
+
+        .collections-style-q::-webkit-scrollbar-thumb:hover {
+            background: #888;
+        }
+
+        /* ========== STYLE R: DIAGONAL SHIFT ========== */
+        .collections-style-r {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem;
+            transform: rotate(45deg);
+            transform-origin: center;
+        }
+
+        .collections-style-r .collection-card {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            transform: rotate(-45deg);
+            /* Counter-rotate to keep images upright */
+        }
+
+        .collections-style-r .collection-card:hover {
+            transform: rotate(-45deg) scale(1.1);
+            z-index: 10;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .collections-style-r .collection-card img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .collections-style-r .collection-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .collections-style-r .collection-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 2rem 1rem 1rem 1rem;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .collections-style-r .collection-card:hover .collection-label {
+            opacity: 1;
+        }
+
+        .collections-style-r .collection-label h3 {
+            font-size: 1.1rem;
+            margin: 0;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Responsive adjustments for Style P */
+        @media (max-width: 768px) {
+            .collections-style-p {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .collections-style-p .collection-card:nth-child(n) {
+                margin-top: 0 !important;
+            }
+
+            .collections-style-p .collection-card:nth-child(odd) {
+                margin-top: 2rem !important;
+            }
+        }
+
+        /* Responsive adjustments for Style Q */
+        @media (max-width: 768px) {
+            .collections-style-q .collection-card {
+                flex: 0 0 280px;
+                height: 380px;
+            }
+        }
+
+        /* Responsive adjustments for Style R */
+        @media (max-width: 768px) {
+            .collections-style-r {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem;
+            }
+        }
+
+        /* ========== STYLE M: MAGAZINE SPREAD ========== */
+        .collections-style-m {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .collections-style-m .collection-card-large {
+            grid-column: 1;
+            grid-row: 1 / 3;
+        }
+
+        .collections-style-m .collection-card-small {
+            grid-column: 2;
+        }
+
+        .collections-style-m .collection-card-medium {
+            grid-column: 1 / 3;
+        }
+
+        .collections-style-m .collection-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .collections-style-m .collection-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .collections-style-m .collection-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            color: white;
+            padding: 2rem;
+        }
+
+        .collections-style-m .collection-label h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin: 0;
+        }
+
+        .collections-style-m .collection-card-small .collection-label h3 {
+            font-size: 1.5rem;
+        }
+
+        .collections-style-m .collection-card:hover {
+            transform: scale(1.02);
+        }
+
+        /* ========== STYLE N: FLOATING DEPTH ========== */
+        .collections-style-n {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+            perspective: 1000px;
+        }
+
+        .collections-style-n .collection-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .collections-style-n .collection-card[data-depth="1"] {
+            transform: translateZ(0px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .collections-style-n .collection-card[data-depth="2"] {
+            transform: translateZ(20px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .collections-style-n .collection-card[data-depth="3"] {
+            transform: translateZ(40px);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+        }
+
+        .collections-style-n .collection-card:hover {
+            transform: translateZ(60px) scale(1.05);
+            box-shadow: 0 40px 90px rgba(0, 0, 0, 0.6);
+        }
+
+        .collections-style-n .collection-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .collections-style-n .collection-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            color: #333;
+        }
+
+        .collections-style-n .collection-label h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.5rem;
+        }
+
+        /* ========== STYLE O: CASCADE WATERFALL (MASONRY) ========== */
+        .collections-style-o {
+            column-count: 3;
+            column-gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .collections-style-o .collection-card {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .collections-style-o .collection-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .collections-style-o .collection-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .collections-style-o .collection-label {
+            padding: 1.25rem;
+        }
+
+        .collections-style-o .collection-label h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.3rem;
+            color: #333;
+        }
+
+        .collections-style-o .collection-label p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .collections-style-o {
+                column-count: 2;
+            }
+        }
+
+        /* ========== STYLE P: HEXAGONAL HONEYCOMB ========== */
+        .collections-style-p {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .collections-style-p .hex {
+            width: 200px;
+            height: 230px;
+            margin: 0 10px 20px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .collections-style-p .hex:nth-child(even) {
+            margin-top: 115px;
+        }
+
+        .collections-style-p .hex-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            transition: transform 0.3s;
+        }
+
+        .collections-style-p .hex:hover .hex-inner {
+            transform: scale(1.1);
+        }
+
+        .collections-style-p .hex-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .collections-style-p .collection-label {
+            position: absolute;
+            bottom: 20%;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        .collections-style-p .collection-label h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        /* ========== STYLE Q: FILM STRIP ========== */
+        .collections-style-q .film-strip-container {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            padding: 2rem 1rem;
+            scroll-snap-type: x mandatory;
+        }
+
+        .collections-style-q .film-strip-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .collections-style-q .film-strip-container::-webkit-scrollbar-track {
+            background: #333;
+        }
+
+        .collections-style-q .film-strip-container::-webkit-scrollbar-thumb {
+            background: #666;
+            border-radius: 4px;
+        }
+
+        .collections-style-q .collection-card {
+            flex: 0 0 300px;
+            scroll-snap-align: center;
+        }
+
+        .collections-style-q .film-frame {
+            background: #000;
+            padding: 15px;
+            border: 3px solid #333;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .collections-style-q .film-frame::before,
+        .collections-style-q .film-frame::after {
+            content: '';
+            position: absolute;
+            background: #222;
+            width: 8px;
+        }
+
+        .collections-style-q .film-frame::before {
+            left: 5px;
+            top: 0;
+            bottom: 0;
+        }
+
+        .collections-style-q .film-frame::after {
+            right: 5px;
+            top: 0;
+            bottom: 0;
+        }
+
+        .collections-style-q .film-frame img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            filter: sepia(0.1);
+        }
+
+        .collections-style-q .film-label {
+            margin-top: 10px;
+            color: #999;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        /* ========== STYLE R: DIAGONAL SHIFT ========== */
+        .collections-style-r {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            transform: rotate(-5deg);
+            padding: 3rem;
+        }
+
+        .collections-style-r .collection-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .collections-style-r .collection-card:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        .collections-style-r .collection-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .collections-style-r .collection-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1.5rem;
+            transform: rotate(5deg);
+        }
+
+        .collections-style-r .collection-label h3 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        /* ========== STYLE S: SPOTLIGHT THEATER ========== */
+        .collections-style-s {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .collections-style-s .collection-card.spotlight {
+            position: relative;
+            width: 320px;
+            cursor: pointer;
+            transition: transform 0.4s;
+        }
+
+        .collections-style-s .spotlight-beam {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .collections-style-s .collection-card.spotlight:hover .spotlight-beam {
+            opacity: 1;
+        }
+
+        .collections-style-s .collection-card.spotlight:hover {
+            transform: scale(1.1);
+        }
+
+        .collections-style-s .collection-card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+            box-shadow: 0 20px 60px rgba(255, 255, 255, 0.1);
+        }
+
+        .collections-style-s .collection-label {
+            margin-top: 1.5rem;
+            text-align: center;
+            color: #fff;
+        }
+
+        .collections-style-s .collection-label h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .collections-style-s .collection-label p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        /* ========== STYLE T: SCRAPBOOK PAGES ========== */
+        .collections-style-t {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .collections-style-t .collection-card.scrapbook {
+            position: relative;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            transform: rotate(var(--rotation, 0deg));
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .collections-style-t .collection-card.scrapbook:nth-child(1) {
+            --rotation: -2deg;
+        }
+
+        .collections-style-t .collection-card.scrapbook:nth-child(2) {
+            --rotation: 1.5deg;
+        }
+
+        .collections-style-t .collection-card.scrapbook:nth-child(3) {
+            --rotation: -1deg;
+        }
+
+        .collections-style-t .collection-card.scrapbook:nth-child(4) {
+            --rotation: 2deg;
+        }
+
+        .collections-style-t .collection-card.scrapbook:hover {
+            transform: rotate(0deg) scale(1.05);
+            z-index: 10;
+        }
+
+        .collections-style-t .tape {
+            position: absolute;
+            background: rgba(255, 248, 220, 0.7);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .collections-style-t .tape-top {
+            top: -8px;
+            left: 20%;
+            right: 20%;
+            height: 25px;
+        }
+
+        .collections-style-t .tape-corner {
+            top: 10px;
+            right: 10px;
+            width: 60px;
+            height: 25px;
+            transform: rotate(45deg);
+        }
+
+        .collections-style-t .collection-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .collections-style-t .collection-label.handwritten {
+            margin-top: 1rem;
+            font-family: 'Brush Script MT', cursive;
+            color: #333;
+        }
+
+        .collections-style-t .collection-label h3 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .collections-style-t .collection-label p {
+            margin: 0.3rem 0 0 0;
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+
+        .collections-style-t .corner-decoration {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 2rem;
+            opacity: 0.3;
+        }
+
+        /* ========== STYLE U: METRO TILES ========== */
+        .collections-style-u {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 150px);
+            gap: 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .collections-style-u .metro-large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .collections-style-u .metro-medium {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+
+        .collections-style-u .metro-small {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .collections-style-u .collection-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .collections-style-u .collection-card:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .collections-style-u .collection-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .collections-style-u .collection-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 1rem;
+        }
+
+        .collections-style-u .collection-label h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .collections-style-u .metro-small .collection-label {
+            padding: 0.5rem;
+        }
+
+        .collections-style-u .metro-small .collection-label h3 {
+            font-size: 0.9rem;
+        }
+
+        /* ========== STYLE V: STACKED SHELVES ========== */
+        .collections-style-v {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .collections-style-v .shelf {
+            position: relative;
+            margin-bottom: 3rem;
+            display: flex;
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+
+        .collections-style-v .shelf-board {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: linear-gradient(to bottom, #4a3728, #2c1810);
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .collections-style-v .collection-card.book {
+            width: 180px;
+            height: 250px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s;
+            box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .collections-style-v .collection-card.book:hover {
+            transform: translateY(-15px);
+        }
+
+        .collections-style-v .book-spine {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #8b7355, #6b5444);
+            color: #f4e4c1;
+            padding: 1rem 0.5rem;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            writing-mode: horizontal-tb;
+            border-top: 3px solid #5a4332;
+        }
+
+        .collections-style-v .collection-card.book img {
+            width: 100%;
+            height: calc(100% - 60px);
+            object-fit: cover;
+            border: 2px solid #5a4332;
+            border-bottom: none;
+        }
+
+        /* ========== STYLE W: CURVED FLOW ========== */
+        .collections-style-w {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .collections-style-w .curve-item {
+            width: 350px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.4s;
+        }
+
+        .collections-style-w .curve-item:nth-child(odd) {
+            align-self: flex-start;
+            margin-left: calc(var(--curve-offset, 0) * 80px);
+        }
+
+        .collections-style-w .curve-item:nth-child(even) {
+            align-self: flex-end;
+            margin-right: calc(var(--curve-offset, 0) * 80px);
+        }
+
+        .collections-style-w .curve-item:hover {
+            transform: scale(1.08) rotate(2deg);
+        }
+
+        .collections-style-w .collection-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .collections-style-w .collection-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            border-radius: 12px;
+        }
+
+        .collections-style-w .collection-label h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        /* ========== STYLE X: GRID EXPLOSION ========== */
+        .collections-style-x {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .collections-style-x .explode-item {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .collections-style-x .explode-item:hover {
+            transform: translate(var(--explode-x, 0), var(--explode-y, 0)) rotate(var(--explode-rotate, 0)) scale(1.1);
+            z-index: 10;
+        }
+
+        .collections-style-x .collection-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .collections-style-x .collection-label {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.25rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .collections-style-x .collection-label h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
         /* -------- NEW LAB STYLE: PARALLAX REEL -------- */
         .parallax-reel-container {
             display: flex;
@@ -2487,6 +3877,68 @@
             .collections-style-i .collection-card {
                 border: none !important;
                 height: 400px;
+            }
+
+            .collections-style-s {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .collections-style-s .collection-card img {
+                height: 280px;
+            }
+
+            .collections-style-t {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .collections-style-t .collection-card {
+                transform: rotate(0deg) !important;
+            }
+
+            .collections-style-t .collection-card img {
+                height: 280px;
+            }
+
+            .collections-style-u {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(4, 120px);
+            }
+
+            .collections-style-u .collection-card:nth-child(1) {
+                grid-column: 1 / 3;
+                grid-row: 1;
+            }
+
+            .collections-style-u .collection-card:nth-child(2) {
+                grid-column: 1;
+                grid-row: 2;
+            }
+
+            .collections-style-u .collection-card:nth-child(3) {
+                grid-column: 2;
+                grid-row: 2;
+            }
+
+            .collections-style-u .collection-card:nth-child(4) {
+                grid-column: 1;
+                grid-row: 3;
+            }
+
+            .collections-style-u .collection-card:nth-child(5) {
+                grid-column: 2;
+                grid-row: 3;
+            }
+
+            .collections-style-u .collection-card:nth-child(6) {
+                grid-column: 1;
+                grid-row: 4;
+            }
+
+            .collections-style-u .collection-card:nth-child(7) {
+                grid-column: 2;
+                grid-row: 4;
             }
         }
 
@@ -3448,9 +4900,11 @@
                         messy list of links, we give each category a dedicated "cover image." This turns your portfolio
                         into a curated museum experience where the visitor chooses their own path.</p>
                 </div>
-                <p style="max-width: 700px; margin: 0 auto 0.5rem; opacity: 0.8;">Explore nine different ways we can
-                    present these doorways into your world. Each style is designed to match a different aesthetic mood -
-                    from clean and modern to overlapping and editorial.</p>
+                <p style="max-width: 700px; margin: 0 auto 0.5rem; opacity: 0.8;">Explore twenty-four wildly different
+                    ways we can
+                    present these doorways into your world. Each style is designed to match a unique aesthetic mood -
+                    from clean and modern to theatrical spotlights, from scrapbook warmth to futuristic floating depth.
+                </p>
             </div>
 
             <!-- Style Selector Tabs -->
@@ -3467,6 +4921,18 @@
                 <button class="collection-style-tab" data-collection-panel="style-j">Style J: Polaroid</button>
                 <button class="collection-style-tab" data-collection-panel="style-k">Style K: Split</button>
                 <button class="collection-style-tab" data-collection-panel="style-l">Style L: Orbit</button>
+                <button class="collection-style-tab" data-collection-panel="style-m">Style M: Magazine</button>
+                <button class="collection-style-tab" data-collection-panel="style-n">Style N: Floating</button>
+                <button class="collection-style-tab" data-collection-panel="style-o">Style O: Waterfall</button>
+                <button class="collection-style-tab" data-collection-panel="style-p">Style P: Honeycomb</button>
+                <button class="collection-style-tab" data-collection-panel="style-q">Style Q: Film Strip</button>
+                <button class="collection-style-tab" data-collection-panel="style-r">Style R: Diagonal</button>
+                <button class="collection-style-tab" data-collection-panel="style-s">Style S: Spotlight</button>
+                <button class="collection-style-tab" data-collection-panel="style-t">Style T: Scrapbook</button>
+                <button class="collection-style-tab" data-collection-panel="style-u">Style U: Metro</button>
+                <button class="collection-style-tab" data-collection-panel="style-v">Style V: Shelves</button>
+                <button class="collection-style-tab" data-collection-panel="style-w">Style W: Curved</button>
+                <button class="collection-style-tab" data-collection-panel="style-x">Style X: Explosion</button>
             </div>
 
             <!-- Style A: Overlay Cards (default - image with text overlay) -->
@@ -4084,6 +5550,1032 @@
                 </div>
             </div>
 
+            <!-- Style P: Hexagonal Honeycomb -->
+            <div class="collection-panel" data-collection-panel-id="style-p">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Hexagonal Honeycomb:</strong> A geometric tessellation layout inspired by natural honeycomb structures.
+                        Hexagonal clip-paths create an organic, scientific aesthetic with efficient space usage.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 3rem 2rem; background: #fef9f3;" data-lightbox-group="style-p">
+                        <div class="collections-style-p">
+                            <div class="collection-card" data-lightbox-src="assets/images/newborn/1-45da4fdb-1000.jpg">
+                                <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>Newborn</h3>
+                                    <p>Precious first moments</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/child/22-f4468cd2-1500.jpg">
+                                <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child">
+                                <div class="collection-label">
+                                    <h3>Childhood</h3>
+                                    <p>Growing personalities</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/outdoor/13-7343e297-2500.jpg">
+                                <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor">
+                                <div class="collection-label">
+                                    <h3>Natural Light</h3>
+                                    <p>Outdoor adventures</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/special_occasion/3-048ca80d-1000.jpg">
+                                <img src="assets/images/special_occasion/3-048ca80d-1000.jpg" alt="Special Occasion">
+                                <div class="collection-label">
+                                    <h3>Celebrations</h3>
+                                    <p>Milestone moments</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/child/23-9d67bdc8-1500.jpg">
+                                <img src="assets/images/child/23-9d67bdc8-1500.jpg" alt="Child Portrait">
+                                <div class="collection-label">
+                                    <h3>Portraits</h3>
+                                    <p>Authentic expressions</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/child/500-3bbd6787-1500.jpg">
+                                <img src="assets/images/child/500-3bbd6787-1500.jpg" alt="Candid">
+                                <div class="collection-label">
+                                    <h3>Candid</h3>
+                                    <p>Natural moments</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/child/501-c90ae574-1500.jpg">
+                                <img src="assets/images/child/501-c90ae574-1500.jpg" alt="Studio">
+                                <div class="collection-label">
+                                    <h3>Studio</h3>
+                                    <p>Timeless classics</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style Q: Film Strip -->
+            <div class="collection-panel" data-collection-panel-id="style-q">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Film Strip:</strong> A horizontal scrolling layout inspired by classic cinema contact sheets.
+                        Film perforations and darkroom aesthetic create a vintage photography studio vibe.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 3rem 0; background: #1a1a1a;" data-lightbox-group="style-q">
+                        <div class="collections-style-q">
+                            <div class="collection-card" data-lightbox-src="assets/images/newborn/1-45da4fdb-1000.jpg">
+                                <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>Frame 01</h3>
+                                    <p>Newborn Session</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/child/22-f4468cd2-1500.jpg">
+                                <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child">
+                                <div class="collection-label">
+                                    <h3>Frame 02</h3>
+                                    <p>Portrait Series</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/outdoor/13-7343e297-2500.jpg">
+                                <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor">
+                                <div class="collection-label">
+                                    <h3>Frame 03</h3>
+                                    <p>On Location</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/special_occasion/3-048ca80d-1000.jpg">
+                                <img src="assets/images/special_occasion/3-048ca80d-1000.jpg" alt="Special">
+                                <div class="collection-label">
+                                    <h3>Frame 04</h3>
+                                    <p>Event Coverage</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/child/23-9d67bdc8-1500.jpg">
+                                <img src="assets/images/child/23-9d67bdc8-1500.jpg" alt="Studio">
+                                <div class="collection-label">
+                                    <h3>Frame 05</h3>
+                                    <p>Studio Portraits</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/child/gitty-69bd1855-1500.jpg">
+                                <img src="assets/images/child/gitty-69bd1855-1500.jpg" alt="Candid">
+                                <div class="collection-label">
+                                    <h3>Frame 06</h3>
+                                    <p>Candid Moments</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style R: Diagonal Shift -->
+            <div class="collection-panel" data-collection-panel-id="style-r">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Diagonal Shift:</strong> A dynamic layout with the entire grid rotated 45 degrees.
+                        Images are counter-rotated to stay upright, creating energetic diamond-shaped compositions.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 4rem 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); overflow: hidden;" data-lightbox-group="style-r">
+                        <div class="collections-style-r">
+                            <div class="collection-card" data-lightbox-src="assets/images/newborn/1-45da4fdb-1000.jpg">
+                                <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>Newborn Dreams</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/child/22-f4468cd2-1500.jpg">
+                                <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child">
+                                <div class="collection-label">
+                                    <h3>Playful Spirits</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/outdoor/13-7343e297-2500.jpg">
+                                <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor">
+                                <div class="collection-label">
+                                    <h3>Wild & Free</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/special_occasion/3-048ca80d-1000.jpg">
+                                <img src="assets/images/special_occasion/3-048ca80d-1000.jpg" alt="Special">
+                                <div class="collection-label">
+                                    <h3>Celebrations</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style S: Spotlight Theater -->
+            <div class="collection-panel" data-collection-panel-id="style-s">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Spotlight Theater:</strong> A dramatic dark stage with radial spotlighting effects.
+                        Each collection is illuminated like a gallery opening, creating theatrical depth and focus.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 3rem; background: #0a0a0a;" data-lightbox-group="style-s">
+                        <div class="collections-style-s">
+                            <div class="collection-card" data-lightbox-src="assets/images/newborn/1-45da4fdb-1000.jpg">
+                                <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>Newborn Gallery</h3>
+                                    <p>Opening Night</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/child/22-f4468cd2-1500.jpg">
+                                <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Children">
+                                <div class="collection-label">
+                                    <h3>Childhood</h3>
+                                    <p>Center Stage</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/outdoor/13-7343e297-2500.jpg">
+                                <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor">
+                                <div class="collection-label">
+                                    <h3>Natural Light</h3>
+                                    <p>Featured</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/special_occasion/1-7b28e9b8-1000.jpg">
+                                <img src="assets/images/special_occasion/1-7b28e9b8-1000.jpg" alt="Special Occasions">
+                                <div class="collection-label">
+                                    <h3>Celebrations</h3>
+                                    <p>Spotlight</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/events/D34A2269copy-deec4d54-1000.jpg">
+                                <img src="assets/images/events/D34A2269copy-deec4d54-1000.jpg" alt="Events">
+                                <div class="collection-label">
+                                    <h3>Events</h3>
+                                    <p>On Display</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style T: Scrapbook Pages -->
+            <div class="collection-panel" data-collection-panel-id="style-t">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Scrapbook Pages:</strong> A personal, handcrafted aesthetic with tape effects and rotated images.
+                        Evokes the warmth of physical photo albums with textured backgrounds and mixed-media elements.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 3rem; background: #faf7f2;" data-lightbox-group="style-t">
+                        <div class="collections-style-t">
+                            <div class="collection-card" data-lightbox-src="assets/images/newborn/3.1-b76dcd28-1000.jpg">
+                                <img src="assets/images/newborn/3.1-b76dcd28-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>Precious Moments</h3>
+                                    <p>First days</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/child/23-9d67bdc8-1500.jpg">
+                                <img src="assets/images/child/23-9d67bdc8-1500.jpg" alt="Children">
+                                <div class="collection-label">
+                                    <h3>Growing Up</h3>
+                                    <p>Little adventures</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/outdoor/2-6ea104f9-2500.jpg">
+                                <img src="assets/images/outdoor/2-6ea104f9-2500.jpg" alt="Outdoor">
+                                <div class="collection-label">
+                                    <h3>Outdoor Fun</h3>
+                                    <p>In the wild</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/special_occasion/3-048ca80d-1000.jpg">
+                                <img src="assets/images/special_occasion/3-048ca80d-1000.jpg" alt="Special">
+                                <div class="collection-label">
+                                    <h3>Special Days</h3>
+                                    <p>Celebrating life</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/three_year_milestone/3.1-5342156c-1500.jpg">
+                                <img src="assets/images/three_year_milestone/3.1-5342156c-1500.jpg" alt="Milestone">
+                                <div class="collection-label">
+                                    <h3>Milestones</h3>
+                                    <p>Three & thriving</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/events/D34A5234-488bd861-1000.JPG">
+                                <img src="assets/images/events/D34A5234-488bd861-1000.JPG" alt="Events">
+                                <div class="collection-label">
+                                    <h3>Family Events</h3>
+                                    <p>Memories made</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style U: Metro Tiles -->
+            <div class="collection-panel" data-collection-panel-id="style-u">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Metro Tiles:</strong> Windows Metro-inspired grid with varied tile sizes.
+                        Clean, modern, tech-forward design with precise placement and flat aesthetic.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" data-lightbox-group="style-u">
+                        <div class="collections-style-u">
+                            <div class="collection-card metro-wide" data-lightbox-src="assets/images/newborn/1-45da4fdb-1000.jpg">
+                                <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>Newborns</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card metro-tall" data-lightbox-src="assets/images/child/22-f4468cd2-1500.jpg">
+                                <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Children">
+                                <div class="collection-label">
+                                    <h3>Children</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card metro-square" data-lightbox-src="assets/images/outdoor/13-7343e297-2500.jpg">
+                                <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor">
+                                <div class="collection-label">
+                                    <h3>Outdoor</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card metro-square" data-lightbox-src="assets/images/special_occasion/1-7b28e9b8-1000.jpg">
+                                <img src="assets/images/special_occasion/1-7b28e9b8-1000.jpg" alt="Special">
+                                <div class="collection-label">
+                                    <h3>Special</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card metro-wide" data-lightbox-src="assets/images/events/D34A2269copy-deec4d54-1000.jpg">
+                                <img src="assets/images/events/D34A2269copy-deec4d54-1000.jpg" alt="Events">
+                                <div class="collection-label">
+                                    <h3>Events</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card metro-tall" data-lightbox-src="assets/images/three_year_milestone/4-aa2dadf3-1500.jpg">
+                                <img src="assets/images/three_year_milestone/4-aa2dadf3-1500.jpg" alt="Milestone">
+                                <div class="collection-label">
+                                    <h3>Milestones</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card metro-square" data-lightbox-src="assets/images/newborn/4-48ce8281-1000.jpg">
+                                <img src="assets/images/newborn/4-48ce8281-1000.jpg" alt="Studio">
+                                <div class="collection-label">
+                                    <h3>Studio</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style M: Magazine Spread (Asymmetric Editorial) -->
+            <div class="collection-panel" data-collection-panel-id="style-m">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Magazine Spread:</strong> An asymmetric editorial layout inspired by high-end fashion
+                        magazines.
+                        Large hero images paired with bold typography create a Vogue-like reading experience.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 0; background: #fff;" data-lightbox-group="style-m">
+                        <div class="collections-style-m">
+                            <div class="collection-card collection-card-large"
+                                data-lightbox-src="assets/images/newborn/1-45da4fdb-1000.jpg">
+                                <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>The Newborn Issue</h3>
+                                    <p>Vol. 1 — Studio Sessions</p>
+                                </div>
+                            </div>
+                            <div class="collection-card collection-card-small"
+                                data-lightbox-src="assets/images/child/22-f4468cd2-1500.jpg">
+                                <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child">
+                                <div class="collection-label">
+                                    <h3>Childhood</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card collection-card-medium"
+                                data-lightbox-src="assets/images/outdoor/13-7343e297-2500.jpg">
+                                <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor">
+                                <div class="collection-label">
+                                    <h3>Natural Light Stories</h3>
+                                    <p>On location</p>
+                                </div>
+                            </div>
+                            <div class="collection-card collection-card-small"
+                                data-lightbox-src="assets/images/special_occasion/1-7b28e9b8-1000.jpg">
+                                <img src="assets/images/special_occasion/1-7b28e9b8-1000.jpg" alt="Events">
+                                <div class="collection-label">
+                                    <h3>Celebrations</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style N: Floating Depth (3D Perspective) -->
+            <div class="collection-panel" data-collection-panel-id="style-n">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Floating Depth:</strong> Cards hover at different depths with parallax shadows.
+                        A modern, tech-forward aesthetic that creates an immersive 3D experience.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 3rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"
+                        data-lightbox-group="style-n">
+                        <div class="collections-style-n">
+                            <div class="collection-card" data-depth="1"
+                                data-lightbox-src="assets/images/newborn/73-5b55e942-1000.jpg">
+                                <img src="assets/images/newborn/73-5b55e942-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>Newborn</h3>
+                                    <p>Precious first moments</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-depth="2"
+                                data-lightbox-src="assets/images/child/23-9d67bdc8-1500.jpg">
+                                <img src="assets/images/child/23-9d67bdc8-1500.jpg" alt="Child">
+                                <div class="collection-label">
+                                    <h3>Growing Up</h3>
+                                    <p>Personality shines</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-depth="3"
+                                data-lightbox-src="assets/images/outdoor/2-6ea104f9-2500.jpg">
+                                <img src="assets/images/outdoor/2-6ea104f9-2500.jpg" alt="Outdoor">
+                                <div class="collection-label">
+                                    <h3>Outdoor Adventures</h3>
+                                    <p>Nature's canvas</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-depth="1"
+                                data-lightbox-src="assets/images/three_year_milestone/11-a00f14f0-1500.jpg">
+                                <img src="assets/images/three_year_milestone/11-a00f14f0-1500.jpg" alt="Milestone">
+                                <div class="collection-label">
+                                    <h3>Milestones</h3>
+                                    <p>Celebrating growth</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style O: Cascade Waterfall (Masonry) -->
+            <div class="collection-panel" data-collection-panel-id="style-o">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Cascade Waterfall:</strong> Pinterest-style masonry with varying column widths.
+                        Images flow naturally down the page for an organic, browsing-friendly experience.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 2rem; background: #f7f7f7;" data-lightbox-group="style-o">
+                        <div class="collections-style-o">
+                            <div class="collection-card" data-lightbox-src="assets/images/newborn/71-d1d561d4-1000.jpg">
+                                <img src="assets/images/newborn/71-d1d561d4-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>Newborn Dreams</h3>
+                                    <p>30+ photos</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/child/22-f4468cd2-1500.jpg">
+                                <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child">
+                                <div class="collection-label">
+                                    <h3>Little Ones</h3>
+                                    <p>30+ photos</p>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/outdoor/13-7343e297-2500.jpg">
+                                <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor">
+                                <div class="collection-label">
+                                    <h3>Golden Hour</h3>
+                                    <p>25+ photos</p>
+                                </div>
+                            </div>
+                            <div class="collection-card"
+                                data-lightbox-src="assets/images/three_year_milestone/10-52b89603-1500.jpg">
+                                <img src="assets/images/three_year_milestone/10-52b89603-1500.jpg" alt="Milestone">
+                                <div class="collection-label">
+                                    <h3>Three Years</h3>
+                                    <p>30+ photos</p>
+                                </div>
+                            </div>
+                            <div class="collection-card"
+                                data-lightbox-src="assets/images/special_occasion/2-899f6b4b-1000.jpg">
+                                <img src="assets/images/special_occasion/2-899f6b4b-1000.jpg" alt="Events">
+                                <div class="collection-label">
+                                    <h3>Party Time</h3>
+                                    <p>23+ photos</p>
+                                </div>
+                            </div>
+                            <div class="collection-card"
+                                data-lightbox-src="assets/images/events/D34A2276copy-2c5bcfa7-1000.jpg">
+                                <img src="assets/images/events/D34A2276copy-2c5bcfa7-1000.jpg" alt="Events">
+                                <div class="collection-label">
+                                    <h3>Special Events</h3>
+                                    <p>17+ photos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style P: Hexagonal Honeycomb -->
+            <div class="collection-panel" data-collection-panel-id="style-p">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Hexagonal Honeycomb:</strong> Geometric tessellation creates a unique, organic pattern.
+                        Scientific yet natural - unforgettable and highly distinctive.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 3rem; background: #fefefe;" data-lightbox-group="style-p">
+                        <div class="collections-style-p">
+                            <div class="collection-card hex"
+                                data-lightbox-src="assets/images/newborn/1-45da4fdb-1000.jpg">
+                                <div class="hex-inner">
+                                    <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Newborn">
+                                    <div class="collection-label">
+                                        <h3>Newborn</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="collection-card hex"
+                                data-lightbox-src="assets/images/child/22-f4468cd2-1500.jpg">
+                                <div class="hex-inner">
+                                    <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child">
+                                    <div class="collection-label">
+                                        <h3>Childhood</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="collection-card hex"
+                                data-lightbox-src="assets/images/outdoor/13-7343e297-2500.jpg">
+                                <div class="hex-inner">
+                                    <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor">
+                                    <div class="collection-label">
+                                        <h3>Outdoor</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="collection-card hex"
+                                data-lightbox-src="assets/images/three_year_milestone/11-a00f14f0-1500.jpg">
+                                <div class="hex-inner">
+                                    <img src="assets/images/three_year_milestone/11-a00f14f0-1500.jpg" alt="Milestone">
+                                    <div class="collection-label">
+                                        <h3>Milestones</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="collection-card hex"
+                                data-lightbox-src="assets/images/special_occasion/3-048ca80d-1000.jpg">
+                                <div class="hex-inner">
+                                    <img src="assets/images/special_occasion/3-048ca80d-1000.jpg" alt="Events">
+                                    <div class="collection-label">
+                                        <h3>Occasions</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style Q: Film Strip (Cinema Contact Sheet) -->
+            <div class="collection-panel" data-collection-panel-id="style-q">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Film Strip:</strong> Horizontal scrolling cinema-style contact sheets.
+                        Nostalgic photography studio aesthetic with vintage charm.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 2rem; background: #1a1a1a;" data-lightbox-group="style-q">
+                        <div class="collections-style-q">
+                            <div class="film-strip-container">
+                                <div class="collection-card"
+                                    data-lightbox-src="assets/images/newborn/64-7694e869-1000.jpg">
+                                    <div class="film-frame">
+                                        <img src="assets/images/newborn/64-7694e869-1000.jpg" alt="Newborn">
+                                        <div class="film-label">NEWBORN • 001</div>
+                                    </div>
+                                </div>
+                                <div class="collection-card"
+                                    data-lightbox-src="assets/images/child/23-9d67bdc8-1500.jpg">
+                                    <div class="film-frame">
+                                        <img src="assets/images/child/23-9d67bdc8-1500.jpg" alt="Child">
+                                        <div class="film-label">CHILD • 002</div>
+                                    </div>
+                                </div>
+                                <div class="collection-card"
+                                    data-lightbox-src="assets/images/outdoor/2-6ea104f9-2500.jpg">
+                                    <div class="film-frame">
+                                        <img src="assets/images/outdoor/2-6ea104f9-2500.jpg" alt="Outdoor">
+                                        <div class="film-label">OUTDOOR • 003</div>
+                                    </div>
+                                </div>
+                                <div class="collection-card"
+                                    data-lightbox-src="assets/images/three_year_milestone/12-a8773ce8-1500.jpg">
+                                    <div class="film-frame">
+                                        <img src="assets/images/three_year_milestone/12-a8773ce8-1500.jpg"
+                                            alt="Milestone">
+                                        <div class="film-label">MILESTONE • 004</div>
+                                    </div>
+                                </div>
+                                <div class="collection-card"
+                                    data-lightbox-src="assets/images/special_occasion/1-7b28e9b8-1000.jpg">
+                                    <div class="film-frame">
+                                        <img src="assets/images/special_occasion/1-7b28e9b8-1000.jpg" alt="Events">
+                                        <div class="film-label">EVENTS • 005</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style R: Diagonal Shift (Rotated Grid) -->
+            <div class="collection-panel" data-collection-panel-id="style-r">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Diagonal Shift:</strong> The entire grid rotated 45 degrees creates dynamic energy.
+                        Bold, unconventional, and impossible to ignore.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 4rem; background: var(--color-surface); overflow: hidden;"
+                        data-lightbox-group="style-r">
+                        <div class="collections-style-r">
+                            <div class="collection-card" data-lightbox-src="assets/images/newborn/1-45da4fdb-1000.jpg">
+                                <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>Newborn</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/child/22-f4468cd2-1500.jpg">
+                                <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child">
+                                <div class="collection-label">
+                                    <h3>Childhood</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card" data-lightbox-src="assets/images/outdoor/13-7343e297-2500.jpg">
+                                <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor">
+                                <div class="collection-label">
+                                    <h3>Adventures</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card"
+                                data-lightbox-src="assets/images/three_year_milestone/10-52b89603-1500.jpg">
+                                <img src="assets/images/three_year_milestone/10-52b89603-1500.jpg" alt="Milestone">
+                                <div class="collection-label">
+                                    <h3>Milestones</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style S: Spotlight Theater (Dramatic Lighting) -->
+            <div class="collection-panel" data-collection-panel-id="style-s">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Spotlight Theater:</strong> Dark stage with dramatic spotlighting on each image.
+                        Theatrical gallery opening vibe - premium and exclusive.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 3rem; background: #0a0a0a;" data-lightbox-group="style-s">
+                        <div class="collections-style-s">
+                            <div class="collection-card spotlight"
+                                data-lightbox-src="assets/images/newborn/73-5b55e942-1000.jpg">
+                                <div class="spotlight-beam"></div>
+                                <img src="assets/images/newborn/73-5b55e942-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>Newborn Portraits</h3>
+                                    <p>The opening act</p>
+                                </div>
+                            </div>
+                            <div class="collection-card spotlight"
+                                data-lightbox-src="assets/images/child/22-f4468cd2-1500.jpg">
+                                <div class="spotlight-beam"></div>
+                                <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child">
+                                <div class="collection-label">
+                                    <h3>Childhood Magic</h3>
+                                    <p>Center stage</p>
+                                </div>
+                            </div>
+                            <div class="collection-card spotlight"
+                                data-lightbox-src="assets/images/outdoor/1-d81f4d28-300.jpg">
+                                <div class="spotlight-beam"></div>
+                                <img src="assets/images/outdoor/1-d81f4d28-300.jpg" alt="Outdoor">
+                                <div class="collection-label">
+                                    <h3>Nature's Theater</h3>
+                                    <p>The grand finale</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style T: Scrapbook Pages (Mixed Media) -->
+            <div class="collection-panel" data-collection-panel-id="style-t">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Scrapbook Pages:</strong> Mixed media with tape, stickers, and handwritten notes.
+                        Personal, crafted by hand - warm and intimate storytelling.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 2rem; background: #f9f6f0;" data-lightbox-group="style-t">
+                        <div class="collections-style-t">
+                            <div class="collection-card scrapbook"
+                                data-lightbox-src="assets/images/newborn/71-d1d561d4-1000.jpg">
+                                <div class="tape tape-top"></div>
+                                <img src="assets/images/newborn/71-d1d561d4-1000.jpg" alt="Newborn">
+                                <div class="collection-label handwritten">
+                                    <h3>Our Newborn</h3>
+                                    <p>First days ♡</p>
+                                </div>
+                                <div class="corner-decoration">✿</div>
+                            </div>
+                            <div class="collection-card scrapbook"
+                                data-lightbox-src="assets/images/child/23-9d67bdc8-1500.jpg">
+                                <div class="tape tape-corner"></div>
+                                <img src="assets/images/child/23-9d67bdc8-1500.jpg" alt="Child">
+                                <div class="collection-label handwritten">
+                                    <h3>Growing Up</h3>
+                                    <p>So fast! ★</p>
+                                </div>
+                            </div>
+                            <div class="collection-card scrapbook"
+                                data-lightbox-src="assets/images/outdoor/2-6ea104f9-2500.jpg">
+                                <div class="tape tape-top"></div>
+                                <img src="assets/images/outdoor/2-6ea104f9-2500.jpg" alt="Outdoor">
+                                <div class="collection-label handwritten">
+                                    <h3>Adventures</h3>
+                                    <p>Outdoors ♥</p>
+                                </div>
+                                <div class="corner-decoration">✦</div>
+                            </div>
+                            <div class="collection-card scrapbook"
+                                data-lightbox-src="assets/images/special_occasion/1-7b28e9b8-1000.jpg">
+                                <div class="tape tape-corner"></div>
+                                <img src="assets/images/special_occasion/1-7b28e9b8-1000.jpg" alt="Events">
+                                <div class="collection-label handwritten">
+                                    <h3>Party Day!</h3>
+                                    <p>Celebrate ✿</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style U: Metro Tiles (Windows Metro Style) -->
+            <div class="collection-panel" data-collection-panel-id="style-u">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Metro Tiles:</strong> Windows Metro-style varied rectangles in a dynamic grid.
+                        Clean, modern, tech-inspired - information-dense yet organized.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 2rem; background: #000;" data-lightbox-group="style-u">
+                        <div class="collections-style-u">
+                            <div class="collection-card metro-large"
+                                data-lightbox-src="assets/images/newborn/1-45da4fdb-1000.jpg">
+                                <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>Newborn</h3>
+                                    <p>30 photos</p>
+                                </div>
+                            </div>
+                            <div class="collection-card metro-small"
+                                data-lightbox-src="assets/images/child/22-f4468cd2-1500.jpg">
+                                <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child">
+                                <div class="collection-label">
+                                    <h3>Child</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card metro-small"
+                                data-lightbox-src="assets/images/outdoor/13-7343e297-2500.jpg">
+                                <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor">
+                                <div class="collection-label">
+                                    <h3>Outdoor</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card metro-medium"
+                                data-lightbox-src="assets/images/three_year_milestone/10-52b89603-1500.jpg">
+                                <img src="assets/images/three_year_milestone/10-52b89603-1500.jpg" alt="Milestone">
+                                <div class="collection-label">
+                                    <h3>Milestones</h3>
+                                    <p>Special moments</p>
+                                </div>
+                            </div>
+                            <div class="collection-card metro-medium"
+                                data-lightbox-src="assets/images/special_occasion/3-048ca80d-1000.jpg">
+                                <img src="assets/images/special_occasion/3-048ca80d-1000.jpg" alt="Events">
+                                <div class="collection-label">
+                                    <h3>Events</h3>
+                                    <p>Celebrations</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style V: Stacked Shelves (Library Aesthetic) -->
+            <div class="collection-panel" data-collection-panel-id="style-v">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Stacked Shelves:</strong> Images arranged like books on library shelves with depth.
+                        Intellectual, curated collection feel - cozy and browsable.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 2rem; background: #2c1810;" data-lightbox-group="style-v">
+                        <div class="collections-style-v">
+                            <div class="shelf">
+                                <div class="shelf-board"></div>
+                                <div class="collection-card book"
+                                    data-lightbox-src="assets/images/newborn/64-7694e869-1000.jpg">
+                                    <div class="book-spine">NEWBORN</div>
+                                    <img src="assets/images/newborn/64-7694e869-1000.jpg" alt="Newborn">
+                                </div>
+                                <div class="collection-card book"
+                                    data-lightbox-src="assets/images/child/23-9d67bdc8-1500.jpg">
+                                    <div class="book-spine">CHILDHOOD</div>
+                                    <img src="assets/images/child/23-9d67bdc8-1500.jpg" alt="Child">
+                                </div>
+                                <div class="collection-card book"
+                                    data-lightbox-src="assets/images/outdoor/2-6ea104f9-2500.jpg">
+                                    <div class="book-spine">OUTDOOR</div>
+                                    <img src="assets/images/outdoor/2-6ea104f9-2500.jpg" alt="Outdoor">
+                                </div>
+                            </div>
+                            <div class="shelf">
+                                <div class="shelf-board"></div>
+                                <div class="collection-card book"
+                                    data-lightbox-src="assets/images/three_year_milestone/11-a00f14f0-1500.jpg">
+                                    <div class="book-spine">MILESTONES</div>
+                                    <img src="assets/images/three_year_milestone/11-a00f14f0-1500.jpg" alt="Milestone">
+                                </div>
+                                <div class="collection-card book"
+                                    data-lightbox-src="assets/images/special_occasion/1-7b28e9b8-1000.jpg">
+                                    <div class="book-spine">EVENTS</div>
+                                    <img src="assets/images/special_occasion/1-7b28e9b8-1000.jpg" alt="Events">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style W: Curved Flow (Organic Paths) -->
+            <div class="collection-panel" data-collection-panel-id="style-w">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Curved Flow:</strong> Images follow curved, organic paths creating fluid movement.
+                        Soft, inviting, and naturally guides the eye through your work.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 3rem; background: linear-gradient(to bottom, #fef9f3, #fff);"
+                        data-lightbox-group="style-w">
+                        <div class="collections-style-w">
+                            <div class="collection-card curve-item" style="--curve-offset: 0;"
+                                data-lightbox-src="assets/images/newborn/1-45da4fdb-1000.jpg">
+                                <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>Newborn</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card curve-item" style="--curve-offset: 1;"
+                                data-lightbox-src="assets/images/child/22-f4468cd2-1500.jpg">
+                                <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child">
+                                <div class="collection-label">
+                                    <h3>Childhood</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card curve-item" style="--curve-offset: 2;"
+                                data-lightbox-src="assets/images/outdoor/13-7343e297-2500.jpg">
+                                <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor">
+                                <div class="collection-label">
+                                    <h3>Adventures</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card curve-item" style="--curve-offset: 3;"
+                                data-lightbox-src="assets/images/three_year_milestone/10-52b89603-1500.jpg">
+                                <img src="assets/images/three_year_milestone/10-52b89603-1500.jpg" alt="Milestone">
+                                <div class="collection-label">
+                                    <h3>Milestones</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style X: Grid Explosion (Dynamic Scatter) -->
+            <div class="collection-panel" data-collection-panel-id="style-x">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <p style="font-size: 1rem; opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                        <strong>Grid Explosion:</strong> Cards start as a grid, then break free and scatter dynamically.
+                        Playful, energetic, interactive - surprising and memorable.
+                    </p>
+                </div>
+                <div class="demo-window" style="margin-top: 0;">
+                    <div class="demo-browser-bar">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div style="padding: 3rem; background: radial-gradient(circle, #f5f5f5 0%, #e0e0e0 100%);"
+                        data-lightbox-group="style-x">
+                        <div class="collections-style-x">
+                            <div class="collection-card explode-item"
+                                style="--explode-x: -20px; --explode-y: -15px; --explode-rotate: -5deg;"
+                                data-lightbox-src="assets/images/newborn/73-5b55e942-1000.jpg">
+                                <img src="assets/images/newborn/73-5b55e942-1000.jpg" alt="Newborn">
+                                <div class="collection-label">
+                                    <h3>Newborn</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card explode-item"
+                                style="--explode-x: 15px; --explode-y: -10px; --explode-rotate: 3deg;"
+                                data-lightbox-src="assets/images/child/22-f4468cd2-1500.jpg">
+                                <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child">
+                                <div class="collection-label">
+                                    <h3>Child</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card explode-item"
+                                style="--explode-x: -10px; --explode-y: 20px; --explode-rotate: -3deg;"
+                                data-lightbox-src="assets/images/outdoor/13-7343e297-2500.jpg">
+                                <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor">
+                                <div class="collection-label">
+                                    <h3>Outdoor</h3>
+                                </div>
+                            </div>
+                            <div class="collection-card explode-item"
+                                style="--explode-x: 25px; --explode-y: 15px; --explode-rotate: 6deg;"
+                                data-lightbox-src="assets/images/three_year_milestone/10-52b89603-1500.jpg">
+                                <img src="assets/images/three_year_milestone/10-52b89603-1500.jpg" alt="Milestone">
+                                <div class="collection-label">
+                                    <h3>Milestones</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Explanation below -->
             <div style="margin-top: 2.5rem; max-width: 800px; margin-left: auto; margin-right: auto;">
                 <div class="element-details stagger-reveal">
@@ -4636,9 +7128,10 @@
                                     superpower.</div>
                             </div>
                             <div class="faq-item" onclick="this.classList.toggle('open')">
-                                <div class="faq-question">Can I bring my dog? <i data-lucide="chevron-down"></i></div>
-                                <div class="faq-answer">Absolutely! Fur babies are family too. I love incorporating pets
-                                    into family sessions - some of my favorite shots include the family dog.</div>
+                                <div class="faq-question">Can I bring my Kids? <i data-lucide="chevron-down"></i></div>
+                                <div class="faq-answer">Absolutely! Fur babies are family too. I love incorporating
+                                    parents into family sessions - some of my favorite shots include me and my kids.
+                                </div>
                             </div>
                             <div class="faq-item" onclick="this.classList.toggle('open')">
                                 <div class="faq-question">How long until I get my photos? <i

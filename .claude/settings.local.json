@@ -1,10 +1,19 @@
 {
+  "env": {
+    "FIRECRAWL_API_KEY": "fc-3850f483cc8d46c0a5357affafbce0af"
+  },
   "permissions": {
     "allow": [
       "Bash(ls:*)",
       "Bash(powershell -Command \"[Environment]::GetEnvironmentVariable\\(''Path'', ''User''\\)\")",
       "Bash(powershell -Command \"$currentPath = [Environment]::GetEnvironmentVariable\\(''Path'', ''User''\\); $newPath = ''C:\\\\Users\\\\josef\\\\.local\\\\bin''; if \\($currentPath -notlike \"\"*$newPath*\"\"\\) { [Environment]::SetEnvironmentVariable\\(''Path'', \"\"$currentPath;$newPath\"\", ''User''\\); Write-Host ''Successfully added to PATH'' } else { Write-Host ''Path already exists'' }\")",
-      "Bash(powershell:*)"
+      "Bash(powershell:*)",
+      "Skill(firecrawl:search)",
+      "Skill(firecrawl:search:*)",
+      "mcp__plugin_firecrawl_firecrawl__firecrawl_search",
+      "Skill(firecrawl:setup)",
+      "Skill(firecrawl:setup:*)",
+      "mcp__plugin_firecrawl_firecrawl__firecrawl_scrape"
     ]
   }
 }
