@@ -3340,6 +3340,711 @@
             transform: scale(1.1);
         }
 
+        /* ================================
+           PACKAGES LAB - LAYOUT STYLES
+           ================================ */
+        .package-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .package-tab {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-btn);
+            background: var(--color-surface);
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--color-text);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .package-tab:hover {
+            border-color: var(--color-secondary);
+            transform: translateY(-2px);
+        }
+
+        .package-tab.active {
+            background: var(--color-secondary);
+            color: white;
+            border-color: var(--color-secondary);
+            box-shadow: 0 4px 15px rgba(212, 163, 154, 0.3);
+        }
+
+        .package-panel {
+            display: none;
+            animation: galleryFadeIn 0.5s ease;
+        }
+
+        .package-panel.active {
+            display: block;
+        }
+
+        /* Shared Package Elements */
+        .pkg-price {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1;
+        }
+
+        .pkg-name {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pkg-feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pkg-feature-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(107, 94, 81, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .pkg-feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .pkg-feature-list li i {
+            color: var(--color-primary);
+            flex-shrink: 0;
+        }
+
+        .pkg-category-label {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: var(--radius-btn);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .pkg-category-newborn {
+            background: rgba(148, 163, 150, 0.15);
+            color: var(--color-primary);
+        }
+
+        .pkg-category-family {
+            background: rgba(212, 163, 154, 0.15);
+            color: var(--color-secondary);
+        }
+
+        .pkg-note {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        /* ---- Layout 1: Classic Cards ---- */
+        .pkg-classic-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .pkg-classic-card {
+            background: var(--color-surface);
+            border-radius: var(--radius-card);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            border: 2px solid transparent;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .pkg-classic-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .pkg-classic-card.featured {
+            border-color: var(--color-secondary);
+            transform: scale(1.05);
+        }
+
+        .pkg-classic-card.featured:hover {
+            transform: scale(1.05) translateY(-8px);
+        }
+
+        .pkg-classic-card .pkg-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-secondary);
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: var(--radius-btn);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .pkg-classic-card .pkg-price {
+            margin: 1.5rem 0;
+        }
+
+        .pkg-classic-card .pkg-feature-list {
+            text-align: left;
+            margin: 1.5rem 0;
+        }
+
+        .pkg-classic-divider {
+            width: 40px;
+            height: 3px;
+            background: var(--color-secondary);
+            margin: 1rem auto;
+            border-radius: 3px;
+        }
+
+        /* ---- Layout 2: Elegant Columns ---- */
+        .pkg-elegant-container {
+            display: flex;
+            gap: 0;
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .pkg-elegant-col {
+            flex: 1;
+            padding: 3rem 2rem;
+            background: var(--color-surface);
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            border-right: 1px solid rgba(107, 94, 81, 0.08);
+        }
+
+        .pkg-elegant-col:last-child {
+            border-right: none;
+        }
+
+        .pkg-elegant-col:hover {
+            background: rgba(148, 163, 150, 0.04);
+        }
+
+        .pkg-elegant-col.featured {
+            background: linear-gradient(135deg, rgba(148, 163, 150, 0.1), rgba(212, 163, 154, 0.08));
+            flex: 1.15;
+        }
+
+        .pkg-elegant-col .pkg-price {
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .pkg-elegant-col .pkg-price::after {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 2px;
+            background: var(--color-secondary);
+            margin-top: 0.75rem;
+        }
+
+        .pkg-elegant-col .pkg-duration {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ---- Layout 3: Accordion Reveal ---- */
+        .pkg-accordion-stack {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .pkg-accordion-item {
+            background: var(--color-surface);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s ease;
+        }
+
+        .pkg-accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .pkg-accordion-header:hover {
+            background: rgba(148, 163, 150, 0.05);
+        }
+
+        .pkg-accordion-header .pkg-acc-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .pkg-accordion-header .pkg-acc-left .pkg-price {
+            font-size: 1.8rem;
+        }
+
+        .pkg-accordion-header .pkg-acc-chevron {
+            transition: transform 0.4s ease;
+            color: var(--color-accent);
+        }
+
+        .pkg-accordion-item.open .pkg-acc-chevron {
+            transform: rotate(180deg);
+        }
+
+        .pkg-accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .pkg-accordion-item.open .pkg-accordion-body {
+            max-height: 500px;
+        }
+
+        .pkg-accordion-body-inner {
+            padding: 0 2rem 2rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .pkg-accordion-body-inner .pkg-feature-list li {
+            font-size: 0.9rem;
+        }
+
+        .pkg-accordion-body-inner .pkg-acc-highlight {
+            background: rgba(212, 163, 154, 0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .pkg-accordion-body-inner .pkg-acc-highlight .pkg-acc-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--color-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem auto;
+            color: white;
+        }
+
+        /* ---- Layout 4: Magazine Spread ---- */
+        .pkg-magazine-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .pkg-magazine-image {
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            position: sticky;
+            top: 2rem;
+        }
+
+        .pkg-magazine-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .pkg-magazine-image .pkg-mag-caption {
+            padding: 1.5rem 2rem;
+            background: var(--color-surface);
+        }
+
+        .pkg-magazine-image .pkg-mag-caption h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .pkg-magazine-image .pkg-mag-caption p {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin: 0;
+        }
+
+        .pkg-magazine-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .pkg-magazine-card {
+            background: var(--color-surface);
+            border-radius: var(--radius-card);
+            padding: 2rem;
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .pkg-magazine-card:hover {
+            border-left-color: var(--color-secondary);
+            transform: translateX(4px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .pkg-magazine-card .pkg-mag-price-block {
+            text-align: center;
+            min-width: 100px;
+            flex-shrink: 0;
+        }
+
+        .pkg-magazine-card .pkg-mag-price-block .pkg-price {
+            font-size: 2rem;
+        }
+
+        .pkg-magazine-card .pkg-mag-details {
+            flex: 1;
+        }
+
+        .pkg-magazine-card .pkg-mag-details h4 {
+            margin-bottom: 0.75rem;
+        }
+
+        /* ---- Layout 5: Floating Bubbles ---- */
+        .pkg-bubbles-container {
+            position: relative;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pkg-bubble {
+            position: absolute;
+            background: var(--color-surface);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            cursor: default;
+        }
+
+        .pkg-bubble:hover {
+            border-radius: var(--radius-card);
+            z-index: 10;
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .pkg-bubble-sm {
+            width: 200px;
+            height: 200px;
+        }
+
+        .pkg-bubble-md {
+            width: 260px;
+            height: 260px;
+        }
+
+        .pkg-bubble-lg {
+            width: 320px;
+            height: 320px;
+        }
+
+        .pkg-bubble .pkg-price {
+            font-size: 1.8rem;
+            margin: 0.5rem 0;
+        }
+
+        .pkg-bubble-lg .pkg-price {
+            font-size: 2.2rem;
+        }
+
+        .pkg-bubble .pkg-bubble-name {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .pkg-bubble .pkg-bubble-sub {
+            font-size: 0.75rem;
+            opacity: 0.6;
+            margin-top: 0.25rem;
+        }
+
+        .pkg-bubble .pkg-bubble-details {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            font-size: 0.8rem;
+            margin-top: 0;
+        }
+
+        .pkg-bubble:hover .pkg-bubble-details {
+            opacity: 1;
+            max-height: 200px;
+            margin-top: 0.75rem;
+        }
+
+        .pkg-bubble-b1 { top: 5%; left: 5%; }
+        .pkg-bubble-b2 { top: 0%; left: 38%; }
+        .pkg-bubble-b3 { top: 8%; right: 5%; }
+        .pkg-bubble-b4 { bottom: 5%; left: 12%; }
+        .pkg-bubble-b5 { bottom: 0%; left: 42%; }
+        .pkg-bubble-b6 { bottom: 8%; right: 8%; }
+
+        /* ---- Layout 6: Timeline Flow ---- */
+        .pkg-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .pkg-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        .pkg-timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .pkg-timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .pkg-timeline-card {
+            width: 44%;
+            background: var(--color-surface);
+            border-radius: var(--radius-card);
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .pkg-timeline-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .pkg-timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--color-secondary);
+            border: 4px solid var(--color-background);
+            box-shadow: 0 0 0 3px var(--color-secondary);
+            z-index: 2;
+        }
+
+        .pkg-timeline-item:nth-child(odd) .pkg-timeline-card {
+            margin-right: auto;
+        }
+
+        .pkg-timeline-item:nth-child(even) .pkg-timeline-card {
+            margin-left: auto;
+        }
+
+        .pkg-timeline-card .pkg-price {
+            font-size: 2rem;
+            margin: 0.75rem 0;
+        }
+
+        /* ---- Layout 7: Split Showcase ---- */
+        .pkg-split-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .pkg-split-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: var(--color-surface);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            min-height: 280px;
+            transition: all 0.4s ease;
+        }
+
+        .pkg-split-row:hover {
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .pkg-split-row:nth-child(even) {
+            direction: rtl;
+        }
+
+        .pkg-split-row:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .pkg-split-image {
+            overflow: hidden;
+        }
+
+        .pkg-split-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .pkg-split-row:hover .pkg-split-image img {
+            transform: scale(1.05);
+        }
+
+        .pkg-split-content {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .pkg-split-content .pkg-price {
+            margin: 1rem 0;
+        }
+
+        .pkg-split-content .pkg-feature-list li {
+            font-size: 0.9rem;
+            padding: 0.35rem 0;
+        }
+
+        /* ---- Responsive for Packages ---- */
+        @media (max-width: 768px) {
+            .pkg-classic-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .pkg-classic-card.featured {
+                transform: none;
+            }
+
+            .pkg-elegant-container {
+                flex-direction: column;
+            }
+
+            .pkg-elegant-col {
+                border-right: none;
+                border-bottom: 1px solid rgba(107, 94, 81, 0.08);
+            }
+
+            .pkg-accordion-body-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .pkg-magazine-container {
+                grid-template-columns: 1fr;
+            }
+
+            .pkg-magazine-image {
+                position: static;
+            }
+
+            .pkg-bubbles-container {
+                min-height: auto;
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1rem;
+            }
+
+            .pkg-bubble {
+                position: static !important;
+                width: 100% !important;
+                height: auto !important;
+                border-radius: var(--radius-card) !important;
+                padding: 2rem;
+            }
+
+            .pkg-bubble .pkg-bubble-details {
+                opacity: 1;
+                max-height: 200px;
+                margin-top: 0.75rem;
+            }
+
+            .pkg-timeline::before {
+                left: 20px;
+            }
+
+            .pkg-timeline-item,
+            .pkg-timeline-item:nth-child(even) {
+                flex-direction: row;
+            }
+
+            .pkg-timeline-card {
+                width: calc(100% - 50px);
+                margin-left: 50px !important;
+                margin-right: 0 !important;
+            }
+
+            .pkg-timeline-dot {
+                left: 20px;
+            }
+
+            .pkg-split-row,
+            .pkg-split-row:nth-child(even) {
+                grid-template-columns: 1fr;
+                direction: ltr;
+            }
+
+            .pkg-split-image {
+                height: 200px;
+            }
+        }
 
         /* Style G: Vertical Pillars (Expanding Accordion) */
         .collections-style-g {
@@ -3974,6 +4679,9 @@
         </div>
         <div class="nav-dot" data-target="slide-lab">
             <span class="nav-tooltip">Gallery Lab</span>
+        </div>
+        <div class="nav-dot" data-target="slide-packages">
+            <span class="nav-tooltip">Packages</span>
         </div>
         <div class="nav-dot" data-target="slide-4">
             <span class="nav-tooltip">Reviews</span>
@@ -6782,6 +7490,777 @@
     </section>
 
     <!-- ==========================================
+         SECTION DIVIDER
+         ========================================== -->
+    <div class="section-divider">
+        <span>Packages & Pricing</span>
+    </div>
+
+    <!-- ==========================================
+         PACKAGES LAB - FULLY INTERACTIVE
+         ========================================== -->
+    <section id="slide-packages" class="slide lab-section" style="padding: 5rem 0;">
+        <div class="container-wide">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <span class="brand-pill" style="background: var(--color-secondary); color: white;">Step 4: The Investment</span>
+                <h2 style="color: var(--color-primary); font-size: 2.5rem;">Presenting Packages with Intention</h2>
+                <p class="article-intro">How you present pricing affects how clients perceive the value of your work.</p>
+                <div class="article-block">
+                    <p>The "Packages Lab" explores different ways to display session pricing. Whether it's
+                        <strong>Classic Cards</strong> for clarity, a <strong>Magazine Spread</strong> for editorial elegance,
+                        or <strong>Floating Bubbles</strong> for a playful feel - the layout shapes how the client
+                        emotionally responds to the investment.
+                    </p>
+                </div>
+                <p style="max-width: 600px; margin: 0 auto; opacity: 0.8;">Explore layout options below. Each uses the real Little Image pricing and can be adapted to match any brand personality.</p>
+            </div>
+
+            <!-- Package Layout Tabs -->
+            <div class="package-tabs">
+                <button class="package-tab active" data-pkg-panel="classic">Classic Cards</button>
+                <button class="package-tab" data-pkg-panel="elegant">Elegant Columns</button>
+                <button class="package-tab" data-pkg-panel="accordion">Accordion Reveal</button>
+                <button class="package-tab" data-pkg-panel="magazine">Magazine Spread</button>
+                <button class="package-tab" data-pkg-panel="bubbles">Floating Bubbles</button>
+                <button class="package-tab" data-pkg-panel="timeline">Timeline Flow</button>
+                <button class="package-tab" data-pkg-panel="split">Split Showcase</button>
+            </div>
+
+            <!-- ======== PANEL 1: CLASSIC CARDS ======== -->
+            <div class="package-panel active" data-pkg-panel-id="classic">
+                <div class="panel-header">
+                    <div>
+                        <h3>The Classic Card Layout</h3>
+                        <p>Clean, scannable pricing cards with a highlighted "recommended" tier. This is the most familiar pattern for clients - easy to compare and quick to understand.</p>
+                    </div>
+                    <div class="panel-features">
+                        <span class="feature-tag">Card Grid</span>
+                        <span class="feature-tag">Featured Tier</span>
+                        <span class="feature-tag">Hover Lift</span>
+                        <span class="feature-tag">Clear CTAs</span>
+                    </div>
+                </div>
+
+                <!-- Newborn Packages -->
+                <h3 style="text-align:center; margin-bottom: 0.5rem; color: var(--color-primary);">Newborn Sessions</h3>
+                <p style="text-align:center; opacity: 0.7; font-size: 0.9rem; margin-bottom: 2rem;">Best under 3 weeks old, even better under 2 weeks when they are mostly sleepy</p>
+                <div class="pkg-classic-grid">
+                    <div class="pkg-classic-card">
+                        <span class="pkg-category-label pkg-category-newborn">Newborn</span>
+                        <h4 class="pkg-name">Swaddled</h4>
+                        <div class="pkg-classic-divider"></div>
+                        <div class="pkg-price">$185</div>
+                        <ul class="pkg-feature-list">
+                            <li><i data-lucide="image" style="width:16px;height:16px;"></i> 3 Digital High Resolution Edits</li>
+                            <li><i data-lucide="clock" style="width:16px;height:16px;"></i> 45 Minutes</li>
+                            <li><i data-lucide="phone" style="width:16px;height:16px;"></i> Viewing Session via Phone</li>
+                        </ul>
+                    </div>
+                    <div class="pkg-classic-card featured">
+                        <span class="pkg-badge">Most Popular</span>
+                        <span class="pkg-category-label pkg-category-newborn">Newborn</span>
+                        <h4 class="pkg-name">Standard</h4>
+                        <div class="pkg-classic-divider"></div>
+                        <div class="pkg-price">$255</div>
+                        <ul class="pkg-feature-list">
+                            <li><i data-lucide="image" style="width:16px;height:16px;"></i> 5 High Resolution Digital Edits</li>
+                            <li><i data-lucide="clock" style="width:16px;height:16px;"></i> 1 Hour</li>
+                            <li><i data-lucide="phone" style="width:16px;height:16px;"></i> Viewing Session via Phone</li>
+                        </ul>
+                    </div>
+                    <div class="pkg-classic-card">
+                        <span class="pkg-category-label pkg-category-newborn">Newborn</span>
+                        <h4 class="pkg-name">Premium</h4>
+                        <div class="pkg-classic-divider"></div>
+                        <div class="pkg-price">$335</div>
+                        <ul class="pkg-feature-list">
+                            <li><i data-lucide="image" style="width:16px;height:16px;"></i> 6 High-Resolution Digital Edits</li>
+                            <li><i data-lucide="users" style="width:16px;height:16px;"></i> Siblings Included</li>
+                            <li><i data-lucide="infinity" style="width:16px;height:16px;"></i> Session Not Timed</li>
+                            <li><i data-lucide="user" style="width:16px;height:16px;"></i> In-person or Phone Viewing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Family Packages -->
+                <h3 style="text-align:center; margin: 3rem 0 0.5rem 0; color: var(--color-secondary);">Baby, Child & Family</h3>
+                <p style="text-align:center; opacity: 0.7; font-size: 0.9rem; margin-bottom: 2rem;">Studio and outdoor sessions for growing families</p>
+                <div class="pkg-classic-grid">
+                    <div class="pkg-classic-card">
+                        <span class="pkg-category-label pkg-category-family">Family</span>
+                        <h4 class="pkg-name">Light</h4>
+                        <div class="pkg-classic-divider"></div>
+                        <div class="pkg-price">$195</div>
+                        <ul class="pkg-feature-list">
+                            <li><i data-lucide="image" style="width:16px;height:16px;"></i> 4 Digital High-Resolution Edits</li>
+                            <li><i data-lucide="clock" style="width:16px;height:16px;"></i> 25 Minutes</li>
+                            <li><i data-lucide="mail" style="width:16px;height:16px;"></i> Viewing Session via Email</li>
+                        </ul>
+                    </div>
+                    <div class="pkg-classic-card featured">
+                        <span class="pkg-badge">Best Value</span>
+                        <span class="pkg-category-label pkg-category-family">Family</span>
+                        <h4 class="pkg-name">Standard</h4>
+                        <div class="pkg-classic-divider"></div>
+                        <div class="pkg-price">$265</div>
+                        <ul class="pkg-feature-list">
+                            <li><i data-lucide="image" style="width:16px;height:16px;"></i> 6 High Resolution Digital Edits</li>
+                            <li><i data-lucide="clock" style="width:16px;height:16px;"></i> 45 Minutes</li>
+                            <li><i data-lucide="mail" style="width:16px;height:16px;"></i> Viewing Session via Email</li>
+                        </ul>
+                    </div>
+                    <div class="pkg-classic-card">
+                        <span class="pkg-category-label pkg-category-family">Family</span>
+                        <h4 class="pkg-name">Gold</h4>
+                        <div class="pkg-classic-divider"></div>
+                        <div class="pkg-price">$345</div>
+                        <ul class="pkg-feature-list">
+                            <li><i data-lucide="image" style="width:16px;height:16px;"></i> 9 High Resolution Digital Edits</li>
+                            <li><i data-lucide="clock" style="width:16px;height:16px;"></i> 1 Hour</li>
+                            <li><i data-lucide="gift" style="width:16px;height:16px;"></i> $10 Voucher towards Wall Art</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="pkg-note" style="text-align:center; margin-top: 1.5rem;">Additional images can be purchased after session for $30 each. To add siblings or parents: $60 fee.</p>
+            </div>
+
+            <!-- ======== PANEL 2: ELEGANT COLUMNS ======== -->
+            <div class="package-panel" data-pkg-panel-id="elegant">
+                <div class="panel-header">
+                    <div>
+                        <h3>The Elegant Column Layout</h3>
+                        <p>A seamless, connected design where all tiers sit side-by-side in a single card. The featured tier subtly expands, drawing the eye without being aggressive. Perfect for luxury brands.</p>
+                    </div>
+                    <div class="panel-features">
+                        <span class="feature-tag">Connected Panels</span>
+                        <span class="feature-tag">Subtle Highlight</span>
+                        <span class="feature-tag">Luxury Feel</span>
+                    </div>
+                </div>
+
+                <h3 style="text-align:center; margin-bottom: 2rem; color: var(--color-primary);">Newborn Sessions</h3>
+                <div class="pkg-elegant-container" style="margin-bottom: 3rem;">
+                    <div class="pkg-elegant-col">
+                        <span class="pkg-category-label pkg-category-newborn">Newborn</span>
+                        <h4 class="pkg-name">Swaddled</h4>
+                        <div class="pkg-price">$185</div>
+                        <span class="pkg-duration"><i data-lucide="clock" style="width:14px;height:14px;"></i> 45 Minutes</span>
+                        <ul class="pkg-feature-list">
+                            <li><i data-lucide="check" style="width:14px;height:14px;"></i> 3 Digital High Resolution Edits</li>
+                            <li><i data-lucide="check" style="width:14px;height:14px;"></i> Viewing Session via Phone</li>
+                        </ul>
+                    </div>
+                    <div class="pkg-elegant-col featured">
+                        <span class="pkg-category-label pkg-category-newborn">Newborn</span>
+                        <h4 class="pkg-name">Standard</h4>
+                        <div class="pkg-price">$255</div>
+                        <span class="pkg-duration"><i data-lucide="clock" style="width:14px;height:14px;"></i> 1 Hour</span>
+                        <ul class="pkg-feature-list">
+                            <li><i data-lucide="check" style="width:14px;height:14px;"></i> 5 High Resolution Digital Edits</li>
+                            <li><i data-lucide="check" style="width:14px;height:14px;"></i> Viewing Session via Phone</li>
+                        </ul>
+                    </div>
+                    <div class="pkg-elegant-col">
+                        <span class="pkg-category-label pkg-category-newborn">Newborn</span>
+                        <h4 class="pkg-name">Premium</h4>
+                        <div class="pkg-price">$335</div>
+                        <span class="pkg-duration"><i data-lucide="infinity" style="width:14px;height:14px;"></i> Not Timed</span>
+                        <ul class="pkg-feature-list">
+                            <li><i data-lucide="check" style="width:14px;height:14px;"></i> 6 High-Resolution Digital Edits</li>
+                            <li><i data-lucide="check" style="width:14px;height:14px;"></i> Siblings Included</li>
+                            <li><i data-lucide="check" style="width:14px;height:14px;"></i> In-person or Phone Viewing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 style="text-align:center; margin-bottom: 2rem; color: var(--color-secondary);">Baby, Child & Family</h3>
+                <div class="pkg-elegant-container">
+                    <div class="pkg-elegant-col">
+                        <span class="pkg-category-label pkg-category-family">Family</span>
+                        <h4 class="pkg-name">Light</h4>
+                        <div class="pkg-price">$195</div>
+                        <span class="pkg-duration"><i data-lucide="clock" style="width:14px;height:14px;"></i> 25 Minutes</span>
+                        <ul class="pkg-feature-list">
+                            <li><i data-lucide="check" style="width:14px;height:14px;"></i> 4 Digital High-Resolution Edits</li>
+                            <li><i data-lucide="check" style="width:14px;height:14px;"></i> Viewing Session via Email</li>
+                        </ul>
+                    </div>
+                    <div class="pkg-elegant-col featured">
+                        <span class="pkg-category-label pkg-category-family">Family</span>
+                        <h4 class="pkg-name">Standard</h4>
+                        <div class="pkg-price">$265</div>
+                        <span class="pkg-duration"><i data-lucide="clock" style="width:14px;height:14px;"></i> 45 Minutes</span>
+                        <ul class="pkg-feature-list">
+                            <li><i data-lucide="check" style="width:14px;height:14px;"></i> 6 High Resolution Digital Edits</li>
+                            <li><i data-lucide="check" style="width:14px;height:14px;"></i> Viewing Session via Email</li>
+                        </ul>
+                    </div>
+                    <div class="pkg-elegant-col">
+                        <span class="pkg-category-label pkg-category-family">Family</span>
+                        <h4 class="pkg-name">Gold</h4>
+                        <div class="pkg-price">$345</div>
+                        <span class="pkg-duration"><i data-lucide="clock" style="width:14px;height:14px;"></i> 1 Hour</span>
+                        <ul class="pkg-feature-list">
+                            <li><i data-lucide="check" style="width:14px;height:14px;"></i> 9 High Resolution Digital Edits</li>
+                            <li><i data-lucide="check" style="width:14px;height:14px;"></i> $10 Voucher towards Wall Art</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======== PANEL 3: ACCORDION REVEAL ======== -->
+            <div class="package-panel" data-pkg-panel-id="accordion">
+                <div class="panel-header">
+                    <div>
+                        <h3>The Accordion Reveal</h3>
+                        <p>An interactive, expandable layout that keeps the page clean. Clients see the overview first, then click to explore details. Reduces overwhelm while maintaining depth of information.</p>
+                    </div>
+                    <div class="panel-features">
+                        <span class="feature-tag">Click to Expand</span>
+                        <span class="feature-tag">Compact</span>
+                        <span class="feature-tag">Progressive Disclosure</span>
+                    </div>
+                </div>
+                <div class="pkg-accordion-stack">
+                    <div class="pkg-accordion-item open">
+                        <div class="pkg-accordion-header" onclick="this.parentElement.classList.toggle('open')">
+                            <div class="pkg-acc-left">
+                                <span class="pkg-category-label pkg-category-newborn" style="margin:0;">Newborn</span>
+                                <h4 style="margin:0;">Swaddled</h4>
+                                <span class="pkg-price" style="font-size:1.8rem;">$185</span>
+                            </div>
+                            <i data-lucide="chevron-down" class="pkg-acc-chevron" style="width:20px;height:20px;"></i>
+                        </div>
+                        <div class="pkg-accordion-body">
+                            <div class="pkg-accordion-body-inner">
+                                <ul class="pkg-feature-list">
+                                    <li><i data-lucide="image" style="width:14px;height:14px;"></i> 3 Digital High Resolution Edits</li>
+                                    <li><i data-lucide="clock" style="width:14px;height:14px;"></i> 45 Minutes</li>
+                                    <li><i data-lucide="phone" style="width:14px;height:14px;"></i> Viewing Session via Phone</li>
+                                </ul>
+                                <div class="pkg-acc-highlight">
+                                    <div class="pkg-acc-icon"><i data-lucide="baby" style="width:20px;height:20px;"></i></div>
+                                    <p style="font-size:0.9rem;">Perfect for a quick, focused session capturing your newborn in beautiful swaddled poses.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pkg-accordion-item">
+                        <div class="pkg-accordion-header" onclick="this.parentElement.classList.toggle('open')">
+                            <div class="pkg-acc-left">
+                                <span class="pkg-category-label pkg-category-newborn" style="margin:0;">Newborn</span>
+                                <h4 style="margin:0;">Standard</h4>
+                                <span class="pkg-price" style="font-size:1.8rem;">$255</span>
+                            </div>
+                            <i data-lucide="chevron-down" class="pkg-acc-chevron" style="width:20px;height:20px;"></i>
+                        </div>
+                        <div class="pkg-accordion-body">
+                            <div class="pkg-accordion-body-inner">
+                                <ul class="pkg-feature-list">
+                                    <li><i data-lucide="image" style="width:14px;height:14px;"></i> 5 High Resolution Digital Edits</li>
+                                    <li><i data-lucide="clock" style="width:14px;height:14px;"></i> 1 Hour</li>
+                                    <li><i data-lucide="phone" style="width:14px;height:14px;"></i> Viewing Session via Phone</li>
+                                </ul>
+                                <div class="pkg-acc-highlight">
+                                    <div class="pkg-acc-icon"><i data-lucide="camera" style="width:20px;height:20px;"></i></div>
+                                    <p style="font-size:0.9rem;">Our most popular choice. Enough time for multiple setups and a variety of poses.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pkg-accordion-item">
+                        <div class="pkg-accordion-header" onclick="this.parentElement.classList.toggle('open')">
+                            <div class="pkg-acc-left">
+                                <span class="pkg-category-label pkg-category-newborn" style="margin:0;">Newborn</span>
+                                <h4 style="margin:0;">Premium</h4>
+                                <span class="pkg-price" style="font-size:1.8rem;">$335</span>
+                            </div>
+                            <i data-lucide="chevron-down" class="pkg-acc-chevron" style="width:20px;height:20px;"></i>
+                        </div>
+                        <div class="pkg-accordion-body">
+                            <div class="pkg-accordion-body-inner">
+                                <ul class="pkg-feature-list">
+                                    <li><i data-lucide="image" style="width:14px;height:14px;"></i> 6 High-Resolution Digital Edits</li>
+                                    <li><i data-lucide="users" style="width:14px;height:14px;"></i> Siblings Included</li>
+                                    <li><i data-lucide="infinity" style="width:14px;height:14px;"></i> Session Not Timed</li>
+                                    <li><i data-lucide="user" style="width:14px;height:14px;"></i> In-person or Phone Viewing</li>
+                                </ul>
+                                <div class="pkg-acc-highlight">
+                                    <div class="pkg-acc-icon"><i data-lucide="crown" style="width:20px;height:20px;"></i></div>
+                                    <p style="font-size:0.9rem;">The full experience. No rush, siblings welcome, and a personal viewing session to choose your favorites.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pkg-accordion-item">
+                        <div class="pkg-accordion-header" onclick="this.parentElement.classList.toggle('open')">
+                            <div class="pkg-acc-left">
+                                <span class="pkg-category-label pkg-category-family" style="margin:0;">Family</span>
+                                <h4 style="margin:0;">Light</h4>
+                                <span class="pkg-price" style="font-size:1.8rem;">$195</span>
+                            </div>
+                            <i data-lucide="chevron-down" class="pkg-acc-chevron" style="width:20px;height:20px;"></i>
+                        </div>
+                        <div class="pkg-accordion-body">
+                            <div class="pkg-accordion-body-inner">
+                                <ul class="pkg-feature-list">
+                                    <li><i data-lucide="image" style="width:14px;height:14px;"></i> 4 Digital High-Resolution Edits</li>
+                                    <li><i data-lucide="clock" style="width:14px;height:14px;"></i> 25 Minutes</li>
+                                    <li><i data-lucide="mail" style="width:14px;height:14px;"></i> Viewing Session via Email</li>
+                                </ul>
+                                <div class="pkg-acc-highlight">
+                                    <div class="pkg-acc-icon"><i data-lucide="sun" style="width:20px;height:20px;"></i></div>
+                                    <p style="font-size:0.9rem;">A quick, focused mini session. Great for milestone updates or seasonal portraits.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pkg-accordion-item">
+                        <div class="pkg-accordion-header" onclick="this.parentElement.classList.toggle('open')">
+                            <div class="pkg-acc-left">
+                                <span class="pkg-category-label pkg-category-family" style="margin:0;">Family</span>
+                                <h4 style="margin:0;">Standard</h4>
+                                <span class="pkg-price" style="font-size:1.8rem;">$265</span>
+                            </div>
+                            <i data-lucide="chevron-down" class="pkg-acc-chevron" style="width:20px;height:20px;"></i>
+                        </div>
+                        <div class="pkg-accordion-body">
+                            <div class="pkg-accordion-body-inner">
+                                <ul class="pkg-feature-list">
+                                    <li><i data-lucide="image" style="width:14px;height:14px;"></i> 6 High Resolution Digital Edits</li>
+                                    <li><i data-lucide="clock" style="width:14px;height:14px;"></i> 45 Minutes</li>
+                                    <li><i data-lucide="mail" style="width:14px;height:14px;"></i> Viewing Session via Email</li>
+                                </ul>
+                                <div class="pkg-acc-highlight">
+                                    <div class="pkg-acc-icon"><i data-lucide="heart" style="width:20px;height:20px;"></i></div>
+                                    <p style="font-size:0.9rem;">Room to capture genuine family moments with multiple outfit changes and setups.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pkg-accordion-item">
+                        <div class="pkg-accordion-header" onclick="this.parentElement.classList.toggle('open')">
+                            <div class="pkg-acc-left">
+                                <span class="pkg-category-label pkg-category-family" style="margin:0;">Family</span>
+                                <h4 style="margin:0;">Gold</h4>
+                                <span class="pkg-price" style="font-size:1.8rem;">$345</span>
+                            </div>
+                            <i data-lucide="chevron-down" class="pkg-acc-chevron" style="width:20px;height:20px;"></i>
+                        </div>
+                        <div class="pkg-accordion-body">
+                            <div class="pkg-accordion-body-inner">
+                                <ul class="pkg-feature-list">
+                                    <li><i data-lucide="image" style="width:14px;height:14px;"></i> 9 High Resolution Digital Edits</li>
+                                    <li><i data-lucide="clock" style="width:14px;height:14px;"></i> 1 Hour</li>
+                                    <li><i data-lucide="gift" style="width:14px;height:14px;"></i> $10 Voucher towards Wall Art</li>
+                                </ul>
+                                <div class="pkg-acc-highlight">
+                                    <div class="pkg-acc-icon"><i data-lucide="sparkles" style="width:20px;height:20px;"></i></div>
+                                    <p style="font-size:0.9rem;">The premium family experience with bonus wall art credit to display your memories at home.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======== PANEL 4: MAGAZINE SPREAD ======== -->
+            <div class="package-panel" data-pkg-panel-id="magazine">
+                <div class="panel-header">
+                    <div>
+                        <h3>The Magazine Spread</h3>
+                        <p>An editorial layout pairing a beautiful hero image with detailed pricing cards. The image stays fixed while clients scroll through packages - creating an immersive, high-end feel.</p>
+                    </div>
+                    <div class="panel-features">
+                        <span class="feature-tag">Sticky Image</span>
+                        <span class="feature-tag">Editorial</span>
+                        <span class="feature-tag">Border Accent</span>
+                    </div>
+                </div>
+                <div class="pkg-magazine-container">
+                    <div class="pkg-magazine-image">
+                        <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Newborn photography session">
+                        <div class="pkg-mag-caption">
+                            <h3>Little Image Photography</h3>
+                            <p>Newborn, Child & Family Sessions - Servicing Brooklyn</p>
+                        </div>
+                    </div>
+                    <div class="pkg-magazine-cards">
+                        <div class="pkg-magazine-card">
+                            <div class="pkg-mag-price-block">
+                                <span class="pkg-category-label pkg-category-newborn">Newborn</span>
+                                <div class="pkg-price">$185</div>
+                            </div>
+                            <div class="pkg-mag-details">
+                                <h4>Swaddled</h4>
+                                <ul class="pkg-feature-list">
+                                    <li><i data-lucide="check" style="width:14px;height:14px;"></i> 3 Digital High Resolution Edits</li>
+                                    <li><i data-lucide="check" style="width:14px;height:14px;"></i> 45 Minutes</li>
+                                    <li><i data-lucide="check" style="width:14px;height:14px;"></i> Viewing Session via Phone</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pkg-magazine-card">
+                            <div class="pkg-mag-price-block">
+                                <span class="pkg-category-label pkg-category-newborn">Newborn</span>
+                                <div class="pkg-price">$255</div>
+                            </div>
+                            <div class="pkg-mag-details">
+                                <h4>Standard</h4>
+                                <ul class="pkg-feature-list">
+                                    <li><i data-lucide="check" style="width:14px;height:14px;"></i> 5 High Resolution Digital Edits</li>
+                                    <li><i data-lucide="check" style="width:14px;height:14px;"></i> 1 Hour</li>
+                                    <li><i data-lucide="check" style="width:14px;height:14px;"></i> Viewing Session via Phone</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pkg-magazine-card">
+                            <div class="pkg-mag-price-block">
+                                <span class="pkg-category-label pkg-category-newborn">Newborn</span>
+                                <div class="pkg-price">$335</div>
+                            </div>
+                            <div class="pkg-mag-details">
+                                <h4>Premium</h4>
+                                <ul class="pkg-feature-list">
+                                    <li><i data-lucide="check" style="width:14px;height:14px;"></i> 6 High-Resolution Digital Edits</li>
+                                    <li><i data-lucide="check" style="width:14px;height:14px;"></i> Siblings Included</li>
+                                    <li><i data-lucide="check" style="width:14px;height:14px;"></i> Session Not Timed</li>
+                                    <li><i data-lucide="check" style="width:14px;height:14px;"></i> In-person or Phone Viewing</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pkg-magazine-card">
+                            <div class="pkg-mag-price-block">
+                                <span class="pkg-category-label pkg-category-family">Family</span>
+                                <div class="pkg-price">$195</div>
+                            </div>
+                            <div class="pkg-mag-details">
+                                <h4>Light</h4>
+                                <ul class="pkg-feature-list">
+                                    <li><i data-lucide="check" style="width:14px;height:14px;"></i> 4 Digital High-Resolution Edits</li>
+                                    <li><i data-lucide="check" style="width:14px;height:14px;"></i> 25 Minutes</li>
+                                    <li><i data-lucide="check" style="width:14px;height:14px;"></i> Viewing Session via Email</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pkg-magazine-card">
+                            <div class="pkg-mag-price-block">
+                                <span class="pkg-category-label pkg-category-family">Family</span>
+                                <div class="pkg-price">$265</div>
+                            </div>
+                            <div class="pkg-mag-details">
+                                <h4>Standard</h4>
+                                <ul class="pkg-feature-list">
+                                    <li><i data-lucide="check" style="width:14px;height:14px;"></i> 6 High Resolution Digital Edits</li>
+                                    <li><i data-lucide="check" style="width:14px;height:14px;"></i> 45 Minutes</li>
+                                    <li><i data-lucide="check" style="width:14px;height:14px;"></i> Viewing Session via Email</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pkg-magazine-card">
+                            <div class="pkg-mag-price-block">
+                                <span class="pkg-category-label pkg-category-family">Family</span>
+                                <div class="pkg-price">$345</div>
+                            </div>
+                            <div class="pkg-mag-details">
+                                <h4>Gold</h4>
+                                <ul class="pkg-feature-list">
+                                    <li><i data-lucide="check" style="width:14px;height:14px;"></i> 9 High Resolution Digital Edits</li>
+                                    <li><i data-lucide="check" style="width:14px;height:14px;"></i> 1 Hour</li>
+                                    <li><i data-lucide="check" style="width:14px;height:14px;"></i> $10 Voucher towards Wall Art</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======== PANEL 5: FLOATING BUBBLES ======== -->
+            <div class="package-panel" data-pkg-panel-id="bubbles">
+                <div class="panel-header">
+                    <div>
+                        <h3>The Floating Bubbles</h3>
+                        <p>A playful, organic layout where packages float as bubbles of different sizes. Hover to reveal details. The soft shapes echo the gentle nature of newborn and child photography.</p>
+                    </div>
+                    <div class="panel-features">
+                        <span class="feature-tag">Organic Shapes</span>
+                        <span class="feature-tag">Hover Reveal</span>
+                        <span class="feature-tag">Playful</span>
+                        <span class="feature-tag">Morph Effect</span>
+                    </div>
+                </div>
+                <div class="pkg-bubbles-container">
+                    <div class="pkg-bubble pkg-bubble-sm pkg-bubble-b1">
+                        <span class="pkg-category-label pkg-category-newborn">Newborn</span>
+                        <span class="pkg-bubble-name">Swaddled</span>
+                        <div class="pkg-price">$185</div>
+                        <span class="pkg-bubble-sub">45 min</span>
+                        <div class="pkg-bubble-details">3 Digital Edits &bull; Phone Viewing</div>
+                    </div>
+                    <div class="pkg-bubble pkg-bubble-lg pkg-bubble-b2" style="border: 3px solid var(--color-secondary);">
+                        <span class="pkg-category-label pkg-category-newborn">Newborn</span>
+                        <span class="pkg-bubble-name">Standard</span>
+                        <div class="pkg-price">$255</div>
+                        <span class="pkg-bubble-sub">1 Hour</span>
+                        <div class="pkg-bubble-details">5 Digital Edits &bull; Phone Viewing &bull; Most Popular</div>
+                    </div>
+                    <div class="pkg-bubble pkg-bubble-md pkg-bubble-b3">
+                        <span class="pkg-category-label pkg-category-newborn">Newborn</span>
+                        <span class="pkg-bubble-name">Premium</span>
+                        <div class="pkg-price">$335</div>
+                        <span class="pkg-bubble-sub">Not Timed</span>
+                        <div class="pkg-bubble-details">6 Digital Edits &bull; Siblings Included &bull; Personal Viewing</div>
+                    </div>
+                    <div class="pkg-bubble pkg-bubble-sm pkg-bubble-b4">
+                        <span class="pkg-category-label pkg-category-family">Family</span>
+                        <span class="pkg-bubble-name">Light</span>
+                        <div class="pkg-price">$195</div>
+                        <span class="pkg-bubble-sub">25 min</span>
+                        <div class="pkg-bubble-details">4 Digital Edits &bull; Email Viewing</div>
+                    </div>
+                    <div class="pkg-bubble pkg-bubble-lg pkg-bubble-b5" style="border: 3px solid var(--color-primary);">
+                        <span class="pkg-category-label pkg-category-family">Family</span>
+                        <span class="pkg-bubble-name">Standard</span>
+                        <div class="pkg-price">$265</div>
+                        <span class="pkg-bubble-sub">45 min</span>
+                        <div class="pkg-bubble-details">6 Digital Edits &bull; Email Viewing &bull; Best Value</div>
+                    </div>
+                    <div class="pkg-bubble pkg-bubble-md pkg-bubble-b6">
+                        <span class="pkg-category-label pkg-category-family">Family</span>
+                        <span class="pkg-bubble-name">Gold</span>
+                        <div class="pkg-price">$345</div>
+                        <span class="pkg-bubble-sub">1 Hour</span>
+                        <div class="pkg-bubble-details">9 Digital Edits &bull; Wall Art Voucher</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======== PANEL 6: TIMELINE FLOW ======== -->
+            <div class="package-panel" data-pkg-panel-id="timeline">
+                <div class="panel-header">
+                    <div>
+                        <h3>The Timeline Flow</h3>
+                        <p>Packages presented as a journey from entry-level to premium. The alternating layout creates a visual story that guides the client upward through the tiers naturally.</p>
+                    </div>
+                    <div class="panel-features">
+                        <span class="feature-tag">Alternating Layout</span>
+                        <span class="feature-tag">Visual Journey</span>
+                        <span class="feature-tag">Progressive</span>
+                    </div>
+                </div>
+                <div class="pkg-timeline">
+                    <div class="pkg-timeline-item">
+                        <div class="pkg-timeline-card">
+                            <span class="pkg-category-label pkg-category-newborn">Newborn</span>
+                            <h4 class="pkg-name">Swaddled</h4>
+                            <div class="pkg-price">$185</div>
+                            <ul class="pkg-feature-list">
+                                <li><i data-lucide="image" style="width:14px;height:14px;"></i> 3 Digital High Resolution Edits</li>
+                                <li><i data-lucide="clock" style="width:14px;height:14px;"></i> 45 Minutes</li>
+                                <li><i data-lucide="phone" style="width:14px;height:14px;"></i> Viewing via Phone</li>
+                            </ul>
+                        </div>
+                        <div class="pkg-timeline-dot"></div>
+                    </div>
+                    <div class="pkg-timeline-item">
+                        <div class="pkg-timeline-card">
+                            <span class="pkg-category-label pkg-category-newborn">Newborn</span>
+                            <h4 class="pkg-name">Standard</h4>
+                            <div class="pkg-price">$255</div>
+                            <ul class="pkg-feature-list">
+                                <li><i data-lucide="image" style="width:14px;height:14px;"></i> 5 High Resolution Digital Edits</li>
+                                <li><i data-lucide="clock" style="width:14px;height:14px;"></i> 1 Hour</li>
+                                <li><i data-lucide="phone" style="width:14px;height:14px;"></i> Viewing via Phone</li>
+                            </ul>
+                        </div>
+                        <div class="pkg-timeline-dot"></div>
+                    </div>
+                    <div class="pkg-timeline-item">
+                        <div class="pkg-timeline-card">
+                            <span class="pkg-category-label pkg-category-newborn">Newborn</span>
+                            <h4 class="pkg-name">Premium</h4>
+                            <div class="pkg-price">$335</div>
+                            <ul class="pkg-feature-list">
+                                <li><i data-lucide="image" style="width:14px;height:14px;"></i> 6 High-Resolution Digital Edits</li>
+                                <li><i data-lucide="users" style="width:14px;height:14px;"></i> Siblings Included</li>
+                                <li><i data-lucide="infinity" style="width:14px;height:14px;"></i> Not Timed</li>
+                                <li><i data-lucide="user" style="width:14px;height:14px;"></i> In-person or Phone Viewing</li>
+                            </ul>
+                        </div>
+                        <div class="pkg-timeline-dot"></div>
+                    </div>
+                    <div class="pkg-timeline-item">
+                        <div class="pkg-timeline-card">
+                            <span class="pkg-category-label pkg-category-family">Family</span>
+                            <h4 class="pkg-name">Light</h4>
+                            <div class="pkg-price">$195</div>
+                            <ul class="pkg-feature-list">
+                                <li><i data-lucide="image" style="width:14px;height:14px;"></i> 4 Digital High-Resolution Edits</li>
+                                <li><i data-lucide="clock" style="width:14px;height:14px;"></i> 25 Minutes</li>
+                                <li><i data-lucide="mail" style="width:14px;height:14px;"></i> Viewing via Email</li>
+                            </ul>
+                        </div>
+                        <div class="pkg-timeline-dot"></div>
+                    </div>
+                    <div class="pkg-timeline-item">
+                        <div class="pkg-timeline-card">
+                            <span class="pkg-category-label pkg-category-family">Family</span>
+                            <h4 class="pkg-name">Standard</h4>
+                            <div class="pkg-price">$265</div>
+                            <ul class="pkg-feature-list">
+                                <li><i data-lucide="image" style="width:14px;height:14px;"></i> 6 High Resolution Digital Edits</li>
+                                <li><i data-lucide="clock" style="width:14px;height:14px;"></i> 45 Minutes</li>
+                                <li><i data-lucide="mail" style="width:14px;height:14px;"></i> Viewing via Email</li>
+                            </ul>
+                        </div>
+                        <div class="pkg-timeline-dot"></div>
+                    </div>
+                    <div class="pkg-timeline-item">
+                        <div class="pkg-timeline-card">
+                            <span class="pkg-category-label pkg-category-family">Family</span>
+                            <h4 class="pkg-name">Gold</h4>
+                            <div class="pkg-price">$345</div>
+                            <ul class="pkg-feature-list">
+                                <li><i data-lucide="image" style="width:14px;height:14px;"></i> 9 High Resolution Digital Edits</li>
+                                <li><i data-lucide="clock" style="width:14px;height:14px;"></i> 1 Hour</li>
+                                <li><i data-lucide="gift" style="width:14px;height:14px;"></i> $10 Voucher towards Wall Art</li>
+                            </ul>
+                        </div>
+                        <div class="pkg-timeline-dot"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======== PANEL 7: SPLIT SHOWCASE ======== -->
+            <div class="package-panel" data-pkg-panel-id="split">
+                <div class="panel-header">
+                    <div>
+                        <h3>The Split Showcase</h3>
+                        <p>Each package gets its own hero moment with a full image on one side and details on the other. The alternating direction creates visual rhythm and keeps scrolling engaging.</p>
+                    </div>
+                    <div class="panel-features">
+                        <span class="feature-tag">Image + Text</span>
+                        <span class="feature-tag">Alternating</span>
+                        <span class="feature-tag">Immersive</span>
+                        <span class="feature-tag">Zoom on Hover</span>
+                    </div>
+                </div>
+                <div class="pkg-split-container">
+                    <div class="pkg-split-row">
+                        <div class="pkg-split-image">
+                            <img src="assets/images/newborn/74-08272da1-1000.jpg" alt="Newborn swaddled session">
+                        </div>
+                        <div class="pkg-split-content">
+                            <span class="pkg-category-label pkg-category-newborn">Newborn</span>
+                            <h4 class="pkg-name">Swaddled</h4>
+                            <div class="pkg-price">$185</div>
+                            <ul class="pkg-feature-list">
+                                <li><i data-lucide="check" style="width:14px;height:14px;"></i> 3 Digital High Resolution Edits</li>
+                                <li><i data-lucide="check" style="width:14px;height:14px;"></i> 45 Minutes</li>
+                                <li><i data-lucide="check" style="width:14px;height:14px;"></i> Viewing Session via Phone</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pkg-split-row">
+                        <div class="pkg-split-image">
+                            <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Newborn standard session">
+                        </div>
+                        <div class="pkg-split-content">
+                            <span class="pkg-category-label pkg-category-newborn">Newborn</span>
+                            <h4 class="pkg-name">Standard</h4>
+                            <div class="pkg-price">$255</div>
+                            <ul class="pkg-feature-list">
+                                <li><i data-lucide="check" style="width:14px;height:14px;"></i> 5 High Resolution Digital Edits</li>
+                                <li><i data-lucide="check" style="width:14px;height:14px;"></i> 1 Hour</li>
+                                <li><i data-lucide="check" style="width:14px;height:14px;"></i> Viewing Session via Phone</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pkg-split-row">
+                        <div class="pkg-split-image">
+                            <img src="assets/images/newborn/69-ad18d5c0-1000.jpg" alt="Newborn premium session">
+                        </div>
+                        <div class="pkg-split-content">
+                            <span class="pkg-category-label pkg-category-newborn">Newborn</span>
+                            <h4 class="pkg-name">Premium</h4>
+                            <div class="pkg-price">$335</div>
+                            <ul class="pkg-feature-list">
+                                <li><i data-lucide="check" style="width:14px;height:14px;"></i> 6 High-Resolution Digital Edits</li>
+                                <li><i data-lucide="check" style="width:14px;height:14px;"></i> Siblings Included</li>
+                                <li><i data-lucide="check" style="width:14px;height:14px;"></i> Session Not Timed</li>
+                                <li><i data-lucide="check" style="width:14px;height:14px;"></i> In-person or Phone Viewing</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pkg-split-row">
+                        <div class="pkg-split-image">
+                            <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child light session">
+                        </div>
+                        <div class="pkg-split-content">
+                            <span class="pkg-category-label pkg-category-family">Family</span>
+                            <h4 class="pkg-name">Light</h4>
+                            <div class="pkg-price">$195</div>
+                            <ul class="pkg-feature-list">
+                                <li><i data-lucide="check" style="width:14px;height:14px;"></i> 4 Digital High-Resolution Edits</li>
+                                <li><i data-lucide="check" style="width:14px;height:14px;"></i> 25 Minutes</li>
+                                <li><i data-lucide="check" style="width:14px;height:14px;"></i> Viewing Session via Email</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pkg-split-row">
+                        <div class="pkg-split-image">
+                            <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Family standard session">
+                        </div>
+                        <div class="pkg-split-content">
+                            <span class="pkg-category-label pkg-category-family">Family</span>
+                            <h4 class="pkg-name">Standard</h4>
+                            <div class="pkg-price">$265</div>
+                            <ul class="pkg-feature-list">
+                                <li><i data-lucide="check" style="width:14px;height:14px;"></i> 6 High Resolution Digital Edits</li>
+                                <li><i data-lucide="check" style="width:14px;height:14px;"></i> 45 Minutes</li>
+                                <li><i data-lucide="check" style="width:14px;height:14px;"></i> Viewing Session via Email</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pkg-split-row">
+                        <div class="pkg-split-image">
+                            <img src="assets/images/three_year_milestone/10-52b89603-1500.jpg" alt="Family gold session">
+                        </div>
+                        <div class="pkg-split-content">
+                            <span class="pkg-category-label pkg-category-family">Family</span>
+                            <h4 class="pkg-name">Gold</h4>
+                            <div class="pkg-price">$345</div>
+                            <ul class="pkg-feature-list">
+                                <li><i data-lucide="check" style="width:14px;height:14px;"></i> 9 High Resolution Digital Edits</li>
+                                <li><i data-lucide="check" style="width:14px;height:14px;"></i> 1 Hour</li>
+                                <li><i data-lucide="check" style="width:14px;height:14px;"></i> $10 Voucher towards Wall Art</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Explanation below -->
+            <div style="margin-top: 2.5rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <div class="pro-tip" style="margin-top: 2rem;">
+                    <h5><i data-lucide="lightbulb"></i> Pricing Psychology</h5>
+                    <p>The way you present pricing directly impacts conversion. <strong>Classic Cards</strong> work best for quick comparison shoppers. <strong>Magazine Spread</strong> and <strong>Split Showcase</strong> pair imagery with pricing to reinforce value. <strong>Accordion</strong> reduces overwhelm by hiding details until the client is ready. Choose the layout that matches your client's decision-making style.</p>
+                </div>
+                <div class="element-details stagger-reveal" style="margin-top: 1.5rem;">
+                    <div class="detail-card sage">
+                        <h4><span class="card-number">1</span> Event Sessions</h4>
+                        <p>For events, custom quotes are available on inquiry. Each event is unique, so pricing is tailored to the scope and duration of coverage needed.</p>
+                    </div>
+                    <div class="detail-card rose">
+                        <h4><span class="card-number">2</span> Add-Ons Available</h4>
+                        <p>Additional images can be purchased after any session for $30 each. To add siblings or parents to a newborn session, there is a $60 fee. We provide everything needed for newborn sessions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
          TESTIMONIALS SECTION (text RIGHT, demo LEFT)
          ========================================== -->
     <section id="slide-4" class="slide">
@@ -7090,6 +8569,28 @@
                 const target = document.querySelector(`.collection-panel[data-collection-panel-id="${panel}"]`);
                 if (target) {
                     target.classList.add('active');
+                }
+            });
+        });
+
+        // =============================================
+        // PACKAGE LAB TAB SWITCHER
+        // =============================================
+        const packageTabs = document.querySelectorAll('.package-tab');
+        const packagePanels = document.querySelectorAll('.package-panel');
+
+        packageTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const panel = tab.dataset.pkgPanel;
+
+                packageTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                packagePanels.forEach(p => p.classList.remove('active'));
+                const target = document.querySelector(`.package-panel[data-pkg-panel-id="${panel}"]`);
+                if (target) {
+                    target.classList.add('active');
+                    lucide.createIcons();
                 }
             });
         });
