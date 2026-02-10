@@ -4493,6 +4493,622 @@
             cursor: default;
         }
 
+        /* ================================
+           LAYOUT SWITCHERS & PREVIEW THEMES
+           ================================ */
+        .layout-switcher-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .layout-tab {
+            padding: 0.6rem 1.2rem;
+            background: var(--color-surface);
+            border: 1px solid rgba(107, 94, 81, 0.1);
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--color-text);
+        }
+
+        .layout-tab:hover {
+            border-color: var(--color-secondary);
+            transform: translateY(-2px);
+        }
+
+        .layout-tab.active {
+            background: var(--color-secondary);
+            color: white;
+            border-color: var(--color-secondary);
+            box-shadow: 0 4px 15px rgba(212, 163, 154, 0.3);
+        }
+
+        .layout-panel {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .layout-panel.active {
+            display: block;
+        }
+
+        /* Hero Layout Variations */
+        .hero-layout.layout-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 100%;
+            background: white;
+            color: var(--color-text);
+            text-align: left;
+            align-items: center;
+        }
+
+        .hero-layout.layout-split .hero-side-img {
+            height: 100%;
+            background: url('assets/images/newborn/73-5b55e942-1000.jpg') center/cover;
+        }
+
+        .hero-layout.layout-split .hero-content {
+            padding: 3rem;
+            position: static;
+            transform: none;
+        }
+
+        .hero-layout.layout-bento {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 10px;
+            padding: 20px;
+            background: var(--color-background);
+            height: 100%;
+        }
+
+        .hero-layout.layout-bento .bento-main {
+            grid-column: span 2;
+            grid-row: span 2;
+            background: url('assets/images/child/22-f4468cd2-1500.jpg') center/cover;
+            border-radius: 12px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 2rem;
+            color: white;
+        }
+
+        .hero-layout.layout-bento .bento-item {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .hero-layout.layout-bento .bento-item img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+
+        /* About Layout Variations */
+        .preview-about.layout-collage {
+            display: block;
+            text-align: center;
+        }
+
+        .preview-about.layout-collage .collage-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .preview-about.layout-collage .collage-item {
+            height: 150px;
+            border-radius: 12px;
+            overflow: hidden;
+            transform: rotate(-2deg);
+        }
+
+        .preview-about.layout-collage .collage-item:nth-child(even) {
+            transform: rotate(3deg) translateY(10px);
+        }
+
+        .preview-about.layout-collage .collage-item img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+
+        /* Hero Layout: Minimal Text */
+        .hero-layout.layout-minimal {
+            background: var(--color-background);
+            color: var(--color-text);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem;
+            position: relative;
+        }
+
+        .hero-layout.layout-minimal .hero-overlay { display: none; }
+
+        .hero-layout.layout-minimal .hero-content {
+            position: static;
+            transform: none;
+            max-width: 500px;
+        }
+
+        .hero-layout.layout-minimal .hero-accent-img {
+            position: absolute;
+            top: 15px; right: 15px;
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .hero-layout.layout-minimal .hero-accent-img-2 {
+            position: absolute;
+            bottom: 15px; left: 15px;
+            width: 100px; height: 100px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transform: rotate(-5deg);
+        }
+
+        /* Hero Layout: Filmstrip */
+        .hero-layout.layout-filmstrip {
+            background: #1a1a1a;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-layout.layout-filmstrip .hero-overlay { display: none; }
+
+        .hero-layout.layout-filmstrip .hero-content {
+            position: static;
+            transform: none;
+            padding: 2rem 2rem 1rem;
+            flex: 0;
+        }
+
+        .hero-filmstrip-strip {
+            display: flex;
+            gap: 8px;
+            padding: 0.5rem 1rem 1rem;
+            overflow: hidden;
+            flex: 1;
+            align-items: stretch;
+        }
+
+        .hero-filmstrip-strip img {
+            flex: 1;
+            min-width: 0;
+            object-fit: cover;
+            border-radius: 8px;
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero-filmstrip-strip img:hover { opacity: 1; }
+
+        /* Reviews Layout Variations */
+        .reviews-layout-carousel {
+            padding: 2rem 1.5rem;
+            background: var(--color-surface);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 350px;
+        }
+
+        .reviews-carousel-track {
+            display: flex;
+            gap: 1.5rem;
+            width: 100%;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            padding-bottom: 1rem;
+        }
+
+        .reviews-carousel-track::-webkit-scrollbar { display: none; }
+
+        .reviews-mini-card {
+            flex: 0 0 calc(50% - 0.75rem);
+            scroll-snap-align: start;
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border-left: 4px solid var(--color-secondary);
+        }
+
+        .reviews-mini-card .stars {
+            color: #E8B64E;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .reviews-mini-card p { font-size: 0.85rem; line-height: 1.6; }
+        .reviews-mini-card .reviewer { font-weight: 700; font-size: 0.8rem; margin-top: 0.75rem; color: var(--color-primary); }
+
+        /* Reviews: Stacked Quotes */
+        .reviews-layout-stacked {
+            padding: 2rem;
+            background: var(--color-background);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-height: 350px;
+        }
+
+        .review-stack-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: white;
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+
+        .review-stack-avatar {
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            background: var(--color-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .review-stack-text p { font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.25rem; }
+        .review-stack-text .name { font-weight: 700; font-size: 0.8rem; color: var(--color-primary); }
+
+        /* Reviews: Masonry Grid */
+        .reviews-layout-grid {
+            padding: 1.5rem;
+            background: var(--color-surface);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            min-height: 350px;
+            align-content: start;
+        }
+
+        .review-grid-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-top: 3px solid var(--color-primary);
+        }
+
+        .review-grid-card:nth-child(even) {
+            border-top-color: var(--color-secondary);
+        }
+
+        .review-grid-card .quote { font-size: 0.8rem; line-height: 1.5; font-style: italic; }
+        .review-grid-card .author { font-weight: 700; font-size: 0.75rem; margin-top: 0.75rem; }
+
+        /* FAQ Layout Variations */
+        .faq-layout-columns {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .faq-layout-columns h3 {
+            grid-column: span 2;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .faq-col-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        .faq-col-item h5 {
+            font-size: 0.9rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-col-item p { font-size: 0.8rem; line-height: 1.5; }
+
+        /* FAQ: Bubble Chat */
+        .faq-layout-chat {
+            padding: 2rem;
+            background: var(--color-background);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .faq-layout-chat h3 {
+            text-align: center;
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .faq-bubble {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .faq-bubble-q {
+            align-self: flex-end;
+            background: var(--color-primary);
+            color: white;
+            padding: 0.6rem 1rem;
+            border-radius: 16px 16px 4px 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            max-width: 80%;
+        }
+
+        .faq-bubble-a {
+            align-self: flex-start;
+            background: white;
+            padding: 0.6rem 1rem;
+            border-radius: 16px 16px 16px 4px;
+            font-size: 0.8rem;
+            max-width: 85%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            line-height: 1.4;
+        }
+
+        /* FAQ: Timeline */
+        .faq-layout-timeline {
+            padding: 2rem 2rem 2rem 3rem;
+            position: relative;
+        }
+
+        .faq-layout-timeline h3 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+
+        .faq-timeline-line {
+            position: absolute;
+            left: 3.5rem;
+            top: 5rem;
+            bottom: 2rem;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+        }
+
+        .faq-timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .faq-timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -0.55rem;
+            top: 0.5rem;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--color-primary);
+        }
+
+        .faq-timeline-item:nth-child(odd)::before {
+            background: var(--color-secondary);
+            box-shadow: 0 0 0 2px var(--color-secondary);
+        }
+
+        .faq-timeline-item h5 {
+            font-size: 0.9rem;
+            color: var(--color-text);
+            margin-bottom: 0.25rem;
+        }
+
+        .faq-timeline-item p {
+            font-size: 0.8rem;
+            line-height: 1.4;
+            opacity: 0.85;
+        }
+
+        /* Contact Layout Variations */
+        .contact-layout-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 400px;
+        }
+
+        .contact-split-img {
+            background: url('assets/images/newborn/74-08272da1-1000.jpg') center/cover;
+            position: relative;
+        }
+
+        .contact-split-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(148,163,150,0.3), rgba(212,163,154,0.3));
+        }
+
+        .contact-split-form {
+            padding: 2.5rem;
+            background: var(--color-surface);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Contact: Minimal Centered */
+        .contact-layout-minimal {
+            padding: 3rem;
+            background: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+
+        .contact-layout-minimal .contact-min-form {
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .contact-layout-minimal .contact-min-input {
+            border: none;
+            border-bottom: 2px solid var(--color-background);
+            padding: 0.75rem 0;
+            font-size: 0.9rem;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+            width: 100%;
+            display: block;
+            text-align: left;
+        }
+
+        /* Contact: Card Style */
+        .contact-layout-card {
+            padding: 2.5rem;
+            background: var(--color-background);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+        }
+
+        .contact-floating-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            width: 100%;
+            max-width: 380px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-floating-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+        }
+
+        /* STYLE F: Botanical Garden */
+        .preview-browser.style-botanical {
+            --p-bg: #F0F4EC;
+            --p-surface: #FFFFFF;
+            --p-primary: #5B7B5E;
+            --p-secondary: #C8A882;
+            --p-text: #3D4D3E;
+        }
+        .preview-browser.style-botanical .preview-scroll-area { background: var(--p-bg); color: var(--p-text); }
+        .preview-browser.style-botanical .preview-nav { background: #F0F4EC; border-bottom: 1px solid #D0D9CC; }
+        .preview-browser.style-botanical .preview-nav-logo { color: var(--p-primary); font-style: italic; letter-spacing: 1px; }
+        .preview-browser.style-botanical .preview-hero-content h2 { font-style: italic; }
+        .preview-browser.style-botanical .preview-btn { background: var(--p-primary); border-radius: 8px; }
+        .preview-browser.style-botanical .preview-about-img { border-radius: 50%; border: 6px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .preview-browser.style-botanical .preview-gallery-item { border-radius: 16px; }
+        .preview-browser.style-botanical .preview-pkg-card { border: 1px solid #D0D9CC; border-radius: 16px; }
+        .preview-browser.style-botanical .preview-pkg-card.preview-featured { background: var(--p-primary); color: white; }
+        .preview-browser.style-botanical .preview-section-label { background: var(--p-primary); }
+
+        /* Website Preview Styles (Bottom Section) */
+        .preview-style-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        /* STYLE B: Editorial Rose */
+        .preview-browser.style-editorial {
+            --p-bg: #FFF9F8;
+            --p-surface: #FFFFFF;
+            --p-primary: #D4A39A;
+            --p-secondary: #94A396;
+            --p-text: #4A3E3E;
+        }
+        .preview-browser.style-editorial .preview-scroll-area { background: var(--p-bg); color: var(--p-text); }
+        .preview-browser.style-editorial .preview-nav-logo { color: var(--p-primary); font-family: 'Solway', serif; }
+        .preview-browser.style-editorial .preview-hero-content h2 { font-style: italic; letter-spacing: -1px; }
+        .preview-browser.style-editorial .preview-btn { background: var(--p-primary); border-radius: 4px; }
+        .preview-browser.style-editorial .preview-section-label { background: var(--p-primary); }
+
+        /* STYLE C: Modern Minimal */
+        .preview-browser.style-minimal {
+            --p-bg: #FFFFFF;
+            --p-surface: #F9F9F9;
+            --p-primary: #333333;
+            --p-secondary: #888888;
+            --p-text: #1a1a1a;
+        }
+        .preview-browser.style-minimal .preview-scroll-area { background: var(--p-bg); color: var(--p-text); font-family: 'Nunito', sans-serif; }
+        .preview-browser.style-minimal .preview-nav { border-bottom: 2px solid #000; padding: 1.5rem 3rem; }
+        .preview-browser.style-minimal .preview-hero { background: none; color: #000; height: auto; padding: 6rem 0; border-bottom: 1px solid #eee; }
+        .preview-browser.style-minimal .preview-hero-overlay { display: none; }
+        .preview-browser.style-minimal .preview-btn { background: #000; border-radius: 0; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; }
+        .preview-browser.style-minimal .preview-about-img { border-radius: 0; }
+
+        /* STYLE D: Warm Scrapbook */
+        .preview-browser.style-scrapbook {
+            --p-bg: #FDF9F2;
+            --p-surface: #FFFFFF;
+            --p-primary: #8C7355;
+            --p-secondary: #BFA48E;
+            --p-text: #5D4D3D;
+        }
+        .preview-browser.style-scrapbook .preview-scroll-area { background: var(--p-bg); }
+        .preview-browser.style-scrapbook .preview-nav { background: var(--p-bg); border: none; }
+        .preview-browser.style-scrapbook .preview-about-img { transform: rotate(-3deg); border: 8px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .preview-browser.style-scrapbook .preview-gallery-item { transform: rotate(1deg); border: 5px solid white; height: 200px; }
+        .preview-browser.style-scrapbook .preview-gallery-item:nth-child(even) { transform: rotate(-2deg); }
+        .preview-browser.style-scrapbook .preview-btn { background: var(--p-primary); border-radius: 40px; }
+
+        /* STYLE E: Dark Luxury */
+        .preview-browser.style-luxe {
+            --p-bg: #1A1C1A;
+            --p-surface: #242624;
+            --p-primary: #94A396;
+            --p-secondary: #D4A39A;
+            --p-text: #E0E0E0;
+        }
+        .preview-browser.style-luxe .preview-scroll-area { background: var(--p-bg); color: var(--p-text); }
+        .preview-browser.style-luxe .preview-nav { background: #111; border-bottom: 1px solid #333; }
+        .preview-browser.style-luxe .preview-about, 
+        .preview-browser.style-luxe .preview-packages,
+        .preview-browser.style-luxe .preview-faq { background: var(--p-surface); }
+        .preview-browser.style-luxe .preview-gallery { background: var(--p-bg); }
+        .preview-browser.style-luxe .preview-btn { background: var(--p-primary); color: #111; font-weight: 800; }
+        .preview-browser.style-luxe .preview-card,
+        .preview-browser.style-luxe .preview-pkg-card { background: #2a2d2a; border: 1px solid #3d413d; }
+
         /* Preview Footer */
         .preview-footer {
             padding: 1.5rem 2.5rem;
@@ -5340,6 +5956,14 @@
                         <li><strong>Relevance:</strong> Do you offer what I need?</li>
                         <li><strong>Clarity:</strong> How do I take the next step?</li>
                     </ul>
+                    <div class="layout-switcher-tabs" style="margin-top: 1.5rem;">
+                        <button class="layout-tab active" data-tab-group="hero" data-tab-id="hero-classic">Classic Full-Width</button>
+                        <button class="layout-tab" data-tab-group="hero" data-tab-id="hero-split">Split Layout</button>
+                        <button class="layout-tab" data-tab-group="hero" data-tab-id="hero-bento">Bento Grid</button>
+                        <button class="layout-tab" data-tab-group="hero" data-tab-id="hero-minimal">Minimal Text</button>
+                        <button class="layout-tab" data-tab-group="hero" data-tab-id="hero-filmstrip">Filmstrip</button>
+                    </div>
+
                     <div class="pro-tip">
                         <h5><i data-lucide="zap"></i> The 0.05 Second Rule</h5>
                         <p>Studies show that users form an opinion about your website in 0.05 seconds. We use
@@ -5355,16 +5979,78 @@
                             <div class="dot"></div>
                             <div class="dot"></div>
                         </div>
-                        <div class="hero-layout">
-                            <div class="hero-overlay"></div>
-                            <div class="hero-content">
-                                <h2 style="font-size: 2.2rem; margin-bottom: 0.5rem;">Little Image Photography</h2>
-                                <p style="font-size: 1.2rem; opacity: 0.9;">Capturing snuggly moments for modern
-                                    mothers.</p>
-                                <button class="btn btn-primary" style="margin-top: 1rem; font-size: 1.1rem;">View
-                                    Gallery</button>
+
+                        <!-- Panel: Classic Full-Width -->
+                        <div class="layout-panel active" data-panel-group="hero" data-panel-id="hero-classic">
+                            <div class="hero-layout">
+                                <div class="hero-overlay"></div>
+                                <div class="hero-content">
+                                    <h2 style="font-size: 2.2rem; margin-bottom: 0.5rem;">Little Image Photography</h2>
+                                    <p style="font-size: 1.2rem; opacity: 0.9;">Capturing snuggly moments for modern mothers.</p>
+                                    <button class="btn btn-primary" style="margin-top: 1rem; font-size: 1.1rem;">View Gallery</button>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- Panel: Split Layout -->
+                        <div class="layout-panel" data-panel-group="hero" data-panel-id="hero-split">
+                            <div class="hero-layout layout-split">
+                                <div class="hero-side-img"></div>
+                                <div class="hero-content" style="color: var(--color-text);">
+                                    <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--color-primary);">Little Image Photography</h2>
+                                    <p style="font-size: 1rem; opacity: 0.8;">Capturing snuggly moments for modern mothers.</p>
+                                    <button class="btn btn-primary" style="margin-top: 1rem;">View Gallery</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel: Bento Grid -->
+                        <div class="layout-panel" data-panel-group="hero" data-panel-id="hero-bento">
+                            <div class="hero-layout layout-bento">
+                                <div class="bento-main">
+                                    <div>
+                                        <h2 style="font-size: 1.6rem; text-shadow: 0 2px 8px rgba(0,0,0,0.4);">Little Image</h2>
+                                        <p style="font-size: 0.9rem; opacity: 0.9;">Capturing snuggly moments</p>
+                                    </div>
+                                </div>
+                                <div class="bento-item"><img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Newborn"></div>
+                                <div class="bento-item"><img src="assets/images/newborn/74-08272da1-1000.jpg" alt="Newborn"></div>
+                                <div class="bento-item"><img src="assets/images/child/LittleImage_Scher_1-d92a6d54-1500.jpg" alt="Child"></div>
+                                <div class="bento-item"><img src="assets/images/newborn/71-d1d561d4-1000.jpg" alt="Newborn"></div>
+                            </div>
+                        </div>
+
+                        <!-- Panel: Minimal Text -->
+                        <div class="layout-panel" data-panel-group="hero" data-panel-id="hero-minimal">
+                            <div class="hero-layout layout-minimal">
+                                <img class="hero-accent-img" src="assets/images/newborn/69-ad18d5c0-1000.jpg" alt="Accent">
+                                <img class="hero-accent-img-2" src="assets/images/newborn/76-4aaca081-1000.jpg" alt="Accent">
+                                <div class="hero-content" style="color: var(--color-text);">
+                                    <p style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; color: var(--color-secondary); margin-bottom: 0.5rem;">Est. 2015 &bull; Brooklyn, NY</p>
+                                    <h2 style="font-size: 2.4rem; margin-bottom: 0.5rem; color: var(--color-primary);">Little Image</h2>
+                                    <p style="font-size: 1rem; opacity: 0.7;">Capturing snuggly moments for modern mothers.</p>
+                                    <button class="btn btn-primary" style="margin-top: 1.5rem;">Explore Sessions</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel: Filmstrip -->
+                        <div class="layout-panel" data-panel-group="hero" data-panel-id="hero-filmstrip">
+                            <div class="hero-layout layout-filmstrip">
+                                <div class="hero-content">
+                                    <h2 style="font-size: 1.8rem; margin-bottom: 0.25rem;">Little Image Photography</h2>
+                                    <p style="font-size: 0.9rem; opacity: 0.7;">Capturing snuggly moments for modern mothers.</p>
+                                </div>
+                                <div class="hero-filmstrip-strip">
+                                    <img src="assets/images/newborn/1-45da4fdb-1000.jpg" alt="Portfolio">
+                                    <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Portfolio">
+                                    <img src="assets/images/newborn/73-5b55e942-1000.jpg" alt="Portfolio">
+                                    <img src="assets/images/newborn/74-08272da1-1000.jpg" alt="Portfolio">
+                                    <img src="assets/images/newborn/69-ad18d5c0-1000.jpg" alt="Portfolio">
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -5470,23 +6156,21 @@
                 <div class="showcase-text">
                     <h2 style="color: var(--color-primary);">2. The Connection: About Me</h2>
                     <p class="article-intro" style="font-size: 1.1rem; text-align: left; margin: 1rem 0;">
-                        Photography is intimate. For a newborn session, you are holding their most precious gift. For a
-                        wedding, you are witnessing their private joy.
+                        Photography is intimate. For a newborn session, you are holding their most precious gift.
                     </p>
-                    <h3>Building the Emotional Bridge</h3>
-                    <p>This section isn't about your resume; it's about your <strong>personality</strong>. We want them
-                        to think: <em>"I like her. My baby will be safe with her."</em></p>
-                    <ul style="padding-left: 1.2rem; margin-bottom: 2rem;">
-                        <li><strong>Eye Contact:</strong> Building trust starts with looking the client in the eye.</li>
-                        <li><strong>Vulnerability:</strong> Sharing your "why" creates a shared value.</li>
-                        <li><strong>Softness:</strong> Using rounded shapes and warm colors to reinforce your brand
-                            theme: "Cozy & Comfort."</li>
-                    </ul>
+                    <div class="article-block">
+                        <p>This isn't a resume. It's an invitation to trust. We've created three layout styles that balance your personality with your professional artistry.</p>
+                    </div>
+
+                    <div class="layout-switcher-tabs" style="margin-top: 1.5rem;">
+                        <button class="layout-tab active" data-tab-group="about" data-tab-id="about-classic">Classic Narrative</button>
+                        <button class="layout-tab" data-tab-group="about" data-tab-id="about-collage">Visual Story</button>
+                        <button class="layout-tab" data-tab-group="about" data-tab-id="about-bio">Quick Bio</button>
+                    </div>
+
                     <div class="pro-tip">
-                        <h5><i data-lucide="smile"></i> The "First Name" Rule</h5>
-                        <p>We use your first name instead of "The Photographer." This small linguistic shift creates an
-                            immediate sense of intimacy and trust, making the visitor feel like they are hiring a
-                            friend, not a vendor.</p>
+                        <h5><i data-lucide="heart"></i> The "Safe Hands" Factor</h5>
+                        <p>Mothers aren't just looking for a technician; they are looking for someone who will be gentle with their child. Your layout choice should reflect your personal approach.</p>
                     </div>
                 </div>
 
@@ -5497,21 +6181,52 @@
                             <div class="dot"></div>
                             <div class="dot"></div>
                         </div>
-                        <div class="split-layout" style="padding: 2.5rem; gap: 1.5rem; align-items: start;">
-                            <div class="split-img">
-                                <img src="assets/images/about/5cb53941bc09171d62065f5141224c54370f80c365279c.jpg"
-                                    alt="Photographer Portrait">
-                            </div>
-                            <div>
-                                <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem;">Hi, I'm Rachel</h3>
-                                <p style="font-size: 1rem; margin-bottom: 1rem;">I'm a storyteller with a camera. I
-                                    believe the best photos aren't posed; they are felt.</p>
-                                <p style="font-size: 1rem;"><strong>My Style:</strong> Relaxed, earthy, and patient.</p>
-                                <p
-                                    style="font-size: 1rem; margin-top: 1rem; font-style: italic; color: var(--color-secondary);">
-                                    "Let's capture the moments you want to keep forever."</p>
+
+                        <!-- Panel: Classic Narrative -->
+                        <div class="layout-panel active" data-panel-group="about" data-panel-id="about-classic">
+                            <div class="split-layout" style="padding: 2.5rem; gap: 1.5rem; align-items: center; background: var(--color-surface);">
+                                <div class="split-img">
+                                    <img src="assets/images/about/5cb53941bc09171d62065f5141224c54370f80c365279c.jpg" alt="Portrait">
+                                </div>
+                                <div>
+                                    <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem; color: var(--color-primary);">Hi, I'm Rachel</h3>
+                                    <p style="font-size: 0.95rem; line-height: 1.6;">I believe the best photos aren't posed; they are felt. My studio is a space for patience, snacks, and real smiles.</p>
+                                    <p style="font-size: 0.95rem; margin-top: 1rem; color: var(--color-secondary); font-family: var(--font-heading); font-style: italic;">"Capturing the heartbeat of your home."</p>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- Panel: Visual Story -->
+                        <div class="layout-panel" data-panel-group="about" data-panel-id="about-collage">
+                            <div class="preview-about layout-collage" style="padding: 2rem;">
+                                <div class="collage-grid">
+                                    <div class="collage-item"><img src="assets/images/about/5cb53941bc09171d62065f5141224c54370f80c365279c.jpg" alt="Me"></div>
+                                    <div class="collage-item"><img src="assets/images/newborn/71-d1d561d4-1000.jpg" alt="Detail"></div>
+                                    <div class="collage-item"><img src="assets/images/outdoor/10-ff46080f-300.jpg" alt="Action"></div>
+                                </div>
+                                <h3 style="color: var(--color-primary); margin-bottom: 0.5rem;">A Day in the Studio</h3>
+                                <p style="font-size: 0.85rem; opacity: 0.8;">Mom of three, coffee lover, and your secret weapon for family photos that don't feel like a chore.</p>
+                            </div>
+                        </div>
+
+                        <!-- Panel: Quick Bio -->
+                        <div class="layout-panel" data-panel-group="about" data-panel-id="about-bio">
+                            <div style="padding: 3rem; background: var(--color-background); display: flex; align-items: center; gap: 2rem;">
+                                <div style="flex: 1;">
+                                    <h3 style="font-size: 2rem; color: var(--color-text);">Rachel <span style="color: var(--color-primary);">R.</span></h3>
+                                    <hr style="border: none; border-top: 2px solid var(--color-secondary); width: 40px; margin: 1rem 0;">
+                                    <ul style="list-style: none; padding: 0; font-size: 0.9rem; line-height: 2;">
+                                        <li><i data-lucide="camera" style="width:14px; margin-right: 8px; color: var(--color-primary);"></i> NY Based Portraitist</li>
+                                        <li><i data-lucide="award" style="width:14px; margin-right: 8px; color: var(--color-primary);"></i> 10+ Years Experience</li>
+                                        <li><i data-lucide="heart" style="width:14px; margin-right: 8px; color: var(--color-primary);"></i> Baby Whisperer</li>
+                                    </ul>
+                                </div>
+                                <div style="width: 180px; height: 180px; border-radius: 50%; overflow: hidden; border: 5px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                                    <img src="assets/images/about/5cb53941bc09171d62065f5141224c54370f80c365279c.jpg" alt="Bio Circle" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -8805,6 +9520,13 @@
                         <li><strong>The Card Design:</strong> Giving each review its own "stage" makes them feel
                             important and curated.</li>
                     </ul>
+                    <div class="layout-switcher-tabs" style="margin-top: 1.5rem;">
+                        <button class="layout-tab active" data-tab-group="reviews" data-tab-id="reviews-centered">Centered Card</button>
+                        <button class="layout-tab" data-tab-group="reviews" data-tab-id="reviews-carousel">Side-Scroll</button>
+                        <button class="layout-tab" data-tab-group="reviews" data-tab-id="reviews-stacked">Stacked</button>
+                        <button class="layout-tab" data-tab-group="reviews" data-tab-id="reviews-grid">Grid</button>
+                    </div>
+
                     <div class="pro-tip">
                         <h5><i data-lucide="award"></i> Pro Tip: Keywords</h5>
                         <p>When selecting reviews for your landing page, pick the ones that use words like "Patient,"
@@ -8819,17 +9541,104 @@
                             <div class="dot"></div>
                             <div class="dot"></div>
                         </div>
-                        <div
-                            style="padding: 3rem; background: #FDFCFB; display: flex; align-items: center; min-height: 350px;">
-                            <div class="testimonial-card" style="max-width: 100%;">
-                                <i data-lucide="heart" class="quote-icon" fill="#D4A39A"></i>
-                                <p style="font-size: 1.2rem; line-height: 1.7;">"I usually hate being in photos, but
-                                    this felt like hanging
-                                    out with a friend. The results made me cry happy tears."</p>
-                                <p style="font-weight: bold; margin-top: 1.5rem; font-size: 1.05rem;">- The Miller
-                                    Family</p>
+
+                        <!-- Panel: Centered Card (Original) -->
+                        <div class="layout-panel active" data-panel-group="reviews" data-panel-id="reviews-centered">
+                            <div style="padding: 3rem; background: #FDFCFB; display: flex; align-items: center; min-height: 350px;">
+                                <div class="testimonial-card" style="max-width: 100%;">
+                                    <i data-lucide="heart" class="quote-icon" fill="#D4A39A"></i>
+                                    <p style="font-size: 1.2rem; line-height: 1.7;">"I usually hate being in photos, but
+                                        this felt like hanging out with a friend. The results made me cry happy tears."</p>
+                                    <p style="font-weight: bold; margin-top: 1.5rem; font-size: 1.05rem;">- The Miller Family</p>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- Panel: Side-Scroll Carousel -->
+                        <div class="layout-panel" data-panel-group="reviews" data-panel-id="reviews-carousel">
+                            <div class="reviews-layout-carousel">
+                                <h3 style="color: var(--color-primary); margin-bottom: 1rem; font-size: 1.3rem;">Client Love</h3>
+                                <div class="reviews-carousel-track">
+                                    <div class="reviews-mini-card">
+                                        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                                        <p>"This felt like hanging out with a friend. The results made me cry happy tears."</p>
+                                        <div class="reviewer">- The Miller Family</div>
+                                    </div>
+                                    <div class="reviews-mini-card">
+                                        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                                        <p>"Rachel was so patient with our fussy newborn. Every image is a treasure we'll keep forever."</p>
+                                        <div class="reviewer">- Sarah K.</div>
+                                    </div>
+                                    <div class="reviews-mini-card">
+                                        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                                        <p>"She captured moments I didn't even know were happening. Pure magic."</p>
+                                        <div class="reviewer">- The Cohens</div>
+                                    </div>
+                                    <div class="reviews-mini-card">
+                                        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                                        <p>"Worth every penny. The kids were comfortable from minute one."</p>
+                                        <div class="reviewer">- Lisa M.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel: Stacked Quotes -->
+                        <div class="layout-panel" data-panel-group="reviews" data-panel-id="reviews-stacked">
+                            <div class="reviews-layout-stacked">
+                                <div class="review-stack-item">
+                                    <div class="review-stack-avatar">SM</div>
+                                    <div class="review-stack-text">
+                                        <p>"I usually hate being in photos, but this felt like hanging out with a friend."</p>
+                                        <div class="name">Sarah Miller</div>
+                                    </div>
+                                </div>
+                                <div class="review-stack-item">
+                                    <div class="review-stack-avatar" style="background: var(--color-primary);">RK</div>
+                                    <div class="review-stack-text">
+                                        <p>"Rachel was so patient with our fussy newborn. Every image is a treasure."</p>
+                                        <div class="name">Rachel K.</div>
+                                    </div>
+                                </div>
+                                <div class="review-stack-item">
+                                    <div class="review-stack-avatar">JC</div>
+                                    <div class="review-stack-text">
+                                        <p>"She captured moments I didn't even know were happening. Pure magic."</p>
+                                        <div class="name">Jennifer Cohen</div>
+                                    </div>
+                                </div>
+                                <div class="review-stack-item">
+                                    <div class="review-stack-avatar" style="background: var(--color-primary);">LM</div>
+                                    <div class="review-stack-text">
+                                        <p>"Worth every penny. The kids were comfortable from minute one."</p>
+                                        <div class="name">Lisa M.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel: Grid -->
+                        <div class="layout-panel" data-panel-group="reviews" data-panel-id="reviews-grid">
+                            <div class="reviews-layout-grid">
+                                <div class="review-grid-card">
+                                    <div class="quote">"This felt like hanging out with a friend. Happy tears."</div>
+                                    <div class="author">- The Millers</div>
+                                </div>
+                                <div class="review-grid-card">
+                                    <div class="quote">"So patient with our newborn. Every image is a treasure."</div>
+                                    <div class="author">- Sarah K.</div>
+                                </div>
+                                <div class="review-grid-card">
+                                    <div class="quote">"She captured moments I didn't even know were happening."</div>
+                                    <div class="author">- The Cohens</div>
+                                </div>
+                                <div class="review-grid-card">
+                                    <div class="quote">"Worth every penny. Comfortable from minute one."</div>
+                                    <div class="author">- Lisa M.</div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -8851,6 +9660,13 @@
                     <h3>Reducing Friction</h3>
                     <p>An interactive FAQ (Accordions) keeps the page clean while providing deep information. It shows
                         you are an expert who knows exactly what parents are worried about.</p>
+                    <div class="layout-switcher-tabs" style="margin-top: 1.5rem;">
+                        <button class="layout-tab active" data-tab-group="faq" data-tab-id="faq-accordion">Classic Accordion</button>
+                        <button class="layout-tab" data-tab-group="faq" data-tab-id="faq-columns">Two-Column Cards</button>
+                        <button class="layout-tab" data-tab-group="faq" data-tab-id="faq-chat">Chat Bubbles</button>
+                        <button class="layout-tab" data-tab-group="faq" data-tab-id="faq-timeline">Timeline</button>
+                    </div>
+
                     <div class="pro-tip">
                         <h5><i data-lucide="help-circle"></i> The "Safe" Strategy</h5>
                         <p>Answer questions about pricing, turnaround time, and "what if my baby cries" here. By being
@@ -8865,36 +9681,100 @@
                             <div class="dot"></div>
                             <div class="dot"></div>
                         </div>
-                        <div style="padding: 2.5rem 3rem;">
-                            <h3 style="text-align: center; margin-bottom: 2rem; font-size: 1.4rem;">Common Questions
-                            </h3>
-                            <div class="faq-item" onclick="this.classList.toggle('open')">
-                                <div class="faq-question">What should we wear? <i data-lucide="chevron-down"></i></div>
-                                <div class="faq-answer">Soft, neutral tones work best - think creams, tans, and muted
-                                    greens. Avoid bold logos or busy patterns. I'll send you a full style guide once you
-                                    book!</div>
-                            </div>
-                            <div class="faq-item" onclick="this.classList.toggle('open')">
-                                <div class="faq-question">What if my baby won't stop crying? <i
-                                        data-lucide="chevron-down"></i></div>
-                                <div class="faq-answer">Babies cry - it's totally normal! I build extra time into every
-                                    session so we can pause for feedings, diaper changes, and cuddles. Patience is my
-                                    superpower.</div>
-                            </div>
-                            <div class="faq-item" onclick="this.classList.toggle('open')">
-                                <div class="faq-question">Can I bring my Kids? <i data-lucide="chevron-down"></i></div>
-                                <div class="faq-answer">Absolutely! Fur babies are family too. I love incorporating
-                                    parents into family sessions - some of my favorite shots include me and my kids.
+
+                        <!-- Panel: Classic Accordion (Original) -->
+                        <div class="layout-panel active" data-panel-group="faq" data-panel-id="faq-accordion">
+                            <div style="padding: 2.5rem 3rem;">
+                                <h3 style="text-align: center; margin-bottom: 2rem; font-size: 1.4rem;">Common Questions</h3>
+                                <div class="faq-item" onclick="this.classList.toggle('open')">
+                                    <div class="faq-question">What should we wear? <i data-lucide="chevron-down"></i></div>
+                                    <div class="faq-answer">Soft, neutral tones work best - think creams, tans, and muted greens. Avoid bold logos or busy patterns. I'll send you a full style guide once you book!</div>
+                                </div>
+                                <div class="faq-item" onclick="this.classList.toggle('open')">
+                                    <div class="faq-question">What if my baby won't stop crying? <i data-lucide="chevron-down"></i></div>
+                                    <div class="faq-answer">Babies cry - it's totally normal! I build extra time into every session so we can pause for feedings, diaper changes, and cuddles. Patience is my superpower.</div>
+                                </div>
+                                <div class="faq-item" onclick="this.classList.toggle('open')">
+                                    <div class="faq-question">Can I bring my Kids? <i data-lucide="chevron-down"></i></div>
+                                    <div class="faq-answer">Absolutely! Fur babies are family too. I love incorporating parents into family sessions - some of my favorite shots include me and my kids.</div>
+                                </div>
+                                <div class="faq-item" onclick="this.classList.toggle('open')">
+                                    <div class="faq-question">How long until I get my photos? <i data-lucide="chevron-down"></i></div>
+                                    <div class="faq-answer">You'll receive a sneak peek within 48 hours and your full gallery within 2-3 weeks. Each image is carefully edited to match the Little Image style.</div>
                                 </div>
                             </div>
-                            <div class="faq-item" onclick="this.classList.toggle('open')">
-                                <div class="faq-question">How long until I get my photos? <i
-                                        data-lucide="chevron-down"></i></div>
-                                <div class="faq-answer">You'll receive a sneak peek within 48 hours and your full
-                                    gallery within 2-3 weeks. Each image is carefully edited to match the Little Image
-                                    style.</div>
+                        </div>
+
+                        <!-- Panel: Two-Column Cards -->
+                        <div class="layout-panel" data-panel-group="faq" data-panel-id="faq-columns">
+                            <div class="faq-layout-columns">
+                                <h3>Common Questions</h3>
+                                <div class="faq-col-item">
+                                    <h5><i data-lucide="shirt" style="width:14px;height:14px;"></i> What should we wear?</h5>
+                                    <p>Soft, neutral tones work best - think creams, tans, and muted greens. Avoid bold logos or busy patterns.</p>
+                                </div>
+                                <div class="faq-col-item">
+                                    <h5><i data-lucide="baby" style="width:14px;height:14px;"></i> What if baby cries?</h5>
+                                    <p>Babies cry - it's totally normal! I build extra time for feedings, changes, and cuddles.</p>
+                                </div>
+                                <div class="faq-col-item">
+                                    <h5><i data-lucide="users" style="width:14px;height:14px;"></i> Can I bring my kids?</h5>
+                                    <p>Absolutely! Some of my favorite shots include siblings. Kids bring the best energy.</p>
+                                </div>
+                                <div class="faq-col-item">
+                                    <h5><i data-lucide="clock" style="width:14px;height:14px;"></i> How long for photos?</h5>
+                                    <p>Sneak peek within 48 hours, full gallery in 2-3 weeks. Each image carefully edited.</p>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- Panel: Chat Bubbles -->
+                        <div class="layout-panel" data-panel-group="faq" data-panel-id="faq-chat">
+                            <div class="faq-layout-chat">
+                                <h3>Ask Me Anything</h3>
+                                <div class="faq-bubble">
+                                    <div class="faq-bubble-q">What should we wear?</div>
+                                    <div class="faq-bubble-a">Soft, neutral tones work best - creams, tans, and muted greens. I'll send you a style guide once you book!</div>
+                                </div>
+                                <div class="faq-bubble">
+                                    <div class="faq-bubble-q">What if my baby won't stop crying?</div>
+                                    <div class="faq-bubble-a">Babies cry! I build extra time into every session for feedings, changes, and cuddles. Patience is my superpower.</div>
+                                </div>
+                                <div class="faq-bubble">
+                                    <div class="faq-bubble-q">Can I bring my kids?</div>
+                                    <div class="faq-bubble-a">Of course! Siblings make the best photos. I love the energy kids bring to a session.</div>
+                                </div>
+                                <div class="faq-bubble">
+                                    <div class="faq-bubble-q">How long until I get my photos?</div>
+                                    <div class="faq-bubble-a">Sneak peek in 48 hours, full gallery in 2-3 weeks. Every image is hand-edited in the Little Image style.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel: Timeline -->
+                        <div class="layout-panel" data-panel-group="faq" data-panel-id="faq-timeline">
+                            <div class="faq-layout-timeline">
+                                <h3>Your Questions, Answered</h3>
+                                <div class="faq-timeline-line"></div>
+                                <div class="faq-timeline-item">
+                                    <h5>What should we wear?</h5>
+                                    <p>Soft, neutral tones - creams, tans, muted greens. No logos or busy patterns. Full style guide included!</p>
+                                </div>
+                                <div class="faq-timeline-item">
+                                    <h5>What if my baby cries?</h5>
+                                    <p>Totally normal! Extra time built in for feedings, changes, and cuddles. Patience is my superpower.</p>
+                                </div>
+                                <div class="faq-timeline-item">
+                                    <h5>Can siblings join?</h5>
+                                    <p>Absolutely! Kids bring amazing energy and some of my favorite shots include the whole crew.</p>
+                                </div>
+                                <div class="faq-timeline-item">
+                                    <h5>When do I get photos?</h5>
+                                    <p>Sneak peek within 48 hours. Full gallery in 2-3 weeks, carefully edited to match the brand.</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -8922,11 +9802,17 @@
                         <li><strong>Personalized:</strong> Allowing them to share what they are looking for.</li>
                         <li><strong>Responsive:</strong> A clear design that looks just as good on mobile.</li>
                     </ul>
+                    <div class="layout-switcher-tabs" style="margin-top: 1.5rem;">
+                        <button class="layout-tab active" data-tab-group="contact" data-tab-id="contact-classic">Classic Form</button>
+                        <button class="layout-tab" data-tab-group="contact" data-tab-id="contact-split">Split Image</button>
+                        <button class="layout-tab" data-tab-group="contact" data-tab-id="contact-minimal">Minimal</button>
+                        <button class="layout-tab" data-tab-group="contact" data-tab-id="contact-card">Floating Card</button>
+                    </div>
+
                     <div class="pro-tip">
                         <h5><i data-lucide="send"></i> The "Safe" Contact</h5>
                         <p>A contact form is less intimidating than a "Book Now" button. It invites inquiry and allows
-                            you to
-                            vet the client before anything is finalized, ensuring a perfect fit for both sides.</p>
+                            you to vet the client before anything is finalized, ensuring a perfect fit for both sides.</p>
                     </div>
                 </div>
 
@@ -8937,26 +9823,96 @@
                             <div class="dot"></div>
                             <div class="dot"></div>
                         </div>
-                        <div style="padding: 2.5rem; background: var(--color-surface); height: 100%;">
-                            <h3 style="margin-bottom: 1.5rem; font-size: 1.4rem; text-align: center;">Say Hello</h3>
-                            <div class="demo-form">
-                                <div class="demo-form-group">
-                                    <label class="demo-form-label">Your Name</label>
-                                    <div class="demo-form-input">e.g. Sarah Miller</div>
+
+                        <!-- Panel: Classic Form (Original) -->
+                        <div class="layout-panel active" data-panel-group="contact" data-panel-id="contact-classic">
+                            <div style="padding: 2.5rem; background: var(--color-surface); height: 100%;">
+                                <h3 style="margin-bottom: 1.5rem; font-size: 1.4rem; text-align: center;">Say Hello</h3>
+                                <div class="demo-form">
+                                    <div class="demo-form-group">
+                                        <label class="demo-form-label">Your Name</label>
+                                        <div class="demo-form-input">e.g. Sarah Miller</div>
+                                    </div>
+                                    <div class="demo-form-group">
+                                        <label class="demo-form-label">Email Address</label>
+                                        <div class="demo-form-input">e.g. sarah@example.com</div>
+                                    </div>
+                                    <div class="demo-form-group">
+                                        <label class="demo-form-label">Tell me about your family</label>
+                                        <div class="demo-form-input demo-form-textarea">We're expecting our first in April...</div>
+                                    </div>
+                                    <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Send Message</button>
                                 </div>
-                                <div class="demo-form-group">
-                                    <label class="demo-form-label">Email Address</label>
-                                    <div class="demo-form-input">e.g. sarah@example.com</div>
-                                </div>
-                                <div class="demo-form-group">
-                                    <label class="demo-form-label">Tell me about your family</label>
-                                    <div class="demo-form-input demo-form-textarea">We're expecting our first in
-                                        April...</div>
-                                </div>
-                                <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Send
-                                    Message</button>
                             </div>
                         </div>
+
+                        <!-- Panel: Split Image + Form -->
+                        <div class="layout-panel" data-panel-group="contact" data-panel-id="contact-split">
+                            <div class="contact-layout-split">
+                                <div class="contact-split-img"></div>
+                                <div class="contact-split-form">
+                                    <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--color-primary);">Let's Connect</h3>
+                                    <p style="font-size: 0.85rem; opacity: 0.7; margin-bottom: 1.5rem;">Tell me about your family and the memories you want to capture.</p>
+                                    <div class="demo-form">
+                                        <div class="demo-form-group">
+                                            <label class="demo-form-label">Your Name</label>
+                                            <div class="demo-form-input">e.g. Sarah Miller</div>
+                                        </div>
+                                        <div class="demo-form-group">
+                                            <label class="demo-form-label">Email</label>
+                                            <div class="demo-form-input">e.g. sarah@example.com</div>
+                                        </div>
+                                        <div class="demo-form-group">
+                                            <label class="demo-form-label">Your Story</label>
+                                            <div class="demo-form-input demo-form-textarea">We're expecting our first...</div>
+                                        </div>
+                                        <button class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Send Message</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel: Minimal Centered -->
+                        <div class="layout-panel" data-panel-group="contact" data-panel-id="contact-minimal">
+                            <div class="contact-layout-minimal">
+                                <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: var(--color-secondary); margin-bottom: 0.5rem;">Get in Touch</p>
+                                <h3 style="font-size: 1.8rem; color: var(--color-primary); margin-bottom: 2rem;">Say Hello</h3>
+                                <div class="contact-min-form">
+                                    <div class="contact-min-input">Your Name</div>
+                                    <div class="contact-min-input">Email Address</div>
+                                    <div class="contact-min-input">Tell me about your family...</div>
+                                    <button class="btn btn-primary" style="width: 100%; margin-top: 1rem; border-radius: 0;">Send Message</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel: Floating Card -->
+                        <div class="layout-panel" data-panel-group="contact" data-panel-id="contact-card">
+                            <div class="contact-layout-card">
+                                <div class="contact-floating-card">
+                                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                                        <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--color-primary); margin: 0 auto 0.75rem; display: flex; align-items: center; justify-content: center;">
+                                            <i data-lucide="mail" style="width: 22px; height: 22px; color: white;"></i>
+                                        </div>
+                                        <h3 style="font-size: 1.3rem; color: var(--color-text);">Let's Chat</h3>
+                                        <p style="font-size: 0.8rem; opacity: 0.6;">I'd love to hear about your family.</p>
+                                    </div>
+                                    <div class="demo-form">
+                                        <div class="demo-form-group">
+                                            <div class="demo-form-input" style="border-radius: 12px;">Your Name</div>
+                                        </div>
+                                        <div class="demo-form-group">
+                                            <div class="demo-form-input" style="border-radius: 12px;">Email</div>
+                                        </div>
+                                        <div class="demo-form-group">
+                                            <div class="demo-form-input demo-form-textarea" style="border-radius: 12px;">Tell me your story...</div>
+                                        </div>
+                                        <button class="btn btn-primary" style="width: 100%; border-radius: 12px;">Send Message</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -8982,11 +9938,21 @@
                 <div class="article-block">
                     <p>We've explored each section individually - the Hero, the About, the Gallery, the Packages, the Reviews, the FAQ, and the Contact. Now, scroll through the mockup below to see how they <strong>flow as a single, cohesive experience</strong> for your visitors. This is the website your clients will see.</p>
                 </div>
+
+                <!-- Website Style Switcher -->
+                <div class="preview-style-tabs">
+                    <button class="layout-tab active" data-style-id="style-default">Original Sage</button>
+                    <button class="layout-tab" data-style-id="style-editorial">Editorial Rose</button>
+                    <button class="layout-tab" data-style-id="style-minimal">Modern Minimal</button>
+                    <button class="layout-tab" data-style-id="style-scrapbook">Warm Scrapbook</button>
+                    <button class="layout-tab" data-style-id="style-luxe">Dark Luxury</button>
+                    <button class="layout-tab" data-style-id="style-botanical">Botanical Garden</button>
+                </div>
             </div>
 
             <!-- The Full Website Preview -->
             <div style="position: relative;">
-                <div class="preview-browser">
+                <div class="preview-browser" id="mainWebsitePreview">
                     <div class="preview-browser-bar">
                         <div class="dot"></div>
                         <div class="dot"></div>
@@ -9340,6 +10306,55 @@
                     target.classList.add('active');
                     lucide.createIcons();
                 }
+            });
+        });
+
+        // =============================================
+        // LAYOUT SWITCHERS (HERO, ABOUT)
+        // =============================================
+        const layoutTabs = document.querySelectorAll('.layout-tab[data-tab-group]');
+        const layoutPanels = document.querySelectorAll('.layout-panel[data-panel-group]');
+
+        layoutTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const group = tab.dataset.tabGroup;
+                const id = tab.dataset.tabId;
+
+                // Update Tabs
+                document.querySelectorAll(`.layout-tab[data-tab-group="${group}"]`).forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Update Panels
+                document.querySelectorAll(`.layout-panel[data-panel-group="${group}"]`).forEach(p => p.classList.remove('active'));
+                const target = document.querySelector(`.layout-panel[data-panel-group="${group}"][data-panel-id="${id}"]`);
+                if (target) {
+                    target.classList.add('active');
+                    lucide.createIcons();
+                }
+            });
+        });
+
+        // =============================================
+        // GLOBAL PREVIEW STYLE SWITCHER
+        // =============================================
+        const previewStyleTabs = document.querySelectorAll('[data-style-id]');
+        const mainPreview = document.getElementById('mainWebsitePreview');
+
+        previewStyleTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const styleId = tab.dataset.styleId;
+
+                // Update Tabs
+                previewStyleTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Update Preview Class
+                mainPreview.className = 'preview-browser'; // Reset
+                if (styleId !== 'style-default') mainPreview.classList.add(styleId);
+                
+                // Scroll to top of preview when style changes
+                const scrollArea = mainPreview.querySelector('.preview-scroll-area');
+                if (scrollArea) scrollArea.scrollTop = 0;
             });
         });
 
