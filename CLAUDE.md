@@ -20,7 +20,9 @@ Simply open [index.html](index.html) in a web browser. No local server required.
 
 ```
 presentation/
-├── index.html                          # Main presentation file (10,528 lines)
+├── index.html                          # Main HTML structure (~4,400 lines)
+├── style.css                           # All styles (~5,700 lines)
+├── script.js                           # All JavaScript functionality (~365 lines)
 ├── assets/
 │   └── images/                         # All photography samples, organized by category
 │       ├── about/
@@ -41,11 +43,11 @@ presentation/
 
 ## Architecture & Key Patterns
 
-### CSS Organization
+### CSS Organization ([style.css](style.css))
 
-All styles are in a `<style>` tag in the `<head>`. Structure:
+All styles are in [style.css](style.css) (~5,700 lines), linked in the HTML `<head>`. Structure:
 
-1. **CSS Custom Properties (lines ~23-47)**: Brand colors, fonts, spacing defined in `:root`
+1. **CSS Custom Properties (lines ~5-29)**: Brand colors, fonts, spacing defined in `:root`
    - Primary palette: Sage Green (#94A396), Muted Rose (#D4A39A), Oatmeal (#F5F2ED)
    - Fonts: Solway (headings), Nunito (body)
 
@@ -57,9 +59,9 @@ All styles are in a `<style>` tag in the `<head>`. Structure:
 
 5. **Theme Variations**: Multiple CSS classes for alternative visual themes (`.style-editorial`, `.style-minimal`, `.style-luxe`, etc.)
 
-### HTML Structure
+### HTML Structure ([index.html](index.html))
 
-The presentation is organized as sequential "slides" (sections):
+The HTML file (~4,400 lines) contains the structure and content. The presentation is organized as sequential "slides" (sections):
 
 1. **Title Slide** - Introduction
 2. **Hero Lab** - 7 hero layout variations with switcher tabs
@@ -77,44 +79,48 @@ Each "Lab" section contains:
 - Multiple `.layout-panel` or `.package-panel` elements (only one visible at a time)
 - Demo content representing the actual website content
 
-### JavaScript Architecture
+**Key includes:**
+- `<link rel="stylesheet" href="style.css">` in `<head>` (line 18)
+- `<script src="script.js"></script>` before `</body>` (line 4414)
 
-JavaScript is in a `<script>` tag before `</body>` (lines ~10150-10526). Key systems:
+### JavaScript Architecture ([script.js](script.js))
 
-#### 1. Scroll Reveal Animation (lines ~10150-10175)
+All JavaScript is in [script.js](script.js) (~365 lines), loaded at the end of the HTML. Key systems:
+
+#### 1. Scroll Reveal Animation (lines ~7-33)
 - Uses Intersection Observer API
 - Adds `.active` class to `.reveal` elements when they enter viewport
 - Triggers fade-in and slide-up animations
 
 #### 2. Tab Switchers (multiple implementations)
-- **Gallery Lab Tabs** (lines ~10248-10267): Switches between gallery layout variations
-- **Collection Style Tabs** (lines ~10270-10288): Switches collection organization patterns
-- **Package Lab Tabs** (lines ~10291-10310): Switches pricing layout designs
-- **Layout Switchers** (lines ~10313-10335): Generic system for Hero/About/Reviews/FAQ/Contact sections
+- **Gallery Lab Tabs** (lines ~89-108): Switches between gallery layout variations
+- **Collection Style Tabs** (lines ~111-130): Switches collection organization patterns
+- **Package Lab Tabs** (lines ~133-152): Switches pricing layout designs
+- **Layout Switchers** (lines ~155-177): Generic system for Hero/About/Reviews/FAQ/Contact sections
   - Uses `data-tab-group` and `data-tab-id` attributes
   - Switches active class on tabs and corresponding `.layout-panel` elements
 
-#### 3. Global Preview Style Switcher (lines ~10337-10360)
+#### 3. Global Preview Style Switcher (lines ~180-202)
 - Controls the full website preview theme
 - Uses `data-style-id` attributes on buttons
 - Adds/removes theme class names on `#mainWebsitePreview` element
 - Available themes: default, editorial, minimal, scrapbook, luxe, botanical
 
-#### 4. Category Gallery Switcher (lines ~10224-10245)
+#### 4. Category Gallery Switcher (lines ~66-86)
 - Switches between photography categories (newborn, child, outdoor, etc.)
 - Uses `.category-circle` buttons and `.category-gallery` panels
 
-#### 5. Lightbox Gallery (lines ~10400-10497)
+#### 5. Lightbox Gallery (lines ~242-341)
 - Full-screen image viewer with prev/next navigation
 - Keyboard support (Arrow keys, Escape)
 - Works with `data-lightbox-group` and `data-lightbox-src` attributes
 - Multiple image groups supported
 
-#### 6. Parallax Reel Interaction (lines ~10500-10524)
+#### 6. Parallax Reel Interaction (lines ~344-365)
 - Mouse-based parallax effect on image reel
 - Horizontal scroll on vertical mouse wheel
 
-#### 7. Navigation Dots (lines ~10176-10222)
+#### 7. Navigation Dots (lines ~36-63)
 - Side navigation with scroll-spy highlighting
 - Click to scroll to section
 - Uses Intersection Observer to track active section
@@ -152,7 +158,7 @@ Loaded via CDN (no npm/package.json):
    <button class="layout-tab" data-style-id="style-newtheme">New Theme Name</button>
    ```
 
-2. **Add CSS for the theme** in the `<style>` section:
+2. **Add CSS for the theme** in [style.css](style.css):
    ```css
    #mainWebsitePreview.style-newtheme {
        /* Theme overrides */
@@ -164,7 +170,7 @@ Loaded via CDN (no npm/package.json):
 
 ### Modifying Brand Colors/Fonts
 
-Edit CSS custom properties in `:root` (lines ~23-47):
+Edit CSS custom properties in `:root` at the top of [style.css](style.css) (lines ~5-29):
 ```css
 :root {
     --color-primary: #94A396;
