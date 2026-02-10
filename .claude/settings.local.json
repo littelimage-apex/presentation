@@ -13,7 +13,8 @@
       "mcp__plugin_firecrawl_firecrawl__firecrawl_search",
       "Skill(firecrawl:setup)",
       "Skill(firecrawl:setup:*)",
-      "mcp__plugin_firecrawl_firecrawl__firecrawl_scrape"
+      "mcp__plugin_firecrawl_firecrawl__firecrawl_scrape",
+      "Bash(dir:*)"
     ]
   }
 }
