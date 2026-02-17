@@ -88,7 +88,7 @@
     </section>
 
     <!-- ============================================
-     Collections - Pillars as Nav + Full Gallery
+     Collections - Grid Gallery
      ============================================ -->
     <section id="portfolio" class="collections-section">
         <div class="container">
@@ -98,53 +98,63 @@
             </div>
         </div>
 
-        <div class="container">
-            <div class="collections-pillars" id="collectionPillars">
-                <div class="pillar-item" data-category="newborn">
+        <div class="collections-grid-wrap">
+            <div class="collections-grid" id="collectionPillars">
+                <div class="collection-card collection-card-large" data-category="newborn">
                     <img src="assets/images/newborn/64-7694e869-1000.jpg" alt="Newborn Photography">
-                    <div class="pillar-overlay"></div>
-                    <div class="pillar-label">
+                    <div class="collection-card-overlay"></div>
+                    <div class="collection-card-content">
                         <h3>Newborn</h3>
                         <p>The beginning of everything</p>
+                        <span class="collection-card-link">View Collection <i data-lucide="arrow-right"
+                                style="width:16px;height:16px;"></i></span>
                     </div>
                 </div>
-                <div class="pillar-item" data-category="child">
+                <div class="collection-card" data-category="child">
                     <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child Photography">
-                    <div class="pillar-overlay"></div>
-                    <div class="pillar-label">
+                    <div class="collection-card-overlay"></div>
+                    <div class="collection-card-content">
                         <h3>Personality</h3>
                         <p>Captured in a blink</p>
+                        <span class="collection-card-link">View Collection <i data-lucide="arrow-right"
+                                style="width:16px;height:16px;"></i></span>
                     </div>
                 </div>
-                <div class="pillar-item" data-category="outdoor">
+                <div class="collection-card" data-category="outdoor">
                     <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor Photography">
-                    <div class="pillar-overlay"></div>
-                    <div class="pillar-label">
+                    <div class="collection-card-overlay"></div>
+                    <div class="collection-card-content">
                         <h3>Adventure</h3>
                         <p>Out in the wild</p>
+                        <span class="collection-card-link">View Collection <i data-lucide="arrow-right"
+                                style="width:16px;height:16px;"></i></span>
                     </div>
                 </div>
-                <div class="pillar-item" data-category="milestone">
+                <div class="collection-card" data-category="milestone">
                     <img src="assets/images/three_year_milestone/11-a00f14f0-1500.jpg" alt="Three Year Milestone">
-                    <div class="pillar-overlay"></div>
-                    <div class="pillar-label">
+                    <div class="collection-card-overlay"></div>
+                    <div class="collection-card-content">
                         <h3>Tradition</h3>
                         <p>Beautiful consistency</p>
+                        <span class="collection-card-link">View Collection <i data-lucide="arrow-right"
+                                style="width:16px;height:16px;"></i></span>
                     </div>
                 </div>
-                <div class="pillar-item" data-category="special">
+                <div class="collection-card" data-category="special">
                     <img src="assets/images/special_occasion/LittleImage_Katz_1-321511af-1000.jpg"
                         alt="Special Occasions">
-                    <div class="pillar-overlay"></div>
-                    <div class="pillar-label">
+                    <div class="collection-card-overlay"></div>
+                    <div class="collection-card-content">
                         <h3>Celebrations</h3>
                         <p>Events worth remembering</p>
+                        <span class="collection-card-link">View Collection <i data-lucide="arrow-right"
+                                style="width:16px;height:16px;"></i></span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Gallery that opens when a pillar is clicked -->
+        <!-- Gallery that opens when a collection card is clicked -->
         <div class="collection-gallery" id="collectionGallery">
             <div class="container">
                 <div class="collection-gallery-header">
@@ -166,7 +176,7 @@
     <section id="packages" class="section-padding reveal">
         <div class="container">
             <div class="section-header">
-                <h2>Packages &amp; Pricing</h2>
+                <h2>Session Packages</h2>
                 <p>Find the perfect session for your family</p>
             </div>
 
@@ -467,60 +477,77 @@
     </section>
 
     <!-- ============================================
-     Contact - Classic Form
+     Contact - Full Width
      ============================================ -->
-    <section id="contact" class="section-padding reveal">
-        <div class="container">
-            <div class="section-header">
+    <section id="contact" class="contact-section reveal">
+        <div class="contact-full">
+            <div class="contact-info">
                 <h2>Say Hello</h2>
                 <p>Ready to capture your family's story? Let's start the conversation.</p>
-            </div>
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <label for="name" class="form-label">Your Name</label>
-                    <input type="text" id="name" name="name" class="form-input" placeholder="e.g. Sarah Miller"
-                        required>
+                <div class="contact-details">
+                    <div class="contact-detail-item">
+                        <i data-lucide="map-pin" style="width:20px;height:20px;"></i>
+                        <span>Brooklyn, NY</span>
+                    </div>
+                    <div class="contact-detail-item">
+                        <i data-lucide="mail" style="width:20px;height:20px;"></i>
+                        <span>hello@littleimageny.com</span>
+                    </div>
+                    <div class="contact-detail-item">
+                        <i data-lucide="instagram" style="width:20px;height:20px;"></i>
+                        <span>@littleimagephoto</span>
+                    </div>
                 </div>
-                <div class="form-row">
+            </div>
+            <div class="contact-form-wrap">
+                <form class="contact-form" id="contactForm">
                     <div class="form-group">
-                        <label for="email" class="form-label">Email Address</label>
-                        <input type="email" id="email" name="email" class="form-input" placeholder="sarah@example.com"
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="e.g. Sarah Miller"
                             required>
                     </div>
-                    <div class="form-group">
-                        <label for="phone" class="form-label">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="(555) 123-4567">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-input"
+                                placeholder="sarah@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-input"
+                                placeholder="(555) 123-4567">
+                        </div>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="session" class="form-label">Session Type</label>
-                        <select id="session" name="session" class="form-input form-select">
-                            <option value="">Select a session type</option>
-                            <option value="newborn">Newborn</option>
-                            <option value="milestone">Three Year Milestone</option>
-                            <option value="family">Family</option>
-                            <option value="location">On Location</option>
-                        </select>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="session" class="form-label">Session Type</label>
+                            <select id="session" name="session" class="form-input form-select">
+                                <option value="">Select a session type</option>
+                                <option value="newborn">Newborn</option>
+                                <option value="milestone">Three Year Milestone</option>
+                                <option value="family">Family</option>
+                                <option value="location">On Location</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="referral" class="form-label">How did you hear about me?</label>
+                            <select id="referral" name="referral" class="form-input form-select">
+                                <option value="">Select an option</option>
+                                <option value="ads">Ads</option>
+                                <option value="google">Google search</option>
+                                <option value="friend">From a friend</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="referral" class="form-label">How did you hear about me?</label>
-                        <select id="referral" name="referral" class="form-input form-select">
-                            <option value="">Select an option</option>
-                            <option value="ads">Ads</option>
-                            <option value="google">Google search</option>
-                            <option value="friend">From a friend</option>
-                            <option value="other">Other</option>
-                        </select>
+                        <label for="message" class="form-label">Tell me about your family</label>
+                        <textarea id="message" name="message" class="form-input form-textarea"
+                            placeholder="We're expecting our first in April..." rows="5"></textarea>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="message" class="form-label">Tell me about your family</label>
-                    <textarea id="message" name="message" class="form-input form-textarea"
-                        placeholder="We're expecting our first in April..." rows="5"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-            </form>
+                    <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                </form>
+            </div>
         </div>
     </section>
 

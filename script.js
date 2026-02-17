@@ -166,15 +166,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const backBtn = document.getElementById('collectionBack');
 
     if (pillars && gallery && galleryGrid) {
-        // Click on a pillar to open gallery
-        document.querySelectorAll('.pillar-item[data-category]').forEach(pillar => {
-            pillar.addEventListener('click', () => {
-                const category = pillar.dataset.category;
+        // Click on a collection card to open gallery
+        document.querySelectorAll('.collection-card[data-category]').forEach(card => {
+            card.addEventListener('click', () => {
+                const category = card.dataset.category;
                 openCategoryGallery(category);
 
-                // Mark active pillar
-                document.querySelectorAll('.pillar-item').forEach(p => p.classList.remove('active-pillar'));
-                pillar.classList.add('active-pillar');
+                // Mark active card
+                document.querySelectorAll('.collection-card').forEach(c => c.classList.remove('active-pillar'));
+                card.classList.add('active-pillar');
             });
         });
 
@@ -219,9 +219,9 @@ document.addEventListener('DOMContentLoaded', () => {
         function closeCategoryGallery() {
             pillars.classList.remove('collapsed');
             gallery.classList.remove('open');
-            document.querySelectorAll('.pillar-item').forEach(p => p.classList.remove('active-pillar'));
+            document.querySelectorAll('.collection-card').forEach(c => c.classList.remove('active-pillar'));
 
-            // Scroll back to pillars
+            // Scroll back to collections grid
             setTimeout(() => {
                 pillars.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 100);
