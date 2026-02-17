@@ -1,508 +1,562 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Little Image Photography | Brooklyn, NY</title>
-    <meta name="description" content="Newborn, child, and family photography in Brooklyn, NY by Rachel. Capturing life's little moments.">
+    <meta name="description"
+        content="Newborn, child, and family photography in Brooklyn, NY by Rachel. Capturing life's little moments.">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Solway:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Solway:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- ============================================
-     Navigation
+    <!-- ============================================
+     Navigation - Floating on scroll, with login
      ============================================ -->
-<nav class="navbar" id="navbar">
-    <div class="nav-container">
-        <a href="#home" class="nav-logo">
-            <img src="assets/logo.svg" alt="Little Image Photography" class="logo-img">
-        </a>
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
-            <i data-lucide="menu"></i>
-        </button>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#packages">Packages</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </div>
-</nav>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <img src="assets/logo.svg" alt="Little Image Photography" class="logo-img">
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i data-lucide="menu"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#" class="nav-login-btn">
+                <i data-lucide="user" style="width:16px;height:16px;"></i>
+                <span>Client Login</span>
+            </a>
+        </div>
+    </nav>
 
-<!-- ============================================
-     Hero - Asymmetric Overlap
+    <!-- ============================================
+     Hero - Full Width Image + Overlay
      ============================================ -->
-<section id="home" class="hero-section">
-    <div class="hero-grid">
-        <div class="hero-image"></div>
-        <div class="hero-card">
-            <span class="hero-tags">Newborn &bull; Child &bull; Family</span>
-            <img src="assets/logo.svg" alt="Little Image Photography" class="hero-logo">
-            <p class="hero-tagline">Capturing life's little moments in Brooklyn, NY. Every smile, every yawn, every tiny detail — preserved as art for a lifetime.</p>
-            <a href="#contact" class="btn btn-primary">Book Your Session</a>
+    <section id="home" class="hero-section">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <span class="hero-tags">Newborn &bull; Child &bull; Family</span>
+                <h1>Little Image<br>Photography</h1>
+                <p class="hero-tagline">Capturing life's little moments in Brooklyn, NY.<br>Every smile, every yawn,
+                    every tiny detail — preserved as art for a lifetime.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">Book Your Session</a>
+                    <a href="#portfolio" class="btn btn-hero-outline">View Portfolio</a>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- ============================================
-     About - Classic Narrative
+    <!-- ============================================
+     About - Classic Narrative (static image)
      ============================================ -->
-<section id="about" class="section-padding reveal">
-    <div class="container">
-        <div class="about-grid">
-            <div class="about-image">
-                <img src="assets/images/about/Gemini_Generated_Image_aku73baku73baku7.png" alt="Rachel - Little Image Photography">
-            </div>
-            <div class="about-content">
-                <h2>Hey, I'm Rachel</h2>
-                <p>I am the owner and photographer at Little Image Photography. Photography has always been a passion of mine. I love being able to capture a moment, whether little or extraordinary.</p>
-                <p>I specialize in newborn and child portraiture, both in studio and outdoors. Children grow so fast, and family dynamics change rapidly. That's why photography is so important — because even on those imperfect days, there are always perfect moments.</p>
-                <p>Capture those moments, preserve them as art, and cherish them for a lifetime.</p>
-                <blockquote>"Even on those imperfect days, there are always perfect moments."</blockquote>
-                <a href="#contact" class="btn btn-primary">Let's Work Together</a>
+    <section id="about" class="section-padding reveal">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="assets/images/about/Gemini_Generated_Image_aku73baku73baku7.png"
+                        alt="Rachel - Little Image Photography">
+                </div>
+                <div class="about-content">
+                    <h2>Hey, I'm Rachel</h2>
+                    <p>I am the owner and photographer at Little Image Photography. Photography has always been a
+                        passion of mine. I love being able to capture a moment, whether little or extraordinary.</p>
+                    <p>I specialize in newborn and child portraiture, both in studio and outdoors. Children grow so
+                        fast, and family dynamics change rapidly. That's why photography is so important — because even
+                        on those imperfect days, there are always perfect moments.</p>
+                    <p>Capture those moments, preserve them as art, and cherish them for a lifetime.</p>
+                    <blockquote>"Even on those imperfect days, there are always perfect moments."</blockquote>
+                    <a href="#contact" class="btn btn-primary">Let's Work Together</a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- ============================================
-     Collections - Pillars
+    <!-- ============================================
+     Collections - Pillars as Nav + Full Gallery
      ============================================ -->
-<section id="portfolio" class="section-padding reveal">
-    <div class="container">
-        <div class="section-header">
-            <h2>Our Collections</h2>
-            <p>Explore the moments we love to capture</p>
-        </div>
-        <div class="collections-pillars">
-            <div class="pillar-item">
-                <img src="assets/images/newborn/64-7694e869-1000.jpg" alt="Newborn Photography">
-                <div class="pillar-overlay"></div>
-                <div class="pillar-label">
-                    <h3>Newborn</h3>
-                    <p>The beginning of everything</p>
-                </div>
-            </div>
-            <div class="pillar-item">
-                <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child Photography">
-                <div class="pillar-overlay"></div>
-                <div class="pillar-label">
-                    <h3>Personality</h3>
-                    <p>Captured in a blink</p>
-                </div>
-            </div>
-            <div class="pillar-item">
-                <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor Photography">
-                <div class="pillar-overlay"></div>
-                <div class="pillar-label">
-                    <h3>Adventure</h3>
-                    <p>Out in the wild</p>
-                </div>
-            </div>
-            <div class="pillar-item">
-                <img src="assets/images/three_year_milestone/11-a00f14f0-1500.jpg" alt="Three Year Milestone">
-                <div class="pillar-overlay"></div>
-                <div class="pillar-label">
-                    <h3>Tradition</h3>
-                    <p>Beautiful consistency</p>
-                </div>
+    <section id="portfolio" class="collections-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Our Collections</h2>
+                <p>Click a collection to explore</p>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- ============================================
-     Gallery - Hover Grid
-     ============================================ -->
-<section id="gallery" class="section-padding reveal">
-    <div class="container">
-        <div class="section-header">
-            <h2>Recent Work</h2>
-            <p>A glimpse into our favorite sessions</p>
-        </div>
-        <div class="hover-grid" data-lightbox-group="gallery">
-            <div class="hover-grid-item" data-lightbox-src="assets/images/newborn/LittleImage_Braun_6-2223d33b-1000.jpg">
-                <img src="assets/images/newborn/LittleImage_Braun_6-2223d33b-1000.jpg" alt="Newborn session">
-                <div class="hover-content">
-                    <h4>Newborn Session</h4>
-                    <p>Tiny fingers, peaceful dreams</p>
-                    <span class="view-btn"><i data-lucide="maximize-2" style="width:14px;height:14px;"></i> View</span>
+        <div class="container">
+            <div class="collections-pillars" id="collectionPillars">
+                <div class="pillar-item" data-category="newborn">
+                    <img src="assets/images/newborn/64-7694e869-1000.jpg" alt="Newborn Photography">
+                    <div class="pillar-overlay"></div>
+                    <div class="pillar-label">
+                        <h3>Newborn</h3>
+                        <p>The beginning of everything</p>
+                    </div>
                 </div>
-            </div>
-            <div class="hover-grid-item" data-lightbox-src="assets/images/child/LittleImage_Mauskopf_1-f736b7d9-1500.jpg">
-                <img src="assets/images/child/LittleImage_Mauskopf_1-f736b7d9-1500.jpg" alt="Child portrait">
-                <div class="hover-content">
-                    <h4>Child Portraits</h4>
-                    <p>Personality shines through</p>
-                    <span class="view-btn"><i data-lucide="maximize-2" style="width:14px;height:14px;"></i> View</span>
+                <div class="pillar-item" data-category="child">
+                    <img src="assets/images/child/22-f4468cd2-1500.jpg" alt="Child Photography">
+                    <div class="pillar-overlay"></div>
+                    <div class="pillar-label">
+                        <h3>Personality</h3>
+                        <p>Captured in a blink</p>
+                    </div>
                 </div>
-            </div>
-            <div class="hover-grid-item" data-lightbox-src="assets/images/outdoor/2-6ea104f9-2500.jpg">
-                <img src="assets/images/outdoor/2-6ea104f9-2500.jpg" alt="Outdoor session">
-                <div class="hover-content">
-                    <h4>Outdoor Magic</h4>
-                    <p>Brooklyn's best locations</p>
-                    <span class="view-btn"><i data-lucide="maximize-2" style="width:14px;height:14px;"></i> View</span>
+                <div class="pillar-item" data-category="outdoor">
+                    <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor Photography">
+                    <div class="pillar-overlay"></div>
+                    <div class="pillar-label">
+                        <h3>Adventure</h3>
+                        <p>Out in the wild</p>
+                    </div>
                 </div>
-            </div>
-            <div class="hover-grid-item" data-lightbox-src="assets/images/three_year_milestone/LittleImage_Landau_3-389ced6e-1500.jpg">
-                <img src="assets/images/three_year_milestone/LittleImage_Landau_3-389ced6e-1500.jpg" alt="Milestone session">
-                <div class="hover-content">
-                    <h4>Milestone Moments</h4>
-                    <p>Watching them grow</p>
-                    <span class="view-btn"><i data-lucide="maximize-2" style="width:14px;height:14px;"></i> View</span>
+                <div class="pillar-item" data-category="milestone">
+                    <img src="assets/images/three_year_milestone/11-a00f14f0-1500.jpg" alt="Three Year Milestone">
+                    <div class="pillar-overlay"></div>
+                    <div class="pillar-label">
+                        <h3>Tradition</h3>
+                        <p>Beautiful consistency</p>
+                    </div>
                 </div>
-            </div>
-            <div class="hover-grid-item" data-lightbox-src="assets/images/special_occasion/LittleImage_Katz_1-321511af-1000.jpg">
-                <img src="assets/images/special_occasion/LittleImage_Katz_1-321511af-1000.jpg" alt="Special occasion">
-                <div class="hover-content">
-                    <h4>Special Occasions</h4>
-                    <p>Events worth remembering</p>
-                    <span class="view-btn"><i data-lucide="maximize-2" style="width:14px;height:14px;"></i> View</span>
+                <div class="pillar-item" data-category="special">
+                    <img src="assets/images/special_occasion/LittleImage_Katz_1-321511af-1000.jpg"
+                        alt="Special Occasions">
+                    <div class="pillar-overlay"></div>
+                    <div class="pillar-label">
+                        <h3>Celebrations</h3>
+                        <p>Events worth remembering</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- ============================================
+        <!-- Gallery that opens when a pillar is clicked -->
+        <div class="collection-gallery" id="collectionGallery">
+            <div class="container">
+                <div class="collection-gallery-header">
+                    <button class="collection-back-btn" id="collectionBack">
+                        <i data-lucide="arrow-left" style="width:18px;height:18px;"></i> All Collections
+                    </button>
+                    <h3 class="collection-gallery-title" id="collectionTitle"></h3>
+                </div>
+                <div class="collection-gallery-grid" id="collectionGrid" data-lightbox-group="collection">
+                    <!-- Images populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
      Packages & Pricing
      ============================================ -->
-<section id="packages" class="section-padding reveal">
-    <div class="container">
-        <div class="section-header">
-            <h2>Packages &amp; Pricing</h2>
-            <p>Find the perfect session for your family</p>
-        </div>
+    <section id="packages" class="section-padding reveal">
+        <div class="container">
+            <div class="section-header">
+                <h2>Packages &amp; Pricing</h2>
+                <p>Find the perfect session for your family</p>
+            </div>
 
-        <!-- Tab Bar -->
-        <div class="package-tabs">
-            <button class="pkg-tab active" data-pkg="newborn">Newborn</button>
-            <button class="pkg-tab" data-pkg="family">Baby, Child &amp; Family</button>
-            <button class="pkg-tab" data-pkg="milestone">Three Year Milestone</button>
-            <button class="pkg-tab" data-pkg="outdoor">Outdoor</button>
-            <button class="pkg-tab" data-pkg="special">Special Occasion</button>
-            <button class="pkg-tab" data-pkg="events">Events</button>
-        </div>
+            <div class="package-tabs">
+                <button class="pkg-tab active" data-pkg="newborn">Newborn</button>
+                <button class="pkg-tab" data-pkg="family">Baby, Child &amp; Family</button>
+                <button class="pkg-tab" data-pkg="milestone">Three Year Milestone</button>
+                <button class="pkg-tab" data-pkg="outdoor">Outdoor</button>
+                <button class="pkg-tab" data-pkg="special">Special Occasion</button>
+                <button class="pkg-tab" data-pkg="events">Events</button>
+            </div>
 
-        <!-- NEWBORN Panel -->
-        <div class="pkg-panel active" data-pkg-panel="newborn">
-            <p class="pkg-subtitle">Best under 3 weeks old, even better under 2 weeks when they are mostly sleepy</p>
-            <div class="pkg-card-grid">
-                <div class="pkg-card">
-                    <h3 class="pkg-name">Swaddled</h3>
-                    <div class="pkg-divider"></div>
-                    <div class="pkg-price">$185</div>
-                    <ul class="pkg-features">
-                        <li><i data-lucide="image" style="width:16px;height:16px;"></i> 3 Digital High Resolution Edits</li>
-                        <li><i data-lucide="clock" style="width:16px;height:16px;"></i> 45 Minutes</li>
-                        <li><i data-lucide="phone" style="width:16px;height:16px;"></i> Viewing Session via Phone</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline">Book Now</a>
+            <div class="pkg-panel active" data-pkg-panel="newborn">
+                <p class="pkg-subtitle">Best under 3 weeks old, even better under 2 weeks when they are mostly sleepy
+                </p>
+                <div class="pkg-card-grid">
+                    <div class="pkg-card">
+                        <h3 class="pkg-name">Swaddled</h3>
+                        <div class="pkg-divider"></div>
+                        <div class="pkg-price">$185</div>
+                        <ul class="pkg-features">
+                            <li><i data-lucide="image" style="width:16px;height:16px;"></i> 3 Digital High Resolution
+                                Edits</li>
+                            <li><i data-lucide="clock" style="width:16px;height:16px;"></i> 45 Minutes</li>
+                            <li><i data-lucide="phone" style="width:16px;height:16px;"></i> Viewing Session via Phone
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline">Book Now</a>
+                    </div>
+                    <div class="pkg-card featured">
+                        <span class="pkg-badge">Most Popular</span>
+                        <h3 class="pkg-name">Standard</h3>
+                        <div class="pkg-divider"></div>
+                        <div class="pkg-price">$255</div>
+                        <ul class="pkg-features">
+                            <li><i data-lucide="image" style="width:16px;height:16px;"></i> 5 High Resolution Digital
+                                Edits</li>
+                            <li><i data-lucide="clock" style="width:16px;height:16px;"></i> 1 Hour</li>
+                            <li><i data-lucide="phone" style="width:16px;height:16px;"></i> Viewing Session via Phone
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">Book Now</a>
+                    </div>
+                    <div class="pkg-card">
+                        <h3 class="pkg-name">Premium</h3>
+                        <div class="pkg-divider"></div>
+                        <div class="pkg-price">$335</div>
+                        <ul class="pkg-features">
+                            <li><i data-lucide="image" style="width:16px;height:16px;"></i> 6 High-Resolution Digital
+                                Edits</li>
+                            <li><i data-lucide="users" style="width:16px;height:16px;"></i> Siblings Included</li>
+                            <li><i data-lucide="infinity" style="width:16px;height:16px;"></i> Session Not Timed</li>
+                            <li><i data-lucide="user" style="width:16px;height:16px;"></i> In-person or Phone Viewing
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline">Book Now</a>
+                    </div>
                 </div>
-                <div class="pkg-card featured">
-                    <span class="pkg-badge">Most Popular</span>
-                    <h3 class="pkg-name">Standard</h3>
-                    <div class="pkg-divider"></div>
-                    <div class="pkg-price">$255</div>
-                    <ul class="pkg-features">
-                        <li><i data-lucide="image" style="width:16px;height:16px;"></i> 5 High Resolution Digital Edits</li>
-                        <li><i data-lucide="clock" style="width:16px;height:16px;"></i> 1 Hour</li>
-                        <li><i data-lucide="phone" style="width:16px;height:16px;"></i> Viewing Session via Phone</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-primary">Book Now</a>
+                <p class="pkg-note">Additional images can be purchased after session for $30 each. To add siblings or
+                    parents: $60 fee.</p>
+            </div>
+
+            <div class="pkg-panel" data-pkg-panel="family">
+                <p class="pkg-subtitle">Studio and outdoor sessions for growing families</p>
+                <div class="pkg-card-grid">
+                    <div class="pkg-card">
+                        <h3 class="pkg-name">Light</h3>
+                        <div class="pkg-divider"></div>
+                        <div class="pkg-price">$195</div>
+                        <ul class="pkg-features">
+                            <li><i data-lucide="image" style="width:16px;height:16px;"></i> 4 Digital High-Resolution
+                                Edits</li>
+                            <li><i data-lucide="clock" style="width:16px;height:16px;"></i> 25 Minutes</li>
+                            <li><i data-lucide="mail" style="width:16px;height:16px;"></i> Viewing Session via Email
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline">Book Now</a>
+                    </div>
+                    <div class="pkg-card featured">
+                        <span class="pkg-badge">Best Value</span>
+                        <h3 class="pkg-name">Standard</h3>
+                        <div class="pkg-divider"></div>
+                        <div class="pkg-price">$265</div>
+                        <ul class="pkg-features">
+                            <li><i data-lucide="image" style="width:16px;height:16px;"></i> 6 High Resolution Digital
+                                Edits</li>
+                            <li><i data-lucide="clock" style="width:16px;height:16px;"></i> 45 Minutes</li>
+                            <li><i data-lucide="mail" style="width:16px;height:16px;"></i> Viewing Session via Email
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">Book Now</a>
+                    </div>
+                    <div class="pkg-card">
+                        <h3 class="pkg-name">Gold</h3>
+                        <div class="pkg-divider"></div>
+                        <div class="pkg-price">$345</div>
+                        <ul class="pkg-features">
+                            <li><i data-lucide="image" style="width:16px;height:16px;"></i> 9 High Resolution Digital
+                                Edits</li>
+                            <li><i data-lucide="clock" style="width:16px;height:16px;"></i> 1 Hour</li>
+                            <li><i data-lucide="gift" style="width:16px;height:16px;"></i> $10 Voucher towards Wall Art
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline">Book Now</a>
+                    </div>
                 </div>
-                <div class="pkg-card">
-                    <h3 class="pkg-name">Premium</h3>
-                    <div class="pkg-divider"></div>
-                    <div class="pkg-price">$335</div>
-                    <ul class="pkg-features">
-                        <li><i data-lucide="image" style="width:16px;height:16px;"></i> 6 High-Resolution Digital Edits</li>
-                        <li><i data-lucide="users" style="width:16px;height:16px;"></i> Siblings Included</li>
-                        <li><i data-lucide="infinity" style="width:16px;height:16px;"></i> Session Not Timed</li>
-                        <li><i data-lucide="user" style="width:16px;height:16px;"></i> In-person or Phone Viewing</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline">Book Now</a>
+                <p class="pkg-note">Additional images can be purchased after session for $30 each. To add siblings or
+                    parents: $60 fee.</p>
+            </div>
+
+            <div class="pkg-panel" data-pkg-panel="milestone">
+                <div class="pkg-inquire-card">
+                    <i data-lucide="cake" style="width:48px;height:48px;color:var(--color-primary);"></i>
+                    <h3>Three Year Milestone Sessions</h3>
+                    <p>Every year tells a new chapter. A special tradition to celebrate your little one's growth with a
+                        beautiful portrait session.</p>
+                    <a href="#contact" class="btn btn-primary">Inquire for Details</a>
                 </div>
             </div>
-            <p class="pkg-note">Additional images can be purchased after session for $30 each. To add siblings or parents: $60 fee.</p>
-        </div>
 
-        <!-- FAMILY Panel -->
-        <div class="pkg-panel" data-pkg-panel="family">
-            <p class="pkg-subtitle">Studio and outdoor sessions for growing families</p>
-            <div class="pkg-card-grid">
-                <div class="pkg-card">
-                    <h3 class="pkg-name">Light</h3>
-                    <div class="pkg-divider"></div>
-                    <div class="pkg-price">$195</div>
-                    <ul class="pkg-features">
-                        <li><i data-lucide="image" style="width:16px;height:16px;"></i> 4 Digital High-Resolution Edits</li>
-                        <li><i data-lucide="clock" style="width:16px;height:16px;"></i> 25 Minutes</li>
-                        <li><i data-lucide="mail" style="width:16px;height:16px;"></i> Viewing Session via Email</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline">Book Now</a>
-                </div>
-                <div class="pkg-card featured">
-                    <span class="pkg-badge">Best Value</span>
-                    <h3 class="pkg-name">Standard</h3>
-                    <div class="pkg-divider"></div>
-                    <div class="pkg-price">$265</div>
-                    <ul class="pkg-features">
-                        <li><i data-lucide="image" style="width:16px;height:16px;"></i> 6 High Resolution Digital Edits</li>
-                        <li><i data-lucide="clock" style="width:16px;height:16px;"></i> 45 Minutes</li>
-                        <li><i data-lucide="mail" style="width:16px;height:16px;"></i> Viewing Session via Email</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-primary">Book Now</a>
-                </div>
-                <div class="pkg-card">
-                    <h3 class="pkg-name">Gold</h3>
-                    <div class="pkg-divider"></div>
-                    <div class="pkg-price">$345</div>
-                    <ul class="pkg-features">
-                        <li><i data-lucide="image" style="width:16px;height:16px;"></i> 9 High Resolution Digital Edits</li>
-                        <li><i data-lucide="clock" style="width:16px;height:16px;"></i> 1 Hour</li>
-                        <li><i data-lucide="gift" style="width:16px;height:16px;"></i> $10 Voucher towards Wall Art</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline">Book Now</a>
+            <div class="pkg-panel" data-pkg-panel="outdoor">
+                <div class="pkg-inquire-card">
+                    <i data-lucide="trees" style="width:48px;height:48px;color:var(--color-primary);"></i>
+                    <h3>Outdoor Sessions</h3>
+                    <p>Brooklyn's most beautiful parks and locations as the backdrop for your family's story. Golden
+                        hour magic awaits.</p>
+                    <a href="#contact" class="btn btn-primary">Inquire for Details</a>
                 </div>
             </div>
-            <p class="pkg-note">Additional images can be purchased after session for $30 each. To add siblings or parents: $60 fee.</p>
-        </div>
 
-        <!-- THREE YEAR MILESTONE Panel (inquire) -->
-        <div class="pkg-panel" data-pkg-panel="milestone">
-            <div class="pkg-inquire-card">
-                <i data-lucide="cake" style="width:48px;height:48px;color:var(--color-primary);"></i>
-                <h3>Three Year Milestone Sessions</h3>
-                <p>Every year tells a new chapter. A special tradition to celebrate your little one's growth with a beautiful portrait session.</p>
-                <a href="#contact" class="btn btn-primary">Inquire for Details</a>
+            <div class="pkg-panel" data-pkg-panel="special">
+                <div class="pkg-inquire-card">
+                    <i data-lucide="sparkles" style="width:48px;height:48px;color:var(--color-primary);"></i>
+                    <h3>Special Occasion Sessions</h3>
+                    <p>Birthdays, holidays, and celebrations deserve to be remembered beautifully. Let's make your
+                        milestone unforgettable.</p>
+                    <a href="#contact" class="btn btn-primary">Inquire for Details</a>
+                </div>
+            </div>
+
+            <div class="pkg-panel" data-pkg-panel="events">
+                <div class="pkg-inquire-card">
+                    <i data-lucide="calendar" style="width:48px;height:48px;color:var(--color-primary);"></i>
+                    <h3>Event Photography</h3>
+                    <p>From intimate gatherings to larger celebrations, every event has moments worth preserving. Custom
+                        packages available.</p>
+                    <a href="#contact" class="btn btn-primary">Inquire for Details</a>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- OUTDOOR Panel (inquire) -->
-        <div class="pkg-panel" data-pkg-panel="outdoor">
-            <div class="pkg-inquire-card">
-                <i data-lucide="trees" style="width:48px;height:48px;color:var(--color-primary);"></i>
-                <h3>Outdoor Sessions</h3>
-                <p>Brooklyn's most beautiful parks and locations as the backdrop for your family's story. Golden hour magic awaits.</p>
-                <a href="#contact" class="btn btn-primary">Inquire for Details</a>
-            </div>
-        </div>
-
-        <!-- SPECIAL OCCASION Panel (inquire) -->
-        <div class="pkg-panel" data-pkg-panel="special">
-            <div class="pkg-inquire-card">
-                <i data-lucide="sparkles" style="width:48px;height:48px;color:var(--color-primary);"></i>
-                <h3>Special Occasion Sessions</h3>
-                <p>Birthdays, holidays, and celebrations deserve to be remembered beautifully. Let's make your milestone unforgettable.</p>
-                <a href="#contact" class="btn btn-primary">Inquire for Details</a>
-            </div>
-        </div>
-
-        <!-- EVENTS Panel (inquire) -->
-        <div class="pkg-panel" data-pkg-panel="events">
-            <div class="pkg-inquire-card">
-                <i data-lucide="calendar" style="width:48px;height:48px;color:var(--color-primary);"></i>
-                <h3>Event Photography</h3>
-                <p>From intimate gatherings to larger celebrations, every event has moments worth preserving. Custom packages available.</p>
-                <a href="#contact" class="btn btn-primary">Inquire for Details</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ============================================
-     Reviews - Centered Card Carousel
+    <!-- ============================================
+     Kind Words - Multi-card auto-scroll
      ============================================ -->
-<section id="reviews" class="section-padding reveal">
-    <div class="container">
-        <div class="section-header">
-            <h2>Kind Words</h2>
-            <p>What families are saying</p>
+    <section id="reviews" class="section-padding reveal">
+        <div class="container">
+            <div class="section-header">
+                <h2>Kind Words</h2>
+                <p>What families are saying</p>
+            </div>
         </div>
-        <div class="review-carousel" id="reviewCarousel">
-            <div class="review-track" id="reviewTrack">
-                <div class="review-slide">
-                    <div class="review-card">
-                        <i data-lucide="heart" class="review-icon"></i>
-                        <blockquote>"I usually hate being in photos, but this felt like hanging out with a friend. The results made me cry happy tears."</blockquote>
+        <div class="reviews-marquee">
+            <div class="reviews-track">
+                <div class="review-card-new">
+                    <div class="review-card-accent"></div>
+                    <i data-lucide="quote" class="review-quote-icon"></i>
+                    <blockquote>"I usually hate being in photos, but this felt like hanging out with a friend. The
+                        results made me cry happy tears."</blockquote>
+                    <div class="review-author">
+                        <div class="review-author-avatar">MF</div>
                         <cite>The Miller Family</cite>
                     </div>
                 </div>
-                <div class="review-slide">
-                    <div class="review-card">
-                        <i data-lucide="heart" class="review-icon"></i>
-                        <blockquote>"Rachel was so patient with our fussy newborn. Every image is a treasure we'll keep forever."</blockquote>
+                <div class="review-card-new">
+                    <div class="review-card-accent"></div>
+                    <i data-lucide="quote" class="review-quote-icon"></i>
+                    <blockquote>"Rachel was so patient with our fussy newborn. Every image is a treasure we'll keep
+                        forever."</blockquote>
+                    <div class="review-author">
+                        <div class="review-author-avatar">SK</div>
                         <cite>Sarah K.</cite>
                     </div>
                 </div>
-                <div class="review-slide">
-                    <div class="review-card">
-                        <i data-lucide="heart" class="review-icon"></i>
-                        <blockquote>"She captured moments I didn't even know were happening. Pure magic."</blockquote>
+                <div class="review-card-new">
+                    <div class="review-card-accent"></div>
+                    <i data-lucide="quote" class="review-quote-icon"></i>
+                    <blockquote>"She captured moments I didn't even know were happening. Pure magic."</blockquote>
+                    <div class="review-author">
+                        <div class="review-author-avatar">TC</div>
                         <cite>The Cohens</cite>
                     </div>
                 </div>
-                <div class="review-slide">
-                    <div class="review-card">
-                        <i data-lucide="heart" class="review-icon"></i>
-                        <blockquote>"Worth every penny. The kids were comfortable from minute one."</blockquote>
+                <div class="review-card-new">
+                    <div class="review-card-accent"></div>
+                    <i data-lucide="quote" class="review-quote-icon"></i>
+                    <blockquote>"Worth every penny. The kids were comfortable from minute one."</blockquote>
+                    <div class="review-author">
+                        <div class="review-author-avatar">LM</div>
+                        <cite>Lisa M.</cite>
+                    </div>
+                </div>
+                <!-- Duplicated set for seamless infinite scroll -->
+                <div class="review-card-new">
+                    <div class="review-card-accent"></div>
+                    <i data-lucide="quote" class="review-quote-icon"></i>
+                    <blockquote>"I usually hate being in photos, but this felt like hanging out with a friend. The
+                        results made me cry happy tears."</blockquote>
+                    <div class="review-author">
+                        <div class="review-author-avatar">MF</div>
+                        <cite>The Miller Family</cite>
+                    </div>
+                </div>
+                <div class="review-card-new">
+                    <div class="review-card-accent"></div>
+                    <i data-lucide="quote" class="review-quote-icon"></i>
+                    <blockquote>"Rachel was so patient with our fussy newborn. Every image is a treasure we'll keep
+                        forever."</blockquote>
+                    <div class="review-author">
+                        <div class="review-author-avatar">SK</div>
+                        <cite>Sarah K.</cite>
+                    </div>
+                </div>
+                <div class="review-card-new">
+                    <div class="review-card-accent"></div>
+                    <i data-lucide="quote" class="review-quote-icon"></i>
+                    <blockquote>"She captured moments I didn't even know were happening. Pure magic."</blockquote>
+                    <div class="review-author">
+                        <div class="review-author-avatar">TC</div>
+                        <cite>The Cohens</cite>
+                    </div>
+                </div>
+                <div class="review-card-new">
+                    <div class="review-card-accent"></div>
+                    <i data-lucide="quote" class="review-quote-icon"></i>
+                    <blockquote>"Worth every penny. The kids were comfortable from minute one."</blockquote>
+                    <div class="review-author">
+                        <div class="review-author-avatar">LM</div>
                         <cite>Lisa M.</cite>
                     </div>
                 </div>
             </div>
-            <div class="review-controls">
-                <button class="review-btn" id="reviewPrev" aria-label="Previous review"><i data-lucide="chevron-left"></i></button>
-                <div class="review-dots" id="reviewDots"></div>
-                <button class="review-btn" id="reviewNext" aria-label="Next review"><i data-lucide="chevron-right"></i></button>
-            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- ============================================
+    <!-- ============================================
      FAQ - Classic Accordion
      ============================================ -->
-<section id="faq" class="section-padding reveal">
-    <div class="container">
-        <div class="section-header">
-            <h2>Common Questions</h2>
+    <section id="faq" class="section-padding reveal">
+        <div class="container">
+            <div class="section-header">
+                <h2>Common Questions</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What should we wear?</span>
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Soft, neutral tones work best — think creams, tans, and muted greens. Avoid bold logos or
+                            busy patterns. I'll send you a full style guide once you book!</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What if my baby won't stop crying?</span>
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Babies cry — it's totally normal! I build extra time into every session so we can pause for
+                            feedings, diaper changes, and cuddles. Patience is my superpower.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I bring my kids?</span>
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! Siblings are family too. I love incorporating the whole family into sessions —
+                            some of my favorite shots include everyone together.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long until I get my photos?</span>
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You'll receive your full gallery within 2-3 weeks. Each image is carefully edited to match
+                            the Little Image style. A viewing session will be scheduled so we can go through your
+                            favorites together.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="faq-list">
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>What should we wear?</span>
-                    <i data-lucide="chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Soft, neutral tones work best — think creams, tans, and muted greens. Avoid bold logos or busy patterns. I'll send you a full style guide once you book!</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>What if my baby won't stop crying?</span>
-                    <i data-lucide="chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Babies cry — it's totally normal! I build extra time into every session so we can pause for feedings, diaper changes, and cuddles. Patience is my superpower.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Can I bring my kids?</span>
-                    <i data-lucide="chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Absolutely! Siblings are family too. I love incorporating the whole family into sessions — some of my favorite shots include everyone together.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>How long until I get my photos?</span>
-                    <i data-lucide="chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>You'll receive your full gallery within 2-3 weeks. Each image is carefully edited to match the Little Image style. A viewing session will be scheduled so we can go through your favorites together.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
-<!-- ============================================
+    <!-- ============================================
      Contact - Classic Form
      ============================================ -->
-<section id="contact" class="section-padding reveal">
-    <div class="container">
-        <div class="section-header">
-            <h2>Say Hello</h2>
-            <p>Ready to capture your family's story? Let's start the conversation.</p>
+    <section id="contact" class="section-padding reveal">
+        <div class="container">
+            <div class="section-header">
+                <h2>Say Hello</h2>
+                <p>Ready to capture your family's story? Let's start the conversation.</p>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name" class="form-label">Your Name</label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="e.g. Sarah Miller"
+                        required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="sarah@example.com"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="(555) 123-4567">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="session" class="form-label">Session Type</label>
+                        <select id="session" name="session" class="form-input form-select">
+                            <option value="">Select a session type</option>
+                            <option value="newborn">Newborn</option>
+                            <option value="milestone">Three Year Milestone</option>
+                            <option value="family">Family</option>
+                            <option value="location">On Location</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="referral" class="form-label">How did you hear about me?</label>
+                        <select id="referral" name="referral" class="form-input form-select">
+                            <option value="">Select an option</option>
+                            <option value="ads">Ads</option>
+                            <option value="google">Google search</option>
+                            <option value="friend">From a friend</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message" class="form-label">Tell me about your family</label>
+                    <textarea id="message" name="message" class="form-input form-textarea"
+                        placeholder="We're expecting our first in April..." rows="5"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+            </form>
         </div>
-        <form class="contact-form" id="contactForm">
-            <div class="form-group">
-                <label for="name" class="form-label">Your Name</label>
-                <input type="text" id="name" name="name" class="form-input" placeholder="e.g. Sarah Miller" required>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input type="email" id="email" name="email" class="form-input" placeholder="sarah@example.com" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone" class="form-label">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" class="form-input" placeholder="(555) 123-4567">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="session" class="form-label">Session Type</label>
-                    <select id="session" name="session" class="form-input form-select">
-                        <option value="">Select a session type</option>
-                        <option value="newborn">Newborn</option>
-                        <option value="milestone">Three Year Milestone</option>
-                        <option value="family">Family</option>
-                        <option value="location">On Location</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="referral" class="form-label">How did you hear about me?</label>
-                    <select id="referral" name="referral" class="form-input form-select">
-                        <option value="">Select an option</option>
-                        <option value="ads">Ads</option>
-                        <option value="google">Google search</option>
-                        <option value="friend">From a friend</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="message" class="form-label">Tell me about your family</label>
-                <textarea id="message" name="message" class="form-input form-textarea" placeholder="We're expecting our first in April..." rows="5"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-        </form>
-    </div>
-</section>
+    </section>
 
-<!-- ============================================
+    <!-- ============================================
      Footer
      ============================================ -->
-<footer class="site-footer">
-    <div class="container">
-        <div class="footer-content">
-            <img src="assets/logo.svg" alt="Little Image Photography" class="footer-logo">
-            <p class="footer-location">Brooklyn, NY</p>
-            <div class="footer-social">
-                <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
-                <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <img src="assets/logo.svg" alt="Little Image Photography" class="footer-logo">
+                <p class="footer-location">Brooklyn, NY</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                </div>
+                <p class="footer-copyright">&copy; 2026 Little Image Photography. All rights reserved.</p>
             </div>
-            <p class="footer-copyright">&copy; 2026 Little Image Photography. All rights reserved.</p>
         </div>
-    </div>
-</footer>
+    </footer>
 
-<!-- ============================================
+    <!-- ============================================
      Lightbox Modal
      ============================================ -->
-<div class="lightbox-overlay" id="lightbox">
-    <span class="lightbox-counter" id="lightboxCounter"></span>
-    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
-    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">
-        <i data-lucide="chevron-left"></i>
-    </button>
-    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">
-        <i data-lucide="chevron-right"></i>
-    </button>
-    <img id="lightboxImg" src="" alt="Gallery image">
-</div>
+    <div class="lightbox-overlay" id="lightbox">
+        <span class="lightbox-counter" id="lightboxCounter"></span>
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">
+            <i data-lucide="chevron-left"></i>
+        </button>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">
+            <i data-lucide="chevron-right"></i>
+        </button>
+        <img id="lightboxImg" src="" alt="Gallery image">
+    </div>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>

@@ -8,10 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     // 2. SCROLL REVEAL ANIMATION
     // ============================================
-    // Use IntersectionObserver with threshold 0.1
-    // Select all '.reveal' elements
-    // When intersecting, add 'active' class
-    // The CSS handles the animation (opacity 0->1, translateY 30px->0)
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -24,8 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     // 3. NAVBAR SCROLL EFFECT
     // ============================================
-    // Add 'scrolled' class to #navbar when window.scrollY > 50
-    // This adds a subtle box-shadow
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
         navbar.classList.toggle('scrolled', window.scrollY > 50);
@@ -34,9 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     // 4. MOBILE MENU TOGGLE
     // ============================================
-    // Toggle 'open' class on #navLinks when #mobileMenuBtn is clicked
-    // Swap the lucide icon between 'menu' and 'x'
-    // Close menu when a nav link is clicked
     const mobileBtn = document.getElementById('mobileMenuBtn');
     const navLinks = document.getElementById('navLinks');
 
@@ -60,8 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     // 5. SMOOTH SCROLL FOR NAV LINKS
     // ============================================
-    // All anchor links with href starting with '#'
-    // Calculate offset for fixed navbar height
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', (e) => {
             e.preventDefault();
@@ -76,10 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ============================================
-    // 6. ACTIVE NAV LINK HIGHLIGHTING (scroll spy)
+    // 6. ACTIVE NAV LINK HIGHLIGHTING
     // ============================================
-    // Use IntersectionObserver to track which section is visible
-    // Update active class on corresponding nav link
     const sections = document.querySelectorAll('section[id]');
     const navObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -93,116 +80,190 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => navObserver.observe(section));
 
     // ============================================
-    // 7. PACKAGE TAB SWITCHER
+    // 7. COLLECTIONS - Pillars + Gallery System
     // ============================================
-    // Click on .pkg-tab buttons switches active tab and corresponding .pkg-panel
-    // Uses data-pkg and data-pkg-panel attributes
+    const categoryImages = {
+        newborn: [
+            'assets/images/newborn/1-45da4fdb-1000.jpg',
+            'assets/images/newborn/3.1-b76dcd28-1000.jpg',
+            'assets/images/newborn/4-48ce8281-1000.jpg',
+            'assets/images/newborn/64-7694e869-1000.jpg',
+            'assets/images/newborn/69-ad18d5c0-1000.jpg',
+            'assets/images/newborn/71-d1d561d4-1000.jpg',
+            'assets/images/newborn/73-5b55e942-1000.jpg',
+            'assets/images/newborn/74-08272da1-1000.jpg',
+            'assets/images/newborn/76-4aaca081-1000.jpg',
+            'assets/images/newborn/9.1-61a03e72-1000.jpg',
+            'assets/images/newborn/LittleImage_Braun_6-2223d33b-1000.jpg',
+            'assets/images/newborn/LittleImage_Drezner_4-af714b0e-1000.jpg',
+            'assets/images/newborn/LittleImage_Greenfeld_2.0-45b9a5c6-1000.jpg',
+            'assets/images/newborn/LittleImage_Grunbaum_2-ccf049bc-1000.jpg',
+            'assets/images/newborn/LittleImage_Guttman_3-f0bbda0b-1000.jpg',
+            'assets/images/newborn/Littleimage_Klein_1-1bbc4662-1000.jpg'
+        ],
+        child: [
+            'assets/images/child/22-f4468cd2-1500.jpg',
+            'assets/images/child/23-9d67bdc8-1500.jpg',
+            'assets/images/child/500-3bbd6787-1500.jpg',
+            'assets/images/child/LittleImage_Pollak_1-3db683b3-1500.jpg',
+            'assets/images/child/LittleImage_Mauskopf_1-f736b7d9-1500.jpg',
+            'assets/images/child/LittleImage_Mauskopf_2-56f3f1c9-1500.jpg',
+            'assets/images/child/LittleImage_Scher_1-d92a6d54-1500.jpg',
+            'assets/images/child/LittleImage_Weberman_1-f167101e-1500.jpg',
+            'assets/images/child/LittleImage_Weissberg_2-6b43eb27-1500.jpg',
+            'assets/images/child/LittleImagePhotography_Cohen_1-0400d0e8-1500.jpg',
+            'assets/images/child/LittleImagePhotography_Deutsch_5-7eb0ffb7-1500.jpg',
+            'assets/images/child/LittleImagePhotography_Kaufman_2-1cdb7143-1500.jpg'
+        ],
+        outdoor: [
+            'assets/images/outdoor/13-7343e297-2500.jpg',
+            'assets/images/outdoor/2-6ea104f9-2500.jpg',
+            'assets/images/outdoor/Littleimage_Grunhut_2-70c61d27-2500.jpg',
+            'assets/images/outdoor/Littleimage_Grunhut_4-82719fd4-2500.jpg',
+            'assets/images/outdoor/LittleImage_Klein_2-686b05cd-2500.jpg',
+            'assets/images/outdoor/LittleImage_Photography_1-4c27a018-2500.jpg',
+            'assets/images/outdoor/LittleImage_Wertzberger_3-646092d1-2500.jpg',
+            'assets/images/outdoor/LittleImage_Wertzberger_4-72b815c5-2500.jpg'
+        ],
+        milestone: [
+            'assets/images/three_year_milestone/10-52b89603-1500.jpg',
+            'assets/images/three_year_milestone/11-a00f14f0-1500.jpg',
+            'assets/images/three_year_milestone/12-a8773ce8-1500.jpg',
+            'assets/images/three_year_milestone/13-5ac0be1b-1500.jpg',
+            'assets/images/three_year_milestone/15-bc8af62f-1500.jpg',
+            'assets/images/three_year_milestone/16-4e3d74dc-1500.jpg',
+            'assets/images/three_year_milestone/3.1-5342156c-1500.jpg',
+            'assets/images/three_year_milestone/4-aa2dadf3-1500.jpg',
+            'assets/images/three_year_milestone/LittleImage_Indig_3-e488ccbe-1500.jpg',
+            'assets/images/three_year_milestone/LittleImage_Landau_3-389ced6e-1500.jpg',
+            'assets/images/three_year_milestone/LittleImage_Weberman_3-46e50748-1500.jpg',
+            'assets/images/three_year_milestone/Srulupsherin1-50f93272-1500.jpg'
+        ],
+        special: [
+            'assets/images/special_occasion/2-899f6b4b-1000.jpg',
+            'assets/images/special_occasion/3.-68e150c7-1000.jpg',
+            'assets/images/special_occasion/11-215ff55c-1000.jpg',
+            'assets/images/special_occasion/LittleImage_Hershkowitz_1-b66e1d7f-1000.jpg',
+            'assets/images/special_occasion/LittleImage_Hershkowitz_2-e51cd99c-1000.jpg',
+            'assets/images/special_occasion/LittleImage_Katz_1-321511af-1000.jpg',
+            'assets/images/special_occasion/LittleImage_Katz_3-6167d54c-1000.jpg',
+            'assets/images/special_occasion/LittleImage_Lieberman_2-fcbd90b7-1000.jpg'
+        ]
+    };
+
+    const categoryNames = {
+        newborn: 'Newborn',
+        child: 'Personality',
+        outdoor: 'Adventure',
+        milestone: 'Tradition',
+        special: 'Celebrations'
+    };
+
+    const pillars = document.getElementById('collectionPillars');
+    const gallery = document.getElementById('collectionGallery');
+    const galleryGrid = document.getElementById('collectionGrid');
+    const galleryTitle = document.getElementById('collectionTitle');
+    const backBtn = document.getElementById('collectionBack');
+
+    if (pillars && gallery && galleryGrid) {
+        // Click on a pillar to open gallery
+        document.querySelectorAll('.pillar-item[data-category]').forEach(pillar => {
+            pillar.addEventListener('click', () => {
+                const category = pillar.dataset.category;
+                openCategoryGallery(category);
+
+                // Mark active pillar
+                document.querySelectorAll('.pillar-item').forEach(p => p.classList.remove('active-pillar'));
+                pillar.classList.add('active-pillar');
+            });
+        });
+
+        // Back button
+        backBtn.addEventListener('click', () => {
+            closeCategoryGallery();
+        });
+
+        function openCategoryGallery(category) {
+            const images = categoryImages[category] || [];
+            const title = categoryNames[category] || category;
+
+            // Collapse pillars
+            pillars.classList.add('collapsed');
+
+            // Set title
+            galleryTitle.textContent = title;
+
+            // Populate grid
+            galleryGrid.innerHTML = '';
+            images.forEach(src => {
+                const thumb = document.createElement('div');
+                thumb.className = 'gallery-thumb';
+                thumb.setAttribute('data-lightbox-src', src);
+                thumb.innerHTML = `<img src="${src}" alt="${title} photography" loading="lazy">`;
+                galleryGrid.appendChild(thumb);
+            });
+
+            // Show gallery
+            gallery.classList.add('open');
+
+            // Re-init lightbox for new images
+            initLightbox();
+            lucide.createIcons();
+
+            // Scroll to gallery
+            setTimeout(() => {
+                gallery.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        function closeCategoryGallery() {
+            pillars.classList.remove('collapsed');
+            gallery.classList.remove('open');
+            document.querySelectorAll('.pillar-item').forEach(p => p.classList.remove('active-pillar'));
+
+            // Scroll back to pillars
+            setTimeout(() => {
+                pillars.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+        }
+    }
+
+    // ============================================
+    // 8. PACKAGE TAB SWITCHER
+    // ============================================
     const pkgTabs = document.querySelectorAll('.pkg-tab');
     const pkgPanels = document.querySelectorAll('.pkg-panel');
 
     pkgTabs.forEach(tab => {
         tab.addEventListener('click', () => {
             const target = tab.dataset.pkg;
-            // Update active tab
             pkgTabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
-            // Update active panel
             pkgPanels.forEach(p => p.classList.remove('active'));
             const targetPanel = document.querySelector(`.pkg-panel[data-pkg-panel="${target}"]`);
             if (targetPanel) {
                 targetPanel.classList.add('active');
-                // Re-initialize Lucide icons for newly visible content
                 lucide.createIcons();
             }
         });
     });
 
     // ============================================
-    // 8. FAQ ACCORDION
+    // 9. FAQ ACCORDION
     // ============================================
-    // Click on .faq-question toggles 'open' class on parent .faq-item
-    // Only one item open at a time (close others when opening)
     const faqItems = document.querySelectorAll('.faq-item');
-
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
         question.addEventListener('click', () => {
             const wasOpen = item.classList.contains('open');
-            // Close all items
             faqItems.forEach(i => i.classList.remove('open'));
-            // Toggle the clicked item
-            if (!wasOpen) {
-                item.classList.add('open');
-            }
+            if (!wasOpen) item.classList.add('open');
         });
     });
 
     // ============================================
-    // 9. REVIEW CAROUSEL
-    // ============================================
-    // translateX-based sliding carousel
-    // Prev/Next buttons, dot indicators, auto-rotate every 5s
-    // Pause auto-rotate on hover
-    const reviewTrack = document.getElementById('reviewTrack');
-    const reviewPrev = document.getElementById('reviewPrev');
-    const reviewNext = document.getElementById('reviewNext');
-    const reviewDots = document.getElementById('reviewDots');
-    const reviewCarousel = document.getElementById('reviewCarousel');
-
-    if (reviewTrack && reviewPrev && reviewNext && reviewDots) {
-        const slides = reviewTrack.querySelectorAll('.review-slide');
-        const totalReviews = slides.length;
-        let currentReview = 0;
-        let autoRotateTimer;
-
-        // Create dot indicators
-        for (let i = 0; i < totalReviews; i++) {
-            const dot = document.createElement('button');
-            dot.classList.add('review-dot');
-            dot.setAttribute('aria-label', `Go to review ${i + 1}`);
-            if (i === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToReview(i));
-            reviewDots.appendChild(dot);
-        }
-
-        function goToReview(index) {
-            currentReview = index;
-            reviewTrack.style.transform = `translateX(-${index * 100}%)`;
-            // Update dots
-            reviewDots.querySelectorAll('.review-dot').forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-        }
-
-        reviewPrev.addEventListener('click', () => {
-            goToReview(currentReview === 0 ? totalReviews - 1 : currentReview - 1);
-        });
-
-        reviewNext.addEventListener('click', () => {
-            goToReview(currentReview === totalReviews - 1 ? 0 : currentReview + 1);
-        });
-
-        // Auto-rotate
-        function startAutoRotate() {
-            autoRotateTimer = setInterval(() => {
-                goToReview(currentReview === totalReviews - 1 ? 0 : currentReview + 1);
-            }, 5000);
-        }
-        startAutoRotate();
-
-        // Pause on hover
-        if (reviewCarousel) {
-            reviewCarousel.addEventListener('mouseenter', () => clearInterval(autoRotateTimer));
-            reviewCarousel.addEventListener('mouseleave', () => startAutoRotate());
-        }
-    }
-
-    // ============================================
     // 10. LIGHTBOX GALLERY
     // ============================================
-    // Full-screen image viewer with prev/next navigation
-    // Works with data-lightbox-group and data-lightbox-src attributes
-    // Supports keyboard navigation (ArrowLeft, ArrowRight, Escape)
     const lightboxOverlay = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxClose = document.getElementById('lightboxClose');
@@ -210,71 +271,71 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightboxNext = document.getElementById('lightboxNext');
     const lightboxCounter = document.getElementById('lightboxCounter');
 
-    if (lightboxOverlay && lightboxImg) {
-        let lightboxImages = [];
-        let lightboxIndex = 0;
+    let lightboxImages = [];
+    let lightboxIndex = 0;
 
-        // Initialize lightbox groups
-        function initLightbox() {
-            const groups = {};
-            document.querySelectorAll('[data-lightbox-group]').forEach(container => {
-                const groupName = container.dataset.lightboxGroup;
-                const items = container.querySelectorAll('[data-lightbox-src]');
-                if (!groups[groupName]) groups[groupName] = [];
-                items.forEach(item => {
-                    groups[groupName].push(item.dataset.lightboxSrc);
-                    item.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        openLightbox(groups[groupName], groups[groupName].indexOf(item.dataset.lightboxSrc));
-                    });
+    function initLightbox() {
+        // Remove old click listeners by cloning (simple approach for dynamic content)
+        document.querySelectorAll('[data-lightbox-src]').forEach(item => {
+            const newItem = item.cloneNode(true);
+            item.parentNode.replaceChild(newItem, item);
+        });
+
+        // Re-attach listeners
+        document.querySelectorAll('[data-lightbox-group]').forEach(container => {
+            const items = container.querySelectorAll('[data-lightbox-src]');
+            const srcs = Array.from(items).map(i => i.dataset.lightboxSrc);
+            items.forEach((item, idx) => {
+                item.style.cursor = 'pointer';
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openLightbox(srcs, idx);
                 });
             });
-        }
+        });
+    }
 
-        function openLightbox(images, index) {
-            lightboxImages = images;
-            lightboxIndex = index;
-            updateLightbox();
-            lightboxOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+    function openLightbox(images, index) {
+        lightboxImages = images;
+        lightboxIndex = index;
+        updateLightbox();
+        lightboxOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
 
-        function closeLightbox() {
-            lightboxOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
+    function closeLightbox() {
+        lightboxOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 
-        function updateLightbox() {
-            lightboxImg.src = lightboxImages[lightboxIndex];
-            if (lightboxCounter) {
-                lightboxCounter.textContent = `${lightboxIndex + 1} / ${lightboxImages.length}`;
-            }
-            // Show/hide nav buttons
-            if (lightboxPrev) lightboxPrev.style.display = lightboxImages.length > 1 ? 'flex' : 'none';
-            if (lightboxNext) lightboxNext.style.display = lightboxImages.length > 1 ? 'flex' : 'none';
+    function updateLightbox() {
+        lightboxImg.src = lightboxImages[lightboxIndex];
+        if (lightboxCounter) {
+            lightboxCounter.textContent = `${lightboxIndex + 1} / ${lightboxImages.length}`;
         }
+        if (lightboxPrev) lightboxPrev.style.display = lightboxImages.length > 1 ? 'flex' : 'none';
+        if (lightboxNext) lightboxNext.style.display = lightboxImages.length > 1 ? 'flex' : 'none';
+    }
 
-        function prevImage() {
-            lightboxIndex = lightboxIndex === 0 ? lightboxImages.length - 1 : lightboxIndex - 1;
-            updateLightbox();
-        }
+    function prevImage() {
+        lightboxIndex = lightboxIndex === 0 ? lightboxImages.length - 1 : lightboxIndex - 1;
+        updateLightbox();
+    }
 
-        function nextImage() {
-            lightboxIndex = lightboxIndex === lightboxImages.length - 1 ? 0 : lightboxIndex + 1;
-            updateLightbox();
-        }
+    function nextImage() {
+        lightboxIndex = lightboxIndex === lightboxImages.length - 1 ? 0 : lightboxIndex + 1;
+        updateLightbox();
+    }
 
-        // Event listeners
+    if (lightboxOverlay && lightboxImg) {
         if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
         if (lightboxPrev) lightboxPrev.addEventListener('click', prevImage);
         if (lightboxNext) lightboxNext.addEventListener('click', nextImage);
 
-        // Close on overlay click (not on image)
         lightboxOverlay.addEventListener('click', (e) => {
             if (e.target === lightboxOverlay) closeLightbox();
         });
 
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (!lightboxOverlay.classList.contains('active')) return;
             if (e.key === 'Escape') closeLightbox();
@@ -288,9 +349,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     // 11. CONTACT FORM HANDLER
     // ============================================
-    // Prevent default form submission
-    // Show success feedback on button
-    // Reset form after 3 seconds
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {

@@ -7,14 +7,14 @@
    1. CSS Custom Properties
    ------------------------------------------- */
 :root {
-    --color-primary: #94A396;       /* Sage Green */
+    --color-primary: #94A396;
     --color-primary-fg: #FDFCFB;
-    --color-secondary: #D4A39A;     /* Muted Rose */
+    --color-secondary: #D4A39A;
     --color-secondary-fg: #6B5E51;
-    --color-background: #F5F2ED;    /* Oatmeal */
-    --color-surface: #FDFCFB;       /* Cream */
-    --color-text: #6B5E51;          /* Clay Brown */
-    --color-accent: #B8A898;        /* Taupe */
+    --color-background: #F5F2ED;
+    --color-surface: #FDFCFB;
+    --color-text: #6B5E51;
+    --color-accent: #B8A898;
     --font-heading: 'Solway', serif;
     --font-body: 'Nunito', sans-serif;
     --radius-card: 1.25rem;
@@ -67,10 +67,10 @@ ul {
    ------------------------------------------- */
 h1 {
     font-family: var(--font-heading);
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 700;
-    color: var(--color-primary);
-    line-height: 1.2;
+    color: white;
+    line-height: 1.1;
 }
 
 h2 {
@@ -145,6 +145,17 @@ p {
     color: var(--color-primary-fg);
 }
 
+.btn-hero-outline {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    color: white;
+}
+
+.btn-hero-outline:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: white;
+}
+
 .btn-full {
     width: 100%;
 }
@@ -180,7 +191,7 @@ p {
 }
 
 /* -------------------------------------------
-   5. Navigation
+   5. Navigation - Floating on scroll
    ------------------------------------------- */
 .navbar {
     position: fixed;
@@ -188,14 +199,50 @@ p {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(253, 252, 251, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 0.75rem 0;
-    transition: box-shadow 0.3s;
+    background: transparent;
+    padding: 1rem 0;
+    transition: all 0.4s ease;
 }
 
 .navbar.scrolled {
-    box-shadow: 0 2px 20px rgba(107, 94, 81, 0.08);
+    top: 0.75rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    background: rgba(148, 163, 150, 0.92);
+    backdrop-filter: blur(12px);
+    border-radius: var(--radius-card);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    padding: 0.5rem 0;
+}
+
+.navbar.scrolled .nav-links li a {
+    color: white;
+    opacity: 0.85;
+}
+
+.navbar.scrolled .nav-links li a:hover,
+.navbar.scrolled .nav-links li a.active {
+    opacity: 1;
+    color: white;
+}
+
+.navbar.scrolled .nav-logo .logo-img {
+    filter: brightness(0) invert(1);
+    height: 38px;
+}
+
+.navbar.scrolled .nav-login-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar.scrolled .nav-login-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.navbar.scrolled .mobile-menu-btn {
+    color: white;
 }
 
 .nav-container {
@@ -210,6 +257,7 @@ p {
 .nav-logo .logo-img {
     height: 45px;
     width: auto;
+    transition: all 0.3s;
 }
 
 .nav-links {
@@ -223,81 +271,103 @@ p {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    opacity: 0.6;
-    transition: opacity 0.3s;
+    color: white;
+    opacity: 0.85;
+    transition: all 0.3s;
 }
 
 .nav-links li a:hover,
 .nav-links li a.active {
     opacity: 1;
-    color: var(--color-primary);
+}
+
+.nav-login-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1.2rem;
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+    border-radius: var(--radius-btn);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: white;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.nav-login-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: white;
 }
 
 .mobile-menu-btn {
     display: none;
     background: none;
     border: none;
-    color: var(--color-text);
+    color: white;
     cursor: pointer;
     padding: 0.5rem;
 }
 
 /* -------------------------------------------
-   6. Hero - Asymmetric Overlap
+   6. Hero - Full Width Image + Overlay
    ------------------------------------------- */
 .hero-section {
     min-height: 100vh;
-    padding-top: 70px;
-}
-
-.hero-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    min-height: calc(100vh - 70px);
-    background: var(--color-background);
-}
-
-.hero-image {
     background: url('assets/images/child/LittleImage_Pollak_1-3db683b3-1500.jpg') center / cover no-repeat;
-    min-height: 100%;
-}
-
-.hero-card {
-    background: var(--color-surface);
-    padding: 3rem;
-    margin: 3rem 3rem 3rem -4rem;
-    border-radius: var(--radius-card);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    z-index: 10;
     position: relative;
 }
 
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(42, 58, 44, 0.75) 0%,
+            rgba(107, 94, 81, 0.55) 50%,
+            rgba(148, 163, 150, 0.45) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    text-align: center;
+    color: white;
+    max-width: 700px;
+    padding: 2rem;
+}
+
 .hero-tags {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     color: var(--color-secondary);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     display: block;
 }
 
-.hero-logo {
-    max-width: 280px;
-    margin-bottom: 1rem;
+.hero-content h1 {
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
 }
 
 .hero-tagline {
-    font-size: 1rem;
-    line-height: 1.7;
-    opacity: 0.8;
-    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    opacity: 0.9;
+    margin-bottom: 2.5rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 /* -------------------------------------------
-   7. About - Classic Narrative
+   7. About - Classic Narrative (no float)
    ------------------------------------------- */
 .about-grid {
     display: grid;
@@ -309,7 +379,6 @@ p {
 .about-image {
     border-radius: var(--radius-card);
     overflow: hidden;
-    animation: float 6s ease-in-out infinite;
 }
 
 .about-image img {
@@ -338,26 +407,26 @@ p {
     margin: 1.5rem 0;
 }
 
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+/* -------------------------------------------
+   8. Collections - Pillars + Gallery Expand
+   ------------------------------------------- */
+.collections-section {
+    padding: 6rem 0 0 0;
 }
 
-/* -------------------------------------------
-   8. Collections Pillars (Sage Green Tint)
-   ------------------------------------------- */
 .collections-pillars {
     display: flex;
-    height: 600px;
-    gap: 15px;
+    height: 550px;
+    gap: 12px;
     overflow: hidden;
     background: #2a3a2c;
-    padding: 15px;
+    padding: 12px;
     border-radius: var(--radius-card);
+    transition: all 0.5s ease;
+}
+
+.collections-pillars.collapsed {
+    height: 120px;
 }
 
 .pillar-item {
@@ -434,77 +503,135 @@ p {
     padding-bottom: 3rem;
 }
 
-/* -------------------------------------------
-   9. Gallery - Hover Grid
-   ------------------------------------------- */
-.hover-grid {
+/* When pillars collapse, show labels horizontally */
+.collections-pillars.collapsed .pillar-item {
+    flex: 1;
+}
+
+.collections-pillars.collapsed .pillar-label {
+    transform: none;
+    white-space: nowrap;
+    background: linear-gradient(to top, rgba(42, 58, 44, 0.85), rgba(42, 58, 44, 0.4));
+    justify-content: center;
+}
+
+.collections-pillars.collapsed .pillar-label p {
+    display: none;
+}
+
+.collections-pillars.collapsed .pillar-item:hover {
+    flex: 1.5;
+}
+
+.collections-pillars.collapsed .pillar-item.active-pillar {
+    flex: 2;
+}
+
+.collections-pillars.collapsed .pillar-item.active-pillar .pillar-overlay {
+    opacity: 0;
+}
+
+.collections-pillars.collapsed .pillar-item.active-pillar img {
+    filter: brightness(0.9) saturate(1);
+}
+
+.collections-pillars.collapsed .pillar-item.active-pillar .pillar-label {
+    background: linear-gradient(to top, rgba(148, 163, 150, 0.9), rgba(148, 163, 150, 0.3));
+}
+
+/* Gallery expand area */
+.collection-gallery {
+    display: none;
+    padding: 2.5rem 0 4rem;
+    animation: fadeIn 0.5s ease;
+}
+
+.collection-gallery.open {
+    display: block;
+}
+
+.collection-gallery-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.collection-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: none;
+    border: 1.5px solid var(--color-primary);
+    color: var(--color-primary);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-btn);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.collection-back-btn:hover {
+    background: var(--color-primary);
+    color: white;
+}
+
+.collection-gallery-title {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--color-primary);
+}
+
+.collection-gallery-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 280px);
+    grid-template-columns: repeat(4, 1fr);
     gap: 12px;
 }
 
-.hover-grid-item {
+.collection-gallery-grid .gallery-thumb {
     position: relative;
+    aspect-ratio: 1;
+    border-radius: 10px;
     overflow: hidden;
-    border-radius: 12px;
     cursor: pointer;
 }
 
-.hover-grid-item:first-child {
-    grid-row: span 2;
-}
-
-.hover-grid-item img {
+.collection-gallery-grid .gallery-thumb img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: transform 0.5s ease;
 }
 
-.hover-grid-item:hover img {
-    transform: scale(1.08);
+.collection-gallery-grid .gallery-thumb:hover img {
+    transform: scale(1.06);
 }
 
-.hover-content {
+.collection-gallery-grid .gallery-thumb::after {
+    content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 30%, rgba(107, 94, 81, 0.8) 100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 1.5rem;
+    background: linear-gradient(180deg, transparent 60%, rgba(42, 58, 44, 0.4));
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.3s;
 }
 
-.hover-grid-item:hover .hover-content {
+.collection-gallery-grid .gallery-thumb:hover::after {
     opacity: 1;
 }
 
-.hover-content h4 {
-    color: white;
-    font-family: var(--font-heading);
-    font-size: 1.1rem;
-    margin-bottom: 0.3rem;
-}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
 
-.hover-content p {
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 0.85rem;
-    margin: 0;
-}
-
-.view-btn {
-    margin-top: 0.75rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    color: white;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* -------------------------------------------
@@ -550,17 +677,6 @@ p {
 
 .pkg-panel.active {
     display: block;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .pkg-card-grid {
@@ -703,103 +819,98 @@ p {
 }
 
 /* -------------------------------------------
-   11. Reviews Carousel
+   11. Reviews - Multi-card Marquee
    ------------------------------------------- */
-.review-carousel {
-    position: relative;
+.reviews-marquee {
     overflow: hidden;
-    max-width: 700px;
-    margin: 0 auto;
+    padding: 1rem 0;
 }
 
-.review-track {
+.reviews-track {
     display: flex;
-    transition: transform 0.5s ease;
+    gap: 1.5rem;
+    animation: marqueeScroll 30s linear infinite;
+    width: max-content;
 }
 
-.review-slide {
-    flex: 0 0 100%;
-    padding: 0 1rem;
+.reviews-track:hover {
+    animation-play-state: paused;
 }
 
-.review-card {
+@keyframes marqueeScroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.review-card-new {
+    flex: 0 0 360px;
     background: var(--color-surface);
     border-radius: var(--radius-card);
-    padding: 3rem 2.5rem;
-    text-align: center;
+    padding: 2rem 2rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(148, 163, 150, 0.15);
 }
 
-.review-icon {
-    color: var(--color-secondary);
-    width: 32px;
-    height: 32px;
-    margin-bottom: 1rem;
-    fill: currentColor;
+.review-card-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+    border-radius: 4px 0 0 4px;
 }
 
-.review-card blockquote {
-    font-size: 1.15rem;
-    line-height: 1.8;
+.review-quote-icon {
+    color: var(--color-primary);
+    width: 24px;
+    height: 24px;
+    margin-bottom: 0.75rem;
+    opacity: 0.5;
+}
+
+.review-card-new blockquote {
+    font-size: 0.95rem;
+    line-height: 1.7;
     font-style: italic;
     color: var(--color-text);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
 }
 
-.review-card cite {
+.review-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(107, 94, 81, 0.08);
+}
+
+.review-author-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.review-author cite {
     font-weight: 700;
     font-style: normal;
-    font-size: 1rem;
-    color: var(--color-primary);
-    display: block;
-}
-
-.review-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.review-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--color-surface);
-    border: 1px solid rgba(107, 94, 81, 0.1);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 0.9rem;
     color: var(--color-text);
-    transition: all 0.3s;
-}
-
-.review-btn:hover {
-    border-color: var(--color-secondary);
-    color: var(--color-secondary);
-}
-
-.review-dots {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.review-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--color-accent);
-    border: none;
-    cursor: pointer;
-    opacity: 0.3;
-    transition: all 0.3s;
-}
-
-.review-dot.active {
-    opacity: 1;
-    background: var(--color-secondary);
-    transform: scale(1.2);
 }
 
 /* -------------------------------------------
@@ -998,14 +1109,8 @@ p {
     opacity: 1;
 }
 
-.lightbox-content {
-    position: relative;
+.lightbox-overlay img {
     max-width: 90vw;
-    max-height: 90vh;
-}
-
-.lightbox-content img {
-    max-width: 100%;
     max-height: 85vh;
     object-fit: contain;
     border-radius: 8px;
@@ -1067,35 +1172,10 @@ p {
     opacity: 0.7;
 }
 
-.lightbox-caption {
-    position: absolute;
-    bottom: -2.5rem;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: white;
-    font-size: 0.85rem;
-    opacity: 0.7;
-}
-
-/* -------------------------------------------
-   16. Animations
-   ------------------------------------------- */
-/* @keyframes float - defined in About section */
-/* @keyframes fadeIn - defined in Packages section */
-
 /* -------------------------------------------
    17. Responsive
    ------------------------------------------- */
 @media (max-width: 1024px) {
-    .hero-grid {
-        grid-template-columns: 1.3fr 0.7fr;
-    }
-
-    .hero-card {
-        margin-left: -3rem;
-    }
-
     .pkg-card-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1104,6 +1184,10 @@ p {
         grid-column: 1 / -1;
         max-width: 50%;
         margin: 0 auto;
+    }
+
+    .collection-gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -1118,7 +1202,7 @@ p {
         top: 100%;
         left: 0;
         right: 0;
-        background: var(--color-surface);
+        background: var(--color-primary);
         flex-direction: column;
         padding: 1.5rem 2rem;
         gap: 1rem;
@@ -1129,16 +1213,34 @@ p {
         display: flex;
     }
 
-    .hero-grid {
-        grid-template-columns: 1fr;
+    .nav-links li a {
+        color: white;
+        opacity: 0.9;
     }
 
-    .hero-image {
-        min-height: 50vh;
+    .navbar.scrolled {
+        left: 0.75rem;
+        right: 0.75rem;
     }
 
-    .hero-card {
-        margin: -3rem 1.5rem 1.5rem 1.5rem;
+    .nav-login-btn span {
+        display: none;
+    }
+
+    .nav-login-btn {
+        padding: 0.5rem;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero-tagline {
+        font-size: 0.95rem;
     }
 
     .about-grid {
@@ -1151,22 +1253,23 @@ p {
     }
 
     .collections-pillars .pillar-item {
-        height: 200px;
+        height: 150px;
     }
 
     .pillar-label {
         transform: none;
     }
 
-    .hover-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: auto;
+    .collections-pillars.collapsed {
+        height: auto;
     }
 
-    .hover-grid-item:first-child {
-        grid-row: span 1;
-        grid-column: span 2;
-        height: 300px;
+    .collections-pillars.collapsed .pillar-item {
+        height: 80px;
+    }
+
+    .collection-gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .form-row {
@@ -1193,20 +1296,12 @@ p {
         padding: 4rem 0;
     }
 
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.8rem;
+    .review-card-new {
+        flex: 0 0 300px;
     }
 }
 
 @media (max-width: 480px) {
-    .hero-card {
-        padding: 2rem;
-    }
-
     .container {
         padding: 0 1.25rem;
     }
@@ -1219,5 +1314,17 @@ p {
         overflow-x: auto;
         flex-wrap: nowrap;
         -webkit-overflow-scrolling: touch;
+    }
+
+    .review-card-new {
+        flex: 0 0 280px;
+    }
+
+    .collection-gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
     }
 }
