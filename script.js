@@ -153,10 +153,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const categoryNames = {
         newborn: 'Newborn',
-        child: 'Personality',
-        outdoor: 'Adventure',
-        milestone: 'Tradition',
-        special: 'Celebrations'
+        child: 'Child',
+        outdoor: 'Outdoor',
+        milestone: 'Three Year Milestone',
+        special: 'Special Occasion'
     };
 
     const pillars = document.getElementById('collectionPillars');
