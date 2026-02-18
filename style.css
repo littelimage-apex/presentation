@@ -232,17 +232,16 @@ p {
 }
 
 .navbar.scrolled .nav-login-btn {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    border-color: rgba(255, 255, 255, 0.3);
+    border-color: var(--color-secondary);
+    color: var(--color-secondary);
 }
 
 .navbar.scrolled .nav-login-btn:hover {
-    background: white;
-    border-color: white;
-    color: var(--color-primary);
+    background: var(--color-secondary);
+    border-color: var(--color-secondary);
+    color: white;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(212, 163, 154, 0.35);
 }
 
 .navbar.scrolled .mobile-menu-btn {
@@ -290,21 +289,21 @@ p {
     align-items: center;
     gap: 0.4rem;
     padding: 0.5rem 1.2rem;
-    border: 1.5px solid rgba(255, 255, 255, 0.5);
+    border: 1.5px solid var(--color-secondary);
     border-radius: var(--radius-btn);
     font-size: 0.8rem;
     font-weight: 700;
-    color: white;
+    color: var(--color-secondary);
     transition: all 0.3s;
     white-space: nowrap;
 }
 
 .nav-login-btn:hover {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
+    background: var(--color-secondary);
+    border-color: var(--color-secondary);
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(148, 163, 150, 0.35);
+    box-shadow: 0 4px 12px rgba(212, 163, 154, 0.35);
 }
 
 .mobile-menu-btn {
@@ -321,7 +320,7 @@ p {
    ------------------------------------------- */
 .hero-section {
     min-height: 100vh;
-    background: url('https://res.cloudinary.com/da2fwogvu/image/upload/f_auto,q_auto/v1771373071/little-image/hero/Gemini_Generated_Image_mzytvsmzytvsmzyt.png') center / cover no-repeat;
+    background: url('https://res.cloudinary.com/da2fwogvu/image/upload/f_auto,q_auto/v1771373071/little-image/hero/Gemini_Generated_Image_mzytvsmzytvsmzyt.png') 65% center / cover no-repeat;
     position: relative;
 }
 
