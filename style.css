@@ -320,7 +320,7 @@ p {
    ------------------------------------------- */
 .hero-section {
     min-height: 100vh;
-    background: url('assets/images/home/hero-bg.png') 95% center / cover no-repeat;
+    background: url('https://res.cloudinary.com/da2fwogvu/image/upload/v1771457834/tmpgj_7scm9_cpnfos.png') 95% center / cover no-repeat;
     position: relative;
 }
 
