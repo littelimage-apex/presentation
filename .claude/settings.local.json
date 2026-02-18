@@ -16,7 +16,14 @@
       "mcp__plugin_firecrawl_firecrawl__firecrawl_scrape",
       "Bash(dir:*)",
       "Bash(node -e:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(du -sh \"c:/Users/jacob/Github Repo/presentation/assets/images/\"*/)",
+      "Bash(curl:*)",
+      "Bash(bash:*)",
+      "Bash(for file in index.html style.css script.js)",
+      "Bash(do grep -oP \"assets/images/[^\"\"'' \\)\\\\]]*\" \"$file\")",
+      "Bash(done)",
+      "Bash(cd:*)"
     ]
   }
 }
