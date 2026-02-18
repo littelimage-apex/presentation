@@ -320,7 +320,7 @@ p {
    ------------------------------------------- */
 .hero-section {
     min-height: 100vh;
-    background: url('assets/images/home/hero-bg.png') 70% center / cover no-repeat;
+    background: url('assets/images/home/hero-bg.png') 95% center / cover no-repeat;
     position: relative;
 }
 
@@ -1008,7 +1008,7 @@ p {
     margin-bottom: 1rem;
 }
 
-.contact-info > p {
+.contact-info>p {
     font-size: 1.05rem;
     opacity: 0.85;
     line-height: 1.7;
