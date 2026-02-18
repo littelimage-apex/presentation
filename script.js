@@ -193,15 +193,34 @@ document.addEventListener('DOMContentLoaded', () => {
             // Set title
             galleryTitle.textContent = title;
 
-            // Populate grid
+            // Populate grid as justified rows
             galleryGrid.innerHTML = '';
-            images.forEach(src => {
-                const thumb = document.createElement('div');
-                thumb.className = 'gallery-thumb';
-                thumb.setAttribute('data-lightbox-src', src);
-                thumb.innerHTML = `<img src="${src}" alt="${title} photography" loading="lazy">`;
-                galleryGrid.appendChild(thumb);
-            });
+            const sizeClasses = ['wide', 'narrow', 'medium', 'standard'];
+            const rowHeights = ['tall', 'short', '', 'tall'];
+            const itemsPerRow = [3, 4, 3, 3];
+            let imgIndex = 0;
+
+            let rowIndex = 0;
+            while (imgIndex < images.length) {
+                const row = document.createElement('div');
+                const count = itemsPerRow[rowIndex % itemsPerRow.length];
+                const heightClass = rowHeights[rowIndex % rowHeights.length];
+                row.className = 'justified-row' + (heightClass ? ' ' + heightClass : '');
+
+                for (let i = 0; i < count && imgIndex < images.length; i++) {
+                    const src = images[imgIndex];
+                    const sizeClass = sizeClasses[(imgIndex + i) % sizeClasses.length];
+                    const thumb = document.createElement('div');
+                    thumb.className = 'gallery-thumb ' + sizeClass;
+                    thumb.setAttribute('data-lightbox-src', src);
+                    thumb.innerHTML = `<img src="${src}" alt="${title} photography" loading="lazy">`;
+                    row.appendChild(thumb);
+                    imgIndex++;
+                }
+
+                galleryGrid.appendChild(row);
+                rowIndex++;
+            }
 
             // Show gallery
             gallery.classList.add('open');

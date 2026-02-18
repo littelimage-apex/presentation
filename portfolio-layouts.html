@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Layout Exploration - Little Image Photography</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Solway:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════
+           ROOT & BRAND
+        ═══════════════════════════════════════════ */
+        :root {
+            --color-primary: #94A396;
+            --color-primary-fg: #FDFCFB;
+            --color-secondary: #D4A39A;
+            --color-secondary-fg: #6B5E51;
+            --color-background: #F5F2ED;
+            --color-surface: #FDFCFB;
+            --color-text: #6B5E51;
+            --color-accent: #B8A898;
+            --font-heading: 'Solway', serif;
+            --font-body: 'Nunito', sans-serif;
+            --radius-card: 1.25rem;
+            --radius-btn: 50px;
+            --spacing-unit: 8px;
+            --transition-smooth: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+
+            /* Derived for this page */
+            --color-text-light: #9A8E82;
+            --color-bg-warm: #FAF8F5;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ═══════════════════════════════════════════
+           NAVIGATION
+        ═══════════════════════════════════════════ */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(107,94,81,0.1);
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            height: 60px;
+            gap: 32px;
+            overflow-x: auto;
+        }
+
+        .top-nav .nav-title {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-secondary-fg);
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+        }
+
+        .top-nav a {
+            font-size: 13px;
+            color: var(--color-text-light);
+            text-decoration: none;
+            white-space: nowrap;
+            padding: 6px 12px;
+            border-radius: var(--radius-btn);
+            transition: var(--transition-smooth);
+            font-weight: 700;
+        }
+
+        .top-nav a:hover,
+        .top-nav a.active {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        /* ═══════════════════════════════════════════
+           HERO HEADER
+        ═══════════════════════════════════════════ */
+        .hero-header {
+            padding: 120px 40px 60px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--color-background) 0%, var(--color-bg-warm) 100%);
+        }
+
+        .hero-header h1 {
+            font-family: var(--font-heading);
+            font-size: 42px;
+            font-weight: 300;
+            color: var(--color-secondary-fg);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-header p {
+            font-size: 17px;
+            color: var(--color-text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .hero-header .subtitle {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-secondary);
+            font-weight: 700;
+        }
+
+        /* ═══════════════════════════════════════════
+           SECTION WRAPPER
+        ═══════════════════════════════════════════ */
+        .layout-section {
+            padding: 80px 40px;
+            border-top: 1px solid rgba(107,94,81,0.08);
+        }
+
+        .layout-section:nth-child(even) {
+            background: var(--color-surface);
+        }
+
+        .section-header {
+            max-width: 700px;
+            margin: 0 auto 50px;
+            text-align: center;
+        }
+
+        .section-header .label {
+            display: inline-block;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--color-secondary);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 400;
+            color: var(--color-secondary-fg);
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            font-size: 15px;
+            color: var(--color-text-light);
+            line-height: 1.7;
+        }
+
+        /* ═══════════════════════════════════════════
+           1. MASONRY / WATERFALL
+        ═══════════════════════════════════════════ */
+        .masonry-grid {
+            column-count: 4;
+            column-gap: 16px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .masonry-grid .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 16px;
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .masonry-grid .gallery-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .masonry-grid .gallery-item:hover img {
+            transform: scale(1.03);
+        }
+
+        .masonry-grid .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 24px 16px 16px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.5));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .masonry-grid .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .masonry-grid .gallery-item .overlay span {
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* ═══════════════════════════════════════════
+           2. JUSTIFIED ROWS
+        ═══════════════════════════════════════════ */
+        .justified-gallery {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .justified-row {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .justified-row .gallery-item {
+            overflow: hidden;
+            border-radius: calc(var(--radius-card) / 2);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .justified-row .gallery-item img {
+            height: 280px;
+            width: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease, filter 0.3s ease;
+        }
+
+        .justified-row .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Flex-grow values simulate aspect ratios */
+        .justified-row .gallery-item.wide { flex: 1.6; }
+        .justified-row .gallery-item.medium { flex: 1.2; }
+        .justified-row .gallery-item.narrow { flex: 0.8; }
+        .justified-row .gallery-item.standard { flex: 1; }
+
+        .justified-row.tall .gallery-item img {
+            height: 340px;
+        }
+
+        .justified-row.short .gallery-item img {
+            height: 220px;
+        }
+
+        /* ═══════════════════════════════════════════
+           3. EDITORIAL / ASYMMETRIC
+        ═══════════════════════════════════════════ */
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: 100px;
+            gap: 12px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .editorial-grid .gallery-item {
+            overflow: hidden;
+            border-radius: var(--radius-card);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .editorial-grid .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .editorial-grid .gallery-item:hover img {
+            transform: scale(1.04);
+        }
+
+        /* Named placement classes */
+        .editorial-grid .e-hero {
+            grid-column: span 7;
+            grid-row: span 4;
+        }
+
+        .editorial-grid .e-tall {
+            grid-column: span 5;
+            grid-row: span 4;
+        }
+
+        .editorial-grid .e-wide {
+            grid-column: span 8;
+            grid-row: span 3;
+        }
+
+        .editorial-grid .e-small {
+            grid-column: span 4;
+            grid-row: span 3;
+        }
+
+        .editorial-grid .e-medium {
+            grid-column: span 6;
+            grid-row: span 3;
+        }
+
+        .editorial-grid .e-feature {
+            grid-column: span 5;
+            grid-row: span 5;
+        }
+
+        .editorial-grid .e-strip {
+            grid-column: span 7;
+            grid-row: span 2;
+        }
+
+        .editorial-grid .gallery-item .caption {
+            position: absolute;
+            bottom: 16px;
+            left: 20px;
+            color: white;
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 300;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+        }
+
+        .editorial-grid .gallery-item:hover .caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ═══════════════════════════════════════════
+           4. STAGGERED / OFFSET
+        ═══════════════════════════════════════════ */
+        .staggered-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .staggered-grid .gallery-item {
+            width: calc(25% - 24px);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .staggered-grid .gallery-item:nth-child(even) {
+            transform: translateY(50px);
+        }
+
+        .staggered-grid .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .staggered-grid .gallery-item:nth-child(even):hover {
+            transform: translateY(46px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .staggered-grid .gallery-item img {
+            width: 100%;
+            display: block;
+        }
+
+        .staggered-grid .gallery-item .item-info {
+            padding: 14px 16px;
+            background: white;
+        }
+
+        .staggered-grid .gallery-item .item-info h4 {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--color-secondary-fg);
+            margin-bottom: 2px;
+        }
+
+        .staggered-grid .gallery-item .item-info span {
+            font-size: 12px;
+            color: var(--color-text-light);
+        }
+
+        /* ═══════════════════════════════════════════
+           5. SCATTERED / COLLAGE
+        ═══════════════════════════════════════════ */
+        .collage-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 900px;
+        }
+
+        .collage-container .gallery-item {
+            position: absolute;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            border: 6px solid white;
+            cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, z-index 0s;
+        }
+
+        .collage-container .gallery-item:hover {
+            transform: scale(1.05) !important;
+            box-shadow: 0 16px 50px rgba(0,0,0,0.2);
+            z-index: 100 !important;
+        }
+
+        .collage-container .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Individual collage positions */
+        .collage-container .c1 {
+            width: 340px; height: 260px;
+            top: 20px; left: 5%;
+            transform: rotate(-3deg);
+            z-index: 2;
+        }
+        .collage-container .c2 {
+            width: 280px; height: 380px;
+            top: 0px; left: 32%;
+            transform: rotate(2deg);
+            z-index: 3;
+        }
+        .collage-container .c3 {
+            width: 350px; height: 240px;
+            top: 40px; right: 3%;
+            transform: rotate(-1.5deg);
+            z-index: 1;
+        }
+        .collage-container .c4 {
+            width: 300px; height: 220px;
+            top: 310px; left: 2%;
+            transform: rotate(2.5deg);
+            z-index: 4;
+        }
+        .collage-container .c5 {
+            width: 260px; height: 340px;
+            top: 400px; left: 28%;
+            transform: rotate(-2deg);
+            z-index: 5;
+        }
+        .collage-container .c6 {
+            width: 320px; height: 250px;
+            top: 320px; right: 8%;
+            transform: rotate(3deg);
+            z-index: 2;
+        }
+        .collage-container .c7 {
+            width: 290px; height: 200px;
+            top: 600px; left: 10%;
+            transform: rotate(-1deg);
+            z-index: 3;
+        }
+        .collage-container .c8 {
+            width: 380px; height: 280px;
+            top: 620px; right: 12%;
+            transform: rotate(1.5deg);
+            z-index: 4;
+        }
+
+        /* ═══════════════════════════════════════════
+           6. HORIZONTAL FILMSTRIP
+        ═══════════════════════════════════════════ */
+        .filmstrip-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filmstrip-gallery {
+            display: flex;
+            gap: 14px;
+            overflow-x: auto;
+            padding: 20px 40px 30px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            cursor: grab;
+        }
+
+        .filmstrip-gallery::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filmstrip-gallery .gallery-item {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .filmstrip-gallery .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .filmstrip-gallery .gallery-item img {
+            height: 420px;
+            width: auto;
+            display: block;
+        }
+
+        .filmstrip-gallery .gallery-item.portrait img {
+            height: 420px;
+            width: 280px;
+            object-fit: cover;
+        }
+
+        .filmstrip-gallery .gallery-item.landscape img {
+            height: 420px;
+            width: 560px;
+            object-fit: cover;
+        }
+
+        .filmstrip-gallery .gallery-item.square img {
+            height: 420px;
+            width: 420px;
+            object-fit: cover;
+        }
+
+        .filmstrip-hint {
+            text-align: center;
+            padding: 12px;
+            font-size: 13px;
+            color: var(--color-text-light);
+            letter-spacing: 1px;
+        }
+
+        .filmstrip-hint svg {
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+            margin-right: 4px;
+        }
+
+        /* Gradient fade edges */
+        .filmstrip-wrap::before,
+        .filmstrip-wrap::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 80px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .filmstrip-wrap::before {
+            left: 0;
+            background: linear-gradient(to right, var(--color-background), transparent);
+        }
+
+        .filmstrip-wrap::after {
+            right: 0;
+            background: linear-gradient(to left, var(--color-background), transparent);
+        }
+
+        .layout-section:nth-child(even) .filmstrip-wrap::before {
+            background: linear-gradient(to right, var(--color-surface), transparent);
+        }
+
+        .layout-section:nth-child(even) .filmstrip-wrap::after {
+            background: linear-gradient(to left, var(--color-surface), transparent);
+        }
+
+        /* ═══════════════════════════════════════════
+           7. MIXED-WEIGHT MODULAR GRID
+        ═══════════════════════════════════════════ */
+        .modular-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 220px;
+            grid-auto-flow: dense;
+            gap: 10px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .modular-grid .gallery-item {
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .modular-grid .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .modular-grid .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .modular-grid .gallery-item.span-2c {
+            grid-column: span 2;
+        }
+
+        .modular-grid .gallery-item.span-2r {
+            grid-row: span 2;
+        }
+
+        .modular-grid .gallery-item.span-2c2r {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        /* ═══════════════════════════════════════════
+           PROS/CONS TAGS
+        ═══════════════════════════════════════════ */
+        .layout-notes {
+            max-width: 800px;
+            margin: 40px auto 0;
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .note-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .note-group .note-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .note-group .note-label.cons {
+            color: var(--color-secondary);
+        }
+
+        .note-tag {
+            display: inline-block;
+            padding: 5px 14px;
+            background: rgba(148,163,150,0.12);
+            border-radius: var(--radius-btn);
+            font-size: 13px;
+            color: var(--color-text);
+        }
+
+        .note-tag.con {
+            background: rgba(212,163,154,0.15);
+        }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════════ */
+        @media (max-width: 1100px) {
+            .masonry-grid { column-count: 3; }
+            .staggered-grid .gallery-item { width: calc(33.33% - 24px); }
+            .editorial-grid .e-hero { grid-column: span 6; grid-row: span 3; }
+            .editorial-grid .e-tall { grid-column: span 6; grid-row: span 3; }
+        }
+
+        @media (max-width: 768px) {
+            .masonry-grid { column-count: 2; }
+            .staggered-grid .gallery-item { width: calc(50% - 24px); }
+            .layout-section { padding: 60px 20px; }
+            .hero-header { padding: 100px 20px 40px; }
+            .hero-header h1 { font-size: 30px; }
+            .editorial-grid .e-hero,
+            .editorial-grid .e-tall,
+            .editorial-grid .e-wide,
+            .editorial-grid .e-small,
+            .editorial-grid .e-medium,
+            .editorial-grid .e-feature,
+            .editorial-grid .e-strip {
+                grid-column: span 6;
+                grid-row: span 2;
+            }
+            .modular-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
+            .modular-grid .gallery-item.span-2c { grid-column: span 2; }
+            .justified-row .gallery-item img { height: 200px; }
+            .justified-row.tall .gallery-item img { height: 240px; }
+            .justified-row.short .gallery-item img { height: 160px; }
+            .collage-container { min-height: 600px; transform: scale(0.65); transform-origin: top center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════════
+         NAVIGATION
+    ═══════════════════════════════════════════ -->
+    <nav class="top-nav">
+        <span class="nav-title">Portfolio Layouts</span>
+        <a href="#masonry">Masonry</a>
+        <a href="#justified">Justified Rows</a>
+        <a href="#editorial">Editorial</a>
+        <a href="#staggered">Staggered</a>
+        <a href="#collage">Collage</a>
+        <a href="#filmstrip">Filmstrip</a>
+        <a href="#modular">Mixed-Weight</a>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════ -->
+    <header class="hero-header">
+        <h1>Portfolio Layout Exploration</h1>
+        <p>Seven alternative gallery layouts that break away from the uniform grid. Each creates a different feeling &mdash; from organic and flowing to editorial and curated.</p>
+        <span class="subtitle">Little Image Photography</span>
+    </header>
+
+    <!-- ═══════════════════════════════════════════
+         1. MASONRY / WATERFALL
+    ═══════════════════════════════════════════ -->
+    <section id="masonry" class="layout-section">
+        <div class="section-header">
+            <span class="label">Layout 1</span>
+            <h2>Masonry / Waterfall</h2>
+            <p>Images flow naturally in columns, each finding its place based on its own proportions. No cropping, no forced aspect ratios &mdash; every image keeps its original shape. Think Pinterest.</p>
+        </div>
+
+        <div class="masonry-grid">
+            <div class="gallery-item">
+                <img src="assets/images/newborn/LittleImage_Greenfeld_2.0-45b9a5c6-1000.jpg" alt="Newborn session">
+                <div class="overlay"><span>Newborn</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/child/LittleImage_Weberman_14-55f21110-1500.jpg" alt="Child portrait">
+                <div class="overlay"><span>Child</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="Outdoor session">
+                <div class="overlay"><span>Outdoor</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/newborn/LittleImage_Retek_2-39c3d6e2-1000.jpg" alt="Newborn">
+                <div class="overlay"><span>Newborn</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/child/LittleImage_Scher_1-d92a6d54-1500.jpg" alt="Child">
+                <div class="overlay"><span>Child</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/special_occasion/LittleImage_Hershkowitz_1-b66e1d7f-1000.jpg" alt="Special occasion">
+                <div class="overlay"><span>Special Occasion</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/newborn/LittleImage_Greenfeld_3.1-536122d2-1000.jpg" alt="Newborn">
+                <div class="overlay"><span>Newborn</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/outdoor/LittleImage_Wertzberger_3-646092d1-2500.jpg" alt="Outdoor">
+                <div class="overlay"><span>Outdoor</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/child/LittleImage_Pollak_1-3db683b3-1500.jpg" alt="Child">
+                <div class="overlay"><span>Child</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/newborn/Littleimage_Weiss_2-84448be8-1000.jpg" alt="Newborn">
+                <div class="overlay"><span>Newborn</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/events/D34A2269copy-deec4d54-1000.jpg" alt="Events">
+                <div class="overlay"><span>Events</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/child/LittleImage_Mertz_1.1-62d4748c-1500.jpg" alt="Child">
+                <div class="overlay"><span>Child</span></div>
+            </div>
+        </div>
+
+        <div class="layout-notes">
+            <div class="note-group">
+                <span class="note-label">Strengths</span>
+                <span class="note-tag">Organic, natural feel</span>
+                <span class="note-tag">No cropping needed</span>
+                <span class="note-tag">Works with any aspect ratio</span>
+            </div>
+            <div class="note-group">
+                <span class="note-label cons">Considerations</span>
+                <span class="note-tag con">Read order is top-to-bottom per column</span>
+                <span class="note-tag con">Bottom edge is uneven</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         2. JUSTIFIED ROWS
+    ═══════════════════════════════════════════ -->
+    <section id="justified" class="layout-section">
+        <div class="section-header">
+            <span class="label">Layout 2</span>
+            <h2>Justified Rows</h2>
+            <p>Every row stretches edge-to-edge, with images at different widths based on their natural proportions. Rows alternate between tall and short heights for visual rhythm. Clean and dense like a gallery wall.</p>
+        </div>
+
+        <div class="justified-gallery">
+            <div class="justified-row tall">
+                <div class="gallery-item wide">
+                    <img src="assets/images/newborn/LittleImage_Greenfeld_2.0-45b9a5c6-1000.jpg" alt="">
+                </div>
+                <div class="gallery-item narrow">
+                    <img src="assets/images/child/LittleImage_Weberman_1-f167101e-1500.jpg" alt="">
+                </div>
+                <div class="gallery-item medium">
+                    <img src="assets/images/outdoor/2-6ea104f9-2500.jpg" alt="">
+                </div>
+            </div>
+            <div class="justified-row short">
+                <div class="gallery-item standard">
+                    <img src="assets/images/newborn/LittleImage_Kohn_2.1-5d1b076b-1000.jpg" alt="">
+                </div>
+                <div class="gallery-item wide">
+                    <img src="assets/images/events/D34A5234-488bd861-1000.JPG" alt="">
+                </div>
+                <div class="gallery-item standard">
+                    <img src="assets/images/child/LittleImage_Mauskopf_1-f736b7d9-1500.jpg" alt="">
+                </div>
+                <div class="gallery-item narrow">
+                    <img src="assets/images/special_occasion/LittleImage_Hershkowitz_2-e51cd99c-1000.jpg" alt="">
+                </div>
+            </div>
+            <div class="justified-row">
+                <div class="gallery-item medium">
+                    <img src="assets/images/newborn/Littleimage_Klein_1-1bbc4662-1000.jpg" alt="">
+                </div>
+                <div class="gallery-item wide">
+                    <img src="assets/images/outdoor/Littleimage_Grunhut_2-70c61d27-2500.jpg" alt="">
+                </div>
+                <div class="gallery-item standard">
+                    <img src="assets/images/child/LittleImage_Weissberg_2-6b43eb27-1500.jpg" alt="">
+                </div>
+            </div>
+            <div class="justified-row tall">
+                <div class="gallery-item narrow">
+                    <img src="assets/images/newborn/LittleImage_Braun_6-2223d33b-1000.jpg" alt="">
+                </div>
+                <div class="gallery-item standard">
+                    <img src="assets/images/special_occasion/LittleImage_Katz_1-321511af-1000.jpg" alt="">
+                </div>
+                <div class="gallery-item wide">
+                    <img src="assets/images/child/LittleImagePhotography_Deutsch_5-7eb0ffb7-1500.jpg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="layout-notes">
+            <div class="note-group">
+                <span class="note-label">Strengths</span>
+                <span class="note-tag">Clean, edge-to-edge density</span>
+                <span class="note-tag">Natural reading order (left to right)</span>
+                <span class="note-tag">Varying row heights add rhythm</span>
+            </div>
+            <div class="note-group">
+                <span class="note-label cons">Considerations</span>
+                <span class="note-tag con">Some images get cropped</span>
+                <span class="note-tag con">Last row can look odd if incomplete</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         3. EDITORIAL / ASYMMETRIC
+    ═══════════════════════════════════════════ -->
+    <section id="editorial" class="layout-section">
+        <div class="section-header">
+            <span class="label">Layout 3</span>
+            <h2>Editorial / Asymmetric</h2>
+            <p>A curated magazine spread where hero images dominate and smaller supporting shots fill in around them. Establishes clear visual hierarchy &mdash; your best shots get the spotlight.</p>
+        </div>
+
+        <div class="editorial-grid">
+            <div class="gallery-item e-hero">
+                <img src="assets/images/newborn/LittleImage_Greenfeld_2.0-45b9a5c6-1000.jpg" alt="">
+                <span class="caption">Greenfeld Newborn Session</span>
+            </div>
+            <div class="gallery-item e-tall">
+                <img src="assets/images/child/LittleImage_Weberman_14-55f21110-1500.jpg" alt="">
+                <span class="caption">Weberman Family</span>
+            </div>
+            <div class="gallery-item e-wide">
+                <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="">
+                <span class="caption">Outdoor Session</span>
+            </div>
+            <div class="gallery-item e-small">
+                <img src="assets/images/newborn/LittleImage_Drezner_4-af714b0e-1000.jpg" alt="">
+                <span class="caption">Drezner Newborn</span>
+            </div>
+            <div class="gallery-item e-feature">
+                <img src="assets/images/child/LittleImage_Scher_1-d92a6d54-1500.jpg" alt="">
+                <span class="caption">Scher Portrait</span>
+            </div>
+            <div class="gallery-item e-strip">
+                <img src="assets/images/events/D34A5267-bf8d4b20-1000.JPG" alt="">
+                <span class="caption">Celebration</span>
+            </div>
+            <div class="gallery-item e-medium">
+                <img src="assets/images/special_occasion/LittleImage_Katz_3-6167d54c-1000.jpg" alt="">
+                <span class="caption">Katz Special Occasion</span>
+            </div>
+            <div class="gallery-item e-medium">
+                <img src="assets/images/newborn/Littleimage_Weiss_7-76f3091b-1000.jpg" alt="">
+                <span class="caption">Weiss Newborn</span>
+            </div>
+        </div>
+
+        <div class="layout-notes">
+            <div class="note-group">
+                <span class="note-label">Strengths</span>
+                <span class="note-tag">Strong visual hierarchy</span>
+                <span class="note-tag">Feels high-end and curated</span>
+                <span class="note-tag">Hero shots get the spotlight</span>
+            </div>
+            <div class="note-group">
+                <span class="note-label cons">Considerations</span>
+                <span class="note-tag con">Requires curating which images are "featured"</span>
+                <span class="note-tag con">More complex to maintain</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         4. STAGGERED / OFFSET
+    ═══════════════════════════════════════════ -->
+    <section id="staggered" class="layout-section">
+        <div class="section-header">
+            <span class="label">Layout 4</span>
+            <h2>Staggered / Offset</h2>
+            <p>A clean grid with a twist &mdash; every other image drops down, creating a gentle brickwork rhythm. Cards with soft shadows float above the background. Modern, airy, and playful.</p>
+        </div>
+
+        <div class="staggered-grid">
+            <div class="gallery-item">
+                <img src="assets/images/newborn/LittleImage_Greenfeld_2.0-45b9a5c6-1000.jpg" alt="">
+                <div class="item-info">
+                    <h4>Greenfeld Session</h4>
+                    <span>Newborn</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/child/LittleImage_Weberman_19-03d092ed-1500.jpg" alt="">
+                <div class="item-info">
+                    <h4>Weberman Family</h4>
+                    <span>Child</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/outdoor/LittleImage_Klein_2-686b05cd-2500.jpg" alt="">
+                <div class="item-info">
+                    <h4>Klein Outdoor</h4>
+                    <span>Outdoor</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/special_occasion/LittleImage_Lieberman_2-fcbd90b7-1000.jpg" alt="">
+                <div class="item-info">
+                    <h4>Lieberman Celebration</h4>
+                    <span>Special Occasion</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/newborn/LittleImage_Grunbaum_2-ccf049bc-1000.jpg" alt="">
+                <div class="item-info">
+                    <h4>Grunbaum Session</h4>
+                    <span>Newborn</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/child/LittleImage_Amsel_1-8a38438b-1500.jpg" alt="">
+                <div class="item-info">
+                    <h4>Amsel Portrait</h4>
+                    <span>Child</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/outdoor/LittleImage_Wertzberger_4-72b815c5-2500.jpg" alt="">
+                <div class="item-info">
+                    <h4>Wertzberger Family</h4>
+                    <span>Outdoor</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/events/D34A2276copy-2c5bcfa7-1000.jpg" alt="">
+                <div class="item-info">
+                    <h4>Celebration</h4>
+                    <span>Events</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="layout-notes">
+            <div class="note-group">
+                <span class="note-label">Strengths</span>
+                <span class="note-tag">Playful, modern rhythm</span>
+                <span class="note-tag">Card-style with captions</span>
+                <span class="note-tag">Easy to maintain</span>
+            </div>
+            <div class="note-group">
+                <span class="note-label cons">Considerations</span>
+                <span class="note-tag con">Images still get cropped to fit cards</span>
+                <span class="note-tag con">Uses more vertical space</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         5. SCATTERED / COLLAGE
+    ═══════════════════════════════════════════ -->
+    <section id="collage" class="layout-section">
+        <div class="section-header">
+            <span class="label">Layout 5</span>
+            <h2>Scattered / Collage</h2>
+            <p>Images feel casually placed, like prints on a table &mdash; slightly rotated, overlapping, with white borders. Warm, personal, and handcrafted. Perfect for the family photography brand.</p>
+        </div>
+
+        <div class="collage-container">
+            <div class="gallery-item c1">
+                <img src="assets/images/newborn/LittleImage_Greenfeld_2.0-45b9a5c6-1000.jpg" alt="">
+            </div>
+            <div class="gallery-item c2">
+                <img src="assets/images/child/LittleImage_Weberman_1-f167101e-1500.jpg" alt="">
+            </div>
+            <div class="gallery-item c3">
+                <img src="assets/images/outdoor/Littleimage_Grunhut_4-82719fd4-2500.jpg" alt="">
+            </div>
+            <div class="gallery-item c4">
+                <img src="assets/images/newborn/LittleImage_Retek_2-39c3d6e2-1000.jpg" alt="">
+            </div>
+            <div class="gallery-item c5">
+                <img src="assets/images/child/LittleImage_Mauskopf_5-1a88d73c-1500.jpg" alt="">
+            </div>
+            <div class="gallery-item c6">
+                <img src="assets/images/special_occasion/LittleImage_Hershkowitz_3-06173338-1000.jpg" alt="">
+            </div>
+            <div class="gallery-item c7">
+                <img src="assets/images/events/D34A2290copy-cf150497-1000.jpg" alt="">
+            </div>
+            <div class="gallery-item c8">
+                <img src="assets/images/outdoor/LittleImage_Photography_1-4c27a018-2500.jpg" alt="">
+            </div>
+        </div>
+
+        <div class="layout-notes">
+            <div class="note-group">
+                <span class="note-label">Strengths</span>
+                <span class="note-tag">Warm, personal, handcrafted</span>
+                <span class="note-tag">Unique and memorable</span>
+                <span class="note-tag">Perfect for family photography</span>
+            </div>
+            <div class="note-group">
+                <span class="note-label cons">Considerations</span>
+                <span class="note-tag con">Harder to make responsive</span>
+                <span class="note-tag con">Fixed positions need manual curation</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         6. HORIZONTAL FILMSTRIP
+    ═══════════════════════════════════════════ -->
+    <section id="filmstrip" class="layout-section">
+        <div class="section-header">
+            <span class="label">Layout 6</span>
+            <h2>Horizontal Filmstrip</h2>
+            <p>A cinematic strip that scrolls sideways, like walking past a gallery wall. Images are tall and immersive. Drag or scroll horizontally to browse. Dramatic and elegant.</p>
+        </div>
+
+        <div class="filmstrip-wrap">
+            <div class="filmstrip-gallery" id="filmstripScroller">
+                <div class="gallery-item landscape">
+                    <img src="assets/images/newborn/LittleImage_Greenfeld_2.0-45b9a5c6-1000.jpg" alt="">
+                </div>
+                <div class="gallery-item portrait">
+                    <img src="assets/images/child/LittleImage_Weberman_14-55f21110-1500.jpg" alt="">
+                </div>
+                <div class="gallery-item landscape">
+                    <img src="assets/images/outdoor/13-7343e297-2500.jpg" alt="">
+                </div>
+                <div class="gallery-item portrait">
+                    <img src="assets/images/newborn/LittleImage_Drezner_4-af714b0e-1000.jpg" alt="">
+                </div>
+                <div class="gallery-item square">
+                    <img src="assets/images/child/LittleImage_Mauskopf_2-56f3f1c9-1500.jpg" alt="">
+                </div>
+                <div class="gallery-item landscape">
+                    <img src="assets/images/events/D34A5251-ad1e5ee9-1000.JPG" alt="">
+                </div>
+                <div class="gallery-item portrait">
+                    <img src="assets/images/special_occasion/LittleImage_Katz_1-321511af-1000.jpg" alt="">
+                </div>
+                <div class="gallery-item landscape">
+                    <img src="assets/images/outdoor/LittleImage_Wertzberger_3-646092d1-2500.jpg" alt="">
+                </div>
+                <div class="gallery-item portrait">
+                    <img src="assets/images/newborn/Littleimage_Weiss_2-84448be8-1000.jpg" alt="">
+                </div>
+                <div class="gallery-item landscape">
+                    <img src="assets/images/child/LittleImagePhotography_Kaufman_2-1cdb7143-1500.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <p class="filmstrip-hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Scroll or drag horizontally to browse
+        </p>
+
+        <div class="layout-notes">
+            <div class="note-group">
+                <span class="note-label">Strengths</span>
+                <span class="note-tag">Cinematic and immersive</span>
+                <span class="note-tag">Images stay large and impactful</span>
+                <span class="note-tag">Mixed sizes feel natural</span>
+            </div>
+            <div class="note-group">
+                <span class="note-label cons">Considerations</span>
+                <span class="note-tag con">Not all content visible at once</span>
+                <span class="note-tag con">Horizontal scroll can feel unfamiliar</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         7. MIXED-WEIGHT MODULAR
+    ═══════════════════════════════════════════ -->
+    <section id="modular" class="layout-section">
+        <div class="section-header">
+            <span class="label">Layout 7</span>
+            <h2>Mixed-Weight Modular Grid</h2>
+            <p>A structured grid where some images break out to double-width or double-height, creating visual variety while keeping an underlying rhythm. The best of both worlds &mdash; organized but not monotonous.</p>
+        </div>
+
+        <div class="modular-grid">
+            <div class="gallery-item span-2c2r">
+                <img src="assets/images/newborn/LittleImage_Greenfeld_2.0-45b9a5c6-1000.jpg" alt="">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/child/LittleImage_Weberman_14-55f21110-1500.jpg" alt="">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/outdoor/14-0ac1d77a-300.jpg" alt="">
+            </div>
+            <div class="gallery-item span-2r">
+                <img src="assets/images/child/LittleImage_Scher_1-d92a6d54-1500.jpg" alt="">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/newborn/LittleImage_Retek_2-39c3d6e2-1000.jpg" alt="">
+            </div>
+            <div class="gallery-item span-2c">
+                <img src="assets/images/events/D34A5274-2d5d4afa-1000.JPG" alt="">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/special_occasion/LittleImage_Lieberman_2-fcbd90b7-1000.jpg" alt="">
+            </div>
+            <div class="gallery-item span-2c">
+                <img src="assets/images/outdoor/Littleimage_Grunhut_2-70c61d27-2500.jpg" alt="">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/newborn/LittleImage_Grunbaum_2-ccf049bc-1000.jpg" alt="">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/child/LittleImage_Amsel_1-8a38438b-1500.jpg" alt="">
+            </div>
+            <div class="gallery-item span-2r">
+                <img src="assets/images/newborn/Littleimage_Weiss_7-76f3091b-1000.jpg" alt="">
+            </div>
+            <div class="gallery-item span-2c">
+                <img src="assets/images/special_occasion/LittleImage_Katz_3-6167d54c-1000.jpg" alt="">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/images/events/D34A2279copy-7f290b44-1000.jpg" alt="">
+            </div>
+        </div>
+
+        <div class="layout-notes">
+            <div class="note-group">
+                <span class="note-label">Strengths</span>
+                <span class="note-tag">Structured but not monotonous</span>
+                <span class="note-tag">Visual hierarchy within a grid</span>
+                <span class="note-tag">Easy to add/remove images</span>
+            </div>
+            <div class="note-group">
+                <span class="note-label cons">Considerations</span>
+                <span class="note-tag con">Images get cropped to fit cells</span>
+                <span class="note-tag con">Need to decide which images are "featured"</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         JAVASCRIPT
+    ═══════════════════════════════════════════ -->
+    <script>
+        // ── Nav highlighting ──
+        const navLinks = document.querySelectorAll('.top-nav a');
+        const sections = document.querySelectorAll('.layout-section');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    const activeLink = document.querySelector(`.top-nav a[href="#${entry.target.id}"]`);
+                    if (activeLink) activeLink.classList.add('active');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        sections.forEach(section => observer.observe(section));
+
+        // ── Smooth scroll for nav ──
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ── Filmstrip drag-to-scroll ──
+        const filmstrip = document.getElementById('filmstripScroller');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        filmstrip.addEventListener('mousedown', (e) => {
+            isDown = true;
+            filmstrip.style.cursor = 'grabbing';
+            startX = e.pageX - filmstrip.offsetLeft;
+            scrollLeft = filmstrip.scrollLeft;
+        });
+
+        filmstrip.addEventListener('mouseleave', () => {
+            isDown = false;
+            filmstrip.style.cursor = 'grab';
+        });
+
+        filmstrip.addEventListener('mouseup', () => {
+            isDown = false;
+            filmstrip.style.cursor = 'grab';
+        });
+
+        filmstrip.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - filmstrip.offsetLeft;
+            const walk = (x - startX) * 2;
+            filmstrip.scrollLeft = scrollLeft - walk;
+        });
+
+        // ── Filmstrip mouse-wheel horizontal scroll ──
+        filmstrip.addEventListener('wheel', (e) => {
+            if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                e.preventDefault();
+                filmstrip.scrollLeft += e.deltaY;
+            }
+        }, { passive: false });
+
+        // ── Scroll reveal animation ──
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.gallery-item').forEach((item, i) => {
+            // Skip filmstrip and collage items — their layouts conflict with translateY
+            if (item.closest('.filmstrip-gallery') || item.closest('.collage-container')) return;
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = `opacity 0.6s ease ${i % 6 * 0.08}s, transform 0.6s ease ${i % 6 * 0.08}s`;
+            revealObserver.observe(item);
+        });
+    </script>
+</body>
+</html>
