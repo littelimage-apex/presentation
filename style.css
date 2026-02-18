@@ -320,7 +320,7 @@ p {
    ------------------------------------------- */
 .hero-section {
     min-height: 100vh;
-    background: url('https://res.cloudinary.com/da2fwogvu/image/upload/f_auto,q_auto/v1771373071/little-image/hero/Gemini_Generated_Image_mzytvsmzytvsmzyt.png') 65% center / cover no-repeat;
+    background: url('assets/images/home/hero-bg.png') 70% center / cover no-repeat;
     position: relative;
 }
 
