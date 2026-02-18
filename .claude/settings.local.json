@@ -14,6 +14,7 @@
       "Skill(firecrawl:setup)",
       "Skill(firecrawl:setup:*)",
       "mcp__plugin_firecrawl_firecrawl__firecrawl_scrape",
+<<<<<<< HEAD
       "Bash(python:*)",
       "Bash(for style in l n p r u)",
       "Bash(do echo \"=== Style $style ===\")",
@@ -23,6 +24,18 @@
       "Bash(git add:*)",
       "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat: add layout switchers to Hero, Reviews, FAQ, Contact sections and wire up Website Preview styles\n\n- Hero section: 5 switchable layouts \\(Classic Full-Width, Split, Bento Grid, Minimal Text, Filmstrip\\)\n- Reviews section: 4 switchable layouts \\(Centered Card, Side-Scroll Carousel, Stacked Quotes, Grid\\)\n- FAQ section: 4 switchable layouts \\(Classic Accordion, Two-Column Cards, Chat Bubbles, Timeline\\)\n- Contact section: 4 switchable layouts \\(Classic Form, Split Image, Minimal, Floating Card\\)\n- Website Preview: wired up 6 style themes \\(Original Sage, Editorial Rose, Modern Minimal, Warm Scrapbook, Dark Luxury, Botanical Garden\\) with tab switcher and fixed missing element ID\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
       "Bash(git push:*)"
+=======
+      "Bash(dir:*)",
+      "Bash(node -e:*)",
+      "Bash(node:*)",
+      "Bash(du -sh \"c:/Users/jacob/Github Repo/presentation/assets/images/\"*/)",
+      "Bash(curl:*)",
+      "Bash(bash:*)",
+      "Bash(for file in index.html style.css script.js)",
+      "Bash(do grep -oP \"assets/images/[^\"\"'' \\)\\\\]]*\" \"$file\")",
+      "Bash(done)",
+      "Bash(cd:*)"
+>>>>>>> 68baaa2aeeeba394b1b711ed417c3224dd08eab8
     ]
   }
 }

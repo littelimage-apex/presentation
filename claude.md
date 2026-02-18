@@ -1,79 +1,201 @@
-# index.html Structure Guide (Gemini.md)
+# CLAUDE.md
 
-This document serves as a roadmap for the `index.html` file, which is a massive, dynamic presentation for a photography client ("Little Image"). It explains the architecture, naming conventions, and interactive systems.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## 1. Global Design System (CSS)
-Located in the `<style>` tag in the `<head>` (Lines 18-3323).
+## Project Overview
 
-### Color Palette (CSS Variables)
-- `--color-primary`: #94A396 (Sage Green) - Primary brand color.
-- `--color-secondary`: #D4A39A (Muted Rose) - Accent color.
-- `--color-background`: #F5F2ED (Oatmeal) - Page background.
-- `--color-surface`: #FDFCFB (Cream) - Card surfaces.
-- `--color-text`: #6B5E51 (Clay Brown) - Primary text.
+This is an HTML presentation showcasing website redesign concepts for Little Image Photography. The presentation demonstrates multiple layout variations for each website section (Hero, About, Gallery, Packages, Reviews, FAQ, Contact) and a full website preview with switchable visual themes.
 
-### Typography
-- **Headings**: `Solway` (Serif) - Evokes trust, legacy, and gentleness.
-- **Body**: `Nunito` (Sans-serif) - Friendly and readable.
+**Key characteristics:**
+- Simple three-file architecture: [index.html](index.html), [style.css](style.css), [script.js](script.js)
+- No build process, bundler, or package manager required
+- Static/demo content only (no backend or API)
+- Opens directly in a browser
 
----
+## Opening the Presentation
 
-## 2. Navigation System
-- **Sidebar Dots** (Lines 3349-3389): Fixed sidebar with `.nav-dot` elements.
-- **Mechanism**: `data-target` on each dot corresponds to the `id` of a `<section>`.
-- **JS Logic**: Smooth scrolling and active state updates via Intersection Observer (Lines 6185+).
+Simply open [index.html](index.html) in a web browser. No local server required.
 
----
+## File Structure
 
-## 3. Main Content Sections (Slides)
-All main sections are either `.slide` or `.anatomy-section` (or custom like `.map-section`).
+```
+presentation/
+├── index.html                          # Main HTML structure (~4,400 lines)
+├── style.css                           # All styles (~5,700 lines)
+├── script.js                           # All JavaScript functionality (~365 lines)
+├── assets/
+│   └── images/                         # All photography samples, organized by category
+│       ├── about/
+│       ├── child/
+│       ├── contact/
+│       ├── events/
+│       ├── home/
+│       ├── newborn/
+│       ├── outdoor/
+│       ├── pricing/
+│       ├── special_occasion/
+│       ├── three_year_milestone/
+│       └── misc/
+├── process_images.py                   # Utility script that downloaded/organized images from original site
+├── current_website_content.md          # Content audit of the current Little Image website
+└── current_website_content_with_images.md
+```
 
-| ID | Title | Description |
-|---|---|---|
-| `slide-0` | **Intro** | Hero-style entry with "Design Strategy" title. |
-| `slide-map` | **Architect's Map** | 6-card grid (`.map-grid`) showing the website's flow. |
-| `slide-1` | **Hero Strategy** | Explains the "0.05 Second Rule" with a demo browser window. |
-| `slide-hero-anatomy` | **Hero Breakdown** | Anatomy breakdown with absolute-positioned `.callout` bubbles. |
-| `slide-2` | **About Strategy** | "Human First" approach explanation with Portrait. |
-| `slide-about-anatomy`| **About Breakdown** | Breakdown of portrait, signature quote, and grid layout. |
-| `slide-3` | **Gallery Strategy** | Circular category preview explaining "Buckets of Interest." |
-| `slide-gallery-interactive`| **Interactive Gallery**| Live switcher using `.category-circle` and `.category-gallery`. |
-| `slide-collections` | **Step 3a: Collections** | Twenty-four unique styles (A through X) switchable by tabs. |
-| `slide-lab` | **Step 3b: Gallery Lab** | Tabbed interface comparing Masonry, Filmstrip, Dreamscape, Carousel, Hovergrid, Parallaxreel, and Organic Pebbles. |
-| `slide-4` | **Reviews** | Centered client stories with emotional impact. |
-| `slide-5` | **FAQ** | Interactive accordions for reducing friction. |
-| `slide-6` | **Contact / CTA** | Centered contact form mockup (no booking). |
+## Architecture & Key Patterns
 
----
+### CSS Organization ([style.css](style.css))
 
-## 4. Reusable UI Components
-- **Demo Window** (`.demo-window`): A browser-mockup container with red/yellow/green dots in the bar (`.demo-browser-bar`).
-- **Showcase Layout** (`.section-showcase`): A split layout (usually 50/50). Use `.reverse` to swap text/demo order.
-- **Anatomy Cards** (`.detail-card`): Notched cards (`.sage` or `.rose`) used in breakdown sections.
-- **Brand Pill** (`.brand-pill`): Small badge for sub-headers.
+All styles are in [style.css](style.css) (~5,700 lines), linked in the HTML `<head>`. Structure:
 
----
+1. **CSS Custom Properties (lines ~5-29)**: Brand colors, fonts, spacing defined in `:root`
+   - Primary palette: Sage Green (#94A396), Muted Rose (#D4A39A), Oatmeal (#F5F2ED)
+   - Fonts: Solway (headings), Nunito (body)
 
-## 5. Interactive Systems (JavaScript)
-Located at the bottom (Lines 6149+).
+2. **Base Styles**: Resets, typography, utilities (`.container`, `.btn` classes)
 
-- **Lucide Icons**: Initialized via `lucide.createIcons()`.
-- **Scroll Reveal**: Uses `IntersectionObserver` to add the `.active` class to `.slide`, `.anatomy-section`, and `.demo-window` (Lines 6156-6182).
-- **Lightbox**:
-    - Centralized overlay (`#lightbox`) at line 3331.
-    - Handled by `initLightboxGroups()` which scans for `[data-lightbox-group]`.
-    - Supports gallery navigation, counter, and keyboard shortcuts.
-- **Switchers**:
-    - `categoryCircles`: Switches categories in the Interactive Gallery (Line 6217).
-    - `galleryTabs`: Switches Layouts in the "Gallery Lab" (Line 6240).
-    - `collectionTabs`: Switches the 24 visual gallery styles (Line 6262).
-- **Special Effects**:
-    - `Carousel`: Custom slider logic for the Carousel Lab panel.
-    - `Parallax Reel`: Mouse-move based movement for luxury gallery reel.
+3. **Section Styles**: Each presentation section has dedicated styles (hero variants, gallery layouts, package cards, etc.)
 
----
+4. **Website Preview Styles**: Miniature website mockup styles (`.preview-*` classes)
 
-## 6. Maintenance Tips
-- **Adding a Slide**: Add a new `<section>` with a unique ID and then add a corresponding `.nav-dot` in the nav sidebar.
-- **Image Paths**: Most assets are in `assets/images/` followed by categories (`newborn/`, `child/`, `about/`).
-- **Animations**: Most reveals are controlled by CSS transitions triggered by the `.active` class added in JS.
+5. **Theme Variations**: Multiple CSS classes for alternative visual themes (`.style-editorial`, `.style-minimal`, `.style-luxe`, etc.)
+
+### HTML Structure ([index.html](index.html))
+
+The HTML file (~4,400 lines) contains the structure and content. The presentation is organized as sequential "slides" (sections):
+
+1. **Title Slide** - Introduction
+2. **Hero Lab** - 7 hero layout variations with switcher tabs
+3. **About Lab** - 5 about section layouts
+4. **Gallery Lab** - 4 gallery presentation styles
+5. **Collections Lab** - Gallery filtering/categorization patterns
+6. **Packages Lab** - 7 pricing layout designs
+7. **Reviews Section** - Review layouts with switchers
+8. **FAQ Section** - FAQ layouts with switchers
+9. **Contact Section** - Contact form layouts with switchers
+10. **Full Website Preview** - Complete website mockup with 6 theme switchers
+
+Each "Lab" section contains:
+- Tab buttons for switching between layout options
+- Multiple `.layout-panel` or `.package-panel` elements (only one visible at a time)
+- Demo content representing the actual website content
+
+**Key includes:**
+- `<link rel="stylesheet" href="style.css">` in `<head>` (line 18)
+- `<script src="script.js"></script>` before `</body>` (line 4414)
+
+### JavaScript Architecture ([script.js](script.js))
+
+All JavaScript is in [script.js](script.js) (~365 lines), loaded at the end of the HTML. Key systems:
+
+#### 1. Scroll Reveal Animation (lines ~7-33)
+- Uses Intersection Observer API
+- Adds `.active` class to `.reveal` elements when they enter viewport
+- Triggers fade-in and slide-up animations
+
+#### 2. Tab Switchers (multiple implementations)
+- **Gallery Lab Tabs** (lines ~89-108): Switches between gallery layout variations
+- **Collection Style Tabs** (lines ~111-130): Switches collection organization patterns
+- **Package Lab Tabs** (lines ~133-152): Switches pricing layout designs
+- **Layout Switchers** (lines ~155-177): Generic system for Hero/About/Reviews/FAQ/Contact sections
+  - Uses `data-tab-group` and `data-tab-id` attributes
+  - Switches active class on tabs and corresponding `.layout-panel` elements
+
+#### 3. Global Preview Style Switcher (lines ~180-202)
+- Controls the full website preview theme
+- Uses `data-style-id` attributes on buttons
+- Adds/removes theme class names on `#mainWebsitePreview` element
+- Available themes: default, editorial, minimal, scrapbook, luxe, botanical
+
+#### 4. Category Gallery Switcher (lines ~66-86)
+- Switches between photography categories (newborn, child, outdoor, etc.)
+- Uses `.category-circle` buttons and `.category-gallery` panels
+
+#### 5. Lightbox Gallery (lines ~242-341)
+- Full-screen image viewer with prev/next navigation
+- Keyboard support (Arrow keys, Escape)
+- Works with `data-lightbox-group` and `data-lightbox-src` attributes
+- Multiple image groups supported
+
+#### 6. Parallax Reel Interaction (lines ~344-365)
+- Mouse-based parallax effect on image reel
+- Horizontal scroll on vertical mouse wheel
+
+#### 7. Navigation Dots (lines ~36-63)
+- Side navigation with scroll-spy highlighting
+- Click to scroll to section
+- Uses Intersection Observer to track active section
+
+### External Dependencies
+
+Loaded via CDN (no npm/package.json):
+
+1. **Google Fonts**: Nunito (body), Solway (headings)
+2. **Lucide Icons**: `<script src="https://unpkg.com/lucide@latest"></script>`
+   - Icons initialized with `lucide.createIcons()` after DOM changes
+
+## Common Tasks
+
+### Adding a New Layout Variation
+
+1. **Add the tab button** in the appropriate switcher group:
+   ```html
+   <button class="layout-tab" data-tab-group="hero" data-tab-id="new-variant">New Design</button>
+   ```
+
+2. **Add the panel** with matching attributes:
+   ```html
+   <div class="layout-panel" data-panel-group="hero" data-panel-id="new-variant">
+       <!-- Layout content -->
+   </div>
+   ```
+
+3. **JavaScript automatically handles the switching** (no code changes needed)
+
+### Adding a New Website Preview Theme
+
+1. **Add theme button**:
+   ```html
+   <button class="layout-tab" data-style-id="style-newtheme">New Theme Name</button>
+   ```
+
+2. **Add CSS for the theme** in [style.css](style.css):
+   ```css
+   #mainWebsitePreview.style-newtheme {
+       /* Theme overrides */
+   }
+   #mainWebsitePreview.style-newtheme .preview-hero {
+       /* Hero section customization */
+   }
+   ```
+
+### Modifying Brand Colors/Fonts
+
+Edit CSS custom properties in `:root` at the top of [style.css](style.css) (lines ~5-29):
+```css
+:root {
+    --color-primary: #94A396;
+    --font-heading: 'Solway', serif;
+    /* etc. */
+}
+```
+
+### Adding New Images
+
+1. Place images in appropriate category folder under `assets/images/`
+2. Reference with relative paths: `assets/images/category/filename.jpg`
+3. For lightbox functionality, add `data-lightbox-src` and `data-lightbox-group` attributes
+
+## Content Source
+
+The presentation is based on the current Little Image Photography website (littleimageny.com). Reference documents:
+- [current_website_content.md](current_website_content.md) - Text content audit
+- [current_website_content_with_images.md](current_website_content_with_images.md) - Content with image references
+
+## Browser Compatibility
+
+Uses modern web APIs:
+- Intersection Observer API (scroll animations, nav dots)
+- CSS Custom Properties (variables)
+- ES6+ JavaScript (arrow functions, const/let, template literals)
+
+Recommended browsers: Modern Chrome, Firefox, Safari, Edge (2020+)
