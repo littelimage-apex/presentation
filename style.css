@@ -328,10 +328,11 @@ p {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg,
-            rgba(42, 58, 44, 0.5) 0%,
-            rgba(107, 94, 81, 0.3) 50%,
-            rgba(148, 163, 150, 0.2) 100%);
+    background: linear-gradient(to right,
+            rgba(42, 58, 44, 0.65) 0%,
+            rgba(42, 58, 44, 0.45) 30%,
+            rgba(42, 58, 44, 0.1) 55%,
+            transparent 70%);
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -1124,11 +1125,13 @@ p {
 }
 
 .footer-content {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     max-width: 1200px;
     margin: 0 auto;
-    gap: 3rem;
+    gap: 2rem;
 }
 
 .footer-heading {
@@ -1147,8 +1150,9 @@ p {
 
 .footer-info {
     display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
     font-size: 0.85rem;
     opacity: 0.65;
 }
@@ -1166,8 +1170,9 @@ p {
 
 .footer-links {
     display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
 }
 
 .footer-links a {
@@ -1402,22 +1407,9 @@ p {
         padding: 2.5rem 2rem;
     }
 
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2rem;
-    }
-
     .footer-info {
-        align-items: center;
-    }
-
-    .footer-links {
-        align-items: center;
-    }
-
-    .site-footer {
-        margin: 0;
+        flex-direction: column;
+        gap: 0.6rem;
     }
 
     .form-row {
