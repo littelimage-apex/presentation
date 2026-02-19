@@ -421,11 +421,15 @@ p {
     padding: 6rem 0;
 }
 
-/* ---- Collection Pillar Cards (justified rows) ---- */
+/* ---- Collection Portrait Cards ---- */
 .collection-pillars {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
     transition: opacity 0.4s ease, max-height 0.5s ease, margin 0.4s ease;
     overflow: hidden;
 }
@@ -437,32 +441,13 @@ p {
     pointer-events: none;
 }
 
-/* Top row: 2 cards with varied widths */
-.collection-row.tall {
-    display: grid;
-    grid-template-columns: 1.6fr 0.85fr;
-    gap: 8px;
-    height: 650px;
-    width: 100%;
-    margin-bottom: 8px;
-}
-
-/* Bottom row: 3 cards with varied widths */
-.collection-row.short {
-    display: grid;
-    grid-template-columns: 0.85fr 1.6fr 1.9fr;
-    gap: 8px;
-    height: 500px;
-    width: 100%;
-}
-
 .collection-card {
     position: relative;
     overflow: hidden;
-    border-radius: calc(var(--radius-card, 12px) / 2);
+    border-radius: var(--radius-card, 1.25rem);
     cursor: pointer;
-    min-width: 0;
-    min-height: 0;
+    flex: 0 1 calc(33.333% - 1.5rem);
+    aspect-ratio: 3 / 4;
 }
 
 .collection-card img {
@@ -474,39 +459,30 @@ p {
 }
 
 .collection-card:hover img {
-    transform: scale(1.08);
+    transform: scale(1.05);
 }
 
-.collection-card-overlay {
+.collection-card-label {
     position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 55%);
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 1.8rem;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.collection-card:hover .collection-card-overlay {
-    opacity: 1;
-}
-
-.collection-card-overlay h3 {
-    color: #fff;
-    font-family: var(--font-heading, 'Solway', serif);
-    font-size: 1.4rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-accent, #B8A898);
+    padding: 0.75rem 1.5rem;
     text-align: center;
-    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
-    transform: translateY(10px);
-    transition: transform 0.4s ease;
+    min-width: 60%;
 }
 
-.collection-card:hover .collection-card-overlay h3 {
-    transform: translateY(0);
+.collection-card-label h3 {
+    color: var(--color-surface, #FDFCFB);
+    font-family: var(--font-heading, 'Solway', serif);
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin: 0;
+    line-height: 1.6;
 }
 
 /* ---- Expanded Category Gallery ---- */
@@ -632,39 +608,36 @@ p {
     }
 }
 
-/* ---- Responsive: Collection Pillars ---- */
+/* ---- Responsive: Collection Portrait Cards ---- */
 @media (max-width: 900px) {
-    .collection-row.tall {
-        height: 300px;
+    .collection-card {
+        flex: 0 1 calc(50% - 1.5rem);
     }
 
-    .collection-row.short {
-        height: 220px;
+    .collection-card-label h3 {
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
     }
 }
 
 @media (max-width: 600px) {
-    .collection-row.tall {
-        grid-template-columns: 1fr 1fr;
-        height: 200px;
+    .collection-pillars {
+        gap: 1rem;
     }
 
-    .collection-row.short {
-        grid-template-columns: 1fr 1fr;
-        height: auto;
+    .collection-card {
+        flex: 0 1 calc(50% - 0.5rem);
     }
 
-    .collection-row.short .collection-card {
-        height: 180px;
+    .collection-card-label {
+        bottom: 1rem;
+        padding: 0.5rem 1rem;
+        min-width: 70%;
     }
 
-    .collection-card-overlay {
-        opacity: 1;
-    }
-
-    .collection-card-overlay h3 {
-        transform: translateY(0);
-        font-size: 1.1rem;
+    .collection-card-label h3 {
+        font-size: 0.65rem;
+        letter-spacing: 0.15em;
     }
 
     .collection-gallery-header {
